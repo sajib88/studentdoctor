@@ -1,7 +1,8 @@
+<div id="page-content">
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
+      <h1><i class="fa fa-dashboard"></i>
         Dashboard
         <small>Panel</small>
       </h1>
@@ -15,10 +16,9 @@
     <section class="content">
    
        <!-- =========================================================== -->
-
     <div class="row">
-    <div class="col-lg-6">
-        <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="box box-primary">
+        <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-purple">
                 <span class="info-box-icon"><i class="fa fa-fw fa-list-alt"></i></span>
 
@@ -47,7 +47,7 @@
             <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-purple">
                 <span class="info-box-icon"><i class="glyphicon glyphicon-picture"></i></span>
 
@@ -74,7 +74,7 @@
             <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-purple">
                 <span class="info-box-icon"><i class="glyphicon glyphicon-tags"></i></span>
 
@@ -105,7 +105,7 @@
             <!-- /.info-box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-purple">
                 <span class="info-box-icon"><i class="fa fa-book"></i></span>
 
@@ -136,7 +136,7 @@
         </div>
         <!-- /.col -->
 
-        <div class="col-md-6 col-xs-6">
+        <div class="col-md-3 col-xs-6">
           <!-- small box -->
 
 
@@ -161,7 +161,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-md-6 col-xs-6">
+        <div class="col-md-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
@@ -185,7 +185,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-md-6 col-xs-6">
+        <div class="col-md-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
@@ -207,7 +207,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-md-6 col-xs-6">
+        <div class="col-md-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-purple">
             <div class="inner">
@@ -228,8 +228,7 @@
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-
-        </div>
+    </div>
           <!-- user info -->
           <style type="text/css">
             .profile_pic{
@@ -247,6 +246,9 @@
           </style>
            <div class="col-md-6 col-xs-12">
             <!-- small box -->
+               <div class="box-header with-border">
+                   <h3 class="box-title">Profile Information</h3><i class="fa fa-user title-icon"></i>
+               </div>
             <div class="box box-primary">
             <div class="box-body box-profile">
               <?php
@@ -261,50 +263,34 @@
               <h3 class="profile-username text-center"><?php echo $user_info['user_name']; ?></h3>
 
               <p class="text-muted text-center">
-                <i class="glyphicon glyphicon-gift"></i> <b>  Profession: </b> 
-                              <?php
-                                $data = get_data('profession', array('id' => $user_info['profession']));
-                                echo $data['name'];?>
-                            &nbsp&nbsp
+
               <i class="glyphicon glyphicon-envelope"></i>&nbsp&nbsp<?php echo $user_info['email']; ?></p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>First Name</b> <a class="pull-right"><?php echo $user_info['first_name']; ?></a>
+                  <b>First Name</b> <span class="pull-right"><?php echo $user_info['first_name']; ?></span>
                 </li>
                 <li class="list-group-item">
-                  <b>Last Name</b> <a class="pull-right"><?php echo $user_info['last_name']; ?></a>
-                </li>
-                <li class="list-group-item">
-                  <b>Professional Licensing Country </b> <a class="pull-right"><?php echo $user_info['plc']; ?></a>
-                </li>
-                <li class="list-group-item">
-                  <b>Professional Licensing State </b> <a class="pull-right"><?php echo $user_info['pls']; ?></a>
-                </li>
-                 <li class="list-group-item">
-                  <b>NPI </b> <a class="pull-right"><?php echo $user_info['npi']; ?></a>
-                </li>
-                <li class="list-group-item">
-                  <b>Professional License Number </b> <a class="pull-right"><?php echo $user_info['pln']; ?></a>
+                  <b>Last Name</b> <span class="pull-right"><?php echo $user_info['last_name']; ?></span>
                 </li>
                 </li>
                  <li class="list-group-item">
-                  <b>Gender </b> <a class="pull-right"><?php echo ucfirst($user_info['gender']); ?></a>
+                  <b>Gender </b> <span class="pull-right"><?php echo ucfirst($user_info['gender']); ?></span>
                 </li>
                 <li class="list-group-item">
-                  <b>Country</b> <a class="pull-right"><?php
+                  <b>Country</b> <span class="pull-right"><?php
                   $data = get_data('countries', array('id' => $user_info['country']));
                   echo $data['name'];
-                  ?></a>
+                  ?></span>
                 </li>
                 <li class="list-group-item">
-                  <b>State </b> <a class="pull-right"><?php echo $user_info['state']; ?></a>
+                  <b>State </b> <span class="pull-right"><?php echo $user_info['state']; ?></span>
                 </li>
                 <li class="list-group-item">
-                  <b>City</b> <a class="pull-right"><?php echo $user_info['city']; ?></a>
+                  <b>City</b> <span class="pull-right"><?php echo $user_info['city']; ?></span>
                 </li>
                 <li class="list-group-item">
-                  <b>Phone</b> <a class="pull-right"><?php echo $user_info['phone']; ?></a>
+                  <b>Phone</b> <span class="pull-right"><?php echo $user_info['phone']; ?></span>
                 </li>
               </ul>
 
@@ -314,28 +300,46 @@
           </div>
 
           </div>
+
+        <div class="col-md-6 col-xs-12">
+            <!-- small box -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Professional Information</h3><i class="fa fa-user title-icon"></i>
+                </div>
+                <div class="box-body box-profile">
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Profession </b>
+                            <span class="pull-right">
+                                <?php
+                                    $data = get_data('profession', array('id' => $user_info['profession']));
+                                    echo $data['name'];
+                                ?>
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Professional Licensing Country </b> <span class="pull-right"><?php echo $user_info['plc']; ?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Professional Licensing State </b> <span class="pull-right"><?php echo $user_info['pls']; ?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>NPI </b> <span class="pull-right"><?php echo $user_info['npi']; ?></span>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Professional License Number </b> <span class="pull-right"><?php echo $user_info['pln']; ?></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
           <!-- user info -->
     </div>
     <!-- /.row -->
 
-    <!-- =========================================================== -->
 
-
-
-
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
-        
-        <!-- ./col -->
-      </div>
-      <!-- /.row -->
-      <!-- Main row -->
-      <div class="row">
-        <!-- Left col -->
-       
-      </div>
-      <!-- /.row (main row) -->
-
-    </section>
     <!-- /.content -->
-  </div>
+  </section>
+</div>
+</div>

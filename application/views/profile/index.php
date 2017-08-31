@@ -1,70 +1,36 @@
+<div id="page-content">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1><i class="fa fa-cog"></i>
+                Profile Manage
+            </h1>
+        </section>
+        <?php if($this->session->flashdata('message')){ ?>
+            <div class="col-lg-12">
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Your Profile Updatted Successfully.</strong>
+                </div>
+            </div>
+        <?php } $this->session->unset_userdata('message'); ?>
+        <section class="content">
+            <!-- /.row -->
+            <div class="row">
+                <form role="form" method="post" enctype="multipart/form-data" action="<?php echo base_url('profile/profile/index'); ?>">
 
-<div class="content-wrapper">
-    <section class="content-header">
-      <h1>
-        Profile Edit
-        <small>Modify Your Profile Information</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li class="active">Edit</li>
-      </ol>
-</section>
-    
-   <section class="content">
-      <div class="row">
-
-    </div>
-    <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-6 ">
-            <div class="panel panel-default box box-primary">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form role="form" method="post" enctype="multipart/form-data" action="<?php echo base_url('profile/profile/index'); ?>">
-                                <h3>Basic Information</h3>
-                                <div class="form-group">
-                                    <label>User Name</label>
-                                    <input name="user_name" value="<?php echo $user_info['user_name']; ?>" disabled class="form-control">
-                                </div>
+                    <div class="col-lg-6 ">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Personal Information</h3><i class="fa fa-user title-icon"></i>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="padd">
+                                <!-- form start -->
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <input disabled  name="email" value="<?php echo $user_info['email']; ?>" class="form-control">
                                 </div>
-
-                                <div class="form-group">
-                                    <label>Profession Type</label>
-                                    <select disabled name="profession" class="form-control">
-
-                                        <?php
-                                        if (is_array($profession)) {
-                                            foreach ($profession as $row) {
-                                                ?>
-                                                <option <?php if ($row->id == $user_info['profession']) echo 'selected'; ?>  value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
-                                            <?php
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <!--           <label>Password</label>
-                                                                       <input name="password" class="form-control" disabled>-->
-                                     <button class="btn btn-success">Change Your Password</button>
-                                </div>
-                                <div class="form-group">
-                                    <label>Change Password</label>
-                                    <input   name="password" type="password" value="" class="form-control">
-                                </div>
-
-                                <hr>
-                                <h3>Profile Information</h3>
-
-
                                 <div class="form-group">
                                     <label>First Name</label>
                                     <input name="first_name" value="<?php echo $user_info['first_name']; ?>" class="form-control">
@@ -75,7 +41,13 @@
                                     <input name="last_name" value="<?php echo!empty($user_info['last_name']) ? $user_info['last_name'] : ''; ?>" class="form-control">
                                 </div>
 
-
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select name="gender" class="form-control">
+                                        <option name="gender" value="male" <?php if($user_info['gender'] === 'male'){echo 'selected';}?>>Male</option>
+                                        <option name="gender" value="female" <?php if($user_info['gender'] === 'female'){echo 'selected';}?> >Female</option>
+                                    </select>
+                                </div>
 
                                 <div class="form-group">
                                     <label>Professional Licensing Country</label>
@@ -98,14 +70,76 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Gender</label>
-                                    <select name="gender" class="form-control">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
+                                    <label>Phone</label>
+                                    <input name="phone" value="<?php echo!empty($user_info['phone']) ? $user_info['phone'] : ''; ?>"  class="form-control">
                                 </div>
 
+                            </div>
+                        </div>
+                        <!-- /.box -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Change Password</h3></h3><i class="fa fa-user title-icon"></i>
+                            </div>
+                            <div class="padd">
+                                <div class="form-group">
+                                    <label>Change Password</label>
+                                    <input   name="password" type="password" value="" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <!--           <label>Password</label>
+                                                                       <input name="password" class="form-control" disabled>-->
+                                    <button class="btn btn-success">Change Your Password</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Basic Information</h3><i class="fa fa-user title-icon"></i>
+                            </div>
+                            <div class="padd">
+                                <div class="form-group">
+                                    <label>User Name</label>
+                                    <input name="user_name" value="<?php echo $user_info['user_name']; ?>" disabled class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input disabled  name="email" value="<?php echo $user_info['email']; ?>" class="form-control">
+                                </div>
 
+                                <div class="form-group">
+                                    <label>Profession Type</label>
+                                    <select disabled name="profession" class="form-control">
+
+                                        <?php
+                                        if (is_array($profession)) {
+                                            foreach ($profession as $row) {
+                                                ?>
+                                                <option <?php if ($row->id == $user_info['profession']) echo 'selected'; ?>  value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Address</h3></h3><i class="fa fa-user title-icon"></i>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="padd">
+                                <!-- form start -->
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input name="address" value="<?php echo!empty($user_info['address']) ? $user_info['address'] : ''; ?>" class="form-control">
+                                </div>
                                 <div class="form-group">
                                     <label>Country</label>
                                     <select onchange="getComboA(this)" name="country" class="form-control">
@@ -120,7 +154,6 @@
                                         ?>
                                     </select>
                                 </div>
-
                                 <div id="result">
                                     <div class="form-group">
                                         <label>State</label>
@@ -137,99 +170,109 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label>City</label>
                                     <input name="city" value="<?php echo!empty($user_info['city']) ? $user_info['city'] : ''; ?>"  class="form-control">
                                 </div>
-
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input name="phone" value="<?php echo!empty($user_info['phone']) ? $user_info['phone'] : ''; ?>"  class="form-control">
-                                </div>
-
-
-
-                                <input type="submit" name="submit" class="btn btn-success" value="Update">
-
-                        </div>
-                    </div>
-                    <!-- /.row (nested) -->
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-        </div>
-
-
-        <div class="col-lg-6">
-            
-
-            <div class="panel panel-default box box-success">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-lg-10">
-                                <h3 class="page-header">Update Your Profile <small>Picture Now</small></h3>
                             </div>
-
-                            <div class="col-sm-6 col-md-5 thumbnail">
-
-
-
-
-
-
-                                <?php
-                                if($user_info['profilepicture'] == 0) {?>
-                                    <img src="<?php echo base_url() . '/assets/user-demo.jpg'?>" alt="" class="img-rounded img-responsive" />
-                                <?php }
-                                else {?>
-                                    <div class="thumbnail">
-
-
-
-                                        <img src="<?php echo base_url() . '/assets/file/' .$user_info['profilepicture']; ?>" alt=""  class="img-circle img-responsive" />
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <div class="col-lg-6 ">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Update Your Profile <small>Picture Now</small></h3><i class="fa fa-user title-icon"></i>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="padd">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-sm-6 col-md-5 thumbnail">
+                                            <?php
+                                            if($user_info['profilepicture'] == 0) {?>
+                                                <img src="<?php echo base_url() . '/assets/user-demo.png'?>" alt="" class="img-responsive" />
+                                            <?php }
+                                            else {?>
+                                                <div class="thumbnail">
+                                                    <img src="<?php echo base_url() . '/assets/file/' .$user_info['profilepicture']; ?>" alt=""  class="img-responsive" />
+                                                </div>
+                                            <?php }
+                                            ?>
+                                        </div>
+                                        <div class="form-group" id="profilepicture">
+                                            <div class="input-profile">
+                                                <label>Your Profile picture Format <br><small> jpg,gif,png format </small></label>
+                                                <input name="profilepicture" type="file">
+                                            </div>
+                                        </div>
                                     </div>
-                                <?php }
-                                ?>
-
-
-
+                                </div>
                             </div>
-
-            <div class="form-group" id="profilepicture">
-                <label>Your Profile picture Format <small> jpg,gif,png format </small></label>
-                <input name="profilepicture" type="file">
-            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col-md-12">
+                        <div class="box box-primary">
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!-- /Lending -->
+                                            <div class="col-lg-12 text-center">
+                                                <input type="submit" name="submit" class="btn btn-info margin-r-5" value="Update">
+                                                <?php echo anchor('profile/dashboard',"Cancel",array('class' => 'btn btn-danger'));?>
+                                            </div>
+                                            <!-- /.Lending -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- /.col-lg-12 -->
             </div>
-         </div>
-        </form>
-        <!-- /.col-lg-12 -->
+            <!-- /.container-fluid -->
+        </section>
     </div>
-    <!-- /.container-fluid -->
 </div>
 
 
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        //Date picker
+        $('#datepicker2').datepicker({
+            autoclose: true
+        });
+        $('#datepicker').datepicker({
+            autoclose: true
+        });
+        //Timepicker
+        $(".timepicker").timepicker({
+            showInputs: false
+        });
+
+        $(".timepickerend").timepicker({
+            showInputs: false
+        });
+    });
+</script>
 <script>
+    function getComboA(sel) {
+        var value = sel.value;
+        var base_url = '<?php echo base_url() ?>';
+        var da = {state: value};
+        $.ajax({
+            type: 'POST',
+            url: base_url + "public_web/publicweb/getStateByAjax",
+            data: da,
+            dataType: "text",
+            success: function(resultData) {
+                $("#result").html(resultData);
+            }
+        });
 
-                                        function getComboA(sel) {
-                                            var value = sel.value;
-                                            var base_url = '<?php echo base_url() ?>';
-                                            var da = {state: value};
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: base_url + "public_web/publicweb/getStateByAjax",
-                                                data: da,
-                                                dataType: "text",
-                                                success: function(resultData) {
-                                                    $("#result").html(resultData);
-                                                }
-                                            });
-
-                                        }
+    }
 
 </script>

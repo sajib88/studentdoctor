@@ -15,15 +15,9 @@ exit();*/
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
+        <h1><i class="fa fa-search"></i>
             Search Profile
-            <small>search</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li class="active">search</li>
-        </ol>
     </section>
     <section class="content">
         <div class="row">
@@ -119,13 +113,20 @@ exit();*/
 
 
                         </div>
-                        <hr/>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    <hr/>
+                    <div class="row">
+                        <div class=" table-responsive no-padding">
 
-                        <div class="box-body table-responsive no-padding">
                             <?php if(isset($result)) {
-                                if (count($result) <= 0) {
+                                if (empty($result)) {
                                     ?>
-                                    <div class="alert alert-info">No Profile Found !</div>
+                                    <div class="col-md-12">
+                                    <div class="alert alert-danger text-center"><i class="fa fa-info"></i> No Profile Found</div>
+                                    </div>
                                 <?php } else {
                                     if (!empty($result)) { ?>
 
@@ -153,7 +154,7 @@ exit();*/
                                                                         else {?>
                                                                              </br>
 
-                                                                                <img src="<?php echo base_url() . '/assets/file/' .$row->profilepicture; ?>" alt="" width="170" height="170" class="img-circle " />
+                                                                                <img src="<?php echo base_url() . '/assets/file/' .$row->profilepicture; ?>" alt="" width="170" height="170" class="img-rounded" />
                                                                             </br>
                                                                         <?php }
                                                                         ?>

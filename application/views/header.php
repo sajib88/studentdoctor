@@ -49,7 +49,7 @@
     ?>
     </head>
 
-  <body class="skin-purple sidebar-mini">
+  <body class="skin-black-light sidebar-mini">
     <div class="wrapper">
 
 
@@ -58,9 +58,9 @@
         <!-- Logo -->
         <a href="<?php echo base_url(); ?>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>FA</b>D</span>
+          <span class="logo-mini"><b>ST</b>D</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>ForStudent</b> Doctors</span>
+            <span class="logo-md"><b>Student Doctors</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -165,6 +165,7 @@
               <a href="#" >
                 <i class="fa fa-globe"></i>
                 <span>My Profile</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
                 
                 <ul class="treeview-menu">

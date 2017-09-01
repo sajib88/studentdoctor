@@ -3,6 +3,12 @@
         margin-left: 20px;
         margin-right: -12px;
     }
+    .btn-cust{
+        width: 95%;
+    }
+    .clear-fix{
+        clear: both;
+    }
 </style>
 <div class="content-wrapper">
 
@@ -25,46 +31,114 @@
         </div>
     <?php } ?>
 
-            <div class="col-md-6 ">
-                <div class="col-md-12 no-padding">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <i class="fa fa-th"></i>
-                            <h3 class="box-title">Classified Info</h3></i>
+        <div class="col-md-6 ">
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Classified Info</h3></i>
+                    </div>
+                    <div class="padd">
+                        <div class="form-group">
+                            <label>Title<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
+                            <input name="title" value="<?php echo ''; ?>"  class="form-control" required>
                         </div>
-                        <div class="padd">
-                            <div class="form-group">
-                                <label>Title<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
-                                <input name="title" value="<?php echo ''; ?>"  class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Main Category <span class="error">*</span></label><span id='main_category-error' class='error' for='main_category'></span>
-                                <select onchange="getSubCat(this)" name="main_category" class="form-control">
-                                    <option value="">Select</option>
-                                    <?php
-                                    if (is_array($main_cat)) {
-                                        foreach ($main_cat as $country) {
-                                            ?>
-                                            <option value="<?php echo $country->id; ?>"><?php echo $country->name; ?></option>
-                                            <?php
-                                        }
+                        <div class="form-group">
+                            <label>Main Category <span class="error">*</span></label><span id='main_category-error' class='error' for='main_category'></span>
+                            <select onchange="getSubCat(this)" name="main_category" class="form-control">
+                                <option value="">Select</option>
+                                <?php
+                                if (is_array($main_cat)) {
+                                    foreach ($main_cat as $country) {
+                                        ?>
+                                        <option value="<?php echo $country->id; ?>"><?php echo $country->name; ?></option>
+                                        <?php
                                     }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Description<span class="error">*</span></label><span id='description-error' class='error' for='description'></span>
-                                <textarea  name="description" class="form-control"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Price<span class="error">*</span></label><span id='price-error' class='error' for='price'></span>
-                                <input type="number" name="price"  class="form-control" required>
-                            </div>
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Description<span class="error">*</span></label><span id='description-error' class='error' for='description'></span>
+                            <textarea  name="description" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Price<span class="error">*</span></label><span id='price-error' class='error' for='price'></span>
+                            <input type="number" name="price"  class="form-control" required>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <div class="col-md-6">
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-file"></i>
+                        <h3 class="box-title">Media</h3>
+                    </div>
+                    <div class="padd">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group" id="photo_id">
+                                    <label>Picture One<span class="error">*</span></label><span id='Picture-error' class='error' for='Picture'></span>
+                                    <input class="btn btn-default btn-cust" id='primary_photo' name="photo_primary" onchange="validateImage()" type="file">
+                                    <small class="label bg-green"> JPG, GIF, PNG Format allow</small>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
+                                    <input class="btn btn-default btn-cust" name="photo_2" onchange="validateImage()" type="file">
+                                    <small class="label bg-green"> JPG, GIF, PNG Format allow</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
+                                    <input class="btn btn-default btn-cust" name="photo_3" onchange="validateImage()" type="file">
+                                    <small class="label bg-green"> JPG, GIF, PNG Format allow</small>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Picture Four</label><span id='picture4-error' class='error' for='picture3'></span>
+                                    <input class="btn btn-default btn-cust" name="photo_4" type="file">
+                                    <small class="label bg-green"> JPG, GIF, PNG Format allow</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group" id="file_id">
+                                    <label>File One<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
+                                    <input class="btn btn-default btn-cust" name="primary_file" type="file">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
+                                    <input class="btn btn-default btn-cust" name="primary_sound" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label>Videos</label><span id='videos-error' class='error' for='videos'></span>
+                                    <input class="btn btn-default btn-cust" name="primary_video" type="file">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear-fix"></div>
         <div class="col-md-6 ">
             <div class="col-md-12 no-padding">
                 <div class="box box-primary">
@@ -140,49 +214,6 @@
                             <div class="form-group">
                                 <label>Web site </label>
                                 <input name="website" value="<?php echo ''; ?>" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="col-md-6">
-                <div class="col-md-12 no-padding">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <i class="fa fa-file"></i>
-                            <h3 class="box-title">Media</h3>
-                        </div>
-                        <div class="padd">
-                            <div class="form-group" id="photo_id">
-                                <label>Picture One<span class="error">*</span></label><span id='Picture-error' class='error' for='Picture'></span>
-                                <input class="btn btn-default" id='primary_photo' name="photo_primary" onchange="validateImage()" type="file">
-                            </div>
-                            <div class="form-group">
-                                <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
-                                <input class="btn btn-default" name="photo_2" onchange="validateImage()" type="file">
-                            </div>
-                            <div class="form-group">
-                                <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
-                                <input class="btn btn-default" name="photo_3" onchange="validateImage()" type="file">
-                            </div>
-                            <div class="form-group">
-                                <label>Picture Four</label><span id='picture4-error' class='error' for='picture3'></span>
-                                <input class="btn btn-default" name="photo_4" type="file">
-                            </div>
-                            <div class="form-group" id="file_id">
-                                <label>File One<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
-                                <input class="btn btn-default" name="primary_file" type="file">
-                            </div>
-                            <div class="form-group">
-                                <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
-                                <input class="btn btn-default" name="primary_sound" type="file">
-                            </div>
-                            <div class="form-group">
-                                <label>Videos</label><span id='videos-error' class='error' for='videos'></span>
-                                <input class="btn btn-default" name="primary_video" type="file">
                             </div>
                         </div>
                     </div>

@@ -47,7 +47,7 @@ class Classifieds extends CI_Controller {
                 if ($this->form_validation->run() == true) {
 
                    // $save['classifieds_ids'] = implode(',', $postData['classified']);
-                    $save['classifieds_ids'] = '0';
+                    //$save['classifieds_ids'] = '0';
                     $save['title'] = $postData['title'];
                     $save['description'] = $postData['description'];
                     $save['main_cat'] = $postData['main_category'];
@@ -163,7 +163,7 @@ class Classifieds extends CI_Controller {
             if ($this->form_validation->run() == true) {
 
                 //$save['classifieds_ids'] = implode(',', $postData['classified']);
-                $save['classifieds_ids'] = '0';
+                //$save['classifieds_ids'] = '0';
                 $save['title'] = $postData['title'];
                 $save['description'] = $postData['description'];
                 $save['main_cat'] = $postData['main_category'];

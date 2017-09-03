@@ -2,15 +2,9 @@
 
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>
+        <h1><i class="fa fa-fw fa-list-alt "></i>
             Classifieds
-            <small>View All </small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Classifieds</a></li>
-            <li class="active">View All</li>
-        </ol>
     </section>
 
     <section class="content">
@@ -51,10 +45,6 @@
             <?php endif; ?>
         </div>
         <?php //echo $pagging['pagging']; ?>
-        <pre>
-        <?php //print_r($pagging) ; ?>
-        <?php //print_r($pagging); ?>
-        </pre>
     </section>
 
 </div>

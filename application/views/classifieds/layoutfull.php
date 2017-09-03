@@ -1,327 +1,329 @@
 
 
+<style type="text/css">
+    .page-header{
+        font-size: 30px;
+    }
+    .page-header>h1{
+        font-weight: 500;
+        color: #35312e;
+    }
+    .page-header>h1>small{
+        font-size: 15px;
+        display: inline-block;
+        padding-left: 4px;
+        font-weight: 300;
+        color: #fd4994;
+    }
+    .slider{
+        margin-bottom: 10px;
+    }
+    .slick-slide img{
+        height: 470px;
+    }
+    .slider-nav-thumbnails .item img{
+        height: 115px;
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .slider-nav-thumbnails{
+        margin: 0px -5px;
+    }
+    .bar span::after {background: none;}
+
+    .description-body{
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .tab-table{
+        width: 100%;
+        max-width: 72%;
+    }
+
+    .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+        border-top-color: inherit;
+    }
+
+    .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+        color: #333;
+        border: 1px solid #940707;
+        background-color: inherit;
+    }
+
+    .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+        background-color: inherit;
+    }
+    .tab-nav{
+        margin-bottom: 15px;
+    }
+
+    .price-tag{
+        line-height: 1;
+    }
+    .price-tag p{
+        line-height: 0;
+        margin-top: 6px;
+        font-size: 17px;
+        font-weight: 100;
+    }
+
+    .price-tag h2{
+        line-height: 0;
+        margin-top: 26px;
+        font-size: 32px;
+        font-weight: 900;
+        margin-bottom: 30px;
+    }
+
+    .price-tag span{
+        font-size: 16px;
+        font-weight: 200;
+    }
+
+    .text-clr{
+        color: #e5734f;
+    }
+
+    hr {
+        display: block;
+        margin-top: 35px;
+        margin-bottom: 25px;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+        color: #e0e0ea;
+        border-top: 1px solid #e0e0ea;
+    }
+
+    .pdl{
+        margin-left: 22px;
+        margin-bottom: 14px;
+    }
+    .classified-heading{
+        font-size: 14px;
+        font-weight: 100;
+    }
+    .ol-color{
+        color: #fd4994;
+    }
+    .mrg{
+        font-size: 9px;
+        padding: 5px;
+    }
+</style>
+
 <div class="content-wrapper">
-    <section class="content-header">
-        <h1>
-            Classifieds
-            <small>Details Layout </small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Classifieds</a></li>
-            <li class="active">View All</li>
-        </ol>
-    </section>
 
     <section class="content">
+
         <div class="row">
-
-            <button type="button" class="btn btn-block btn-warning btn-flat">PRICE : <?php echo $layoutfull['price']; ?></button>
-
-            </br>
-
-            <div class="col-lg-4">
-                <!-- /.info-box -->
-                <div class="info-box bg-green">
-                    <span class="info-box-icon"><i class="glyphicon glyphicon-envelope"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Email</span>
-                        <span class="info-box-number"><?php echo $layoutfull['email']; ?></span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 100%"></div>
-                        </div>
-                  <span class="progress-description">
-                    Contact For This Classified
-                  </span>
-                    </div>
-                    <!-- /.info-box-content -->
+            <div class="col-lg-12 page-header">
+                <div>
+                    <p class="classified-heading">You are here: <span class="ol-color"> &nbsp;&nbsp;Home <i class="glyphicon glyphicon-menu-right mrg"></i> Classified <i class="glyphicon glyphicon-menu-right mrg"></i> All Classifieds <i class="glyphicon glyphicon-menu-right mrg"></i> Classified Details View <i class="glyphicon glyphicon-menu-right mrg"></i> </span> <?php echo $layoutfull['title']; ?> </p>
                 </div>
+                <h1> <?php echo $layoutfull['title']; ?>
+                <small>Category:
+                    <?php
+                    $data = get_data('classified_main_cat', array('id' => $layoutfull['main_cat']));
+                    echo $data['name'];
+                    ?>
+                </small>
+                </h1>
             </div>
-
-            <div class="col-lg-4">
-                <!-- /.info-box -->
-                <div class="info-box bg-red">
-                    <span class="info-box-icon"><i class="fa fa-phone"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Contact</span>
-                        <span class="info-box-number"><?php echo $layoutfull['phone']; ?></span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 100%"></div>
+            <div class="col-md-9">
+                    <div class="slider">
+                        <div data-index="1">
+                            <?php if(!empty($layoutfull['photo_primary'])){ ?>
+                                <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_primary'] ?>" width="100%" class="img-responsive" alt="One">
+                            <?php }else{} ?>
                         </div>
-                  <span class="progress-description">
-                   Call Now  For This Classified
-                  </span>
+                        <div data-index="2">
+                            <?php if(!empty($layoutfull['photo_2'])){ ?>
+                                <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_2'] ?>" width="100%" class="img-responsive" alt="One">
+                            <?php }else{} ?>
+                        </div>
+                        <div data-index="3">
+                            <?php if(!empty($layoutfull['photo_3'])){ ?>
+                                <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_3'] ?>" width="100%" class="img-responsive" alt="One">
+                            <?php }else{} ?>
+                        </div>
+                        <div data-index="4">
+                            <?php if(!empty($layoutfull['photo_4'])){ ?>
+                                <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_4'] ?>" width="100%" class="img-responsive" alt="One">
+                            <?php }else{} ?>
+                        </div>
                     </div>
-                    <!-- /.info-box-content -->
+
+                    <!-- THUMBNAILS -->
+                    <div class="slider-nav-thumbnails">
+                        <div class="item">
+                            <?php if(!empty($layoutfull['photo_primary'])){ ?>
+                                <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_primary'] ?>" class="img-responsive" slide="slide_1">
+                            <?php }else{} ?>
+                        </div>
+                        <div class="item">
+                            <?php if(!empty($layoutfull['photo_2'])){ ?>
+                                <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_2'] ?>" class="img-responsive" slide="slide_2">
+                            <?php }else{} ?>
+                        </div>
+                        <div class="item">
+                            <?php if(!empty($layoutfull['photo_3'])){ ?>
+                                <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_3'] ?>" class="img-responsive" slide="slide_3">
+                            <?php }else{} ?>
+                        </div>
+                        <div class="item">
+                            <?php if(!empty($layoutfull['photo_4'])){ ?>
+                                <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_4'] ?>" class="img-responsive" slide="slide_4">
+                            <?php }else{} ?>
+                        </div>
+                    </div>
+                <div class="description-body">
+
+                <div id="exTab1" class="">
+                    <ul  class="nav nav-pills tab-nav">
+                        <li class="active">
+                            <a  href="#1a" data-toggle="tab">Description</a>
+                        </li>
+                        <li><a href="#2a" data-toggle="tab">Location</a>
+                        </li>
+                        <li><a href="#3a" data-toggle="tab">Media Files</a>
+                        </li>
+                        <li><a href="#4a" data-toggle="tab">Comment</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content clearfix">
+                        <div class="tab-pane active" id="1a">
+                            <p class="text-muted">
+                                <?php echo $layoutfull['description']; ?>
+                            </p>
+                        </div>
+                        <div class="tab-pane" id="2a">
+                            <div class="">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <?php if(!empty($layoutfull['address_1'])){?>
+                                    <tr>
+                                        <td>Address1</td>
+                                        <td><?php echo $layoutfull['address_1']; ?></td>
+                                    </tr>
+                                    <?php }
+                                    if(!empty($layoutfull['address_2'])){
+                                    ?>
+                                    <tr>
+                                        <td>Address2</td>
+                                        <td><?php echo $layoutfull['address_2']; ?></td>
+                                    </tr>
+                                    <?php }?>
+                                    <tr>
+                                        <td>City</td>
+                                        <td><?php echo $layoutfull['city']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>State</td>
+                                        <td><?php echo $layoutfull['state']; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Country</td>
+                                        <td><?php echo $layoutfull['country']; ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane" id="3a">
+                            <?php if(!empty($layoutfull['primary_video']) or !empty($layoutfull['primary_sound']) or !empty($layoutfull['primary_file'])) { ?>
+                                <?php if ($layoutfull['primary_video'] != 0) { ?>
+                                    <div class="box box-success">
+                                        <div class="box-header with-border">
+                                            <i class="fa fa-file-video-o"></i>
+                                            <h3 class="box-title">Video</h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <video id="my-video" class="video-js" controls preload="auto" width="640"
+                                                   height="264"
+                                                   poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+                                                <source src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['primary_video']; ?>"
+                                                        type='video/mp4'>
+                                                <source src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['primary_video']; ?>"
+                                                        type='video/webm'>
+                                                <p class="vjs-no-js">
+                                                    To view this video please enable JavaScript, and consider upgrading
+                                                    to a web browser that
+                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports
+                                                        HTML5 video</a>
+                                                </p>
+                                            </video>
+                                        </div>
+                                    </div>
+                                <?php }
+                                ?>
+
+                                <?php if ($layoutfull['primary_sound'] != 0) { ?>
+                                    <div class="box box-success">
+                                        <div class="box-header with-border">
+                                            <i class="fa fa-file-sound-o"></i>
+                                            <h3 class="box-title">Audio</h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <audio src="<?php echo base_url() . 'assets/file/classifieds/' . $layoutfull['primary_sound']; ?>"
+                                                   preload="auto"/>
+                                        </div>
+                                    </div>
+                                <?php }
+                                ?>
+
+                                <?php if ($layoutfull['primary_file'] != 0) { ?>
+                                    <div class="box box-success">
+                                        <div class="box-header with-border">
+                                            <i class="fa fa-file-word-o"></i>
+                                            <h3 class="box-title">Attachment</h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <a href="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['primary_file']; ?>">Download
+                                                File </a><br/>
+                                        </div>
+                                    </div>
+                                <?php }
+                            }else{
+                                echo '<div class="alert alert-danger">No meadia file founded.</div>';
+                            }
+                            ?>
+
+                        </div>
+                        <div class="tab-pane" id="4a">
+                            <h3>We use css to change the background color of the content to be equal to the tab</h3>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-lg-4 ">
-
-
-                <!-- /.info-box -->
-                <div class="info-box bg-aqua">
-                    <span class="info-box-icon"><i class="fa fa-globe"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Location</span>
-                        <span class="info-box-number"><?php
-                            $data = get_data('countries', array('id' => $layoutfull['country']));
-                            echo $data['name'];
-                            ?>, <?php echo $layoutfull['state']; ?></span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 100%"></div>
-                        </div>
-                  <span class="progress-description">
-                    Location This Classified
-                  </span>
-                    </div>
-                    <!-- /.info-box-content -->
                 </div>
-            </div>
-
-            <!-- PRODUCT LIST -->
-
-            <!-- /.box -->
-
-            <div class="col-md-4">
-
-                <!-- Profile Image -->
-                <div class="box box-primary">
-                    <div class="box-body box-profile">
-
-
-                            <img src="<?php echo base_url() . '/assets/file/classifieds/' .$layoutfull['photo_primary']; ?>" alt="" width="150" height="150" class="img-circle center-block" />
-
-
-
-                        <h3 class="profile-username text-center"> <?php echo $layoutfull['title']; ?></h3>
-
-
-
-                        <ul class="list-group list-group-unbordered">
-                            <li class="list-group-item">
-                                <b>Main Category </b> <a class="pull-right"><?php
-                                    $data = get_data('classified_main_cat', array('id' => $layoutfull['main_cat']));
-                                    echo $data['name'];
-                                    ?></a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Price</b> <a class="pull-right"> <?php echo $layoutfull['price']; ?></a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>	Country</b> <a class="pull-right"><?php
-                                    $data = get_data('countries', array('id' => $layoutfull['country']));
-                                    echo $data['name'];
-                                    ?></a>
-                            </li>
-
-                            <li class="list-group-item">
-                                <b>	State</b> <a class="pull-right"><?php echo $layoutfull['state']; ?></a>
-                            </li>
-                            <li class="list-group-item">
-                                <b>	city</b> <a class="pull-right"><?php echo $layoutfull['city']; ?></a>
-                            </li>
-
-
-
-                        </ul>
-
-                        <a href="#" class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> <b>Inquiry</b></a>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-
-                <!-- About Me Box -->
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Classified Information</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <strong><i class="fa fa-book margin-r-5"></i> Description</strong>
-
-                        <p class="text-muted">
-                            <?php echo $layoutfull['description']; ?>
-                        </p>
-
-                        <hr>
-
-                        <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-
-                        <p class="text-muted"><?php
-                            $data = get_data('countries', array('id' => $layoutfull['country']));
-                            echo $data['name'];
-                            ?>, <?php echo $layoutfull['state']; ?>, <?php echo $layoutfull['city']; ?></p>
-
-                        <strong> Address 1</strong>
-                        <p> <?php echo $layoutfull['address_1']; ?></p>
-
-                        <strong> Address 2</strong>
-                        <p> <?php echo $layoutfull['address_2']; ?></p>
-
-                        <hr>
-
-
-                        <strong><i class="fa fa-pencil margin-r-5"></i> Category </strong>
-
-                        <p>
-
-                            <span class="label label-success"><?php
-                                $data = get_data('classified_main_cat', array('id' => $layoutfull['main_cat']));
-                                echo $data['name'];
-                                ?></span>
-
-                        </p>
-
-                        <hr>
-
-                        <strong><i class="fa fa-laptop"></i> website</strong>
-
-                        <p><?php echo $layoutfull['website']; ?></p>
-
-                        <hr>
-
-                        <strong><i class="fa fa fa-envelope"></i> email</strong>
-
-                        <p><?php echo $layoutfull['email']; ?></p>
-                        <hr>
-                        <strong><i class="fa fa-mobile-phone"></i> phone</strong>
-
-                        <p><?php echo $layoutfull['phone']; ?></p>
-                        <hr>
-                        <strong><i class="fa fa-fax"></i> fax</strong>
-
-                        <p><?php echo $layoutfull['fax']; ?></p>
-                        <hr>
-
-
-
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-            </div>
-
-
-
-            <div class="col-lg-8">
-
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <i class="fa fa-file-picture-o"></i>
-                        <h3 class="box-title">Classified Photos</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
-
-                    <div class="box-body">
-
-                            <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_primary'] ?>" width="130" height="130"">
-
-
-                        <?php if($layoutfull['photo_2'] != 0){?>
-                        <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_2'] ?>" width="130" height="130">
-                        <?php }?>
-                        <?php if($layoutfull['photo_3'] != 0){?>
-                        <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_3'] ?>" width="130" height="130"">
-                        <?php }?>
-                        <?php if($layoutfull['photo_4'] != 0){?>
-                            <img src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['photo_4'] ?>" width="130" height="130"">
-                        <?php }?>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <?php if($layoutfull['primary_video'] != 0){?>
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <i class="fa fa-file-video-o"></i>
-                            <h3 class="box-title">Public Website Video</h3>
-                        </div>
-                        <div class="box-body">
-
-
-
-                            <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
-                                   poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-                                <source src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['primary_video'];?>" type='video/mp4'>
-                                <source src="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['primary_video'];?>" type='video/webm'>
-                                <p class="vjs-no-js">
-                                    To view this video please enable JavaScript, and consider upgrading to a web browser that
-                                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                                </p>
-                            </video>
-
-
-
-                        </div>
-
-
-                    </div>
-                <?php }
-                ?>
-
-
-
-
-                <?php if($layoutfull['primary_sound'] != 0){?>
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <i class="fa fa-file-sound-o"></i>
-                            <h3 class="box-title">Public Website Sound/audio</h3>
-                        </div>
-                        <div class="box-body">
-
-                            <audio src="<?php echo base_url() . 'assets/file/classifieds/' . $layoutfull['primary_sound']; ?>" preload="auto" />
-
-
-
-                        </div>
-
-
-                    </div>
-                <?php }
-                ?>
-
-
-
-                <?php if($layoutfull['primary_file'] != 0){?>
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <i class="fa fa-file-word-o"></i>
-                            <h3 class="box-title">Public Website Attachment</h3>
-                        </div>
-                        <div class="box-body">
-
-
-                                    <a href="<?php echo base_url() . '/assets/file/classifieds/' . $layoutfull['primary_file'];?>">Download File  </a><br/>
-
-
-
-                        </div>
-
-
-                    </div>
-                <?php }
-                ?>
-
 
 
             </div>
 
-
-
+            <div class="col-md-3">
+                <div class="price-tag">
+                    <p>Price:</p>
+                    <h2>$&nbsp<?php echo $layoutfull['price']; ?></h2>
+                    <span class="text-light-blue">Price is negotiable</span>
+                </div>
+                <hr>
+                <div class="price-tag">
+                    <p><i class="glyphicon glyphicon-user text-clr"></i>&nbsp Contact</p><br>
+                    <p class="pdl"><?php echo $layoutfull['phone']; ?></p>
+                    <a target="_blank" class="ol-color pdl" href="<?php echo $layoutfull['website']; ?>" > <?php echo $layoutfull['website']; ?> </a>
+                </div>
+                <hr>
+                <div class="price-tag">
+                    <p><i class="glyphicon glyphicon-calendar text-clr"></i>&nbsp Added</p><br>
+                    <p class="pdl"><?php echo $layoutfull['added']; ?></p>
+                </div>
+                <hr>
+            </div>
 
         </div>
         </div>
@@ -334,6 +336,7 @@
 <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
 <!-- THIS css/JS USE ONLY VIDEO PLAYER -->
 
+
 <!-- THIS css/JS Sound -->
 <script src="<?php echo base_url(); ?>script-assets/audiojs/audio.min.js"></script>
 
@@ -343,4 +346,38 @@
     });
 </script>
 <!-- THIS css/JS Sound -->
+<script src="<?php echo base_url(); ?>script-assets/js/slick.min.js"></script>
+
+<script>
+    // thumbnail slider
+    $('.slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: false,
+        asNavFor: '.slider-nav-thumbnails',
+    });
+
+    $('.slider-nav-thumbnails').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        asNavFor: '.slider',
+        dots: true,
+        focusOnSelect: true
+    });
+
+    //remove active class from all thumbnail slides
+    $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+
+    //set active class to first thumbnail slides
+    $('.slider-nav-thumbnails .slick-slide').eq(0).addClass('slick-active');
+
+    // On before slide change match active thumbnail to current slide
+    $('.slider').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        var mySlideNumber = nextSlide;
+        $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
+        $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
+    });
+
+</script>
 

@@ -19,27 +19,33 @@
 
 
     <link href="<?php echo base_url(); ?>script-assets/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
-      
-    <link href="<?php echo base_url(); ?>script-assets/custom.css" rel="stylesheet" type="text/css" />
+
+      <link href="<?php echo base_url(); ?>script-assets/slick.css" rel="stylesheet" type="text/css" />
+      <link href="<?php echo base_url(); ?>script-assets/slick-theme.css" rel="stylesheet" type="text/css" />
+
+      <link href="<?php echo base_url(); ?>script-assets/custom.css" rel="stylesheet" type="text/css" />
+
        <!-- Time pick Css-->
     
      <!-- jQuery UI 1.11.2 -->
     <!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script> -->
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <!-- Bootstrap 3.3.2 JS -->
-    
+
    
     <script src="<?php echo base_url(); ?>script-assets/js/jQuery-2.1.4.min.js"></script>
     <script src="<?php echo base_url(); ?>script-assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>script-assets/dist/js/app.min.js" type="text/javascript"></script>
        <!-- jquery validation -->
-   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/additional-methods.js" ></script>
        <!-- jquery validation -->
      <!-- jquery DATE + TIME -->
-     <script src="<?php echo base_url(); ?>script-assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="<?php echo base_url(); ?>script-assets/plugins/datepicker/bootstrap-datepicker.js"></script>
     <script src="<?php echo base_url(); ?>script-assets/plugins/daterangepicker/daterangepicker.js"></script>
     <script src="<?php echo base_url(); ?>script-assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
+
       <!-- jquery DATE + TIME -->
     <?php
       $data = array();

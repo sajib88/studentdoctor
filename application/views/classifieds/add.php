@@ -14,7 +14,7 @@
 
     <section class="content-header">
         <h1><i class="fa fa-fw fa-list-alt "></i>
-            Classified
+            New Classified
         </h1>
     </section>
     <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('classifieds/classifieds/add'); ?>">

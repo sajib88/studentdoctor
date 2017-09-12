@@ -3,17 +3,18 @@
 <style type="text/css">
     .page-header{
         font-size: 30px;
+        margin: 0;
     }
     .page-header>h1{
         font-weight: 500;
-        color: #35312e;
+        color: #777;
     }
     .page-header>h1>small{
         font-size: 15px;
         display: inline-block;
         padding-left: 4px;
-        font-weight: 300;
-        color: #fd4994;
+        font-weight: 700;
+        color: #777;
     }
     .slider{
         margin-bottom: 10px;
@@ -42,19 +43,7 @@
         max-width: 72%;
     }
 
-    .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
-        border-top-color: inherit;
-    }
 
-    .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
-        color: #333;
-        border: 1px solid #940707;
-        background-color: inherit;
-    }
-
-    .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
-        background-color: inherit;
-    }
     .tab-nav{
         margin-bottom: 15px;
     }
@@ -66,7 +55,8 @@
         line-height: 0;
         margin-top: 6px;
         font-size: 17px;
-        font-weight: 100;
+        font-weight: 700;
+        color: #777;
     }
 
     .price-tag h2{
@@ -75,6 +65,7 @@
         font-size: 32px;
         font-weight: 900;
         margin-bottom: 30px;
+        color: #777;
     }
 
     .price-tag span{
@@ -107,7 +98,8 @@
         font-weight: 100;
     }
     .ol-color{
-        color: #fd4994;
+        color: #777;
+        font-weight: 700;
     }
     .mrg{
         font-size: 9px;
@@ -138,10 +130,8 @@
 
         <div class="row">
             <div class="col-lg-12 page-header">
-                <div>
-                    <p class="classified-heading">You are here: <span class="ol-color"> &nbsp;&nbsp;Home <i class="glyphicon glyphicon-menu-right mrg"></i> Classified <i class="glyphicon glyphicon-menu-right mrg"></i> All Classifieds <i class="glyphicon glyphicon-menu-right mrg"></i> Classified Details View <i class="glyphicon glyphicon-menu-right mrg"></i> </span> <?php echo $layoutfull['title']; ?> </p>
-                </div>
                 <h1> <?php echo $layoutfull['title']; ?>
+                   <br>
                 <small>Category:
                     <?php
                     $data = get_data('classified_main_cat', array('id' => $layoutfull['main_cat']));
@@ -212,43 +202,56 @@
 
                     <div class="tab-content clearfix">
                         <div class="tab-pane active" id="1a">
-                            <p class="text-muted">
-                                <?php echo $layoutfull['description']; ?>
-                            </p>
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <i class="fa fa-paragraph"></i>
+                                    <h3 class="box-title">Description</h3>
+                                </div>
+                                <div class="box-body">
+                                    <p class="text-muted">
+                                        <?php echo $layoutfull['description']; ?>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane" id="2a">
-                            <div class="">
-                            <table class="table table-striped">
-                                <tbody>
-                                    <?php if(!empty($layoutfull['address_1'])){?>
-                                    <tr>
-                                        <td>Address1</td>
-                                        <td><?php echo $layoutfull['address_1']; ?></td>
-                                    </tr>
-                                    <?php }
-                                    if(!empty($layoutfull['address_2'])){
-                                    ?>
-                                    <tr>
-                                        <td>Address2</td>
-                                        <td><?php echo $layoutfull['address_2']; ?></td>
-                                    </tr>
-                                    <?php }?>
-                                    <tr>
-                                        <td>City</td>
-                                        <td><?php echo $layoutfull['city']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>State</td>
-                                        <td><?php echo $layoutfull['state']; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Country</td>
-                                        <td><?php echo $layoutfull['country']; ?></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <i class="fa fa-paragraph"></i>
+                                    <h3 class="box-title">Location</h3>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <?php if(!empty($layoutfull['address_1'])){?>
+                                            <tr>
+                                                <td>Address1</td>
+                                                <td><?php echo $layoutfull['address_1']; ?></td>
+                                            </tr>
+                                            <?php }
+                                            if(!empty($layoutfull['address_2'])){
+                                            ?>
+                                            <tr>
+                                                <td>Address2</td>
+                                                <td><?php echo $layoutfull['address_2']; ?></td>
+                                            </tr>
+                                            <?php }?>
+                                            <tr>
+                                                <td>City</td>
+                                                <td><?php echo $layoutfull['city']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>State</td>
+                                                <td><?php echo $layoutfull['state']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Country</td>
+                                                <td><?php echo $layoutfull['country']; ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-
                         </div>
                         <div class="tab-pane" id="3a">
                             <?php if(!empty($layoutfull['primary_video']) or !empty($layoutfull['primary_sound']) or !empty($layoutfull['primary_file'])) { ?>

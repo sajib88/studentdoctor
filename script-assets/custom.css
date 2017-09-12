@@ -106,10 +106,10 @@ time.blue_green { background-color: #148aa5 }
     font-size: 15px;
     font-weight: bold;
 }
-.sidebar-menu > li > a > .fa, .sidebar-menu > li > a > .glyphicon, .sidebar-menu > li > a > .ion{
-    color: #23527c;
-   
-}
+/*.sidebar-menu > li > a > .fa, .sidebar-menu > li > a > .glyphicon, .sidebar-menu > li > a > .ion{*/
+    /*color: #23527c;*/
+   /**/
+/*}*/
 .skin-black-light .treeview-menu > li > a {border-bottom: 1px solid #f0f0f0;}
 
 .skin-black-light .main-header > .navbar > .sidebar-toggle {
@@ -211,8 +211,7 @@ time.blue_green { background-color: #148aa5 }
     }
     
     .input-profile{
-        float: left;
-        margin-left: 7px;
+        margin-bottom: -18px;
     }
     
     .form-control{

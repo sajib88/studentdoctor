@@ -1,107 +1,111 @@
+<style type="text/css">
+    .profile_pic{
+        margin-left: 174px;
+        height: 150px;
+        width: 150px;
+        margin-bottom: -17px;
+    }
+    @media (max-width: 600px) {
+        .profile_pic {
+            margin-left: 83px;
+        }
+    }
 
+</style>
 
 <div class="content-wrapper">
     <section class="content-header">
-      <h1>
+      <h1><i class="fa fa-user "></i>
         Profile Information
-        <small>Preview</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li class="active">Preview</li>
-      </ol>
+
 </section>
     
    <section class="content">
       <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-12">
-                <div class="well well-sm">
-                    <div class="row">
-                       
-                        <div class="col-sm-7 col-md-5 pull-left">
-                            
-                            
-                            
-                            
-                            
-                            
-                            <?php
-                            if($user_info['profilepicture'] == 0) {?>
-                                <img src="<?php echo base_url() . '/assets/upload_prfl.png'?>" alt="" class="img-rounded img-responsive" />
-                            <?php }
-                            else {?>
-                                <div class="thumbnail">
+          <div class="col-md-6 col-xs-12 col-md-offset-3">
+              <!-- small box -->
+              <div class="box-header with-border">
+                  <h3 class="box-title">Profile Information</h3><i class="fa fa-user title-icon"></i>
+              </div>
+              <div class="box box-primary">
+                  <div class="box-body box-profile">
+                      <div class="widget-user-header ">
+                          <div class="widget-user-image text-center">
+                              <?php
+                              if($user_info['profilepicture'] == 0) {?>
+                                  </br>
+                                  <div class="text-center">
+                                      <img src="<?php echo base_url() . '/assets/upload_prfl.png'?>" alt="" class="img-rounded " width="150" height="150" />
+                                  </div>
+                                  </br>
+                              <?php }
+                              else {?>
+                                  </br>
 
+                                  <img src="<?php echo base_url() . '/assets/file/' .$user_info['profilepicture'] ?>" alt="" width="170" height="170" class="img-rounded" />
+                                  </br>
+                              <?php }
+                              ?>
+                          </div>
+                          <h3 class="profile-username text-center"><?php echo $user_info['user_name']; ?></h3>
+                          <h4 class="text-muted text-center">
+                              <?php
+                              $data = get_data('profession', array('id' => $user_info['profession']));
+                              echo $data['name'];
+                              ?>
+                          </h4>
+                      </div>
 
+                      <ul class="list-group list-group-unbordered">
+                          <li class="list-group-item">
+                              <b>First Name</b> <span class="pull-right"><?php echo $user_info['first_name']; ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>Last Name</b> <span class="pull-right"><?php echo $user_info['last_name']; ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>Email</b> <span class="pull-right"><?php echo $user_info['email']; ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>Professional Licensing Country</b> <span class="pull-right"><?php echo $user_info['plc']; ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>Professional Licensing State</b> <span class="pull-right"><?php echo $user_info['pls']; ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>NPI</b> <span class="pull-right"><?php echo $user_info['npi']; ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>Professional License Number</b> <span class="pull-right"><?php echo $user_info['pln']; ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>Gender </b> <span class="pull-right"><?php echo ucfirst($user_info['gender']); ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>Country</b> <span class="pull-right"><?php
+                                  $data = get_data('countries', array('id' => $user_info['country']));
+                                  echo $data['name'];
+                                  ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>State </b> <span class="pull-right"><?php echo $user_info['state']; ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>City</b> <span class="pull-right"><?php echo $user_info['city']; ?></span>
+                          </li>
+                          <li class="list-group-item">
+                              <b>Phone</b> <span class="pull-right"><?php echo $user_info['phone']; ?></span>
+                          </li>
+                      </ul>
 
-                                <img src="<?php echo base_url() . '/assets/file/' .$user_info['profilepicture']; ?>" alt=""  class="img-circle img-responsive" />
-                                </div>
-                                    <?php }
-                            ?>
+                      <a href="<?php echo base_url('profile/profile/index'); ?>" class="btn btn-primary btn-block"><b>Update Your Profile</b><i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+                  <!-- /.box-body -->
+              </div>
 
+          </div>
 
-
-                        </div>
-                        <div class="col-sm-6 col-md-7">
-
-
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary">
-                                    Action Menu</button>
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                    <span class="caret"></span><span class="sr-only"><?php echo $user_info['user_name']; ?></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="<?php echo base_url('profile/profile/index'); ?>">Change Password</a></li>
-                                    <li><a href="<?php echo base_url('profile/profile/index'); ?>">Update Information</a></li>
-
-
-                                </ul>
-                            </div>
-
-                            <h4>
-                                <?php echo $user_info['user_name']; ?></h4>
-
-                            <small><cite title="state, country"><?php echo $user_info['state']; ?>, <?php
-                                    $data = get_data('countries', array('id' => $user_info['country']));
-                                    echo $data['name'];
-                                    ?> <i class="glyphicon glyphicon-map-marker">
-                                    </i></cite></small>
-                            <p>
-                                <i class="glyphicon glyphicon-envelope"></i><?php echo $user_info['email']; ?>
-
-                                <br />
-                                <i class="glyphicon glyphicon-gift"></i> <b>  Profession </b>  : <?php
-                                $data = get_data('profession', array('id' => $user_info['profession']));
-                                echo $data['name'];
-                                ?><br/></p>
-
-                            <b>  First Name </b>  : <?php echo $user_info['first_name']; ?><br/>
-                            <b>  Last Name </b>  : <?php echo $user_info['last_name']; ?><br/>
-                            <b>  Professional Licensing Country </b>  : <?php echo $user_info['plc']; ?><br/>
-                            <b>  Professional Licensing State </b>  : <?php echo $user_info['pls']; ?><br/>
-                            <b>  NPI </b>  : <?php echo $user_info['npi']; ?><br/>
-                            <b>  Professional License Number </b>  : <?php echo $user_info['pln']; ?><br/>
-                            <b>  Gender </b>  : <?php echo ucfirst($user_info['gender']); ?><br/>
-                            <b>  Country </b>  : <?php
-                            $data = get_data('countries', array('id' => $user_info['country'])); echo $data['name'];
-                            ?><br/>
-                            <b>  State </b>  : <?php echo $user_info['state']; ?><br/>
-                            <b>  City </b>  : <?php echo $user_info['city']; ?><br/>
-                            <b>  Phone </b>  : <?php echo $user_info['phone']; ?><br/>
-
-                            <!-- Split button -->
-
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-                
-                
-            </div>
         </div>
 
 

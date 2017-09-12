@@ -188,22 +188,30 @@
                             <div class="padd">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="col-sm-6 col-md-5 thumbnail">
-                                            <?php
-                                            if($user_info['profilepicture'] == 0) {?>
-                                                <img src="<?php echo base_url() . '/assets/user-demo.png'?>" alt="" class="img-responsive" />
-                                            <?php }
-                                            else {?>
-                                                <div class="thumbnail">
-                                                    <img src="<?php echo base_url() . '/assets/file/' .$user_info['profilepicture']; ?>" alt=""  class="img-responsive" />
-                                                </div>
-                                            <?php }
-                                            ?>
+                                        <div class="widget-user-header" style="
+                                             margin-top: -30px;">
+                                            <div class="widget-user-image text-center">
+                                                <?php
+                                                if($user_info['profilepicture'] == 0) {?>
+                                                    </br>
+                                                    <div class="text-center">
+                                                        <img src="<?php echo base_url() . '/assets/upload_prfl.png'?>" alt="" class="img-rounded " width="150" height="150" />
+                                                    </div>
+                                                    </br>
+                                                <?php }
+                                                else {?>
+                                                    </br>
+
+                                                    <img src="<?php echo base_url() . '/assets/file/' .$user_info['profilepicture'] ?>" alt="" width="170" height="170" class="img-rounded" />
+                                                    </br>
+                                                <?php }
+                                                ?>
+                                            </div>
                                         </div>
-                                        <div class="form-group" id="profilepicture">
+                                        <div class="form-group text-center" id="profilepicture">
                                             <div class="input-profile">
                                                 <label>Your Profile picture Format <br><small> jpg,gif,png format </small></label>
-                                                <input name="profilepicture" type="file">
+                                                <input style="margin: 0px 33.33333% auto 26.33333%" name="profilepicture" type="file">
                                             </div>
                                         </div>
                                     </div>
@@ -219,10 +227,10 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="col-lg-6">
-                                                <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-lg'));?>
+                                                <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
                                             </div>
                                             <div class="col-lg-6 ">
-                                                <button class="btn  btn-success  btn-lg pull-right"  name="submit" type="submit">
+                                                <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
                                                     <i class="fa fa-check"></i> &nbsp; &nbsp; Save</button>
                                             </div>
                                         </div>

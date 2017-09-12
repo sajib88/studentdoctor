@@ -275,10 +275,10 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="col-lg-6">
-                                        <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-lg'));?>
+                                        <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
                                     </div>
                                     <div class="col-lg-6 ">
-                                        <button class="btn  btn-success  btn-lg pull-right"  name="submit" type="submit">
+                                        <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
                                             <i class="fa fa-check"></i> &nbsp; &nbsp; Save</button>
                                     </div>
                                 </div>

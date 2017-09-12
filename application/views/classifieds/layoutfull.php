@@ -113,6 +113,23 @@
         font-size: 9px;
         padding: 5px;
     }
+    .video-js{
+        width: 100%;
+    }
+    .audiojs{
+        width: 100%;
+    }
+    .audiojs .scrubber{
+        width: 80%;
+    }
+    .audiojs .time{
+        float: right;
+    }
+    @media only screen and (max-width: 500px) {
+        .audiojs .scrubber{
+            width: 47%;
+        }
+    }
 </style>
 
 <div class="content-wrapper">
@@ -190,8 +207,6 @@
                         <li><a href="#2a" data-toggle="tab">Location</a>
                         </li>
                         <li><a href="#3a" data-toggle="tab">Media Files</a>
-                        </li>
-                        <li><a href="#4a" data-toggle="tab">Comment</a>
                         </li>
                     </ul>
 
@@ -295,9 +310,6 @@
                             ?>
 
                         </div>
-                        <div class="tab-pane" id="4a">
-                            <h3>We use css to change the background color of the content to be equal to the tab</h3>
-                        </div>
                     </div>
                 </div>
                 </div>
@@ -309,7 +321,6 @@
                 <div class="price-tag">
                     <p>Price:</p>
                     <h2>$&nbsp<?php echo $layoutfull['price']; ?></h2>
-                    <span class="text-light-blue">Price is negotiable</span>
                 </div>
                 <hr>
                 <div class="price-tag">

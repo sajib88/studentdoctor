@@ -1,14 +1,8 @@
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>
-            Classifieds
-            <small>View</small>
+        <h1><i class="fa fa-fw fa-list-alt "></i>
+            Classifieds List
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Classifieds</a></li>
-            <li class="active">View</li>
-        </ol>
     </section>
 
     <section class="content">

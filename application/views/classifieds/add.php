@@ -24,6 +24,7 @@
 
     .professionView label h4{
         margin-top: 5px;
+        margin-left: 15px;
     }
 
 </style>
@@ -83,6 +84,85 @@
                         <div class="form-group">
                             <label>Price<span class="error">*</span></label><span id='price-error' class='error' for='price'></span>
                             <input type="number" name="price"  class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-plus-square"></i>
+                        <h3 class="box-title">Contact</h3>
+                    </div>
+                    <div class="padd">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input name="name" value="<?php echo $user_info['first_name']; ?>" class="form-control" readonly >
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input name="email" value="<?php echo $user_info['email']; ?>" class="form-control" readonly >
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input name="phone" name="phone" value="<?php echo ''; ?>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Fax</label>
+                            <input name="fax" value="<?php echo ''; ?>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Web site </label>
+                            <input name="website" value="<?php echo ''; ?>" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 ">
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-map-marker"></i>
+                        <h3 class="box-title">Address</h3>
+                    </div>
+                    <div class="padd">
+                        <div class="form-group">
+                            <label>Address 1</label>
+                            <input name="address_1" value="<?php echo ''; ?>"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Address 2</label>
+                            <input name="address_2" value="<?php echo ''; ?>"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input name="city" value="<?php echo ''; ?>"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Postal</label>
+                            <input name="postal" value="<?php echo ''; ?>"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Country</label>
+                            <select onchange="getComboA(this)" name="country" class="form-control">
+                                <option value="">Select</option>
+                                <?php
+                                if (is_array($countries)) {
+                                    foreach ($countries as $country) {
+                                        ?>
+                                        <option value="<?php echo $country->id; ?>"><?php echo $country->name; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div id="result">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -152,80 +232,33 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
 
-        <div class="col-md-6 ">
-            <div class="col-md-12 no-padding">
+            <div class="col-md-12">
                 <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <i class="fa fa-map-marker"></i>
-                        <h3 class="box-title">Address</h3>
-                    </div>
-                    <div class="padd">
-                        <div class="form-group">
-                            <label>Address 1</label>
-                            <input name="address_1" value="<?php echo ''; ?>"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Address 2</label>
-                            <input name="address_2" value="<?php echo ''; ?>"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>City</label>
-                            <input name="city" value="<?php echo ''; ?>"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Postal</label>
-                            <input name="postal" value="<?php echo ''; ?>"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Country</label>
-                            <select onchange="getComboA(this)" name="country" class="form-control">
-                                <option value="">Select</option>
-                                <?php
-                                if (is_array($countries)) {
-                                    foreach ($countries as $country) {
-                                        ?>
-                                        <option value="<?php echo $country->id; ?>"><?php echo $country->name; ?></option>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <div id="result">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-
-        <div class="col-md-12">
-            <div class="box box-primary">
-                <!-- /.box-header -->
-                <div class="">
+                    <!-- /.box-header -->
                     <div class="">
-                        <div class="row">
-                            <div class="col-lg-12 professionView">
-                                <div class="col-lg-6">
-                                    <label><h4>Who can see this?</h4></label>
-                                </div>
-                                <div class="col-lg-6 ">
-                                    <div class="form-group">
-                                        <select multiple name="profession_view[]" class="selectpicker form-control">
-                                            <option value="">All Profession</option>
-                                            <?php
-                                            if (is_array($profession)) {
-                                                foreach ($profession as $row) {
-                                                    ?>
-                                                    <option  value="<?php echo $row->id; ?>"><?php echo $row->name ; ?></option>
-                                                    <?php
+                        <div class="">
+                            <div class="row">
+                                <div class="col-lg-12 professionView">
+                                    <div class="col-lg-6">
+                                        <label><h4>Who can see this?</h4></label>
+                                    </div>
+                                    <div class="col-lg-6 ">
+                                        <div class="form-group">
+                                            <select multiple name="profession_view[]" class="selectpicker form-control">
+                                                <option value="">All Profession</option>
+                                                <?php
+                                                if (is_array($profession)) {
+                                                    foreach ($profession as $row) {
+                                                        ?>
+                                                        <option  value="<?php echo $row->id; ?>"><?php echo $row->name ; ?></option>
+                                                        <?php
+                                                    }
                                                 }
-                                            }
-                                            ?>
-                                        </select>
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -233,7 +266,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
             <div class="col-md-12">
                 <div class="box box-primary">

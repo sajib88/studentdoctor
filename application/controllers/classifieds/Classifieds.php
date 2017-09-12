@@ -59,11 +59,11 @@ class Classifieds extends CI_Controller {
                     $save['postal'] = $postData['postal'];
                     $save['address_1'] = $postData['address_1'];
                     $save['address_2'] = $postData['address_2'];
-                   // $save['website'] = $postData['website'];
-                   //$save['name'] = $postData['name'];
-                    //$save['email'] = $postData['email'];
-                    //$save['phone'] = $postData['phone'];
-                    //$save['fax'] = $postData['fax'];
+                    $save['website'] = $postData['website'];
+                    $save['name'] = $postData['name'];
+                    $save['email'] = $postData['email'];
+                    $save['phone'] = $postData['phone'];
+                    $save['fax'] = $postData['fax'];
                     $save['price'] = $postData['price'];
                     $save['user_id'] = $loginId;
                     $sata = array();
@@ -185,6 +185,9 @@ class Classifieds extends CI_Controller {
                 $save['fax'] = $postData['fax'];
                 $save['price'] = $postData['price'];
                 $save['user_id'] = $loginId;
+                $sata = array();
+                $sata ['profession_view'] = $this->input->post('profession_view');
+                $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
 
                 //// (image upload funtion)
                 uploadClassifieds();

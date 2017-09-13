@@ -243,7 +243,7 @@
             }
             @media (max-width: 600px) {
               .profile_pic {
-                margin-left: 83px;
+                margin-left: 25%;
               }
             }
 

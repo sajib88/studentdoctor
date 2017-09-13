@@ -570,8 +570,25 @@ class Global_model extends CI_Model {
 
     }
 
+    public function getClassifiedByProfession($table, $profession){
+        $productList = array();
+        $sql = $this->db->select('*')
+            ->from('classified')
+            ->get();
 
-    
+        $array=$sql->result_array();
+
+        foreach ($array as $row){
+            if($row['profession_view'] != null){
+                $professions = $row['profession_view'];
+                $testPro = explode(',',$professions);
+                if (in_array($profession, $testPro)) {
+                    $productList[] = $row;
+                }
+            }
+        }
+        return $productList;
+    }
 
 
 

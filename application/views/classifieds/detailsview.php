@@ -18,7 +18,7 @@
             <div class="widget-user-header ">
                 <div class="widget-user-image text-center">
                     </br>
-                    <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="170" height="170" class="img-circle " />
+                    <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row['photo_primary']; ?>" alt="" width="170" height="170" class="img-circle " />
 
                     </br>
                 </div>
@@ -26,16 +26,16 @@
             </div>
             <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
-                    <li><a href="#">Title <span class="pull-right badge bg-blue"><?php echo $row->title; ?></span></a></li>
-                    <li><a href="#">Price <span class="pull-right badge bg-aqua"><?php echo $row->price; ?></span></a></li>
-                    <li><a href="#">Email Id <span class="pull-right badge bg-green"><?php echo $row->email; ?></span></a></li>
-                    <li><a href="#">Phone <span class="pull-right badge bg-red"><?php echo $row->phone; ?></span></a></li>
+                    <li><a href="#">Title <span class="pull-right badge bg-blue"><?php echo $row['title']; ?></span></a></li>
+                    <li><a href="#">Price <span class="pull-right badge bg-aqua"><?php echo $row['price']; ?></span></a></li>
+                    <li><a href="#">Email Id <span class="pull-right badge bg-green"><?php echo $row['email']; ?></span></a></li>
+                    <li><a href="#">Phone <span class="pull-right badge bg-red"><?php echo $row['phone']; ?></span></a></li>
                 </ul>
             </div>
 
             <div class="box-footer">
 
-                <a href="<?php echo base_url('classifieds/classifieds/layoutfull/' . $row->id); ?>" class="btn btn-block btn-success"> Details View</a>
+                <a href="<?php echo base_url('classifieds/classifieds/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-success"> Details View</a>
 
             </div>
          </div>

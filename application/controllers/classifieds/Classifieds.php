@@ -333,7 +333,7 @@ class Classifieds extends CI_Controller {
     }
     ////  View all users
     public function viewall(){
-
+        $table = 'classified';
         $data = array();
         $data['page_title'] = 'Private Web';
         $data['tabActive'] = 'private';
@@ -352,8 +352,8 @@ class Classifieds extends CI_Controller {
         // $data['pagging'] = $this->global_model->get('classified', createPagging($page_url, $total_rows, $per_page, $uri_segment, $num_links)); 
 
         // $data['pagging'] = createPagging($page_url, $total_rows, $per_page, $uri_segment, $num_links);
-
-        $data['viewallclassified'] = $this->global_model->get('classified');
+        $profession = $this->session->userdata('user_type');
+        $data['viewallclassified'] = $this->global_model->getClassifiedByProfession($table, $profession);
         
         
 

@@ -229,7 +229,7 @@
                         <div class="tab-pane" id="2a">
                             <div class="box box-success">
                                 <div class="box-header with-border">
-                                    <i class="fa fa-paragraph"></i>
+                                    <i class="fa fa-map-marker"></i>
                                     <h3 class="box-title">Location</h3>
                                 </div>
                                 <div class="box-body">

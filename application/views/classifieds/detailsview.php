@@ -9,7 +9,9 @@
 
     <section class="content">
         <div class="row">
-            <?php if(is_array($viewallclassified)): ?>
+
+
+            <?php if(is_array($viewallclassified) ):?>
 
        <?php foreach($viewallclassified as $row):?>
         <div class="col-lg-4 col-xs-12">

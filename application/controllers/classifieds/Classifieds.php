@@ -353,9 +353,7 @@ class Classifieds extends CI_Controller {
 
         // $data['pagging'] = createPagging($page_url, $total_rows, $per_page, $uri_segment, $num_links);
         $profession = $this->session->userdata('user_type');
-        $data['viewallclassified'] = $this->global_model->getClassifiedByProfession($table, $profession);
-        
-        
+        $data['viewallclassified'] = $this->global_model->getViewByProfession('classified', $profession);
 
         $this->load->view('header', $data);
         $this->load->view('classifieds/detailsview', $data);

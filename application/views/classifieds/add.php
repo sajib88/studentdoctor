@@ -247,7 +247,6 @@
                                     <div class="col-lg-6 ">
                                         <div class="form-group">
                                             <select multiple name="profession_view[]" class="selectpicker form-control">
-                                                <option value="">All Profession</option>
                                                 <?php
                                                 if (is_array($profession)) {
                                                     foreach ($profession as $row) {

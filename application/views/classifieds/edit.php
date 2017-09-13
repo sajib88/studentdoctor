@@ -262,19 +262,15 @@
                                         <div class="form-group">
 
                                             <select multiple name="profession_view[]" class="selectpicker form-control">
-                                                <option value="">All Profession</option>
                                                 <?php
-
                                                 if (is_array($profession)) {
                                                     foreach ($profession as $row) {
-
                                                         $selectedProfessions = explode(',',$editclassified['profession_view']);
                                                         $ifExist = in_array($row->id,$selectedProfessions);
                                                         if($ifExist){
                                                             $selected = 'Selected';
                                                         }else
                                                             $selected = '';
-
                                                         ?>
                                                         <option value="<?php echo $row->id; ?>" <?=$selected?>><?php echo $row->name; ?></option>
                                                         <?php

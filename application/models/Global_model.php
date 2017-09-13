@@ -570,10 +570,10 @@ class Global_model extends CI_Model {
 
     }
 
-    public function getClassifiedByProfession($table, $profession){
+    public function getViewByProfession($table, $profession){
         $productList = array();
         $sql = $this->db->select('*')
-            ->from('classified')
+            ->from($table)
             ->get();
 
         $array=$sql->result_array();
@@ -582,7 +582,8 @@ class Global_model extends CI_Model {
             if($row['profession_view'] != null){
                 $professions = $row['profession_view'];
                 $testPro = explode(',',$professions);
-                if (in_array($profession, $testPro)) {
+                $pro = 0;
+                if (in_array($profession, $testPro) || $row['profession_view'] == 0) {
                     $productList[] = $row;
                 }
             }

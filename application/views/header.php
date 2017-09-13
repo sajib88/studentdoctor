@@ -160,14 +160,14 @@
             <li class="header">MAIN NAVIGATION</li>
 
             <?php if(!$user_info['profession'] == 1 or 2 ) {?>
-            <li class="treeview <?php if($this->uri->segment(2)=="dashboard"){echo "active";}?>">
-              <a href="<?php echo base_url('profile/dashboard'); ?>">
+            <li class="treeview <?php if($this->uri->segment(1)=="dashboard"){echo "active";}?>">
+              <a href="<?php echo base_url('dashboard'); ?>">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
               </a>
             </li>
             <?php } else{}?>
 
-            <li class="treeview <?php if($this->uri->segment(2)=="myprofile"){echo "active";}?>">
+            <li class="treeview <?php if($this->uri->segment(1)=="profile"){echo "active";}?>">
               <a href="#" >
                 <i class="fa fa-globe"></i>
                 <span>My Profile</span>
@@ -183,7 +183,7 @@
                         <a href="<?php echo base_url('profile/update'); ?>"><i class="fa fa-circle-o"></i> Update My Profile</a>
                     </li>
 
-                    <li class="">
+                    <li class="<?php if($this->uri->segment(2)=="search" or $this->uri->segment(3)=="search"){echo "active";}?>">
                         <a href="<?php echo base_url('profile/search'); ?>"><i class="fa fa-circle-o"></i> Search Profile</a>
                     </li>
 
@@ -195,6 +195,7 @@
               <a href="#">
                 <i class="fa fa-fw fa-user-md"></i>
                 <span>Public Web Site</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
                     <ul class="treeview-menu">
                         <li class="<?php if($this->uri->segment(2)=="add"){echo "active";}?>">
@@ -220,6 +221,7 @@
               <a href="#">
                 <i class="fa fa-fw fa-list-alt "></i>
                 <span>Classified</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
                 
                     <ul class="treeview-menu">
@@ -243,6 +245,7 @@
                 <a href="#">
                     <i class="glyphicon glyphicon-shopping-cart"></i>
                     <span>Online Store</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li class="">
@@ -255,6 +258,7 @@
               <a href="#">
                 <i class="fa fa-calendar"></i>
                 <span>Event</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
                 
                     <ul class="treeview-menu">
@@ -279,6 +283,7 @@
               <a href="#">
                 <i class="glyphicon glyphicon-user"></i>
                 <span>Personals</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
            
                     <ul class="treeview-menu">
@@ -313,6 +318,7 @@
                 <a href="#">
                     <i class="glyphicon glyphicon-bullhorn"></i>
                     <span>Forum</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
 
                 <ul class="treeview-menu">
@@ -348,6 +354,7 @@
               <a href="#" >
                 <i class="fa fa-book"></i>
                 <span>CES</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
                 
                     <ul class="treeview-menu">
@@ -380,6 +387,7 @@
                 <a href="#">
                     <i class="glyphicon glyphicon-unchecked"></i>
                     <span>Blog</span>
+                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
                  <ul class="treeview-menu">
                         <li class="<?php if($this->uri->segment(3)=="insideblogcreate"){echo "active";}?>">
@@ -401,6 +409,7 @@
               <a href="#">
                 <i class="fa fa-group"></i>
                 <span>Group</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
                 
                     <ul class="treeview-menu">
@@ -426,6 +435,7 @@
               <a href="#">
                 <i class="glyphicon glyphicon-tags"></i>
                 <span>Product</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
                 
                     <ul class="treeview-menu">
@@ -461,6 +471,7 @@
               <a href="#" >
                 <i class="fa fa-shield"></i>
                 <span>Private Profile</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
                 <ul class="treeview-menu">
                      <li class="<?php if($this->uri->segment(3)=="index"){echo "active";}?>">
@@ -489,6 +500,7 @@
               <a href="#" >
                 <i class="fa fa-file-audio-o"></i>
                 <span>Media</span>
+                  <i class="fa fa-angle-left pull-right"></i>
               </a>
 
                 <ul class="treeview-menu">
@@ -551,8 +563,6 @@
                               <a href="<?php echo base_url('audio/audio/myaudio'); ?>"><i class="fa fa-circle-o"></i>
                                   My Audio</a>
                           </li>
-
-
                       </ul>
                   </li>
 

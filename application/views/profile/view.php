@@ -59,10 +59,10 @@
 
                       <ul class="list-group list-group-unbordered">
                           <li class="list-group-item">
-                              <b>First Name</b> <span class="pull-right"><?php echo $user_info['first_name']; ?></span>
+                              <b>First Name</b> <span class="pull-right"><?php echo (!empty($user_info['first_name']))?$user_info['first_name']:''?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>Last Name</b> <span class="pull-right"><?php echo $user_info['last_name']; ?></span>
+                              <b>Last Name</b> <span class="pull-right"><?php echo (!empty($user_info['last_name']))?$user_info['last_name']:''?></span>
                           </li>
                           <li class="list-group-item">
                               <b>Email</b> <span class="pull-right"><?php echo $user_info['email']; ?></span>
@@ -99,7 +99,7 @@
                           </li>
                       </ul>
 
-                      <a href="<?php echo base_url('profile/profile/index'); ?>" class="btn btn-primary btn-block"><b>Update Your Profile</b><i class="fa fa-arrow-circle-right"></i></a>
+                      <a href="<?php echo base_url('profile/profile/index'); ?>" class="btn btn-primary btn-block"><b>Update Your Information</b> <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                   <!-- /.box-body -->
               </div>

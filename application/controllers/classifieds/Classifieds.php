@@ -70,35 +70,56 @@ class Classifieds extends CI_Controller {
                     $sata ['profession_view'] = $this->input->post('profession_view');
                     $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
 
-                    //// (image upload funtion)
+
+                    if (isset($_FILES["photo_primary"]["name"]) && $_FILES["photo_primary"]["name"] != '') {
+                        $this->PATH = './assets/file/classifieds/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['photo_primary'] = $this->resizeimg->image_upload('photo_primary', $this->PATH, 'size[318,210]', '', $photo_name);
+                    }
+                    else {
+
+                    }
+
+                    if (isset($_FILES["photo_2"]["name"]) && $_FILES["photo_2"]["name"] != '') {
+                        $this->PATH = './assets/file/classifieds/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[318,210]', '', $photo_name);
+                    }
+                    else {
+
+                    }
+
+                    if (isset($_FILES["photo_3"]["name"]) && $_FILES["photo_3"]["name"] != '') {
+                        $this->PATH = './assets/file/classifieds/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[318,210]', '', $photo_name);
+                    }
+                    else {
+
+                    }
+
+                    if (isset($_FILES["photo_4"]["name"]) && $_FILES["photo_4"]["name"] != '') {
+                        $this->PATH = './assets/file/classifieds/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['photo_4'] = $this->resizeimg->image_upload('photo_4', $this->PATH, 'size[318,210]', '', $photo_name);
+                    }
+                    else {
+
+                    }
+
                     uploadClassifieds();
-                    ///
-
-                    //// PHOTO UPLOAD
-                    if ($this->upload->do_upload('photo_primary')) {
-                        $fileInfo = $this->upload->data();
-                        $pic1['name'] = $fileInfo['file_name'];
-                        $save['photo_primary'] = $pic1['name'];
-
-                    }
-
-                    if ($this->upload->do_upload('photo_2')) {
-                        $fileInfo = $this->upload->data();
-                        $pic2['name'] = $fileInfo['file_name'];
-                        $save['photo_2'] = $pic2['name'];
-                    }
-
-                    if ($this->upload->do_upload('photo_3')) {
-                        $fileInfo = $this->upload->data();
-                        $pic3['name'] = $fileInfo['file_name'];
-                        $save['photo_3'] = $pic3['name'];
-                    }
-
-                    if ($this->upload->do_upload('photo_4')) {
-                        $fileInfo = $this->upload->data();
-                        $pic4['name'] = $fileInfo['file_name'];
-                        $save['photo_4'] = $pic4['name'];
-                    }
                     //// File UPLOAD
                     if ($this->upload->do_upload('primary_file')) {
                         $fileInfo = $this->upload->data();
@@ -189,34 +210,55 @@ class Classifieds extends CI_Controller {
                 $sata ['profession_view'] = $this->input->post('profession_view');
                 $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
 
-                //// (image upload funtion)
+                if (isset($_FILES["photo_primary"]["name"]) && $_FILES["photo_primary"]["name"] != '') {
+                    $this->PATH = './assets/file/classifieds/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_primary'] = $this->resizeimg->image_upload('photo_primary', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }
+
+                if (isset($_FILES["photo_2"]["name"]) && $_FILES["photo_2"]["name"] != '') {
+                    $this->PATH = './assets/file/classifieds/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }
+
+                if (isset($_FILES["photo_3"]["name"]) && $_FILES["photo_3"]["name"] != '') {
+                    $this->PATH = './assets/file/classifieds/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }
+
+                if (isset($_FILES["photo_4"]["name"]) && $_FILES["photo_4"]["name"] != '') {
+                    $this->PATH = './assets/file/classifieds/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_4'] = $this->resizeimg->image_upload('photo_4', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }
+
                 uploadClassifieds();
-                ///
-
-                //// PHOTO UPLOAD
-                if ($this->upload->do_upload('photo_primary')) {
-                    $fileInfo = $this->upload->data();
-                    $pic1['name'] = $fileInfo['file_name'];
-                    $save['photo_primary'] = $pic1['name'];
-                }
-
-                if ($this->upload->do_upload('photo_2')) {
-                    $fileInfo = $this->upload->data();
-                    $pic2['name'] = $fileInfo['file_name'];
-                    $save['photo_2'] = $pic2['name'];
-                }
-
-                if ($this->upload->do_upload('photo_3')) {
-                    $fileInfo = $this->upload->data();
-                    $pic3['name'] = $fileInfo['file_name'];
-                    $save['photo_3'] = $pic3['name'];
-                }
-
-                if ($this->upload->do_upload('photo_4')) {
-                    $fileInfo = $this->upload->data();
-                    $pic4['name'] = $fileInfo['file_name'];
-                    $save['photo_4'] = $pic4['name'];
-                }
                 //// File UPLOAD
                 if ($this->upload->do_upload('primary_file')) {
                     $fileInfo = $this->upload->data();

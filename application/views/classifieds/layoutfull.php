@@ -130,7 +130,7 @@
 
         <div class="row">
             <div class="col-lg-12 page-header">
-                <h1> <?php echo $layoutfull['title']; ?>
+                <h1><?php echo (!empty($layoutfull['title']))?$layoutfull['title']:''?>
                    <br>
                 <small>Category:
                     <?php

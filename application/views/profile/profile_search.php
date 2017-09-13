@@ -12,6 +12,12 @@ print_r($result);
 exit();*/
 ?>
 
+<style type="text/css">
+    .list-group{
+       margin-bottom: 10px;
+    }
+</style>
+
 <div class="content-wrapper">
 
     <section class="content-header">
@@ -140,8 +146,6 @@ exit();*/
                                                                 <!-- Add the bg color to the header using any of the bg-* classes -->
                                                                 <div class="widget-user-header ">
                                                                     <div class="widget-user-image text-center">
-
-
                                                                         <?php
                                                                         if($row->profilepicture == 0) {?>
                                                                             </br>
@@ -158,29 +162,19 @@ exit();*/
                                                                             </br>
                                                                         <?php }
                                                                         ?>
-
-
-
-
-
+                                                                        <h4><?php echo getProfessionById($row->profession); ?></h4>
                                                                     </div>
                                                                     </br>
                                                                 </div>
-                                                                <div class="box-footer no-padding">
-                                                                    <ul class="nav nav-stacked">
-                                                                        <li><a href="#">First Name <span class="pull-right badge bg-blue"><?php echo $row->first_name; ?></span></a></li>
-                                                                        <li><a href="#">Last Name <span class="pull-right badge bg-aqua"><?php echo $row->last_name; ?></span></a></li>
-                                                                        <li><a href="#">Email Id <span class="pull-right badge bg-green"><?php echo $row->email; ?></span></a></li>
-                                                                        <li><a href="#">Phone <span class="pull-right badge bg-red"><?php echo $row->phone; ?></span></a></li>
-                                                                        <li><a href="#">Profession <span class="pull-right badge bg-red"><?php echo getProfessionById($row->profession); ?></span></a></li>
+                                                                <div class="box-footer ">
+                                                                    <ul class=" list-group list-group-unbordered">
+                                                                        <li class="list-group-item">First Name <span class="pull-right  "><?php echo (!empty($row->first_name))?$row->first_name:''?></span></li>
+                                                                        <li class="list-group-item">Last Name <span class="pull-right  "><?php echo (!empty($row->last_name))?$row->last_name:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                        <li class="list-group-item">Email Id <span class="pull-right  "><?php echo (!empty($row->email))?$row->email:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                        <li class="list-group-item">Phone <span class="pull-right "><?php echo (!empty($row->phone))?$row->phone:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                                     </ul>
                                                                 </div>
-
-                                                                <div class="box-footer">
-
-                                                                    <a href="#" class="btn btn-block btn-success"> Details View</a>
-
-                                                                </div>
+                                                                <span class="show_button"><a href="#" class=" btn btn-block btn-success">See More</a></span>
                                                             </div>
                                                         </div>
 
@@ -201,6 +195,10 @@ exit();*/
 
     </section>
 </div>
+
+<script>
+
+</script>
 
 <script>
 

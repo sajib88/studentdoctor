@@ -28,6 +28,17 @@
         padding: 0 5px;
     }
 
+    @media (max-width: 600px) {
+        .slider-nav-thumbnails .item img{
+            height: 75px;
+            width: 100%;
+            padding: 0 5px;
+        }
+        .slick-slide img{
+            height: 320px;
+        }
+    }
+
     .slider-nav-thumbnails{
         margin: 0px -5px;
     }
@@ -92,6 +103,7 @@
     .pdl{
         margin-left: 22px;
         margin-bottom: 14px;
+        font-weight: 100 !important;
     }
     .classified-heading{
         font-size: 14px;

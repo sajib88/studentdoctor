@@ -1,3 +1,11 @@
+<style>
+    @media (max-width: 600px) {
+        .item-center{
+            margin-top: -12px;
+        }
+    }
+
+</style>
 <div id="page-content">
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -315,16 +323,16 @@
                             </span>
                         </li>
                         <li class="list-group-item">
-                            <b>Professional Licensing Country </b> <span class="pull-right"><?php echo $user_info['plc']; ?></span>
+                            <b>Professional <br class="visible-xs">Licensing Country </b> <span class="pull-right item-center"><?php echo $user_info['plc']; ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Professional Licensing State </b> <span class="pull-right"><?php echo $user_info['pls']; ?></span>
+                            <b>Professional <br class="visible-xs">Licensing State </b> <span class="pull-right item-center"><?php echo $user_info['pls']; ?></span>
                         </li>
                         <li class="list-group-item">
                             <b>NPI </b> <span class="pull-right"><?php echo $user_info['npi']; ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Professional License Number </b> <span class="pull-right"><?php echo $user_info['pln']; ?></span>
+                            <b>Professional <br class="visible-xs">License Number </b> <span class="pull-right item-center"><?php echo $user_info['pln']; ?></span>
                         </li>
                     </ul>
                 </div>

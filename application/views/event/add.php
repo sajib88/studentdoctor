@@ -83,6 +83,20 @@
                 </div>
             </div>
 
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-map-marker"></i>
+                        <h3 class="box-title">Location</h3></i>
+                    </div>
+                    <div class="padd">
+                        <div class="form-group">
+                            <label>Event Location/ Place</label><span id='location' class='error' for='location'></span>
+                            <input name="location" value="<?php echo ''; ?>"  class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
@@ -90,14 +104,11 @@
             <div class="col-md-12 no-padding">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <i class="fa fa-th"></i>
-                        <h3 class="box-title">Location and Time</h3></i>
+                        <i class="fa fa-clock-o"></i>
+                        <h3 class="box-title">Date Time</h3></i>
                     </div>
                     <div class="padd">
-                        <div class="form-group">
-                            <label>Event Location/ Place</label><span id='location' class='error' for='location'></span>
-                            <input name="location" value="<?php echo ''; ?>"  class="form-control">
-                        </div>
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -107,7 +118,7 @@
                             </div>
                             <div class="col-lg-6 bootstrap-timepicker">
                                 <div class="form-group">
-                                    <label>Start Event Time :</label>
+                                    <label>Event Start Time :</label>
 
                                     <div class="input-group">
                                         <input name="start_time" type="text" class="form-control timepicker">
@@ -130,7 +141,7 @@
                             </div>
                             <div class="col-lg-6 bootstrap-timepicker">
                                 <div class="form-group">
-                                    <label>End Event  Time:</label>
+                                    <label>Event End Time:</label>
                                     <div class="input-group">
                                         <input name="end_time" type="text" class="form-control timepickerend">
 
@@ -147,8 +158,8 @@
             <div class="col-md-12 no-padding">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <i class="fa fa-th"></i>
-                        <h3 class="box-title">Media</h3></i>
+                        <i class="fa fa-picture-o"></i>
+                        <h3 class="box-title">Event Pictures</h3></i>
                     </div>
                     <div class="padd">
                         <div class="row">

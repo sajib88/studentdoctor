@@ -1,16 +1,32 @@
+<style>
+    .btn-cust{
+        width: 95%;
+    }
+    .professionView{
+        margin: 15px 0px -7px 0px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .professionView{
+
+        }
+        .professionView label h4{
+            margin-top: 0px;
+        }
+    }
+
+    .professionView label h4{
+        margin-top: 5px;
+        margin-left: 15px;
+    }
+</style>
 
     <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
-            Event
-            <small>Create New Event</small>
+        <h1><i class="fa fa-calendar"></i>
+           Edit Event
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Event</a></li>
-            <li class="active">Create</li>
-        </ol>
     </section>
 
     <section class="content">
@@ -23,184 +39,248 @@
                 </div>
             </div>
         <?php } ?>
+        <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('event/event/edit/'. $editevent['id']); ?>">
+            <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
         <div class="col-lg-6">
-            <div class="box box-primary">
-                <div class="panel-body">
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Event Info</h3></i>
+                    </div>
+                    <div class="padd">
+                        <div class="form-group">
+                            <label>Event Name<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
+                            <input name="title" value="<?php echo $editevent['title']; ?>"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Event Category <span class="error">*</span></label><span id='main_category-error' class='error' for='main_category'></span>
+                            <select onchange="getSubCat(this)" name="category" class="form-control">
+                                <option value="<?php echo $editevent['category']; ?>"><?php echo $editevent['category']; ?></option>
+                                <option value="Conferences">Conferences</option>
+                                <option value="Education">Education</option>
+                                <option value="Fundraisers">Fundraisers</option>
+                                <option value="Health Observances">Health Observances</option>
+                                <option value="Public Events">Public Events</option>
+                                <option value="Seminars">Seminars</option>
+                                <option value="Special Events">Special Events</option>
+                                <option value="Support Groups">Support Groups</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Event Summary<span class="error">*</span></label><span id='Summary' class='error' for='description'></span>
+                            <textarea  name="summary" class="form-control"><?php echo $editevent['summary']; ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Event Description<span class="error">*</span></label><span id='Description' class='error' for='description'></span>
+                            <textarea  name="description" class="form-control"><?php echo $editevent['description']; ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Seats No<span class="error">*</span></label><span id='seats_no' class='error' for='seats_no'></span>
+                            <input name="seats_no" value="<?php echo $editevent['seats_no']; ?>"  class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6">
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Location and Time</h3></i>
+                    </div>
+                    <div class="padd">
+                    <div class="form-group">
+                        <label>Event Location/ Place<span class="error">*</span></label><span id='location' class='error' for='location'></span>
+                        <input name="location" value="<?php echo $editevent['location']; ?>"  class="form-control">
+                    </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('event/event/edit/'. $editevent['id']); ?>">
-                                <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Event Name<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
-                                        <input name="title" value="<?php echo $editevent['title']; ?>"  class="form-control">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Event Start Date<span class="error">*</span></label><span id='start_date' class='error' for='start_date'></span>
+                                <input name="start_date" type="text" value="<?php echo $editevent['start_date']; ?>" class="form-control pull-right" id="datepicker">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 bootstrap-timepicker">
+                            <div class="form-group">
+                                <label>Time picker:</label>
+
+                                <div class="input-group">
+                                    <input name="start_time" type="text" value="<?php echo $editevent['start_time']; ?>" class="form-control timepicker">
+
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Event Summary<span class="error">*</span></label><span id='Summary' class='error' for='description'></span>
-                                        <textarea  name="summary" class="form-control"><?php echo $editevent['summary']; ?></textarea>
+                                <!-- /.input group -->
+                            </div>
+                            <!-- /.form group -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Event End Date<span class="error">*</span></label><span id='end_date' class='error' for='start_date'></span>
+                                <input name="end_date" type="text" value="<?php echo $editevent['end_date']; ?>" class="form-control pull-right" id="datepicker2">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 bootstrap-timepicker">
+                            <div class="form-group">
+                                <label>Time picker:</label>
+                                <div class="input-group">
+                                    <input name="end_time" type="text" value="<?php echo $editevent['end_time']; ?>" class="form-control timepickerend">
+
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
                                     </div>
                                 </div>
+                                <!-- /.input group -->
+                            </div>
+                            <!-- /.form group -->
+                        </div>
+                    </div>
 
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Event Description<span class="error">*</span></label><span id='Description' class='error' for='description'></span>
-                                        <textarea  name="description" class="form-control"><?php echo $editevent['description']; ?></textarea>
-                                    </div>
+                </div>
+            </div>
+            </div>
+                <!-- /.box-body -->
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Location and Time</h3></i>
+                    </div>
+                    <div class="padd">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" id="photo_id">
+                                    <label>Picture One<span class="error">*</span></label><span id='picture1-error' class='error' for='picture1'></span>
+                                    <input class="btn btn-default btn-cust" name="primary_photo" type="file">
+                                    <a href="<?php echo base_url() . '/assets/file/event/' .$editevent['primary_photo']; ?>" data-fancybox="images">
+                                        View Picture One
+                                    </a>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
+                                    <input class="btn btn-default btn-cust" name="photo_2" type="file">
+                                    <a href="<?php echo base_url() . '/assets/file/event/' .$editevent['photo_2']; ?>" data-fancybox="images">
+                                        View Picture Tow
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
+                                    <input class="btn btn-default btn-cust" name="photo_3" type="file">
+                                    <a href="<?php echo base_url() . '/assets/file/event/' .$editevent['photo_3']; ?>" data-fancybox="images">
+                                        View Picture Three
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-                                <div class="col-lg-12">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- /.box-header -->
+                <div class="">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-lg-12 professionView">
+                                <div class="col-lg-6">
+                                    <label><h4>Who can see this?</h4></label>
+                                </div>
+                                <div class="col-lg-6 ">
                                     <div class="form-group">
-                                        <label>Event Category <span class="error">*</span></label><span id='main_category-error' class='error' for='main_category'></span>
-                                        <select onchange="getSubCat(this)" name="category" class="form-control">
-                                        <option value="<?php echo $editevent['category']; ?>"><?php echo $editevent['category']; ?></option>
-
-                                            <option value="Conferences">Conferences</option>
-                                            <option value="Education">Education</option>
-                                            <option value="Fundraisers">Fundraisers</option>
-                                            <option value="Health Observances">Health Observances</option>
-                                            <option value="Public Events">Public Events</option>
-                                            <option value="Seminars">Seminars</option>
-                                            <option value="Special Events">Special Events</option>
-                                            <option value="Support Groups">Support Groups</option>
-
+                                        <select multiple name="profession_view[]" class="selectpicker form-control">
+                                            <?php
+                                            if (is_array($profession)) {
+                                                foreach ($profession as $row) {
+                                                    $selectedProfessions = explode(',',$editevent['profession_view']);
+                                                    $ifExist = in_array($row->id,$selectedProfessions);
+                                                    if($ifExist){
+                                                        $selected = 'Selected';
+                                                    }else
+                                                        $selected = '';
+                                                    ?>
+                                                    <option value="<?php echo $row->id; ?>" <?=$selected?>><?php echo $row->name; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
-
-
-
-
-
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Seats No<span class="error">*</span></label><span id='seats_no' class='error' for='seats_no'></span>
-                                        <input name="seats_no" value="<?php echo $editevent['seats_no']; ?>"  class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Event Location/ Place<span class="error">*</span></label><span id='location' class='error' for='location'></span>
-                                        <input name="location" value="<?php echo $editevent['location']; ?>"  class="form-control">
-                                    </div>
-                                </div>
-
-
-
-
-
+                            </div>
                         </div>
                     </div>
-                    <!-- /.row (nested) -->
                 </div>
-                <!-- /.panel-body -->
             </div>
-            <!-- /.panel -->
         </div>
-
-
-        <div class="col-lg-6">
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Event Date And Time Set</h3>
-                </div>
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- /.box-header -->
                 <div class="box-body">
-
-
-
-
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label>Event Start Date<span class="error">*</span></label><span id='start_date' class='error' for='start_date'></span>
-                            <input name="start_date" type="text" value="<?php echo $editevent['start_date']; ?>" class="form-control pull-right" id="datepicker">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 bootstrap-timepicker">
-                        <div class="form-group">
-                            <label>Time picker:</label>
-
-                            <div class="input-group">
-                                <input name="start_time" type="text" value="<?php echo $editevent['start_time']; ?>" class="form-control timepicker">
-
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-6">
+                                    <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
+                                </div>
+                                <div class="col-lg-6 ">
+                                    <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
+                                        <i class="fa fa-check"></i> &nbsp; &nbsp; Save</button>
                                 </div>
                             </div>
-                            <!-- /.input group -->
                         </div>
-                        <!-- /.form group -->
-                    </div>
-
-
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label>Event End Date<span class="error">*</span></label><span id='end_date' class='error' for='start_date'></span>
-                            <input name="end_date" type="text" value="<?php echo $editevent['end_date']; ?>" class="form-control pull-right" id="datepicker2">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 bootstrap-timepicker">
-                        <div class="form-group">
-                            <label>Time picker:</label>
-
-                            <div class="input-group">
-                                <input name="end_time" type="text" value="<?php echo $editevent['end_time']; ?>" class="form-control timepickerend">
-
-                                <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
-                                </div>
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                        <!-- /.form group -->
-                    </div>
-
-
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <div class="col-lg-12">
-                        <div class="form-group" id="photo_id">
-                            <label>Picture One<span class="error">*</span></label><span id='picture1-error' class='error' for='picture1'></span>
-                            <input class="btn btn-default" name="primary_photo" type="file">
-
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
-                            <input class="btn btn-default" name="photo_2" type="file">
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
-                            <input class="btn btn-default" name="photo_3" type="file">
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <input type="submit" name="submit" class="btn btn-block btn-success" value="Save">
-
                     </div>
                 </div>
-
             </div>
-
         </div>
-
 
         </section></form>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.container-fluid -->
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
 
+<script type="text/javascript">
+    $().fancybox({
+        selector : '[data-fancybox="images"]',
+        thumbs   : false,
+        hash     : false,
+    });
 
+    $(".main-slider").slick({
+        slidesToShow   : 3,
+        slidesToScroll : 3,
+        infinite   : true,
+        dots       : false,
+        arrows     : false,
+        responsive : [
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+</script>
 
     <script type="text/javascript">
 
@@ -267,7 +347,7 @@
                 },
 
                 'primary_photo': {
-                    required: true,
+
                     extension: "png,jpg,jpeg,gif"
                 },
                 'photo_2': {
@@ -304,7 +384,7 @@
                     required: "Event End Date is Required",
                 },
                 'primary_photo':{
-                    required : "<p class='text-danger'>Please upload atleast 1 photo</p>",
+
                     extension:"Only Image Format  file is allowed!"
                 },
                 'photo_2':{

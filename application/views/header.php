@@ -188,9 +188,9 @@
                     </li>
 
                 </ul>
-                
+
             </li>
-            <?php if($user_info['profession'] == 2) {?>
+
             <li class="treeview <?php if($this->uri->segment(1)=="pub"){echo "active";}?>">
               <a href="#">
                 <i class="fa fa-fw fa-user-md"></i>
@@ -212,9 +212,9 @@
 
 
                     </ul>
-                
+
             </li>
-          <?php } else{}?>
+
           
          
             <li class="treeview <?php if($this->uri->segment(2)=="classifieds"){echo "active";}?>">
@@ -239,8 +239,8 @@
                     </ul>
                 
             </li>
-            
-            <?php if($user_info['profession'] == 2) {?>
+
+
             <li class="treeview">
                 <a href="#">
                     <i class="glyphicon glyphicon-shopping-cart"></i>
@@ -253,7 +253,7 @@
                     </li>
                 </ul>
             </li>
-            <?php } else{}?>
+
           <li class="treeview <?php if($this->uri->segment(2)=="event"){echo "active";}?>">
               <a href="#">
                 <i class="fa fa-calendar"></i>
@@ -287,25 +287,25 @@
               </a>
            
                     <ul class="treeview-menu">
-                    <?php if($user_info['profession'] == 2) {?>
+
                         <li class="<?php if($this->uri->segment(3)=="add"){echo "active";}?>">
                             <a href="<?php echo base_url('personal/Personal/add'); ?>"><i class="fa fa-circle-o"></i> Add New Personals</a>
                         </li>
-                        <?php } else{}?>
+
                         <li class="<?php if($this->uri->segment(3)=="grid"){echo "active";}?>">
                          <a href="<?php echo base_url('personal/Personal/grid'); ?>"><i class="fa fa-circle-o"></i>
                              Show All Personals</a>
                          </li>
-                         <?php if($user_info['profession'] == 2) {?>
+
                         <li class="<?php if($this->uri->segment(3)=="all"){echo "active";}?>">
                             <a href="<?php echo base_url('personal/Personal/all'); ?>"><i class="fa fa-circle-o"></i>Manage My Personals</a>
                         </li>
-                        <?php } else{}?>
+
 
                         <li class="<?php if($this->uri->segment(3)=="search"){echo "active";}?>">
                             <a href="<?php echo base_url('personal/Personal/search'); ?>"><i class="fa fa-circle-o"></i>Search Personals</a>
                         </li>
-                         
+
 
                     </ul>
                 
@@ -345,11 +345,11 @@
 
 
 
-         
-          
-          
-          
-          
+
+
+
+
+
             <li class="treeview <?php if($this->uri->segment(1)=="ces"){echo "active";}?>">
               <a href="#" >
                 <i class="fa fa-book"></i>
@@ -358,20 +358,19 @@
               </a>
                 
                     <ul class="treeview-menu">
-                      <?php if($user_info['profession'] == 2) {?>
+
                         <li class="<?php if($this->uri->segment(2)=="add"){echo "active";}?>">
                             <a href="<?php echo base_url('ces/add'); ?>"><i class="fa fa-circle-o"></i> Create New CES</a>
                         </li>
-                        <?php } else{}?>
+
                         <li class="<?php if($this->uri->segment(2)=="ces_controller"){echo "active";}?>">
                          <a href="<?php echo base_url('ces/ces_controller/grid'); ?>"><i class="fa fa-circle-o"></i>
                              View All CES</a>
                          </li>
-                         <?php if($user_info['profession'] == 2) {?>
+
                         <li class="<?php if($this->uri->segment(2)=="allces"){echo "active";}?>">
                             <a href="<?php echo base_url('ces/allces'); ?>"><i class="fa fa-circle-o"></i>My CES List</a>
                         </li>
-                        <?php } else{}?>
 
                         <li class="<?php if($this->uri->segment(2)=="search"){echo "active";}?>">
                             <a href="<?php echo base_url('ces/search'); ?>"><i class="fa fa-circle-o"></i>Search CES </a>
@@ -401,7 +400,7 @@
                         <li class="<?php if($this->uri->segment(3)=="insideblogmylist"){echo "active";}?>">
                             <a href="<?php echo base_url('insideblog/insideblog/insideblogmylist'); ?>"><i class="fa fa-circle-o"></i>My Blog List</a>
                         </li>
-                         
+
 
                     </ul>
             </li>
@@ -437,36 +436,28 @@
                 <span>Product</span>
                   <i class="fa fa-angle-left pull-right"></i>
               </a>
-                
+
                     <ul class="treeview-menu">
-                      <?php if($user_info['profession'] == 2) {?>
+
                         <li class="<?php if($this->uri->segment(3)=="add"){echo "active";}?>">
                             <a href="<?php echo base_url('product/products/add'); ?>"><i class="fa fa-circle-o"></i> Create New Product</a>
                         </li>
-                        <?php } else{}?>
+
                         <li class="<?php if($this->uri->segment(3)=="allProductGrid"){echo "active";}?>">
                          <a href="<?php echo base_url('product/products/allProductGrid'); ?>"><i class="fa fa-circle-o"></i>
                              View All Product</a>
                          </li>
-                         <?php if($user_info['profession'] == 2) {?>
+
                         <li class="<?php if($this->uri->segment(3)=="myproduct"){echo "active";}?>">
                             <a href="<?php echo base_url('product/products/myproduct'); ?>"><i class="fa fa-circle-o"></i>My Product List</a>
                         </li>
-                        <?php } else{}?>
-                         
+
+
 
                     </ul>
-                
+
             </li>
-          
-          
-          
-          
-            
 
-
-
-            <?php if($user_info['profession'] == 2) {?>
             <li class="treeview <?php if($this->uri->segment(2)=="privateweb"){echo "active";}?>">
               <a href="#" >
                 <i class="fa fa-shield"></i>
@@ -494,7 +485,7 @@
                 
                 
             </li>
-            <?php } else{}?>
+
 
             <li class="treeview <?php if($this->uri->segment(2)=="Photo" && "video"){echo "active";}else{echo " ";}?>">
               <a href="#" >
@@ -563,6 +554,8 @@
                               <a href="<?php echo base_url('audio/audio/myaudio'); ?>"><i class="fa fa-circle-o"></i>
                                   My Audio</a>
                           </li>
+
+
                       </ul>
                   </li>
 

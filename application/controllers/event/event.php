@@ -55,31 +55,46 @@ class event extends CI_Controller {
                     $save['user_id'] = $loginId;
                     $save['event_join'] = '0';
                     $save['status'] = '1';
+                    $sata = array();
+                    $sata ['profession_view'] = $this->input->post('profession_view');
+                    $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
 
 
-                    uploadEvent();
+                    if (isset($_FILES["primary_photo"]["name"]) && $_FILES["primary_photo"]["name"] != '') {
+                        $this->PATH = './assets/file/event/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['primary_photo'] = $this->resizeimg->image_upload('primary_photo', $this->PATH, 'size[318,210]', '', $photo_name);
+                    }
+                    else {
 
-
-                    //// PHOTO UPLOAD
-                    if ($this->upload->do_upload('primary_photo')) {
-                        $fileInfo = $this->upload->data();
-                        $pic1['name'] = $fileInfo['file_name'];
-                        $save['primary_photo'] = $pic1['name'];
                     }
 
-                    if ($this->upload->do_upload('photo_2')) {
-                        $fileInfo = $this->upload->data();
-                        $pic2['name'] = $fileInfo['file_name'];
-                        $save['photo_2'] = $pic2['name'];
+                    if (isset($_FILES["photo_2"]["name"]) && $_FILES["photo_2"]["name"] != '') {
+                        $this->PATH = './assets/file/event/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[318,210]', '', $photo_name);
+                    }
+                    else {
+
                     }
 
-                    if ($this->upload->do_upload('photo_3')) {
-                        $fileInfo = $this->upload->data();
-                        $pic3['name'] = $fileInfo['file_name'];
-                        $save['photo_3'] = $pic3['name'];
+                    if (isset($_FILES["photo_3"]["name"]) && $_FILES["photo_3"]["name"] != '') {
+                        $this->PATH = './assets/file/event/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[318,210]', '', $photo_name);
                     }
+                    else {
 
-
+                    }
 
                     if ($ref_id = $this->global_model->insert('event', $save)) {
 
@@ -90,6 +105,7 @@ class event extends CI_Controller {
             }
             $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
             $data['login_id'] = $loginId;
+            $data['profession'] = $this->global_model->get('profession');
             $this->load->view('header', $data);
             $this->load->view('event/add', $data);
             $this->load->view('footer');
@@ -116,6 +132,7 @@ class event extends CI_Controller {
             $this->form_validation->set_rules('start_time', 'start_time', 'trim');
             $this->form_validation->set_rules('end_time', 'end_time', 'trim');
             $this->form_validation->set_rules('seats_no', 'seats_no', 'trim');
+
             // $this->form_validation->set_rules('ticketprice', 'ticketprice', 'trim');
 
             if ($this->form_validation->run() == true) {
@@ -134,28 +151,44 @@ class event extends CI_Controller {
                 $save['user_id'] = $loginId;
                 $save['event_join'] = '0';
                 $save['status'] = '1';
+                $sata = array();
+                $sata ['profession_view'] = $this->input->post('profession_view');
+                $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
 
-                //// (image upload funtion)
-                uploadEvent();
-                ///
+                if (isset($_FILES["primary_photo"]["name"]) && $_FILES["primary_photo"]["name"] != '') {
+                    $this->PATH = './assets/file/event/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['primary_photo'] = $this->resizeimg->image_upload('primary_photo', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
 
-                //// PHOTO UPLOAD
-                if ($this->upload->do_upload('primary_photo')) {
-                    $fileInfo = $this->upload->data();
-                    $pic1['name'] = $fileInfo['file_name'];
-                    $save['primary_photo'] = $pic1['name'];
                 }
 
-                if ($this->upload->do_upload('photo_2')) {
-                    $fileInfo = $this->upload->data();
-                    $pic2['name'] = $fileInfo['file_name'];
-                    $save['photo_2'] = $pic2['name'];
+                if (isset($_FILES["photo_2"]["name"]) && $_FILES["photo_2"]["name"] != '') {
+                    $this->PATH = './assets/file/event/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
                 }
 
-                if ($this->upload->do_upload('photo_3')) {
-                    $fileInfo = $this->upload->data();
-                    $pic3['name'] = $fileInfo['file_name'];
-                    $save['photo_3'] = $pic3['name'];
+                if (isset($_FILES["photo_3"]["name"]) && $_FILES["photo_3"]["name"] != '') {
+                    $this->PATH = './assets/file/event/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
                 }
                 $id = $this->uri->segment('4');
                 if ($this->global_model->update('event', $save, array('id' => $id))){
@@ -174,7 +207,7 @@ class event extends CI_Controller {
 
         $id = $this->uri->segment('4');
         $data['editevent'] = $this->global_model->get_data('event', array('id' => $id));
-
+        $data['profession'] = $this->global_model->get('profession');
         $this->load->view('header', $data);
         $this->load->view('event/edit', $data);
         $this->load->view('footer');
@@ -215,7 +248,8 @@ class event extends CI_Controller {
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
 
-        $data['viewallevent'] = $this->global_model->get('event');
+        $profession = $this->session->userdata('user_type');
+        $data['viewallevent'] = $this->global_model->getViewByProfession('event', $profession);
 
         $this->load->view('header', $data);
         $this->load->view('event/detailsview', $data);

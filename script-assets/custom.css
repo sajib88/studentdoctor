@@ -67,9 +67,9 @@ time.blue_green { background-color: #148aa5 }
         background-color: rgb(165, 82, 167);
     }
 
-    time > span {
-        display: none;
-    }
+    /*time > span {*/
+        /*display: none;*/
+    /*}*/
 
     time > .day {
         display: block;
@@ -91,7 +91,7 @@ time.blue_green { background-color: #148aa5 }
         border-color: #337ab7;
     }
     .panel-primary > .panel-footer p,.panel-primary a {color:#FFF}
-.event-primary img {width: 318px; height: 199px;}
+.event-primary img {width: 338px; height: 199px;}
 
 
 .error{

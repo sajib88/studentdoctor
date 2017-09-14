@@ -1,25 +1,18 @@
-
+<style>
+    .box-body img{
+        padding: 5px;
+    }
+</style>
 
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>
-            Event
-            <small>Details  </small>
+        <h1><i class="fa fa-calendar"></i>
+            Event Details
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Event</a></li>
-            <li class="active">View Details</li>
-        </ol>
     </section>
 
     <section class="content">
         <div class="row">
-
-            <?php //print_r($layoutfull);
-
-
-            ?>
 
             <div class="col-md-7">
                 <div class="box box-warning">
@@ -70,19 +63,15 @@
 
                     <div class="box-body">
 
-                        <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['primary_photo'] ?>" width="130" height="130"">
+                        <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['primary_photo'] ?>" width="130" height="138"">
 
 
                         <?php if($layoutfull['photo_2'] != 0){?>
-                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_2'] ?>" width="130" height="130">
+                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_2'] ?>" width="130" height="138">
                         <?php }?>
                         <?php if($layoutfull['photo_3'] != 0){?>
-                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_3'] ?>" width="130" height="130"">
+                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_3'] ?>" width="130" height="138"">
                         <?php }?>
-
-                        <div class="box-body">
-                            <a href="#" class="btn btn-primary btn-block"><i class="fa fa-envelope"></i> <b>Inquiry</b></a>
-                        </div>
                     </div>
 
 
@@ -92,7 +81,14 @@
                 <!-- /.END LEFT PANEL-DIV -->
             </div>
 
-            <div class="col-md-5 col-sm-6 col-xs-12">
+            <div class="col-md-5 col-xs-12">
+
+                <!-- /.info-box -->
+            </div>
+
+
+
+            <div class="col-md-5">
                 <div class="info-box">
                     <span class="info-box-icon bg-green"><i class="fa fa-ticket"></i></span>
 
@@ -102,15 +98,9 @@
                     </div>
                     <!-- /.info-box-content -->
                 </div>
-                <!-- /.info-box -->
-            </div>
-
-
-
-            <div class="col-md-5">
 
                 <!-- Profile Image -->
-                <div class="box">
+
 
                         <!-- /.info-box -->
                         <div class="info-box bg-green">
@@ -192,7 +182,7 @@
 
 
                     <!-- /.box-body -->
-                </div>
+
                 <!-- /.box -->
             </div>
 

@@ -17,13 +17,10 @@
     </section>
     <section class="content">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="box box-primary">
                     <div class="panel-body">
-                        <div class="row">
                             <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('personal/Personal/search'); ?>">
-
-                                <div class="col-lg-6">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Country</label>
@@ -83,10 +80,14 @@
                                             </select>
                                         </div>
                                     </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                    <div class="box box-primary">
+                        <div class="panel-body">
 
-                                </div>
 
-                                <div class="col-lg-6">
                                     <div class="col-lg-12">
                                     <div class="form-group">
                                         <label>I AM A</label>
@@ -137,10 +138,11 @@
 
                                 </div>
 
+
                          </div>
                     </div>
-                </div>
-            </div>
+
+
             <div class="col-md-12">
                 <div class="box box-primary">
                     <!-- /.box-header -->
@@ -257,7 +259,7 @@
          </div>
 
 
-
+         </div>
     </section>
 </div>
 

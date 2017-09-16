@@ -68,22 +68,13 @@ print_r($user_info);die;*/
                                 <input name="title" type="text" placeholder="Title" value="<?php echo $v?>"  class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Age</label>
-                                <input type="number" name="age"  class="form-control">
-                            </div>
-                            <div class="form-group">
                                 <?php $v = (set_value('description')!='')?set_value('description'):'';?>
                                 <label>Description<span class="error">*</span></label>
                                 <textarea  name="description" placeholder="description" class="form-control"><?php echo $v;?></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Marital status</label>
-                                <?php $maritalstatus= array('Single','Attached','Divorced','Married','Separated','Widow','It\'s Complicated');?>
-                                <select name="maritalstatus" class="form-control chosen-select">
-                                    <?php foreach ($maritalstatus as $row) {?>
-                                        <option value="<?php echo $row;?>"><?php echo $row?></option>
-                                    <?php }?>
-                                </select>
+                                <label>Age</label>
+                                <input type="number" name="age"  class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Ethnicity</label>
@@ -101,6 +92,15 @@ print_r($user_info);die;*/
                                 <select name="religion" class="form-control chosen-select">
                                     <option value="0">N/A</option>
                                     <?php foreach ($religion as $row) {?>
+                                        <option value="<?php echo $row;?>"><?php echo $row?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Marital status</label>
+                                <?php $maritalstatus= array('Single','Attached','Divorced','Married','Separated','Widow','It\'s Complicated');?>
+                                <select name="maritalstatus" class="form-control chosen-select">
+                                    <?php foreach ($maritalstatus as $row) {?>
                                         <option value="<?php echo $row;?>"><?php echo $row?></option>
                                     <?php }?>
                                 </select>
@@ -428,9 +428,6 @@ print_r($user_info);die;*/
             title: {
                 required:true
             },
-            main_category:{
-                required:true
-            },
             description:{
                 required:true
             },
@@ -439,12 +436,6 @@ print_r($user_info);die;*/
             },
             'primary_photo': {
                 required: true,
-                extension: "png,jpg,jpeg,gif"
-            },
-            'photo_2': {
-                extension: "png,jpg,jpeg,gif"
-            },
-            'photo_3': {
                 extension: "png,jpg,jpeg,gif"
             }
 
@@ -462,13 +453,6 @@ print_r($user_info);die;*/
             },
             'primary_photo':{
                 required : "Please upload atleast 1 photo",
-                extension:"Only Image Format  file is allowed!"
-            },
-            'photo_2':{
-
-                extension:"Only Image Format  file is allowed!"
-            },
-            'photo_3':{
                 extension:"Only Image Format  file is allowed!"
             }
         }

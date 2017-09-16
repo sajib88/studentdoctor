@@ -52,24 +52,13 @@
                                     <input name="title" type="text" placeholder="Title" value="<?php echo $v?>"  class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Age</label>
-                                    <input type="number" name="age" value="<?php echo $personaldata['age'];?>"  class="form-control">
-                                </div>
-                                <div class="form-group">
                                     <?php $v = (set_value('description')!='')?set_value('description'):$personaldata['description'];?>
                                     <label>Description<span class="error">*</span></label>
                                     <textarea  name="description" placeholder="description" class="form-control"> <?php echo $v;?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Marital status</label>
-                                    <?php $maritalstatus= array('Single','Attached','Divorced','Married','Separated','Widow','It\'s Complicated');?>
-                                    <select name="maritalstatus" class="form-control chosen-select">
-                                        <?php foreach ($maritalstatus as $row) {
-                                            $v = (set_value('maritalstatus')!='')?set_value('maritalstatus'):$personaldata['maritalstatus'];
-                                            $sel = ($v == $row)?'selected="selected"':'';?>
-                                            <option value="<?php echo $row;?>" <?php echo $sel;?>><?php echo $row?></option>
-                                        <?php }?>
-                                    </select>
+                                    <label>Age</label>
+                                    <input type="number" name="age" value="<?php echo $personaldata['age'];?>"  class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Ethnicity</label>
@@ -92,6 +81,17 @@
                                             $v = (set_value('religion')!='')?set_value('religion'):$personaldata['religion'];
                                             $sel = ($v == $row)?'selected="selected"':'';?>
                                             <option value="<?php echo $row;?>" <?php echo $sel;?> ><?php echo $row?></option>
+                                        <?php }?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Marital status</label>
+                                    <?php $maritalstatus= array('Single','Attached','Divorced','Married','Separated','Widow','It\'s Complicated');?>
+                                    <select name="maritalstatus" class="form-control chosen-select">
+                                        <?php foreach ($maritalstatus as $row) {
+                                            $v = (set_value('maritalstatus')!='')?set_value('maritalstatus'):$personaldata['maritalstatus'];
+                                            $sel = ($v == $row)?'selected="selected"':'';?>
+                                            <option value="<?php echo $row;?>" <?php echo $sel;?>><?php echo $row?></option>
                                         <?php }?>
                                     </select>
                                 </div>
@@ -321,20 +321,24 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group" id="photo_id">
-                                            <label>Picture One</label>
-                                            <input class="btn btn-default btn-cust" name="primary_photo" type="file">
-                                            <a href="<?php echo base_url() . '/assets/file/personals/' .$personaldata['primary_photo']; ?>" data-fancybox="images">
-                                                View Picture One
-                                            </a>
+                                            <label>Picture One</label><span class="error">*</span>
+                                            <input class="btn btn-default btn-cust" name="primary_photo" value="<?= $personaldata['primary_photo']; ?>" type="file">
+                                            <?php if(!empty($personaldata['primary_photo'])){ ?>
+                                                <a href="<?php echo base_url() . '/assets/file/personals/' .$personaldata['primary_photo']; ?>" data-fancybox="images">
+                                                    View Picture One
+                                                </a>
+                                            <?php }?>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Picture Two</label>
                                             <input class="btn btn-default btn-cust" name="photo1" type="file">
-                                            <a href="<?php echo base_url() . '/assets/file/personals/' .$personaldata['photo1']; ?>" data-fancybox="images">
-                                                View Picture Two
-                                            </a>
+                                            <?php if(!empty($personaldata['photo1'])){ ?>
+                                                <a href="<?php echo base_url() . '/assets/file/personals/' .$personaldata['photo1']; ?>" data-fancybox="images">
+                                                    View Picture Two
+                                                </a>
+                                            <?php }?>
                                         </div>
                                     </div>
                                 </div>
@@ -343,16 +347,18 @@
                                         <div class="form-group">
                                             <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
                                             <input class="btn btn-default btn-cust" name="photo2" type="file">
-                                            <a href="<?php echo base_url() . '/assets/file/personals/' .$personaldata['photo2']; ?>" data-fancybox="images">
-                                                View Picture Three
-                                            </a>
+                                            <?php if(!empty($personaldata['photo2'])){ ?>
+                                                <a href="<?php echo base_url() . '/assets/file/personals/' .$personaldata['photo2']; ?>" data-fancybox="images">
+                                                    View Picture Three
+                                                </a>
+                                            <?php }?>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group" id="primary_file_id">
-                                            <label>File One<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
+                                            <label>File One</label><span id='file1-error' class='error' for='file1'></span>
                                             <input class="btn btn-default btn-cust" name="primary_files" type="file">
                                         </div>
                                     </div>
@@ -550,4 +556,31 @@
 
     }
 
+</script>
+
+<script type="application/javascript">
+    $('#personalform').validate({
+        rules: {
+            title: {
+                required:true
+            },
+            description:{
+                required:true
+            },
+            country:{
+                required:true
+            }
+        },
+        messages:{
+            title: {
+                required: "Title is Required",},
+
+            description: {
+                required: "Description is Required",
+            },
+            country: {
+                required: "Description is Required",
+            }
+        }
+    });
 </script>

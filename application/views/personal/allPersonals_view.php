@@ -18,27 +18,31 @@ print_r($allpersonals);die;*/
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
+        <h1><i class="fa fa-male"></i>
             All Personals
-            <small>Personals</small>
+
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Personals</a></li>
-            <li class="active">All</li>
-        </ol>
     </section>
     <section class="content">
 
         <div class="row">
+            <?php if($this->session->flashdata('success')){ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <?php echo $this->session->flashdata('success');?>
+                    </div>
+                </div>
+            <?php } $this->session->unset_userdata('success'); ?>
+
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">List All My Personal Info</h3>
+                        <h3 class="box-title">Personal List</h3>
                     </div>
-                    <div class="box-body no-padding">
+                    <div class="box-body">
                         <?php if(count($allpersonals)<=0){?>
-                            <div class="alert alert-info">No Personal</div>
+                            <div class="alert alert-warning">No Personal</div>
                         <?php }else{?>
                         <div id="no-more-tables">
 
@@ -48,15 +52,15 @@ print_r($allpersonals);die;*/
 
                                     <th class="numeric">#</th>
 
-                                    <th class="numeric"><?php echo 'title';?></th>
+                                    <th class="numeric"><?php echo 'Title';?></th>
 
-                                    <th class="numeric"><?php echo 'Status';?></th>
+                                    <th class="numeric"><?php echo 'I am';?></th>
 
-                                    <th class="numeric"><?php echo 'Interested';?></th>
+                                    <th class="numeric"><?php echo 'Interested In';?></th>
 
-                                    <th class="numeric"><?php echo 'maritalstatus';?></th>
+                                    <th class="numeric"><?php echo 'Maritalstatus';?></th>
 
-                                    <th class="numeric"><?php echo 'age';?></th>
+                                    <th class="numeric"><?php echo 'Age';?></th>
 
                                     <th class="numeric"><?php echo 'Edit';?></th>
                                     <th class="numeric"><?php echo 'View';?></th>
@@ -73,13 +77,13 @@ print_r($allpersonals);die;*/
                                             <td data-title="<?php echo 'title'; ?>"
                                                 class="numeric"><?php echo $row->title; ?></td>
                                             <td data-title="<?php echo 'body'; ?>"
-                                                class="numeric"><span class="label label-success"><?php echo $row->iam; ?></span></td>
+                                                class="numeric"><span class=""><?php echo $row->iam; ?></span></td>
                                             <td data-title="<?php echo 'ethnicity'; ?>"
-                                                class="numeric"><span class="label label-info"><?php echo $row->interestedin; ?></span></td>
+                                                class="numeric"><span class=""><?php echo $row->interestedin; ?></span></td>
                                             <td data-title="<?php echo 'maritalstatus'; ?>"
-                                                class="numeric"><span class="label label-warning"><?php echo $row->maritalstatus; ?></span></td>
+                                                class="numeric"><span class=""><?php echo $row->maritalstatus; ?></span></td>
                                             <td data-title="<?php echo 'age'; ?>"
-                                                class="numeric"><span class="label bg-purple"><?php echo $row->age; ?></span></td>
+                                                class="numeric"><span class=""><?php echo $row->age; ?></span></td>
 
                                             <td data-title="<?php echo 'Edit'; ?>" class="numeric"><a href="<?php echo base_url('personal/Personal/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>
                                             <td data-title="<?php echo 'Detail'; ?>" class="numeric"><a href="<?php echo base_url('personal/Personal/detail/' . $row->id); ?>" class="btn btn-block btn-success"> View</a></td>

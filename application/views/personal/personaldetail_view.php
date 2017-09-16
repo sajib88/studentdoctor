@@ -14,14 +14,9 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
-            User Profile
+        <h1><i class="fa fa-male"></i>
+            Personal Details
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Personal</a></li>
-            <li class="active">User profile</li>
-        </ol>
     </section>
 
     <!-- Main content -->
@@ -43,16 +38,16 @@
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Body</b> <span class="pull-right badge bg-blue"><?php echo (!empty( $layoutfull['body']))? $layoutfull['body']:''?></span>
+                                <b>Body</b> <span class="pull-right"><?php echo (!empty( $layoutfull['body']))? $layoutfull['body']:''?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Height</b> <span class="pull-right badge bg-aqua"><?php echo (!empty( $layoutfull['height']))? $layoutfull['height']:''?></span>
+                                <b>Height</b> <span class="pull-right "><?php echo (!empty( $layoutfull['height']))? $layoutfull['height']:''?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Marital Status</b> <span class="pull-right badge bg-green"><?php echo (!empty( $layoutfull['maritalstatus']))? $layoutfull['maritalstatus']:''?></span>
+                                <b>Marital Status</b> <span class="pull-right "><?php echo (!empty( $layoutfull['maritalstatus']))? $layoutfull['maritalstatus']:''?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Age</b> <span class="pull-right badge bg-red"><?php echo (!empty( $layoutfull['age']))? $layoutfull['age']:''?></span>
+                                <b>Age</b> <span class="pull-right "><?php echo (!empty( $layoutfull['age']))? $layoutfull['age']:''?></span>
                             </li>
                         </ul>
 
@@ -84,50 +79,26 @@
                             <?php echo (!empty( $layoutfull['state']))? $layoutfull['state'].',':''?>
                             <?php echo (!empty( $layoutfull['city']))? $layoutfull['city']:''?>
                         </p>
-
-                        <hr>
-
-                        <strong><i class="fa fa-pencil margin-r-5"></i> Profession</strong>
-                        <?php
-                        $professionall =  (!empty($layoutfull['profession']))? explode(",",$layoutfull['profession']):'';
-                        $levelColor = array("label label-danger","label label-success","label label-info","label label-warning","label label-primary");
-
-                        if(count($professionall)>0){
-                            for ($profession=0;$profession < count($professionall);$profession++){?>
-                                <p>
-                                    <span class='<?php echo $levelColor[$profession];?>'><?php echo (!empty($professionall[$profession]))? getProfessionById($professionall[$profession]):'';?></span>
-
-                                </p>
-
-                                <?php
-                            }
-                        }
-
-                        ?>
-
-
-
-
                         <hr>
                         <strong><i class="fa fa-pencil margin-r-5"></i> Other Information </strong>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Child</b> <span class="pull-right badge bg-black"><?php echo (!empty( $layoutfull['child']))? $layoutfull['child']:''?></span>
+                                <b>Child</b> <span class="pull-right "><?php echo (!empty( $layoutfull['child']))? $layoutfull['child']:''?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Language</b> <span class="pull-right badge bg-red"><?php echo (!empty( $layoutfull['language']))? $layoutfull['language']:'Not selected'?></span>
+                                <b>Language</b> <span class="pull-right "><?php echo (!empty( $layoutfull['language']))? $layoutfull['language']:'Not selected'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Religion</b> <span class="pull-right badge bg-yellow"><?php echo (!empty( $layoutfull['religion']))? $layoutfull['religion']:'Not selected'?></span>
+                                <b>Religion</b> <span class="pull-right "><?php echo (!empty( $layoutfull['religion']))? $layoutfull['religion']:'Not selected'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Smoker</b> <span class="pull-right badge bg-aqua"><?php echo (!empty( $layoutfull['smoker']))? $layoutfull['smoker']:'Not selected'?></span>
+                                <b>Smoker</b> <span class="pull-right "><?php echo (!empty( $layoutfull['smoker']))? $layoutfull['smoker']:'Not selected'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Drinker</b> <span class="pull-right badge bg-blue"><?php echo (!empty( $layoutfull['drinker']))? $layoutfull['drinker']:'Not selected'?></span>
+                                <b>Drinker</b> <span class="pull-right "><?php echo (!empty( $layoutfull['drinker']))? $layoutfull['drinker']:'Not selected'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Entimicyorpreference</b> <span class="pull-right badge bg-light-blue"><?php echo (!empty( $layoutfull['entimicyorpreference']))? $layoutfull['entimicyorpreference']:'Not selected'?></span>
+                                <b>Entimicy</b> <span class="pull-right "><?php echo (!empty( $layoutfull['entimicyorpreference']))? $layoutfull['entimicyorpreference']:'Not selected'?></span>
                             </li>
                         </ul>
 

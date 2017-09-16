@@ -71,7 +71,7 @@ class Home extends CI_Controller {
                     {
                         if ($this->login_model->login1($username, $password)) {
                             $this->session->set_flashdata('success_login', 'You have successfully login.');
-                            $redirect_link = base_url() . ' dashboard';
+                            $redirect_link = base_url() . 'dashboard';
                             redirect($redirect_link);
                         } else {
                             $data['error'] = 'Warning! You have not activated it yet Or Your account has either been blocked';

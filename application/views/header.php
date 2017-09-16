@@ -568,7 +568,7 @@
            
           <li class="treeview">
               <a href="<?php echo base_url('/home/log_out'); ?>" >
-                <i class="fa fa-sign-out text-red"></i>
+                <i class="fa fa-sign-out "></i>
                 <span>Logout</span>
               </a>
             </li>

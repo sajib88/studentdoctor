@@ -59,32 +59,51 @@ class Personal extends CI_Controller{
                 $save['zip'] = $postData['zip'];
                 $save['iam'] = $postData['iam'];
                 $save['interestedin'] = $postData['interestedin'];
-                $save['profession'] = (!empty($postData['profession']))?implode(',', $postData['profession']):'';
+                if(!empty($postData['profession_view'])){
+                    $save['profession_view'] = (!empty($postData['profession_view']))?implode(',', $postData['profession_view']):'';
+                }else{
+                    $save['profession_view'] = 0;
+                }
+
+
+                if (isset($_FILES["primary_photo"]["name"]) && $_FILES["primary_photo"]["name"] != '') {
+                    $this->PATH = './assets/file/personals/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['primary_photo'] = $this->resizeimg->image_upload('primary_photo', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }
+
+                if (isset($_FILES["photo1"]["name"]) && $_FILES["photo1"]["name"] != '') {
+                    $this->PATH = './assets/file/personals/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo1'] = $this->resizeimg->image_upload('photo1', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }
+
+                if (isset($_FILES["photo2"]["name"]) && $_FILES["photo2"]["name"] != '') {
+                    $this->PATH = './assets/file/personals/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo2'] = $this->resizeimg->image_upload('photo2', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }
 
                 //// (image upload funtion)
                 uploadPersonals();
-                ///
-
-                //// PHOTO UPLOAD
-                if ($this->upload->do_upload('primary_photo')) {
-                    $fileInfo = $this->upload->data();
-                    $pic1['name'] = $fileInfo['file_name'];
-                    $save['primary_photo'] = $pic1['name'];
-                }
-
-                if ($this->upload->do_upload('photo_2')) {
-                    $fileInfo = $this->upload->data();
-                    $pic2['name'] = $fileInfo['file_name'];
-                    $save['photo_2'] = $pic2['name'];
-                }
-
-                if ($this->upload->do_upload('photo_3')) {
-                    $fileInfo = $this->upload->data();
-                    $pic3['name'] = $fileInfo['file_name'];
-                    $save['photo_3'] = $pic3['name'];
-                }
-
-
                 //// File UPLOAD
                 if ($this->upload->do_upload('primary_files')) {
                     $fileInfo = $this->upload->data();
@@ -130,7 +149,7 @@ class Personal extends CI_Controller{
                 $ref_id = $this->global_model->insert('personals', $save);
 
                 if ($ref_id > 0) {
-                    $this->session->set_flashdata('message');
+                    $this->session->set_flashdata('message', '<strong>Success! Personal Information Create successfully.</strong>');
                 }
             }
             else{
@@ -174,10 +193,8 @@ class Personal extends CI_Controller{
         $data = array();
         $data['page_title'] = 'All Personals';
         $loginId = $this->session->userdata('login_id');
-        $data['allpersonals']  	 = $this->global_model->get($table);
-        /*print '<pre>';
-        print_r($data['allpersonals']);die;*/
-
+        $profession = $this->session->userdata('user_type');
+        $data['allpersonals'] = $this->global_model->getViewByProfession($table, $profession);
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['login_id'] = $loginId;
         $this->load->view('header', $data);
@@ -205,6 +222,7 @@ class Personal extends CI_Controller{
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
         $data['personaldata'] = $this->global_model->get_data('personals', array('id' => $id));
         $data['states'] = privategetStatesByCountry($id);
+        $data['states'] = $this->global_model->get('states');
 
         /*print '<pre>';
         print_r($data['personaldata']);exit();*/
@@ -255,30 +273,50 @@ class Personal extends CI_Controller{
             $data['zip'] = $this->input->post('zip');
             $data['iam'] = $this->input->post('iam');
             $data['interestedin'] = $this->input->post('interestedin');
-            $data['profession'] = (!empty($this->input->post('profession')))?implode(',', $this->input->post('profession')):'';
+//            if(!empty($postData['profession_view'])){
+//                $data['profession_view'] = (!empty($postData['profession_view']))?implode(',', $postData['profession_view']):'';
+//            }else{
+//                $data['profession_view'] = 0;
+//            }
+            $data['profession_view'] = (!empty($this->input->post('profession_view')))?implode(',', $this->input->post('profession_view')):'';
 
-            //// (image upload funtion)
+            if (isset($_FILES["primary_photo"]["name"]) && $_FILES["primary_photo"]["name"] != '') {
+                $this->PATH = './assets/file/personals/';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['primary_photo'] = $this->resizeimg->image_upload('primary_photo', $this->PATH, 'size[318,210]', '', $photo_name);
+            }
+            else {
+
+            }
+
+            if (isset($_FILES["photo1"]["name"]) && $_FILES["photo1"]["name"] != '') {
+                $this->PATH = './assets/file/personals/';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['photo1'] = $this->resizeimg->image_upload('photo1', $this->PATH, 'size[318,210]', '', $photo_name);
+            }
+            else {
+
+            }
+
+            if (isset($_FILES["photo2"]["name"]) && $_FILES["photo2"]["name"] != '') {
+                $this->PATH = './assets/file/personals/';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['photo2'] = $this->resizeimg->image_upload('photo2', $this->PATH, 'size[318,210]', '', $photo_name);
+            }
+            else {
+
+            }
+
             uploadPersonals();
-            ///
-
-            //// PHOTO UPLOAD
-            if ($this->upload->do_upload('primary_photo')) {
-                $fileInfo = $this->upload->data();
-                $pic1['name'] = $fileInfo['file_name'];
-                $data['primary_photo'] = $pic1['name'];
-            }
-
-            if ($this->upload->do_upload('photo1')) {
-                $fileInfo = $this->upload->data();
-                $pic2['name'] = $fileInfo['file_name'];
-                $data['photo1'] = $pic2['name'];
-            }
-
-            if ($this->upload->do_upload('photo2')) {
-                $fileInfo = $this->upload->data();
-                $pic3['name'] = $fileInfo['file_name'];
-                $data['photo2'] = $pic3['name'];
-            }
 
             //video upload
             if ($this->upload->do_upload('primary_videos')) {
@@ -288,10 +326,10 @@ class Personal extends CI_Controller{
             }
 
             //video upload
-            if ($this->upload->do_upload('video1')) {
+            if ($this->upload->do_upload('videos1')) {
                 $fileInfo = $this->upload->data();
                 $video['name'] = $fileInfo['file_name'];
-                $data['video1'] = $video['name'];
+                $data['videos1'] = $video['name'];
             }
 
             //sound upload
@@ -301,10 +339,10 @@ class Personal extends CI_Controller{
                 $data['primary_sounds'] = $sound['name'];
             }
             //sound upload
-            if ($this->upload->do_upload('sound1')) {
+            if ($this->upload->do_upload('sounds1')) {
                 $fileInfo = $this->upload->data();
                 $sound['name'] = $fileInfo['file_name'];
-                $data['sound1'] = $sound['name'];
+                $data['sounds1'] = $sound['name'];
             }
 
 
@@ -314,10 +352,10 @@ class Personal extends CI_Controller{
                 $file1['name'] = $fileInfo['file_name'];
                 $data['primary_files'] = $file1['name'];
             }
-            if ($this->upload->do_upload('file1')) {
+            if ($this->upload->do_upload('files1')) {
                 $fileInfo = $this->upload->data();
                 $file1['name'] = $fileInfo['file_name'];
-                $data['file1'] = $file1['name'];
+                $data['files1'] = $file1['name'];
             }
 
 
@@ -414,7 +452,7 @@ class Personal extends CI_Controller{
         $id = $this->uri->segment('4');
         if ($this->global_model->delete('personals', array('id' => $id))) {
             $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('personal/Personal/grid');
+            redirect('personal/Personal/all');
         }
 
     }

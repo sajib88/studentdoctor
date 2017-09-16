@@ -15,15 +15,9 @@ print_r($allpersonals);die;*/
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
+        <h1><i class="fa fa-book"></i>
             All CES
-            <small>CES</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">CES</a></li>
-            <li class="active">All</li>
-        </ol>
     </section>
     <section class="content">
 
@@ -43,7 +37,7 @@ print_r($allpersonals);die;*/
                             </div>
                         </div>
                     </div>
-                    <div class="box-body table-responsive no-padding">
+                    <div class="box-body table-responsive ">
                         <?php if(count($allces)<=0){?>
                             <div class="alert alert-info">No Personal</div>
                         <?php }else{?>
@@ -79,17 +73,17 @@ print_r($allpersonals);die;*/
                                             <td data-title="<?php echo 'title'; ?>"
                                                 class="numeric"><?php echo $row->title; ?></td>
                                             <td data-title="<?php echo 'body'; ?>"
-                                                class="numeric"><span class="label label-success"><?php echo $row->ce_type; ?></span></td>
+                                                class="numeric"><span><?php echo $row->ce_type; ?></span></td>
                                             <td data-title="<?php echo 'ethnicity'; ?>"
-                                                class="numeric"><span class="label label-info"><?php echo $row->price; ?></span></td>
+                                                class="numeric"><span ><?php echo $row->price; ?></span></td>
                                             <td data-title="<?php echo 'maritalstatus'; ?>"
-                                                class="numeric"><span class="label label-warning"><?php echo countryNameByID($row->country); ?></span></td>
+                                                class="numeric"><span><?php echo countryNameByID($row->country); ?></span></td>
                                             <td data-title="<?php echo 'age'; ?>"
-                                                class="numeric"><span class="label bg-purple"><?php echo $row->state; ?></span></td>
+                                                class="numeric"><span><?php echo $row->state; ?></span></td>
 
                                             <td><a href="<?php echo base_url('ces/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>
                                             <td><a href="<?php echo base_url('ces/detail/' . $row->id); ?>" class="btn btn-block btn-success"> View</a></td>
-                                            <td><a href="<?php /*echo base_url('product/products/delete/' . $row->id); */?>" class="btn btn-block btn-danger">Remove</a></td>
+                                            <td><a href="<?php echo base_url('ces/ces_controller/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
                                         </tr>
                                         <?php $i++;
                                     }

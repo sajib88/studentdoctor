@@ -14,14 +14,9 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
+        <h1><i class="fa fa-book"></i>
             CES - Details
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">CES</a></li>
-            <li class="active">CES Details</li>
-        </ol>
     </section>
 
     <!-- Main content -->
@@ -43,16 +38,16 @@
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Business Name</b> <span class="pull-right badge bg-blue"><?php echo (!empty( $layoutfull['business_name']))? $layoutfull['business_name']:''?></span>
+                                <b>Business Name</b> <span class="pull-right "><?php echo (!empty( $layoutfull['business_name']))? $layoutfull['business_name']:''?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Business email</b> <span class="pull-right badge bg-aqua"><?php echo (!empty( $layoutfull['business_email']))? $layoutfull['business_email']:''?></span>
+                                <b>Business email</b> <span class="pull-right "><?php echo (!empty( $layoutfull['business_email']))? $layoutfull['business_email']:''?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Business phone</b> <span class="pull-right badge bg-green"><?php echo (!empty( $layoutfull['business_phone']))? $layoutfull['business_phone']:''?></span>
+                                <b>Business phone</b> <span class="pull-right "><?php echo (!empty( $layoutfull['business_phone']))? $layoutfull['business_phone']:''?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Business website</b> <span class="pull-right badge bg-red"><?php echo (!empty( $layoutfull['business_website']))? $layoutfull['business_website']:''?></span>
+                                <b>Business website</b> <span class="pull-right "><?php echo (!empty( $layoutfull['business_website']))? $layoutfull['business_website']:''?></span>
                             </li>
                         </ul>
 
@@ -112,10 +107,10 @@
                         <strong><i class="fa fa-pencil margin-r-5"></i> Other Information </strong>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Price</b> <span class="pull-right badge bg-black"><?php echo (!empty( $layoutfull['price']))? $layoutfull['price']:''?></span>
+                                <b>Price</b> <span class="pull-right "><?php echo (!empty( $layoutfull['price']))? $layoutfull['price']:''?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Special Price</b> <span class="pull-right badge bg-red"><?php echo (!empty( $layoutfull['special_price']))? $layoutfull['special_price']:''?></span>
+                                <b>Special Price</b> <span class="pull-right "><?php echo (!empty( $layoutfull['special_price']))? $layoutfull['special_price']:''?></span>
                             </li>
 
                         </ul>

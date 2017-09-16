@@ -73,31 +73,48 @@ class ces_controller extends CI_Controller
             $data['business_fax'] = $this->input->post('business_fax');
             $data['business_website'] = $this->input->post('business_website');
             $data['status'] = 1;
-            $data['profession_view'] = (!empty($this->input->post('profession')))?implode(',', $this->input->post('profession')):'';
+            if(!empty($postData['profession_view'])){
+                $data['profession_view'] = (!empty($postData['profession_view']))?implode(',', $postData['profession_view']):'';
+            }else{
+                $data['profession_view'] = 0;
+            }
 
 
+            if (isset($_FILES["primary_image"]["name"]) && $_FILES["primary_image"]["name"] != '') {
+                $this->PATH = './assets/file/ces/';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['primary_image'] = $this->resizeimg->image_upload('primary_image', $this->PATH, 'size[318,210]', '', $photo_name);
+            }
+            else {
+
+            }
+            if (isset($_FILES["image2"]["name"]) && $_FILES["image2"]["name"] != '') {
+                $this->PATH = './assets/file/ces/';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image2'] = $this->resizeimg->image_upload('image2', $this->PATH, 'size[318,210]', '', $photo_name);
+            }
+            else {
+
+            }
+            if (isset($_FILES["image3"]["name"]) && $_FILES["image3"]["name"] != '') {
+                $this->PATH = './assets/file/ces/';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image3'] = $this->resizeimg->image_upload('image3', $this->PATH, 'size[318,210]', '', $photo_name);
+            }
+            else {
+
+            }
 
             uploadCES();
-
-
-            //// PHOTO UPLOAD
-            if ($this->upload->do_upload('primary_image')) {
-                $fileInfo = $this->upload->data();
-                $pic1['name'] = $fileInfo['file_name'];
-                $data['primary_image'] = $pic1['name'];
-            }
-
-            if ($this->upload->do_upload('image2')) {
-                $fileInfo = $this->upload->data();
-                $pic2['name'] = $fileInfo['file_name'];
-                $data['image2'] = $pic2['name'];
-            }
-
-            if ($this->upload->do_upload('image3')) {
-                $fileInfo = $this->upload->data();
-                $pic3['name'] = $fileInfo['file_name'];
-                $data['image3'] = $pic3['name'];
-            }
 
             //video upload
             if ($this->upload->do_upload('primary_video')) {
@@ -170,7 +187,11 @@ class ces_controller extends CI_Controller
         $data = array();
         $data['page_title'] = 'All CES';
         $loginId = $this->session->userdata('login_id');
-        $data['allcesGrid']  	 = $this->global_model->get($table);
+
+        $profession = $this->session->userdata('user_type');
+        $data['allcesGrid'] = $this->global_model->getViewByProfession($table, $profession);
+
+        //$data['allcesGrid']  	 = $this->global_model->get($table);
         /*print '<pre>';
         print_r($data['allpersonals']);die;*/
 
@@ -193,15 +214,16 @@ class ces_controller extends CI_Controller
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
-        //$data['states'] = $this->global_model->get('states');
+
         $data['login_id'] = $loginId;
 
 
-
-
-        $data['value'] = $this->global_model->get_data('ces', array('id' => $cesID));
         $tablename = 'ces';
         $data['states'] = getStatesByCountry($tablename,$id);
+        $data['states'] = $this->global_model->get('states');
+
+        $data['value'] = $this->global_model->get_data('ces', array('id' => $cesID));
+
 
         /*print '<pre>';
         print_r($data['personaldata']);exit();*/
@@ -248,31 +270,43 @@ class ces_controller extends CI_Controller
             $data['business_fax'] = $this->input->post('business_fax');
             $data['business_website'] = $this->input->post('business_website');
             $data['status'] = 1;
-            $data['profession_view'] = (!empty($this->input->post('profession')))?implode(',', $this->input->post('profession')):'';
+            $data['profession_view'] = (!empty($this->input->post('profession_view')))?implode(',', $this->input->post('profession_view')):'';
 
+            if (isset($_FILES["primary_image"]["name"]) && $_FILES["primary_image"]["name"] != '') {
+                $this->PATH = './assets/file/ces/';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['primary_image'] = $this->resizeimg->image_upload('primary_image', $this->PATH, 'size[318,210]', '', $photo_name);
+            }
+            else {
 
+            }
+            if (isset($_FILES["image2"]["name"]) && $_FILES["image2"]["name"] != '') {
+                $this->PATH = './assets/file/ces/';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image2'] = $this->resizeimg->image_upload('image2', $this->PATH, 'size[318,210]', '', $photo_name);
+            }
+            else {
+
+            }
+            if (isset($_FILES["image3"]["name"]) && $_FILES["image3"]["name"] != '') {
+                $this->PATH = './assets/file/ces/';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image3'] = $this->resizeimg->image_upload('image3', $this->PATH, 'size[318,210]', '', $photo_name);
+            }
+            else {
+
+            }
 
             uploadCES();
-
-
-            //// PHOTO UPLOAD
-            if ($this->upload->do_upload('primary_image')) {
-                $fileInfo = $this->upload->data();
-                $pic1['name'] = $fileInfo['file_name'];
-                $data['primary_image'] = $pic1['name'];
-            }
-
-            if ($this->upload->do_upload('image2')) {
-                $fileInfo = $this->upload->data();
-                $pic2['name'] = $fileInfo['file_name'];
-                $data['image2'] = $pic2['name'];
-            }
-
-            if ($this->upload->do_upload('image3')) {
-                $fileInfo = $this->upload->data();
-                $pic3['name'] = $fileInfo['file_name'];
-                $data['image3'] = $pic3['name'];
-            }
 
             //video upload
             if ($this->upload->do_upload('primary_video')) {
@@ -397,6 +431,16 @@ class ces_controller extends CI_Controller
         $this->load->view('header', $data);
         $this->load->view('ces/ces_search_view', $data);
         $this->load->view('footer');
+
+    }
+
+    public function delete()
+    {
+        $id = $this->uri->segment('4');
+        if ($this->global_model->delete('ces', array('id' => $id))) {
+            $this->session->set_flashdata('success', 'Delete successfully!');
+            redirect(base_url('ces/ces_controller/allces'));
+        }
 
     }
 }

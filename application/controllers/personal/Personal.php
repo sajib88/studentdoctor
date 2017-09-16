@@ -273,11 +273,6 @@ class Personal extends CI_Controller{
             $data['zip'] = $this->input->post('zip');
             $data['iam'] = $this->input->post('iam');
             $data['interestedin'] = $this->input->post('interestedin');
-//            if(!empty($postData['profession_view'])){
-//                $data['profession_view'] = (!empty($postData['profession_view']))?implode(',', $postData['profession_view']):'';
-//            }else{
-//                $data['profession_view'] = 0;
-//            }
             $data['profession_view'] = (!empty($this->input->post('profession_view')))?implode(',', $this->input->post('profession_view')):'';
 
             if (isset($_FILES["primary_photo"]["name"]) && $_FILES["primary_photo"]["name"] != '') {

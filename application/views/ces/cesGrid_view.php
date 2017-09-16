@@ -25,15 +25,9 @@ $this->load->helper('global_helper');
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
+        <h1><i class="fa fa-book"></i>
             All CES
-            <small>CES</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">CES</a></li>
-            <li class="active">All</li>
-        </ol>
     </section>
     <section class="content">
         <div class="row">
@@ -44,38 +38,38 @@ $this->load->helper('global_helper');
                         <div class="box-body box-profile">
                             <div style="text-align: center;">
                                 <!--<img class="profile-user-img img-responsive img-circle" src="<?php /*echo base_url().'assets/file/'*/?>" alt="User profile picture">-->
-                                <img src="<?php echo base_url() . 'assets/file/ces/' .$row->primary_image; ?>" alt="" class="circular" />
+                                <img src="<?php echo base_url() . 'assets/file/ces/' .$row['primary_image']; ?>" alt="" class="circular" />
                             </div>
 
-                            <h3 class="profile-username text-center"><?php echo (!empty($row->title))?$row->title:''?></h3>
+                            <h3 class="profile-username text-center"><?php echo (!empty($row['title']))?$row['title']:''?></h3>
 
-                            <p class="text-muted text-center"><?php echo (!empty( $row->ethnicity))? $row->ce_type:''?></p>
+                            <p class="text-muted text-center"><?php echo (!empty( $row['ethnicity']))? $row['ce_type']:''?></p>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>Price</b> <span class="pull-right badge bg-blue"><?php echo (!empty( $row->price))? $row->price:''?></span>
+                                    <b>Price</b> <span class="pull-right "><?php echo (!empty( $row['price']))? $row['price']:''?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Special Price</b> <span class="pull-right badge bg-aqua"><?php echo (!empty( $row->special_price))? $row->special_price:''?></span>
+                                    <b>Special Price</b> <span class="pull-right "><?php echo (!empty( $row['special_price']))? $row['special_price']:''?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Country</b> <span class="pull-right badge bg-green"><?php echo (!empty( $row->country))? countryNameByID($row->country):''?></span>
+                                    <b>Country</b> <span class="pull-right "><?php echo (!empty( $row['country']))? countryNameByID($row['country']):''?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Business Name</b> <span class="pull-right badge bg-red"><?php echo (!empty( $row->business_name))? $row->business_name:''?></span>
+                                    <b>Business Name</b> <span class="pull-right "><?php echo (!empty( $row['business_name']))? $row['business_name']:''?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Business phone</b> <span class="pull-right badge bg-fuchsia"><?php echo (!empty( $row->business_phone))? $row->business_phone:''?></span>
+                                    <b>Business phone</b> <span class="pull-right "><?php echo (!empty( $row['business_phone']))? $row['business_phone']:''?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Business Email</b> <span class="pull-right badge bg-yellow"><?php echo (!empty( $row->business_email))? $row->business_email:''?></span>
+                                    <b>Business Email</b> <span class="pull-right "><?php echo (!empty( $row['business_email']))? $row['business_email']:''?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Business website</b> <span class="pull-right badge bg-yellow"><?php echo (!empty( $row->business_website))? $row->business_website:''?></span>
+                                    <b>Business website</b> <span class="pull-right "><?php echo (!empty( $row['business_website']))? $row['business_website']:''?></span>
                                 </li>
                             </ul>
 
-                            <a href="<?php echo base_url() . 'ces/detail/' .$row->id; ?>" class="btn btn-primary btn-block"><b>View Detail</b></a>
+                            <a href="<?php echo base_url() . 'ces/detail/' .$row['id']; ?>" class="btn btn-primary btn-block"><b>View Detail</b></a>
                         </div>
                         <!-- /.box-body -->
                     </div>

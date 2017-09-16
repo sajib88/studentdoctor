@@ -1,334 +1,352 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: nur.alam
- * Date: 12/21/2016
- * Time: 1:01 PM
- */
-/*print '<pre>';
-print_r($value);
-die;*/
-?>
+<style>
+    .btn-cust{
+        width: 95%;
+    }
+    .professionView{
+        margin: 15px 0px -7px 0px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .professionView{
+
+        }
+        .professionView label h4{
+            margin-top: 0px;
+        }
+    }
+
+    .professionView label h4{
+        margin-top: 5px;
+        margin-left: 15px;
+    }
+</style>
 
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
+        <h1><i class="fa fa-book"></i>
             Edit CES
-            <small>Edit</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">CES</a></li>
-            <li class="active">Edit</li>
-        </ol>
     </section>
 
     <section class="content">
         <?php echo $this->session->flashdata('msg');?>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="box box-primary">
-                    <div class="panel-body">
-                        <div class="row">
-
-                            <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('ces/updateCES'); ?>">
-                                <div class="col-lg-6">
-                                    <input type="hidden" name="uid" value="<?php echo $value['uid']; ?>">
-                                    <input type="hidden" name="id" value="<?php echo $value['id']; ?>">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <?php $v = (set_value('title')!='')?set_value('title'):$value['title'];?>
-                                            <label>Title<span class="error">*</span></label>
-                                            <input name="title" type="text" placeholder="Title" value="<?php echo $v?>"  class="form-control">
-                                            <?php echo form_error('title');?>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <?php $v = (set_value('description')!='')?set_value('description'):$value['description'];?>
-                                            <label>Description<span class="error">*</span></label>
-                                            <textarea  name="description" placeholder="description" class="form-control"> <?php echo $v;?></textarea>
-                                            <?php echo form_error('description');?>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>CE Type</label>
-                                            <?php $ce_type = array('All CEs','Coupon CEs','Discounted CEs','Free CEs','Retail CEs','Special Offer CEs','Top Rated');?>
-                                            <select name="ce_type" class="form-control chosen-select">
-                                                <option value="">Select Body</option>
-                                                <?php foreach ($ce_type as $row) {
-                                                    $v = (set_value('ce_type')!='')?set_value('ce_type'):$value['ce_type'];
-                                                    $sel = ($v == $row)?'selected="selected"':'';?>
-                                                    <option value="<?php echo $row;?>" <?php echo $sel;?>><?php echo $row?></option>
-                                                <?php }?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Price</label>
-                                            <?php $v = (set_value('price')!='')?set_value('price'):$value['price'];?>
-                                            <input name="price" type="text" placeholder="Price" value="<?php echo $v?>" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Special Price</label>
-                                            <?php $v = (set_value('special_price')!='')?set_value('special_price'):$value['special_price'];?>
-                                            <input name="special_price" type="text" placeholder="Special Price" value="<?php echo $v?>" class="form-control">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Country<span class="error">*</span></label>
-                                            <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
-                                                <option value="">Select</option>
-                                                <?php
-                                                if (is_array($countries)) {
-                                                    foreach ($countries as $country) {
-                                                        $v = (set_value('country')!='')?set_value('country'):$value['country'];
-                                                        $sel = ($v == $country->id)?'selected="selected"':'';
-                                                        ?>
-                                                        <option  value="<?php echo $country->id; ?>" <?php echo $sel;?>><?php echo $country->name; ?></option>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                            <?php echo form_error('country');?>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div id="result">
-                                            <label>State<span class="error"></span></label>
-                                            <select name="state"  class="form-control">
-                                                <option value="">Select state</option>
-                                                <?php
-                                                if (is_array($states) and (!empty($states))) {
-                                                    foreach ($states as $row) {
-                                                        $v = (set_value('state')!='')?set_value('state'):$value['state'];
-                                                        $sel = ($v == $row->name)?'selected="selected"':'';
-                                                        ?>
-                                                        <option  value="<?php echo $row->name; ?>" <?php echo $sel;?>><?php echo $row->name; ?></option>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Post Code</label>
-                                            <?php $v = (set_value('postcode')!='')?set_value('postcode'):$value['postcode'];?>
-                                            <input name="postcode" type="text" placeholder="Postcode" value="<?php echo $v?>" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Address1</label>
-                                            <?php $v = (set_value('address1')!='')?set_value('address1'):$value['address1'];?>
-                                            <input name="address1" type="text" placeholder="Address1" value="<?php echo $v?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Address2</label>
-                                            <?php $v = (set_value('address2')!='')?set_value('address2'):$value['address2'];?>
-                                            <input name="address2" type="text" placeholder="Address2" value="<?php echo $v?>" class="form-control">
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="col-lg-12">
-                                        <div class="col-lg-6">
-                                            <div class="form-group" id="photo_id">
-                                                <label>Picture One</label>
-                                                <?php $v = (set_value('primary_image') != '')?set_value('primary_image'):$value['primary_image'];?>
-                                                <input class="btn btn-default" name="primary_image" type="file" value="<?php echo $v;?>">
-                                                <?php /*echo form_error('primary_photo');*/?>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <?php if (!empty($value['primary_image'])) { ?>
-                                                <img src="<?php echo base_url() . 'assets/file/' .$value['primary_image']; ?>" alt="" width="100" class="img-circle img-responsive" />
-                                            <?php }?>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Picture Two</label>
-                                                <?php $v = (set_value('image2') != '')?set_value('image2'):$value['image2'];?>
-                                                <input class="btn btn-default" name="image2" type="file">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <?php if (!empty($value['image2'])) { ?>
-                                                <img src="<?php echo base_url() . 'assets/file/' .$value['image2']; ?>" alt="" width="100" class="img-circle img-responsive" />
-                                            <?php }?>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Picture Three</label>
-                                                <?php $v = (set_value('image3') != '')?set_value('image3'):$value['image3'];?>
-                                                <input class="btn btn-default" name="image3" type="file">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <?php if (!empty($value['image3'])) { ?>
-                                                <img src="<?php echo base_url() . 'assets/file/' .$value['image3']; ?>" alt="" width="100" class="img-circle img-responsive" />
-                                            <?php }?>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                                <div class="col-lg-6">
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Business Name</label>
-                                            <?php $v = (set_value('business_name')!='')?set_value('business_name'):$value['business_name'];?>
-                                            <input name="business_name" type="text" placeholder="Business Name" value="<?php echo $v?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Business Email</label>
-                                            <?php $v = (set_value('business_email')!='')?set_value('business_email'):$value['business_email'];?>
-                                            <input name="business_email" type="text" placeholder="Business Email" value="<?php echo $v?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Business Phone</label>
-                                            <?php $v = (set_value('business_phone')!='')?set_value('business_phone'):$value['business_phone'];?>
-                                            <input name="business_phone" type="text" placeholder="Business Phone" value="<?php echo $v?>" class="form-control">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Business Fax</label>
-                                            <?php $v = (set_value('business_fax')!='')?set_value('business_fax'):$value['business_fax'];?>
-                                            <input name="business_fax" type="text" placeholder="Business Fax" value="<?php echo $v?>" class="form-control">
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Business Website</label>
-                                            <?php $v = (set_value('business_website')!='')?set_value('business_website'):$value['business_website'];?>
-                                            <input name="business_website" type="text" placeholder="Business Website" value="<?php echo $v?>" class="form-control">
-
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Profession<span class="error">*</span></label><span id='profession_view-error' class='error' for='profession_view'></span>
-                                            <select multiple name="profession[]" class="selectpicker form-control">
-                                                <option value="">All Profession</option>
-                                                <?php
-                                                if (is_array($profession)) {
-                                                    foreach ($profession as $row) {
-                                                        $v = (set_value('profession')!='')?set_value('profession'):$value['profession'];
-                                                        $sel = ($v == $row)?'selected="selected"':'';
-                                                        ?>
-                                                        <option  value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Primary Videos</label><span id='primary_video-error' class='error' for='primary_video'></span>
-                                            <input class="btn btn-default" name="primary_video" type="file">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Videos1</label><span id='video1-error' class='error' for='video1_video'></span>
-                                            <input class="btn btn-default" name="video1" type="file">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group" id="primary_file_id">
-                                            <label>File One<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
-                                            <input class="btn btn-default" name="primary_file" type="file">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group" id="file_2">
-                                            <label>File Two</label>
-                                            <input class="btn btn-default" name="file2" type="file">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Primary Sound</label><span id='primary_audio-error' class='error' for='audio'></span>
-                                            <input class="btn btn-default" name="primary_sound" type="file">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
-                                            <input class="btn btn-default" name="sound1" type="file">
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-
-                                <div class="col-lg-12">
-                                    <div style="text-align: center">
-                                        <input type="submit" name="submit" class="btn btn-info" value="Save">
-                                        <?php echo anchor('profile/dashboard',"Cancel",array('class' => 'btn btn-danger'));?>
-                                    </div>
-                                </div>
-
-
-
-
-                            </form>
-
+            <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('ces/updateCES'); ?>">
+                <input type="hidden" name="uid" value="<?php echo $value['uid']; ?>">
+                <input type="hidden" name="id" value="<?php echo $value['id']; ?>">
+            <div class="col-md-6 ">
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-th"></i>
+                            <h3 class="box-title">CES Info</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="form-group">
+                                <label>Title<span class="error">*</span></label>
+                                <input name="title" type="text" placeholder="Title" value="<?php echo $value['title']; ?>"  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>CES Type</label>
+                                <?php $ce_type = array('All CEs','Coupon CEs','Discounted CEs','Free CEs','Retail CEs','Special Offer CEs','Top Rated');?>
+                                <select name="ce_type" class="form-control chosen-select">
+                                    <option value="">Select Body</option>
+                                    <?php foreach ($ce_type as $row) {
+                                        $v = (set_value('ce_type')!='')?set_value('ce_type'):$value['ce_type'];
+                                        $sel = ($v == $row)?'selected="selected"':'';?>
+                                        <option value="<?php echo $row;?>" <?php echo $sel;?>><?php echo $row?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Description<span class="error">*</span></label>
+                                <textarea  name="description" placeholder="description" class="form-control"><?php echo $value['description']; ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="number" name="price" placeholder="Price" value="<?php echo $value['price']; ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Special Price</label>
+                                <input type="number" name="special_price" placeholder="Special Price" value="<?php echo $value['special_price']; ?>" class="form-control">
+                            </div>
                         </div>
                     </div>
-                    <!-- /.row (nested) -->
                 </div>
-                <!-- /.panel-body -->
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-map-marker"></i>
+                            <h3 class="box-title">Address</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="form-group">
+                                <label>Address 1</label>
+                                <input name="address1" type="text" placeholder="Address1" value="<?php echo $value['address1']; ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Address 2</label>
+                                <input name="address2" type="text" placeholder="Address2" value="<?php echo $value['address2']; ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Country<span class="error">*</span></label>
+                                <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
+                                    <option value="">Select</option>
+                                    <?php
+                                    if (is_array($countries)) {
+                                        foreach ($countries as $country) {
+                                            $v = (set_value('country')!='')?set_value('country'):$value['country'];
+                                            $sel = ($v == $country->id)?'selected="selected"':'';
+                                            ?>
+                                            <option  value="<?php echo $country->id; ?>" <?php echo $sel;?>><?php echo $country->name; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div id="result">
+                                    <label>State<span class="error"></span></label>
+                                    <select name="state"  class="form-control">
+                                        <option value="">Select state</option>
+                                        <?php
+                                        if (is_array($states) and (!empty($states))) {
+                                            foreach ($states as $row) {
+                                                $v = (set_value('state')!='')?set_value('state'):$value['state'];
+                                                $sel = ($v == $row->name)?'selected="selected"':'';
+                                                ?>
+                                                <option  value="<?php echo $row->name; ?>" <?php echo $sel;?>><?php echo $row->name; ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Post Code</label>
+                                <input name="postcode" type="text" placeholder="Post Code" value="<?php echo $value['postcode']; ?>" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="col-md-6">
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="glyphicon glyphicon-briefcase"></i>
+                            <h3 class="box-title">Business Info</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="form-group">
+                                <label>Business Name</label>
+                                <input name="business_name" type="text" placeholder="Business Name" value="<?php echo $value['business_name']; ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Business Email</label>
+                                <input name="business_email" type="text" placeholder="Business Email" value="<?php echo $value['business_email']; ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Business Phone</label>
+                                <input name="business_phone" type="text" placeholder="Business phone" value="<?php echo $value['business_phone']; ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Business Fax</label>
+                                <input name="business_fax" type="text" placeholder="Business Fax" value="<?php echo $value['business_fax']; ?>" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Business Website</label>
+                                <input name="business_website" type="text" placeholder="Business website" value="<?php echo $value['business_website']; ?>" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-file"></i>
+                            <h3 class="box-title">Media</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" id="photo_id">
+                                        <label>Picture One</label>
+                                        <input class="btn btn-default btn-cust" name="primary_image" type="file" >
+                                        <?php if(!empty($value['primary_image'])){ ?>
+                                            <a href="<?php echo base_url() . '/assets/file/ces/' .$value['primary_image']; ?>" data-fancybox="images">
+                                                View Picture One
+                                            </a>
+                                        <?php }?>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Picture Two</label>
+                                        <input class="btn btn-default btn-cust" name="image2" type="file" >
+                                        <?php if(!empty($value['image2'])){ ?>
+                                            <a href="<?php echo base_url() . '/assets/file/ces/' .$value['image2']; ?>" data-fancybox="images">
+                                                View Picture One
+                                            </a>
+                                        <?php }?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Picture Three</label>
+                                        <input class="btn btn-default btn-cust" name="image3" type="file" >
+                                        <?php if(!empty($value['image3'])){ ?>
+                                            <a href="<?php echo base_url() . '/assets/file/ces/' .$value['image3']; ?>" data-fancybox="images">
+                                                View Picture One
+                                            </a>
+                                        <?php }?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Primary Video</label>
+                                        <input class="btn btn-default btn-cust" name="primary_video" type="file">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Video1</label>
+                                        <input class="btn btn-default btn-cust" name="video1" type="file">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" id="primary_file_id">
+                                        <label>File One</label>
+                                        <input class="btn btn-default btn-cust" name="primary_file" type="file">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group" id="file2">
+                                        <label>File Two</label>
+                                        <input class="btn btn-default btn-cust" name="file2" type="file">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Primary Sound</label>
+                                        <input class="btn btn-default btn-cust" name="primary_sound" type="file">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
+                                        <input class="btn btn-default btn-cust" name="sound1" type="file">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <div class="">
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-lg-12 professionView">
+                                        <div class="col-lg-6">
+                                            <label><h4>Who can see this?</h4></label>
+                                        </div>
+                                        <div class="col-lg-6 ">
+                                            <div class="form-group">
+
+                                                <select multiple name="profession_view[]" class="selectpicker form-control">
+                                                    <?php
+                                                    if (is_array($profession)) {
+                                                        foreach ($profession as $row) {
+                                                            $selectedProfessions = explode(',',$value['profession_view']);
+                                                            $ifExist = in_array($row->id,$selectedProfessions);
+                                                            if($ifExist){
+                                                                $selected = 'Selected';
+                                                            }else
+                                                                $selected = '';
+                                                            ?>
+                                                            <option value="<?php echo $row->id; ?>" <?=$selected?>><?php echo $row->name; ?></option>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-6">
+                                            <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
+                                        </div>
+                                        <div class="col-lg-6 ">
+                                            <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
+                                                <i class="fa fa-check"></i> &nbsp; &nbsp; Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <!-- /.panel -->
         </div>
     </section>
 </div>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript">
+    $().fancybox({
+        selector : '[data-fancybox="images"]',
+        thumbs   : false,
+        hash     : false,
+    });
+
+    $(".main-slider").slick({
+        slidesToShow   : 3,
+        slidesToScroll : 3,
+        infinite   : true,
+        dots       : false,
+        arrows     : false,
+        responsive : [
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+</script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 

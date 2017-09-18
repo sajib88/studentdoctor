@@ -4,15 +4,9 @@
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
-           FORUM
-            <small>Board</small>
+        <h1><i class="glyphicon glyphicon-bullhorn"></i>
+           Discuss Topic
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">FORUM</a></li>
-            <li class="active">Board</li>
-        </ol>
     </section>
     <section class="content">
 
@@ -118,10 +112,6 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <?php  echo $postdeatils['title']; ?>
-
-
-
-
             </div>
             <!-- /.box-body -->
           </div>
@@ -201,9 +191,11 @@
 
                     </tbody>
                 </table>
+                <?php if(!empty($postdeatils['attachment'])) { ?>
                 <div class="box-footer ">
                 <a class="btn bg-aqua pull-right"  href="<?php echo base_url() . '/assets/file/forum/' .$postdeatils['attachment']; ?>">Attachment</a>
                 </div>
+                <?php }?>
 
                 <div class="box-footer box-comments">
                     <div class="box-comment">
@@ -273,10 +265,10 @@
                           </td>
                           <td>
                               <?php echo $row->comments_details; ?>
-                              <?php if($row->attachment != '') { ?>
+                              <?php if(!empty($row->attachment)) { ?>
 
                               <div class="box-footer ">
-                                  <a class="btn bg-aqua pull-right"  href="<?php echo base_url() . '/assets/file/forum/' .$row->attachment; ?>">Attachment</a>
+                                  <a class="btn bg-aqua pull-right"  href="<?php if(!empty($row->attachment)){echo base_url() . '/assets/file/forum/' .$row->attachment;}?>">Attachment</a>
                               </div>
                               <?php }?>
                           </td>
@@ -356,7 +348,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-danger" type="button">Cancel</button>
+                    <button data-dismiss="modal" class="btn btn-danger pull-left" type="button">Cancel</button>
                     <input type="submit" name="submit" class="btn  btn-success" value="Save">
                 </div>
             </form>

@@ -4,15 +4,9 @@
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
-           FORUM
-            <small>Board</small>
+        <h1><i class="glyphicon glyphicon-bullhorn"></i>
+           Topic List
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">FORUM</a></li>
-            <li class="active">Board</li>
-        </ol>
     </section>
     <section class="content">
         
@@ -50,7 +44,7 @@
 
 
 
-                        <div class="col-md-2 text-center">
+                        <div class="col-md-2 text-center col-md-offset-1">
                             <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
 
                         </div>
@@ -83,14 +77,6 @@
 
                         </div>
 
-                        <div class="col-md-2 text-center">
-                            <a data-toggle="modal" href="#myModal" class="btn btn-danger"><i class="fa fa-plus"></i> Add New Topic</a>
-
-                        </div>
-
-
-
-
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -106,31 +92,13 @@
           <div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title">General Topic Discussion</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
+              <a data-toggle="modal" href="#myModal" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add New Topic</a>
               <!-- /.box-tools -->
             </div>
-              <table class="table table-bordered">
-                  <tbody>
-                  <tr>
-                      <th> <div class="col-md-2 pull-left">
-                              <a data-toggle="modal" href="#myModal" class="btn btn-info"><i class="fa fa-plus"></i> Add New Topic</a>
-
-                          </div></th>
-
-
-                  </tr>
-
-                  </tbody>
-
-              </table>
             <!-- /.box-header -->
             <div class="box-body">
 
-              
+              <?php if(!empty($postdeatils)){ ?>
                 <table class="table table-striped">
                 <tbody>
                 <tr>
@@ -150,7 +118,7 @@
                         <td><i class="fa fa-fw fa-bell-o"></i></td>
                         <td>     <?php echo $row->title; ?></td>
                         <td>
-                            <?php echo $row->author_id; ?>
+                            <?php echo getNameById($row->author_id); ?>
                         </td>
                         <td>
                             <?php echo $row->views; ?>
@@ -167,7 +135,10 @@
                 ?>
                 
               </tbody></table>
-                
+                <?php }else{?>
+                  <div class="alert alert-warning text-center">No topic found <i class="fa fa-info"></i></div>
+                <?php }?>
+
                 
             </div>
             <!-- /.box-body -->
@@ -194,10 +165,10 @@
                 <h4 class="modal-title">New Topic</h4>
             </div>
 
-            <form role="form" method="post" id="post" enctype="multipart/form-data"
-                  action="<?php echo base_url('Forum/forum/listcat/' . $getid); ?>">
 
             <div class="modal-body">
+                <form role="form" method="post" id="post" enctype="multipart/form-data"
+                      action="<?php echo base_url('Forum/forum/listcat/' . $getid); ?>">
                 <input name="hiddencat" value="<?php echo $getid; ?>" type="hidden" class="form-control">
                 <div class="col-lg-12">
                     <div class="form-group">
@@ -222,14 +193,12 @@
                     </div>
                 </div>
 
-
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-danger pull-left" type="button">Cancel</button>
+                        <input type="submit" name="submit" class="btn  btn-success" value="Save">
+                    </div>
+                </form>
             </div>
-
-            <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-danger" type="button">Cancel</button>
-                <input type="submit" name="submit" class="btn  btn-success" value="Save">
-            </div>
-            </form>
         </div>
     </div>
 </div>

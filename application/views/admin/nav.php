@@ -269,6 +269,10 @@
                     <a href="<?php echo base_url('admin/personal/Personal/all'); ?>">
                     <i class="fa fa-fw fa-user"></i> Personals</a>
                 </li>
+                <li>
+                    <a href="<?php echo base_url('admin/forum/Forum/all'); ?>">
+                        <i class="fa fa-fw fa-bullhorn"></i> Forum</a>
+                </li>
 
                 <li>
                     <a href="<?php echo base_url('admin/group/Group/viewall'); ?>">

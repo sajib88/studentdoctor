@@ -394,6 +394,21 @@ if (!function_exists('getProfessionById')) {
 
 }
 
+if (!function_exists('getNameById')) {
+
+    function getNameById($Id='') {
+        $CI = &get_instance();
+
+        $result = $CI->global_model->get_data('users', array('id' => $Id));
+        if ($result['first_name']) {
+            return $result['first_name'];
+        } else {
+            return false;
+        }
+    }
+
+}
+
 if (!function_exists('getImage')) {
 
     function getImage($imageType='',$Id='') {

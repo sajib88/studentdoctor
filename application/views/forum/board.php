@@ -4,15 +4,9 @@
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
+        <h1><i class="glyphicon glyphicon-bullhorn"></i>
            FORUM
-            <small>Board</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">FORUM</a></li>
-            <li class="active">Board</li>
-        </ol>
     </section>
     <section class="content">
         
@@ -112,7 +106,7 @@
                         <td>
                             <?php echo $row->total_post; ?>
                         </td>
-                        <td><?php echo $row->added_date_time; ?></td>
+                        <td><?php echo date('d-m-Y', strtotime($row->added_date_time)); ?></td>
                     </tr>
                 <?php
                 }
@@ -166,7 +160,7 @@
                         <td>
                             <?php echo $row->total_post; ?>
                         </td>
-                        <td><?php echo $row->added_date_time; ?></td>
+                        <td><?php echo date('d-m-Y', strtotime($row->added_date_time)); ?></td>
                     </tr>
                 <?php
                 }
@@ -218,7 +212,7 @@
                                     <td>
                                         <?php echo $row->total_post; ?>
                                     </td>
-                                    <td><?php echo $row->added_date_time; ?></td>
+                                    <td><?php echo date('d-m-Y', strtotime($row->added_date_time)); ?></td>
                                 </tr>
                             <?php
                             }

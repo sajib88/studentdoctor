@@ -1,153 +1,71 @@
-<div id="page-title" class="page-title page-title-1 bg-secondary dark">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <h1><i class="ti-layout-menu"></i>Blog</h1>
+<main class="main-wrapper">
+
+
+    <section class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 pdl">
+                    <div class="tab-wrapper row">
+                        <!-- Nav tabs -->
+
+
+                        <!-- Tab panes -->
+                        <div class="content col-md-12">
+                            <?php if(count($allblog)<=0){?>
+                                <div class="alert alert-info">No Blogs</div>
+                            <?php }else{?>
+
+                                <?php if(!empty($allblog)) {
+
+                                    foreach ($allblog as $row)
+                                    { ?>
+
+                                        <!-- Content -->
+                                        <div class="content col-lg-6 col-md-6">
+                                            <!-- Post -->
+                                            <div class="post">
+                                                <div class="post-image">
+                                                    <img src="<?php echo base_url() . 'assets/file/blog/' .$row->primary_image; ?>" alt="">
+                                                </div>
+                                                <ul class="post-meta">
+                                                    <li><span>Added:</span><?php echo date("d-m-Y", strtotime($row->date)); ?></li>
+                                                    <li><span>Author:</span><a href="#">Admin</a></li>
+                                                    <li><span>Tags:</span><a href="#"><?php echo $row->tag;?></a>, <a href="#"></a></li>
+                                                </ul>
+                                                <div class="post-content">
+                                                    <h2><?php echo $row->title; ?></h2>
+                                                    <div class="two-line-div">
+                                                        <p class="lead line-clamp line-clamp-2 two-line-div"><?php echo $shortdes=$row->description; ?>
+                                                        </p>
+                                                    </div>
+                                                    <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>" class="btn btn-filled mt-20 btn-info">Read more</a>
+                                                </div>
+                                            </div>
+                                            <!-- Post -->
+                                        </div>
+                                        <?php
+                                    }
+
+                                }
+
+                            }
+
+                            ?>
+
+                        </div>
+                </div>
+
             </div>
-            <div class="col-md-5">
-                <ol class="breadcrumb">
-                    <li><a href="<?php echo base_url('home');?>">Home Page</a></li>
-                    <li class="active">Blog List</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</div>
+        </div><!--container-->
+    </section>
 
-<div id="content">
-<section>
-
-		<div class="container">
-			<div class="row">
-
-			<div class="content col-lg-9 col-md-9">
-				<?php if(count($allblog)<=0){?>
-					<div class="alert alert-info">No Blogs</div>
-				 <?php }else{?>
-
-				 	<?php if(!empty($allblog)) {
-
-	                    foreach ($allblog as $row)
-	                  	 { ?>
-
-							<!-- Content -->
-								<div class="content col-lg-9 col-md-9">
-									<!-- Post -->
-									<div class="post">
-										<div class="post-image">
-											<img src="<?php echo base_url() . 'assets/file/blog/' .$row->primary_image; ?>" alt="">
-										</div>
-										<ul class="post-meta">
-											<li><span>Added:</span><?php echo date("d-m-Y", strtotime($row->date)); ?></li>
-											<li><span>Author:</span><a href="#">Admin</a></li>
-											<li><span>Tags:</span><a href="#"><?php echo $row->tag;?></a>, <a href="#"></a></li>
-										</ul>
-										<div class="post-content">
-											<h2><?php echo $row->title; ?></h2>
-											<div class="two-line-div">
-											<p class="lead line-clamp line-clamp-2 two-line-div"><?php echo $shortdes=$row->description; ?>
-											</p>
-											</div>
-											<a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>" class="btn btn-filled mt-20 btn-info">Read more</a>
-										</div>
-									</div>
-									<!-- Post -->
-								</div>
-								<?php
-							}
-
-						}
-
-					}
-
-			 ?>
-
-			</div>
-
-			<div class="sidebar col-md-3">
-
-					<!-- Widget - Search -->
-					<div class="widget widget-search">
-						<h6 class="text-uppercase text-muted">Search</h6>
-						<form id="search-widget-form" class="validate-form" novalidate="novalidate">
-							<div id="js_personal_table_filter" class="form-group inner-button">
-								<input type="search" class="form-control input-2 input-sm" required="" placeholder aria-required="js_personal_table">
-								<button type="submit"><i class="ti-search"></i></button>
-							</div>
-						</form>
-					</div>
+</main>
 
 
-					<!-- Widget - Recent posts -->
-					<div class="widget widget-recent-posts">
-						<h6 class="text-uppercase text-muted">Recent Posts</h6>
-						<ul class="list-posts">
-							<li>
-								<a href="#">Crazy developer ideas on 2016</a>
-								<span class="date">February 14, 2015</span>
-							</li>
-							<li>
-								<a href="#">Our road trip to London!</a>
-								<span class="date">February 14, 2015</span>
-							</li>
-							<li>
-								<a href="#">New iOS design concept</a>
-								<span class="date">February 14, 2015</span>
-							</li>
-						</ul>
-					</div>
-
-					<!-- Widget - Twitter -->
-					<div class="widget widget-twitter">
-						<h6 class="text-uppercase text-muted">Latest Tweets</h6>
-						<div class="twitter-feed" data-count="2"><span>Loading...</span></div>
-					</div>
-
-					<h6 class="text-uppercase text-muted">News Feeds</h6>
-				<?php if(count($hello)<=0){?>
-					<div class="alert alert-info">No News Feeds</div>
-				 <?php }else{?>
-
-				 <?php if(!empty($hello)) {
-
-	                    foreach ($hello as $row)
-	                  	 { ?>
-
-		                  	<div class="widget widget-recent-posts">
-
-								<ul class="list-posts">
-									<li>
-										<a href="<?php echo $row['link'];?>"><?php echo $row['title'];?></a>
-										<span class="date"><?php echo $row['pubDate'];?></span>
-									</li>
-									<li>
-
-										<span class="date"><a href="<?php echo $row['link'];?>"><?php echo $row['link'];?></a></span>
-									</li>
-									<li>
-
-										<span class="date"><?php echo $row['description'];?></span>
-									</li>
-								</ul>
-							</div>
-						<?php
-							}
-						}
-					}
-						?>
-
-				</div>
 
 
-				
-			</div>
 
 
-		</div>
-
-	</section>
-
-</div>
 
 
 

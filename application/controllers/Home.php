@@ -24,9 +24,6 @@ class Home extends CI_Controller {
         $data['hello'] = $this->rssparser->set_feed_url('http://rss.medicalnewstoday.com/featurednews.xml')->set_cache_life(30)->getFeed(12);
 
 
-        //$this->load->view('header', $data);
-       /// $this->load->view('home',$data);
-        //$this->load->view('footer');
         $this->load->view('header_guest_home');
         $this->load->view('home',$data);
         $this->load->view('foother_guest',$data);

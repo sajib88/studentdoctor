@@ -1,102 +1,124 @@
-<!--breadcrumbs start-->
-<!-- Page Title -->
-<div id="page-title" class="page-title page-title-1 bg-secondary dark">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h1><i class="ti-layout-menu"></i>Login</h1>
-            </div>
-            <div class="col-md-6">
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home Page</a></li>
-                    <li class="active">Login</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</div>
-    <!--breadcrumbs end-->
-<section class="section-double right">
 
-		<div class="col-md-6 content">
-			<?php if (!empty($error)) {
-                            showErrorMessage($error);
-                        } else {
-                            if ($this->session->flashdata('success')) {
-                                showSuccessMessage();
+    <main class="main-wrapper">
+
+
+        <section class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 pdl">
+                        <div class="tab-wrapper row">
+
+                            <!--container start-->
+                            <?php
+                            if (!empty($error)) {
+                                showErrorMessage($error);
+                            } else {
+                                if ($this->session->flashdata('success')) {
+                                    showSuccessMessage();
+                                }
                             }
-                        }
-                        ?>
-			<div class="col-md-12">
-					<div class="bordered-box rounded " data-animation="fadeInDown">
-						<h2>Log in!</h2>
-                        <?php echo $this->session->flashdata('msg');?>
-						
-<form id="login-form" class=" text-center mb-30" method="post" action="<?php echo base_url('home/login'); ?>" role="form"> 
+                            ?>
+                            <div class="login-bg">
+                                <div class="container col-md-4 col-md-offset-4">
 
-							<div class="form-group mb-10">
-								<label for="login">Login:</label>
-								<input id="login" name="email"  placeholder="Email ID / User Name" type="text" class="form-control input-2">
-							</div>
-							<div class="form-group mb-10">
-								<label for="password">Password:</label>
-								<input id="password" name="password"  class="form-control input-2"  placeholder="Password" type="password" >
-							</div>
-							
-                        <input type="submit" class="btn btn-filled btn-primary btn-block" name="submit" value="Login" >
+                                    <div class="form-wrapper">
+                                        <form class="form-signin wow fadeInUp" method="post" action="<?php echo base_url('home/login'); ?>" role="form">
 
-						</form>
-                        <a href="<?php echo base_url('home/newaccount/fb');?>" class="btn btn-filled btn-info btn-block"><i class="fa fa-facebook"></i> &nbsp; Login with Facebook</a>
-                        <a href="<?php echo base_url('home/newaccount/google_plus');?>" class="btn btn-filled btn-danger btn-block"><i class="fa fa-google-plus"></i> &nbsp; Login with Google</a>
+                                            <div class="login-wrap">
+                                                <fieldset>
+                                                    <div class="form-group mb-10">
+                                                        <a href="<?php echo base_url('home/newaccount/fb');?>" class="btn btn-small btn-block btn-fb"><i class="pull-cnter fa fa-facebook"></i>&nbsp &nbsp Facebook Login</a>
+                                                        </br> </br>
+                                                        <a href="<?php echo base_url('home/newaccount/google_plus');?>" class="btn btn-filled btn-danger btn-block"><i class="fa fa-google-plus"></i> &nbsp; Login with Google</a>
+                                                        </br> </br>
+                                                        <div class="hr-text">
+                                                            <hr>
+                                                            <span>or</span>
+                                                        </div>
+                                                    </div>
 
-						<a data-toggle="modal" href="<?php echo base_url('home/forgotpassword')?>" class="link-underline">Forgot my password</a>
-					</div>
-				</div>
-            
-            
-		</div>
-		<div class="col-md-6 image">
-			<div class="bg-image"><img src="<?php echo base_url(); ?>front/img/photos/loginbg.jpg" alt=""></div>
-		</div>
-		
-	</section>
+                                                    <div class="form-group mb-10">
+                                                        <label for="login">Email or Username</label>
+                                                        <input type="text" class="form-control" name="email" type="email" placeholder="Email  / User Name" autofocus>
 
-	<!-- Section -->
-	
+                                                    </div>
 
+                                                    <div class="form-group mb-10">
+                                                        <label for="login">Password</label>
+                                                        <input type="password" class="form-control"   name="password" placeholder="Password" type="password" value="">
 
-<!-- Content / End -->
- <!-- Modal -->
-              <div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                  <div class="modal-dialog">
-
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                  <h4 class="modal-title">Forgot Password ?</h4>
-                              </div>
-                              <form id="js_form_id" method="post" action="<?php echo base_url('home/recoverpassword')?>" >
-                                  <div class="modal-body">
-                                      <p>Enter your e-mail address below to reset your password.</p>
-                                      <input type="text" name="user_email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                                      <button class="btn btn-success" type="button">Submit</button>
-                                  </div>
-                              </form>
-
-                          </div>
-
-                  </div>
-              </div>
-              <!-- modal -->
-        
-         <!--container start-->
+                                                    </div>
 
 
 
-     
-  
+                                                    <div class="form-group mb-10 pull-right">
+
+                                                        <input type="checkbox" value="remember-me"> Remember me
+                                                    </div>
+                                                    <div class=" form-group mb-10 pull-left">
+                                                        <a data-toggle="modal" href="<?php echo base_url('home/forgotpassword'); ?>"> Forgot Password?</a>
+
+                                                    </div>
 
 
+                                                    <input type="submit" class="btn btn-mid btn-primary btn-block" name="submit" value="Login" >
+
+                                                </fieldset>
+
+                                                <br>
+
+
+
+
+
+                                                <div class="registration form-group mb-10 ">
+                                                    Don't have an account yet?
+                                                    <a class="" href="<?php echo base_url('home/registration'); ?>">
+                                                        Create an account
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                        <!-- Modal -->
+                                        <div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                                            <form method="post" action="#" role="form">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            <h4 class="modal-title">Forgot Password ?</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Enter your e-mail address below to reset your password.</p>
+                                                            <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                                                            <button class="btn btn-success" type="button">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- modal -->
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!--container end-->
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div><!--container-->
+        </section>
+
+    </main>

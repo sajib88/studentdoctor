@@ -55,7 +55,7 @@ class DocController extends CI_Controller
 
             //$data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $resultuserid));
            // print_r($user_info);
-            $this->load->view('header_guest');
+            $this->load->view('header_guest_home');
             $this->load->view('doctor/search_view',$result);
             $this->load->view('foother_guest.php');
 
@@ -72,7 +72,7 @@ class DocController extends CI_Controller
             $data['table1'] = 'users';
             $data['table2'] = 'public_website';
 
-            $result['searchData'] = $this->global_model->details_data($data);
+         $result['searchData'] = $this->global_model->details_data($data);
          $resultuserid = $data['getid'] = $id = $this->uri->segment('4');
 
         $result['video'] = $this->global_model->get('video', array('created_by' => $resultuserid, 'ref_name' => 'public_web'));
@@ -81,7 +81,7 @@ class DocController extends CI_Controller
         $result['audio'] = $this->global_model->get('audio', array('ref_id' => $resultuserid, 'ref_name' => 'public_web'));
 
 
-            $this->load->view('header_guest');
+            $this->load->view('header_guest_home');
             $this->load->view('doctor/search_details',$result);
             $this->load->view('foother_guest.php');
 

@@ -1,6 +1,6 @@
 
 
-<!-- Content -->
+
 <div id="content">
 
 	<!-- Section -->
@@ -10,22 +10,25 @@
 
                 foreach ($searchData as $row) {
                     ?>
-	<section class="section-xs">
+	<section class="section-xs content-wrapper">
 		<div class="container">
 			<div class="row v-center-items first-col-title  first-col-title">
-				
-                
+
+
                  <div class="thumbnail col-md-3">
                                     <figure>
                                         <img class="group list-group-image doc-img animate attachment-gallery-post-single" src="<?php echo (!empty($row->photo))? base_url().'assets/file/'.$row->photo:'';?><?php echo (empty($row->photo))? base_url().'assets/user-demo.png':'';?>" alt="" />
                                     </figure>
                                 </div>
-                
-                
+
+
 				<div class="col-md-9">
-					<h2><?php echo (!empty($row->first_name) or (!empty($row->last_name)))?$row->first_name.'-'.$row->last_name: '' ?></h2>
+
 					<div class="row">
-						<div class="col-sm-4">
+                        <div class="col-sm-12">
+                        <h2><?php echo (!empty($row->first_name) or (!empty($row->last_name)))?$row->first_name.' '.$row->last_name: '' ?></h2>
+                        </div>
+                            <div class="col-sm-4">
 							<dl class="description-2">
 								<dt>Profession</dt>
 								<dd><?php echo getProfessionById($row->profession) ?></dd>
@@ -53,7 +56,7 @@
 					<div class="row">
 						<div class="col-sm-4"><a href="#" class="btn btn-primary btn-filled btn-block">Contact Now</a></div>
 						<div class="col-sm-4">
-                        <a href="#bussiness" class="btn btn-filled btn-white btn-block">Business Information<i class="i-after ti-arrow-down"></i></a>
+                            <a data-toggle="modal" href="#myModal"  class="btn btn-filled btn-warning btn-block">Appointment Booking</a>
                         </div>
 					</div>
 				</div>
@@ -62,39 +65,47 @@
         
 	</section>
 
-    
-    
-	<!-- Section -->
-	<section class="section bg-grey pb-50">
-		<div class="container">
-			<div class="row first-col-title">
-				<div class="col-md-3 text-right">
-					<h5 class="text-uppercase mb-40">Appointment  &amp; Shedule</h5>
-				</div>
-				<div class="col-md-9">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="event">
-								<div class="date"><?php echo date('F d, Y', strtotime(!(empty($row->start_date)) ? $row->start_date : '')); ?> - <?php echo (!(empty($row->start_time)) ? $row->start_time : '') ?></div>
-								<h5 class="mb-0">Start  Date &amp; Time</h5>
-								
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="event">
-								<div class="date"><?php echo date('F d, Y', strtotime(!(empty($row->end_date)) ? $row->end_date : '')); ?> - <?php echo (!(empty($row->end_time)) ? $row->end_time : '') ?></div>
-								<h5 class="mb-0">End  Date &amp; Time</h5>
-								
-							</div>
-						</div>
-					</div>
-					<hr class="sep-line mb-40 hidden-xs">
-					<a data-toggle="modal" href="#myModal"  class="btn btn-filled btn-warning">Appointment Booking</a>
+                    <section class="section bg-grey ptop-30 bg-primary dark pb-50">
+                        <div class="container">
+                            <div class="row first-col-title">
+                                <div class="col-md-4 text-left">
+                                    <h3 class="text-uppercase mb-40">Appointment Time</h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="event">
+                                                <h5 class="mb-0">Start  Date &amp; Time</h5>
+                                                <div class="date"><?php echo date('d-m-y', strtotime(!(empty($row->start_date)) ? $row->start_date : '')); ?> - <?php echo (!(empty($row->start_time)) ? $row->start_time : '') ?></div>
 
-				</div>
-			</div>
-		</div>
-	</section>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="event">
+                                                <h5 class="mb-0">End  Date &amp; Time</h5>
+                                                <div class="date"><?php echo date('d-m-y', strtotime(!(empty($row->end_date)) ? $row->end_date : '')); ?> - <?php echo (!(empty($row->end_time)) ? $row->end_time : '') ?></div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="sep-line mb-40 hidden-xs">
+
+                                    <div class="ptop-30"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+
+    
+    
+
+
+
+
 
 
                     <!-- Modal -->
@@ -173,15 +184,15 @@
     
 	<section id="bussiness">
 		<div class="container">
-			<div class="row">
-               
-				<div class="col-lg-10 col-lg-push-1">
 
-					<h3 class="text-center">Information</h3>
-					
+
+
+
+            <div class="ptop-30 "></div>
 
 					<div class="row">
-						<div class="col-sm-4">
+
+                        <div class="col-sm-4">
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs nav-stacked mb-30" role="tablist">
 								<li class="active"><a href="#description_2" role="tab" data-toggle="tab">Business Information </a></li>
@@ -192,6 +203,7 @@
                                 <li><a href="#reviews_5" role="tab" data-toggle="tab">Media All Documents</a></li>
 							</ul>
 						</div>
+
 						<div class="col-sm-8">
 							<!-- Tab panes -->
 							<div class="tab-content">
@@ -364,14 +376,14 @@
                                                
                                                 <h3 class="box-title"> <i class="fa fa-file-word-o"></i> Document Attachment</h3>
                                             </div>
-                                            <div class="box-body btn btn-primary btn-filled btn-block">
+                                            <div class="box-body btn   btn-yellow btn-filled btn-block">
 
                                                 <?php
                                                 if (is_array($files) && !empty($files)) {
                                                     $i = 1;
                                                     foreach ($files as $row) {
                                                         ?>
-                                                        <a href="<?php echo base_url() . '/assets/file/publicweb/' . $row->name; ?>">Download File  <?php echo $i; //echo!empty($row->name) ? $row->name : ''   ?></a><br/>
+                                                        <a class="" href="<?php echo base_url() . '/assets/file/publicweb/' . $row->name; ?>">Download File  <?php echo $i; //echo!empty($row->name) ? $row->name : ''   ?></a><br/>
                                                         <?php
                                                         $i++;
                                                     }
@@ -394,8 +406,7 @@
 						</div>
 					</div>
 
-				</div>
-			</div>
+<div class="ptop-30 "></div>
 		</div>
 	</section>
 
@@ -404,57 +415,15 @@
 
 
 	<!-- Section -->
-	<section class="section bg-primary dark pb-50">
-		<div class="container">
-			<div class="row first-col-title">
-				<div class="col-md-3 text-right">
-					<h5 class="text-uppercase mb-40">Description</h5>
-				</div>
-				<div class="col-md-9">
-					<div class="row">
-						<div class="col-sm-12">
-                             <?php
-    
-            if(!empty($searchData)) {
+	
 
-                foreach ($searchData as $row) {
-                    ?>
-							<div class="testimonial testimonial-1">
-								<div class="quote">
-                                    <?php echo (!(empty($row->description)) ? $row->description : '') ?>
-									
-								</div>
-								
-							</div>
-                            
-                              <?php }
-            }else{?>
-                
-            <?php }?>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- Section -->
 
-	<!-- Section -->
-	<section class="bg-secondary dark text-center border-bottom">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-lg-push-3">
-					<h2>Whould like to Contact this Proffesional ?</h2>
-					<div class="row">
-						<div class="col-sm-12"><a href="#" class="btn btn-primary btn-filled btn-block">Contact Now</a></div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+
 
 </div>
+
+
 
 
 <!-- //The Team -->
@@ -476,6 +445,20 @@
 
 
 <style>
+    .nav-stacked li{
+        color: #fff;
+        cursor: default;
+        background-color: #265a88;
+        border: 1px solid #ddd;
+    }
+
+    .nav-stacked li a{
+        color: #fff;
+
+    }
+
+    .nav-tabs > li > a {margin-right:0px;border-radius:0px;}
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{border:none;}
     .glyphicon { margin-right:5px; }
     .thumbnail
     {
@@ -485,7 +468,7 @@
         margin-bottom: 20px;
         padding: 20px 0 0;
     }
-    figure { margin: 1em 40px;}
+    figure { margin: 1px 1px; text-align: center;}
     .item.list-group-item
     {
         float: none;
@@ -538,6 +521,9 @@
         margin: 0 0 11px;
     }
 
+
+
+
 </style>
 <?php $userid=$this->uri->segment('4')?>
 
@@ -569,7 +555,10 @@
         });
 
     });
+
 </script>
+
+
 
 
 

@@ -1,295 +1,307 @@
+<style>
 
+    .btn-cust{
+        width: 95%;
+    }
+    .professionView{
+        margin: 15px 0px -7px 0px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .professionView{
+
+        }
+        .professionView label h4{
+            margin-top: 0px;
+        }
+    }
+
+    .professionView label h4{
+        margin-top: 5px;
+        margin-left: 15px;
+    }
+</style>
 <div class="content-wrapper">
 
 <section class="content-header">
     <h1>
-        Products
-        <small>Create</small>
+        <i class="glyphicon glyphicon-tags"></i>  &nbsp;New Product
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li class="active">Create</li>
-    </ol>
 </section>
-
-<?php if($this->session->flashdata('message')){ ?>
-    <div class="col-lg-10">
-        <div class="alert alert-success alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Success! New product  Add successfully.</strong>
-        </div>
-    </div>
-<?php } ?>
 
 <section class="content">
 <div class="row">
-<div class="col-lg-7">
-<div class="box box-primary">
-<div class="panel-body">
-<div class="row">
-<div class="col-lg-12">
-<form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('product/products/add'); ?>">
-<input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
-<div class="col-lg-12">
-    <div class="form-group">
-        <?php $v = (set_value('name')!='')?set_value('name'):'';?>
-        <label>Product Name<span class="error">*</span></label>
-        <input name="name" type="text" id="name" placeholder="Name" value="<?php echo $v?>"  class="form-control">
-        <?php echo form_error('name');?>
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <?php $v = (set_value('description')!='')?set_value('description'):'';?>
-        <label>Description<span class="error">*</span></label>
-        <textarea  name="description" class="form-control"><?php echo $v?></textarea>
-        <?php echo form_error('description');?>
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Type<span class="error">*</span></label><span id='type-error' class='error' for='type'></span>
-
-        <?php $types = array('For Sales','Exchange','Free','Urgent');?>
-        <select name="type" class="form-control chosen-select" id="type">
-            <option value="">Select Type</option>
-            <?php foreach ($types as $row) {?>
-                <option value="<?php echo $row;?>"><?php echo $row?></option>
-            <?php }?>
-        </select>
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Price<span class="error">*</span></label><span id='price-error' class='error' for='price'></span>
-        <input type="number" name="price"  class="form-control" id="price">
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Special Price<span class="error">*</span></label><span id='special-price-error' class='error' for='special_price'></span>
-        <input type="number" name="special_price"  class="form-control"  id="special_price">
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Country<span class="error">*</span></label>
-        <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
-            <option value="">Select</option>
-            <?php
-            if (is_array($countries)) {
-                foreach ($countries as $country) {
-                    $sel = ($country->id == set_value('country'))?'selected="selected"':'';
-                    ?>
-                    <option  value="<?php echo $country->id; ?>" <?php echo $sel;?> ><?php echo $country->name; ?></option>
-                <?php
-                }
-            }
-            ?>
-        </select>
-        <?php echo form_error('country');?>
-    </div>
-</div>
-<div class="col-lg-12">
-    <div id="result">
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>City</label>
-        <input name="city" value="<?php echo '';?>" id="city" class="form-control">
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>zip</label>
-        <input name="zip" value="<?php echo ''; ?>"  class="form-control">
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Seller Address 1</label>
-        <input name="seller_address1" value="<?php echo '';?>"  class="form-control">
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Seller Address 2</label>
-        <input name="seller_address2" value="<?php echo ''; ?>"  class="form-control">
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Seller Name</label>
-        <input name="seller_name" value="<?php echo '';?>" class="form-control" >
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Seller Email</label>
-        <input name="seller_email" value="<?php echo '';?>" class="form-control" >
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Seller Website</label>
-        <input name="seller_website" value="<?php echo '';?>" class="form-control" >
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Seller Phone</label>
-        <input name="seller_phone" type="tel" value="<?php echo '';?>" class="form-control" >
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Seller Fax</label>
-        <input name="seller_fax" value="<?php echo ''; ?>" class="form-control">
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Profession<span class="error">*</span></label><span id='profession_view-error' class='error' for='profession_view'></span>
-        <select multiple name="profession_view[]" class="selectpicker form-control">
-            <option value="">All Profession</option>
-            <?php
-            if (is_array($profession)) {
-                foreach ($profession as $row) {
-                    ?>
-                    <option  value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
-                <?php
-                }
-            }
-            ?>
-        </select>
-    </div>
-
-</div>
-<div class="col-lg-12">
-    <div class="form-group" id="photo_id">
-        <label>Picture One<span class="error">*</span></label><span id='picture1-error' class='error' for='picture1'></span>
-        <input class="btn btn-default" name="photo_primary" type="file">
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
-        <input class="btn btn-default" name="photo_2" type="file">
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
-        <input class="btn btn-default" name="photo_3" type="file">
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group" id="primary_file_id">
-        <label>File One<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
-        <input class="btn btn-default" name="primary_file" type="file">
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group" id="file_2">
-        <label>File Two<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
-        <input class="btn btn-default" name="file_2" type="file">
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Primary Sound</label><span id='primary_audio-error' class='error' for='audio'></span>
-        <input class="btn btn-default" name="primary_sound" type="file">
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
-        <input class="btn btn-default" name="sound1" type="file">
-    </div>
-</div>
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Primary Videos</label><span id='primary_video-error' class='error' for='primary_video'></span>
-        <input class="btn btn-default" name="primary_video" type="file">
-    </div>
-</div>
-
-<div class="col-lg-12">
-    <div class="form-group">
-        <label>Videos1</label><span id='video1-error' class='error' for='video1_video'></span>
-        <input class="btn btn-default" name="video1" type="file">
-    </div>
-</div>
-
-
-
-<div class="col-lg-12">
-    <input type="submit" name="submit" class="btn btn-info" value="Save">
-    <?php echo anchor('profile/dashboard',"Cancel",array('class' => 'btn btn-danger'));?>
-</div>
-
-
-
-
-</form>
-
-</div>
-</div>
-<!-- /.row (nested) -->
-</div>
-<!-- /.panel-body -->
-</div>
-<!-- /.panel -->
-</div>
-<div class="col-md-5 col-sm-6 col-xs-12">
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <i class="fa fa-bullhorn"></i>
-
-            <h3 class="box-title">Products Help</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-            <div class="callout bg-purple-active">
-
-
-                <p>
-                <ul>
-                    <li>Get FREE products from brands sampling to professionals</li>
-
-                    <li>Enjoy remarkable discounts, special offers and coupons on a variety of products</li>
-
-                    <li>Easily find products using our quick search feature</li>
-
-                    <li>Easily find products using our quick search feature</li>
-
-                    <li>View newly posted, Free, Discounted, Coupon, or retail priced products</li>
-
-
-                </ul>
-                </p>
+    <?php if($this->session->flashdata('message')){ ?>
+        <div class="col-lg-12">
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success! New product  Add successfully.</strong>
             </div>
-            <div class="callout callout-info">
-                <h4>More Help </h4>
+        </div>
+    <?php } ?>
 
-                <p>Contact Us : <b> info@foralldoctors.com</b> </p>
+    <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('product/products/add'); ?>">
+        <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
+
+        <div class="col-md-6 ">
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Product Info</h3></i>
+                    </div>
+                    <div class="padd">
+                        <div class="form-group">
+                            <?php $v = (set_value('name')!='')?set_value('name'):'';?>
+                            <label>Product Name<span class="error">*</span></label>
+                            <input name="name" type="text" id="name" placeholder="Name" value="<?php echo $v?>"  class="form-control">
+                            <?php echo form_error('name');?>
+                        </div>
+                        <div class="form-group">
+                            <label>Type<span class="error">*</span></label><span id='type-error' class='error' for='type'></span>
+                            <?php $types = array('For Sales','Exchange','Free','Urgent');?>
+                            <select name="type" class="form-control chosen-select" id="type">
+                                <option value="">Select Type</option>
+                                <?php foreach ($types as $row) {?>
+                                    <option value="<?php echo $row;?>"><?php echo $row?></option>
+                                <?php }?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <?php $v = (set_value('description')!='')?set_value('description'):'';?>
+                            <label>Description<span class="error">*</span></label>
+                            <textarea  name="description" class="form-control"><?php echo $v?></textarea>
+                            <?php echo form_error('description');?>
+                        </div>
+                        <div class="form-group">
+                            <label>Price<span class="error">*</span></label><span id='price-error' class='error' for='price'></span>
+                            <input type="number" name="price"  class="form-control" id="price">
+                        </div>
+                        <div class="form-group">
+                            <label>Special Price<span class="error">*</span></label><span id='special-price-error' class='error' for='special_price'></span>
+                            <input type="number" name="special_price"  class="form-control"  id="special_price">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Seller Info</h3></i>
+                    </div>
+                    <div class="padd">
+                        <div class="form-group">
+                            <label>Seller Name</label>
+                            <input name="seller_name" value="<?php echo '';?>" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label>Seller Email</label>
+                            <input name="seller_email" value="<?php echo '';?>" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label>Seller Phone</label>
+                            <input name="seller_phone" type="tel" value="<?php echo '';?>" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label>Seller Website</label>
+                            <input name="seller_website" value="<?php echo '';?>" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label>Seller Fax</label>
+                            <input name="seller_fax" value="<?php echo ''; ?>" class="form-control">
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
-        <!-- /.box-body -->
-    </div>
-</div>
+        <div class="col-md-6">
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-map-marker"></i>
+                        <h3 class="box-title">Product Location</h3></i>
+                    </div>
+                    <div class="padd">
+                        <div class="form-group">
+                            <label>Country<span class="error">*</span></label>
+                            <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
+                                <option value="">Select</option>
+                                <?php
+                                if (is_array($countries)) {
+                                    foreach ($countries as $country) {
+                                        $sel = ($country->id == set_value('country'))?'selected="selected"':'';
+                                        ?>
+                                        <option  value="<?php echo $country->id; ?>" <?php echo $sel;?> ><?php echo $country->name; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                            <?php echo form_error('country');?>
+                        </div>
+                        <div class="form-group">
+                            <div id="result">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input name="city" value="<?php echo '';?>" id="city" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>zip</label>
+                            <input name="zip" value="<?php echo ''; ?>"  class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-map-marker"></i>
+                        <h3 class="box-title">Seller Location</h3></i>
+                    </div>
+                    <div class="padd">
+                        <div class="form-group">
+                            <label>Seller Address 1</label>
+                            <input name="seller_address1" value="<?php echo '';?>"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Seller Address 2</label>
+                            <input name="seller_address2" value="<?php echo ''; ?>"  class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 no-padding">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <i class="fa fa-file"></i>
+                        <h3 class="box-title">Media</h3></i>
+                    </div>
+                    <div class="padd">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" id="photo_id">
+                                    <label>Picture One<span class="error">*</span></label><span id='picture1-error' class='error' for='picture1'></span>
+                                    <input class="btn btn-default btn-cust" name="photo_primary" type="file">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
+                                    <input class="btn btn-default btn-cust" name="photo_2" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
+                                    <input class="btn btn-default btn-cust" name="photo_3" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" id="primary_file_id">
+                                    <label>File One<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
+                                    <input class="btn btn-default btn-cust" name="primary_file" type="file">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" id="file_2">
+                                    <label>File Two<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
+                                    <input class="btn btn-default btn-cust" name="file_2" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Primary Sound</label><span id='primary_audio-error' class='error' for='audio'></span>
+                                    <input class="btn btn-default btn-cust" name="primary_sound" type="file">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
+                                    <input class="btn btn-default btn-cust" name="sound1" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Primary Videos</label><span id='primary_video-error' class='error' for='primary_video'></span>
+                                    <input class="btn btn-default btn-cust" name="primary_video" type="file">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Videos1</label><span id='video1-error' class='error' for='video1_video'></span>
+                                    <input class="btn btn-default btn-cust" name="video1" type="file">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- /.box-header -->
+                <div class="">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-lg-12 professionView">
+                                <div class="col-lg-6">
+                                    <label><h4>Who can see this?</h4></label>
+                                </div>
+                                <div class="col-lg-6 ">
+                                    <div class="form-group">
+                                        <select multiple name="profession_view[]" class="selectpicker form-control">
+                                            <?php
+                                            if (is_array($profession)) {
+                                                foreach ($profession as $row) {
+                                                    ?>
+                                                    <option  value="<?php echo $row->id; ?>"><?php echo $row->name ; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-6">
+                                    <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
+                                </div>
+                                <div class="col-lg-6 ">
+                                    <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
+                                        <i class="fa fa-check"></i> &nbsp; &nbsp; Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
 </div>
 </section>

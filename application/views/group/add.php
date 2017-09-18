@@ -1,120 +1,173 @@
+<style>
+    .btn-cust{
+        width: 95%;
+    }
+    .professionView{
+        margin: 15px 0px -7px 0px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .professionView{
+
+        }
+        .professionView label h4{
+            margin-top: 0px;
+        }
+    }
+
+    .professionView label h4{
+        margin-top: 5px;
+        margin-left: 15px;
+    }
+</style>
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
-            Group
-            <small>Create New Group</small>
+        <h1><i class="fa fa-group"></i>
+            New Group
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Group</a></li>
-            <li class="active">Create</li>
-        </ol>
     </section>
 
     <section class="content">
     <div class="row">
         <?php if($this->session->flashdata('message')){ ?>
             <div class="col-lg-12">
-                <div class="alert alert-info alert-dismissible">
+                <div class="alert alert-success alert-dismissible">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <strong> 1 New ! Group  Create successfully.</strong>
                 </div>
             </div>
-        <?php } ?>
-        <div class="col-lg-12">
-            <div class="box box-primary">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('group/group/index'); ?>">
-                                <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Group Name<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
-                                        <input name="group_name" value="<?php echo ''; ?>"  class="form-control">
-                                    </div>
-                                </div>
+        <?php } $this->session->unset_userdata('message') ?>
+        <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('group/group/index'); ?>">
+            <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
+            <div class="col-md-6 ">
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-th"></i>
+                            <h3 class="box-title">Group Info</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="form-group">
+                                <label>Group Name<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
+                                <input name="group_name" value="<?php echo ''; ?>"  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Group Category <span class="error">*</span></label><span id='category' class='error' for='main_category'></span>
+                                <select onchange="getSubCat(this)" name="category" class="form-control">
+                                    <option value="">Select Group Category</option>
 
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Group Description<span class="error">*</span></label><span id='Description' class='error' for='description'></span>
-                                        <textarea  name="description" class="form-control"></textarea>
-                                    </div>
-                                </div>
+                                    <option value="Chiropractor">Chiropractor</option>
+                                    <option value="Dentist">Dentist</option>
+                                    <option value="General">General</option>
+                                    <option value="Optometrist">Optometrist</option>
+                                    <option value="Ph.D">Ph.D</option>
+                                    <option value="Pharmacist">Pharmacist</option>
+                                    <option value="Physician">Physician</option>
+                                    <option value="Podiatrist">Podiatrist</option>
+                                    <option value="Professional">Professional</option>
 
-
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Group Category <span class="error">*</span></label><span id='category' class='error' for='main_category'></span>
-                                        <select onchange="getSubCat(this)" name="category" class="form-control">
-                                        <option value="">Select Group Category</option>
-
-                                            <option value="Chiropractor">Chiropractor</option>
-                                            <option value="Dentist">Dentist</option>
-                                            <option value="General">General</option>
-                                            <option value="Optometrist">Optometrist</option>
-                                            <option value="Ph.D">Ph.D</option>
-                                            <option value="Pharmacist">Pharmacist</option>
-                                            <option value="Physician">Physician</option>
-                                            <option value="Podiatrist">Podiatrist</option>
-                                            <option value="Professional">Professional</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Group Discussion<span class="error">*</span></label><span id='discussion' class='error' for='discussion'></span>
-                                        <textarea  name="discussion" class="form-control"></textarea>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Group Start Date<span class="error">*</span></label><span  class='error' for='start_date'></span>
-                                        <input name="create_date" type="text" class="form-control pull-right" id="datepicker">
-                                    </div>
-                                </div>
-
-
-                                <div class="col-lg-12">
-                                <div class="form-group" id="photo_id">
-                                    <label>Picture One<span class="error">*</span></label><span  class='error' for='picture1'></span>
-                                    <input class="btn btn-default" id='primary_image' name="primary_image" type="file">
-                                </div>
-                                </div>
-                                <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
-                                    <input class="btn btn-default" name="photo_2" type="file">
-                                </div>
-                                </div>
-                                <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="submit" name="submit" class="btn btn-block btn-success" value="Save">
-
-                                </div>
-                                </div>
-
-
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Group Description<span class="error">*</span></label><span id='Description' class='error' for='description'></span>
+                                <textarea  name="description" class="form-control" minlength=150></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Group Discussion<span class="error">*</span></label><span id='discussion' class='error' for='discussion'></span>
+                                <textarea  name="discussion" class="form-control"></textarea>
+                            </div>
                         </div>
                     </div>
-                    <!-- /.row (nested) -->
                 </div>
-                <!-- /.panel-body -->
             </div>
-            <!-- /.panel -->
-        </div>
-
-
-
-
-
-        </section>
+            <div class="col-md-6 ">
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-calendar"></i>
+                            <h3 class="box-title">Group Start Date</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="form-group">
+                                <label>Group Start Date<span class="error">*</span></label><span  class='error' for='start_date'></span>
+                                <input name="create_date" type="text" class="form-control " id="datepicker">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-file"></i>
+                            <h3 class="box-title">Media</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="form-group" id="photo_id">
+                                <label>Picture One<span class="error">*</span></label><span  class='error' for='picture1'></span>
+                                <input class="btn btn-default" id='primary_image' name="primary_image" type="file">
+                            </div>
+                            <div class="form-group">
+                                <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
+                                <input class="btn btn-default" name="image_2" type="file">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-lg-12 professionView">
+                                    <div class="col-lg-6">
+                                        <label><h4>Who can see this?</h4></label>
+                                    </div>
+                                    <div class="col-lg-6 ">
+                                        <div class="form-group">
+                                            <select multiple name="profession_view[]" class="selectpicker form-control">
+                                                <?php
+                                                if (is_array($profession)) {
+                                                    foreach ($profession as $row) {
+                                                        ?>
+                                                        <option  value="<?php echo $row->id; ?>"><?php echo $row->name ; ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
+                                    </div>
+                                    <div class="col-lg-6 ">
+                                        <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
+                                            <i class="fa fa-check"></i> &nbsp; &nbsp; Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
+        </section>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.container-fluid -->

@@ -1,58 +1,59 @@
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>
-            Group
-            <small>All Group</small>
+        <h1><i class="fa fa-group"></i>
+            All Group
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Group</a></li>
-            <li class="active">View All Event</li>
-        </ol>
     </section>
 
     <section class="content">
         <div class="row">
 
-
-
-            <?php if(is_array($viewallevent)): ?>
+            <?php if(!empty($viewallevent)){ ?>
                 <?php foreach($viewallevent as $row):?>
 
+                    <div class="col-lg-4 col-xs-12">
+                        <div class="box box-widget widget-user-2">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header ">
+                                <div class="widget-user-image text-center">
+                                    </br>
+                                    <img src="<?php echo base_url() . '/assets/file/group/' .$row['primary_image']; ?>" alt="" width="170" height="170" class="img-circle " />
 
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                            <h4 class="text-center"><span class="label label-info"><?php echo $row->group_name; ?></span></h4>
-                            <img src="<?php echo base_url() . '/assets/file/group/' .$row->primary_image; ?>" alt="event image"  class="img-responsive" width="240px" height=""/>
-                            <div class="caption">
-                                <div class="row">
-
-
-
-                                    <ul class="nav nav-stacked">
-                                        <li><a href="#">Group Category <span class="pull-right badge bg-blue"><?php echo $row->category; ?></span></a></li>
-                                        <li><a href="#">Group  Date <span class="pull-right badge bg-aqua"><?php echo $row->create_date; ?></span></a></li>
-
-                                    </ul>
-
+                                    </br>
                                 </div>
-                                <p><?php echo $row->description; ?></p>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Join Now</a>
-                                    </div>
+                                </br>
+                            </div>
+                            <div class="box-footer no-padding">
+                                <ul class="nav nav-stacked">
+                                    <li><a href="#">Group Name <span class="pull-right"><?php echo (!empty($row['group_name']))?$row['group_name']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#">Group Category <span class="pull-right"><?php echo (!empty($row['category']))?$row['category']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#">Group  Date<span class="pull-right"><?php echo (!empty($row['create_date']))?$row['create_date']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a><?php echo substr( $row['description'],0,90).'.....'; ?></a></li>
 
-                                </div>
+                                </ul>
+                            </div>
 
-                                <p> </p>
+                            <div class="box-footer">
+
+                                <a href="<?php //echo base_url('classifieds/classifieds/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-dropbox">Join Now</a>
+
                             </div>
                         </div>
                     </div>
 
 
 
+
+
                 <?php endforeach;?>
-            <?php endif; ?>
+            <?php }else{ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-warning text-center alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong> No Group Found <i class="fa fa-info"></i> </strong>
+                    </div>
+                </div>
+            <?php } ?>
 
 
         </div>

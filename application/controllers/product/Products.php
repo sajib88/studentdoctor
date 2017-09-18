@@ -67,34 +67,46 @@ class Products extends CI_Controller{
                 $save['seller_website'] = $postData['seller_website'];
                 $save['seller_phone'] = $postData['seller_phone'];
                 $save['seller_fax'] = $postData['seller_fax'];
-                $save['profession_view'] = implode(',', $postData['profession_view']);
                 $save['status'] = 1;
+                if(!empty($postData['profession_view'])){
+                    $save['profession_view'] = (!empty($postData['profession_view']))?implode(',', $postData['profession_view']):'';
+                }else{
+                    $save['profession_view'] = 0;
+                }
+                if (isset($_FILES["photo_primary"]["name"]) && $_FILES["photo_primary"]["name"] != '') {
+                    $this->PATH = './assets/file/product/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_primary'] = $this->resizeimg->image_upload('photo_primary', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
 
+                }if (isset($_FILES["photo_2"]["name"]) && $_FILES["photo_2"]["name"] != '') {
+                    $this->PATH = './assets/file/product/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
 
+                }if (isset($_FILES["photo_3"]["name"]) && $_FILES["photo_3"]["name"] != '') {
+                    $this->PATH = './assets/file/product/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }
 
                 //// (image upload funtion)
                 uploadProduct();
-                ///
-
-                //// PHOTO UPLOAD
-                if ($this->upload->do_upload('photo_primary')) {
-                    $fileInfo = $this->upload->data();
-                    $pic1['name'] = $fileInfo['file_name'];
-                    $save['photo_primary'] = $pic1['name'];
-                }
-
-                if ($this->upload->do_upload('photo_2')) {
-                    $fileInfo = $this->upload->data();
-                    $pic2['name'] = $fileInfo['file_name'];
-                    $save['photo_2'] = $pic2['name'];
-                }
-
-                if ($this->upload->do_upload('photo_3')) {
-                    $fileInfo = $this->upload->data();
-                    $pic3['name'] = $fileInfo['file_name'];
-                    $save['photo_3'] = $pic3['name'];
-                }
-
 
                 //// File UPLOAD
                 if ($this->upload->do_upload('primary_file')) {
@@ -204,31 +216,43 @@ class Products extends CI_Controller{
                 $save['seller_website'] = $postData['seller_website'];
                 $save['seller_phone'] = $postData['seller_phone'];
                 $save['seller_fax'] = $postData['seller_fax'];
+                $save['status'] = 1;
+                $save['profession_view'] = (!empty($postData['profession_view']))?implode(',', $postData['profession_view']):'';
 
+                if (isset($_FILES["photo_primary"]["name"]) && $_FILES["photo_primary"]["name"] != '') {
+                    $this->PATH = './assets/file/product/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_primary'] = $this->resizeimg->image_upload('photo_primary', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }if (isset($_FILES["photo_2"]["name"]) && $_FILES["photo_2"]["name"] != '') {
+                    $this->PATH = './assets/file/product/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }if (isset($_FILES["photo_3"]["name"]) && $_FILES["photo_3"]["name"] != '') {
+                    $this->PATH = './assets/file/product/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
+
+                }
 
                 //// (image upload funtion)
                 uploadProduct();
-                ///
-
-                //// PHOTO UPLOAD
-                if ($this->upload->do_upload('photo_primary')) {
-                    $fileInfo = $this->upload->data();
-                    $pic1['name'] = $fileInfo['file_name'];
-                    $save['photo_primary'] = $pic1['name'];
-                }
-
-                if ($this->upload->do_upload('photo_2')) {
-                    $fileInfo = $this->upload->data();
-                    $pic2['name'] = $fileInfo['file_name'];
-                    $save['photo_2'] = $pic2['name'];
-                }
-
-                if ($this->upload->do_upload('photo_3')) {
-                    $fileInfo = $this->upload->data();
-                    $pic3['name'] = $fileInfo['file_name'];
-                    $save['photo_3'] = $pic3['name'];
-                }
-
 
                 //// File UPLOAD
                 if ($this->upload->do_upload('primary_file')) {
@@ -268,16 +292,10 @@ class Products extends CI_Controller{
                     $save['video1'] = $video['name'];
                 }
 
-                $save['profession_view'] = implode(',', $postData['profession_view']);
-                $save['status'] = 1;
                 $id = $this->uri->segment('4');
 
-                /* echo $id;
-                 print '<pre>';
-                 print_r($save);die;*/
                 if ($this->global_model->update('product', $save, array('id' => $id))){
                     $this->session->set_flashdata('message', 'Edit Success');
-                    //redirect('profile/profile');
                 }
             }
         }
@@ -285,8 +303,12 @@ class Products extends CI_Controller{
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
-        $data['states'] = $this->global_model->get('states');
+
         $data['login_id'] = $loginId;
+
+        $tablename = 'product';
+        $data['states'] = getStatesByCountry($tablename,$id);
+        $data['states'] = $this->global_model->get('states');
 
 
         $loginId = $this->session->userdata('login_id');
@@ -337,7 +359,7 @@ class Products extends CI_Controller{
         $data['page_title'] = 'Add Product';
         $loginId = $this->session->userdata('login_id');
         $profession = $this->session->userdata('user_type');
-        $data['allproducts']  	 = $this->global_model->getProductByProfession($table,$profession);
+        $data['allproducts']  	 = $this->global_model->getViewByProfession($table,$profession);
 
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));       
         
@@ -376,9 +398,14 @@ class Products extends CI_Controller{
 
     }
 
-
-
-
+    public function getStateByAjax() {
+        $data = array();
+        $id = $this->input->post('state');
+        $states = $this->global_model->get('states', array('country_id' => $id));
+        $data['states'] = $states;
+        echo $this->load->view('state', $data, TRUE);
+        exit;
+    }
 
 
 }

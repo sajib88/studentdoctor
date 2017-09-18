@@ -4,19 +4,23 @@
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
+        <h1><i class="glyphicon glyphicon-tags"></i>
             All Products
-            <small>products</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li class="active">All</li>
-        </ol>
     </section>
     <section class="content">
 
         <div class="row">
+
+            <?php if($this->session->flashdata('success')){ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Product Delete successfully.</strong>
+                    </div>
+                </div>
+            <?php } ?>
+
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
@@ -36,7 +40,7 @@
                     <div class="box-body table-responsive no-padding">
                         <?php if(is_array($allproducts)): ?>
                         <?php if(count($allproducts)<=0){?>
-                            <div class="alert alert-info">No Product</div>
+                            <div class="alert alert-warning text-center">No Product Found <i class="fa fa-info"></i></div>
                         <?php }else{?>
                         <table class="table table-hover">
                             <tbody><tr>
@@ -54,9 +58,9 @@
                             <tr>
                                 <td><?php echo $i;?></td>
                                 <td><?php echo $row->name;?></td>
-                                <td><span class="label bg-purple"><?php echo $row->type;?></span></td>
-                                <td><span class="label label-warning"><?php echo $row->price;?></span></td>
-                                <td><span class="label label-info"><?php echo $row->special_price;?></span></td>
+                                <td><span class=""><?php echo $row->type;?></span></td>
+                                <td><span class=""><?php echo $row->price;?></span></td>
+                                <td><span class=""><?php echo $row->special_price;?></span></td>
                                 <td><a href="<?php echo base_url('product/products/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>
                                 <td><a href="<?php echo base_url('product/products/layoutfull/' . $row->id); ?>" class="btn btn-block btn-success"> View</a></td>
                                 <td><a href="<?php echo base_url('product/products/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>

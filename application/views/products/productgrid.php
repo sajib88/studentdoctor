@@ -75,27 +75,22 @@
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1>
+        <h1><i class="glyphicon glyphicon-tags"></i>
             All Products
-            <small>Edit</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li class="active">All</li>
-        </ol>
     </section>
 
     <section class="content">
 
         <div class="row">
-            <div class="panel panel-default">
+
                 <?php if(is_array($allproducts)): ?>
                 <?php if(count($allproducts)<=0){?>
-                    <p class="alert alert-info">No Product</p>
+                    <div class="alert alert-warning text-center">No Product Found <i class="fa fa-info"></i></div>
                 <?php }else{
                 foreach($allproducts as $row){
                 ?>
+
             <div class="col-lg-4">
                 <div class="box box-danger">
                         <div class="box-header with-border">
@@ -119,14 +114,14 @@
                                 <!-- /.col -->
                                 <div class="col-md-12">
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li class="active"><a href="#"><i class="fa fa-usd"></i> Special Price<span class="label label-danger pull-right">$<?php echo $row['special_price'];?></span></a></li>
-                                        <li><a href="#"><i class="fa fa fa-usd"></i> Old Price<span class="label label-primary pull-right">$<?php echo $row['price'];?></span></a></li>
+                                        <li class="active"><a href="#"> Special Price<span class=" pull-right">$<?php echo $row['special_price'];?></span></a></li>
+                                        <li><a href="#"> Old Price<span class=" pull-right">$<?php echo $row['price'];?></span></a></li>
 
-                                        <li><a href="#"><i class="fa fa-filter"></i> Type <span class="label label-warning pull-right"><?php echo $row['type'];?></span></a>
+                                        <li><a href="#"> Type <span class=" pull-right"><?php echo $row['type'];?></span></a>
                                         </li>
-                                        <li><a href="#"><i class="fa fa-user"></i> Seller Name<span class="label label-success pull-right"><?php echo $row['seller_name'];?></span></a></li>
-                                        <li><a href="#"><i class="fa fa fa-envelope"></i> Seller Email <span class="label label-info pull-right"><?php echo $row['seller_email'];?></span></a></li>
-                                        <li><a href="#"><i class="fa fa-mobile-phone"></i> Seller Phone <span class="label label-primary pull-right"><?php echo $row['seller_phone'];?></span> </a></li>
+                                        <li><a href="#"> Seller Name<span class=" pull-right"><?php echo (!empty( $row['seller_name']))? $row['seller_name']:'<span class="badge bg-red">Not Given</span>';?></span></a></li>
+                                        <li><a href="#"> Seller Email <span class=" pull-right"><?php echo (!empty( $row['seller_email']))? $row['seller_email']:'<span class="badge bg-red">Not Given</span>';?></span></a></li>
+                                        <li><a href="#"> Seller Phone <span class=" pull-right"><?php echo (!empty( $row['seller_phone']))? $row['seller_phone']:'<span class="badge bg-red">Not Given</span>';?></span> </a></li>
                                     </ul>
 
 
@@ -151,7 +146,7 @@
                 </div>
                 <?php } }?>
                 <?php endif; ?>
-            </div>
+
 
         </div>
     </section>

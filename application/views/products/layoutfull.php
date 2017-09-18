@@ -2,15 +2,9 @@
 
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>
-            Product
-            <small>Details Layout </small>
+        <h1><i class="glyphicon glyphicon-tags"></i>
+            Product Details
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Product</a></li>
-            <li class="active">Details view</li>
-        </ol>
     </section>
 
     <section class="content">
@@ -112,27 +106,27 @@
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Product Type </b> <a class="pull-right"><?php echo $layoutfull['type']; ?></a>
+                                <b>Product Type </b> <span class="pull-right"><?php echo $layoutfull['type']; ?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Price</b> <a class="pull-right"> <?php echo $layoutfull['special_price']; ?></a>
+                                <b>Price</b> <span class="pull-right"> <?php echo $layoutfull['special_price']; ?></span>
                             </li>
 
                             <li class="list-group-item">
-                                <b>Special Price</b> <a class="pull-right"> <?php echo $layoutfull['price']; ?></a>
+                                <b>Special Price</b> <span class="pull-right"> <?php echo $layoutfull['price']; ?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>	Country</b> <a class="pull-right"><?php
+                                <b>	Country</b> <span class="pull-right"><?php
                                     $data = get_data('countries', array('id' => $layoutfull['country']));
                                     echo $data['name'];
-                                    ?></a>
+                                    ?></span>
                             </li>
 
                             <li class="list-group-item">
-                                <b>	State</b> <a class="pull-right"><?php echo $layoutfull['state']; ?></a>
+                                <b>	State</b> <span class="pull-right"><?php echo $layoutfull['state']; ?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>	city</b> <a class="pull-right"><?php echo $layoutfull['city']; ?></a>
+                                <b>	city</b> <span class="pull-right"><?php echo $layoutfull['city']; ?></span>
                             </li>
 
 
@@ -148,14 +142,14 @@
                 <!-- About Me Box -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Classified Information</h3>
+                        <h3 class="box-title">Product Details</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <strong><i class="fa fa-book margin-r-5"></i> Description</strong>
 
                         <p class="text-muted">
-                            <?php echo $layoutfull['description']; ?>
+                            <?php echo (!empty($layoutfull['description']))?$layoutfull['description']:""; ?>
                         </p>
 
                         <hr>
@@ -168,25 +162,25 @@
                             ?>, <?php echo $layoutfull['state']; ?>, <?php echo $layoutfull['city']; ?></p>
 
                         <strong> Seller Name</strong>
-                        <p> <?php echo $layoutfull['seller_name']; ?></p>
+                        <p> <?php echo (!empty($layoutfull['seller_name']))?$layoutfull['seller_name']:'<span class="badge bg-red">Not Given</span>'; ?></p>
 
                         <strong> Seller Email</strong>
-                        <p> <?php echo $layoutfull['seller_email']; ?></p>
+                        <p> <?php echo (!empty($layoutfull['seller_email']))?$layoutfull['seller_email']:'<span class="badge bg-red">Not Given</span>'; ?></p>
 
                         <strong> Seller Address 1</strong>
-                        <p> <?php echo $layoutfull['seller_address1']; ?></p>
+                        <p> <?php echo (!empty($layoutfull['seller_address1']))?$layoutfull['seller_address1']:'<span class="badge bg-red">Not Given</span>'; ?></p>
 
                         <strong> Seller Address 2</strong>
-                        <p> <?php echo $layoutfull['seller_address2']; ?></p>
+                        <p> <?php echo (!empty($layoutfull['seller_address2']))?$layoutfull['seller_address2']:'<span class="badge bg-red">Not Given</span>';  ?></p>
 
                         <strong> Seller Website</strong>
-                        <p> <?php echo $layoutfull['seller_website']; ?></p>
+                        <p> <?php echo (!empty($layoutfull['seller_website']))?$layoutfull['seller_website']:'<span class="badge bg-red">Not Given</span>';  ?></p>
 
                         <strong> Seller Phone</strong>
-                        <p> <?php echo $layoutfull['seller_phone']; ?></p>
+                        <p> <?php echo (!empty($layoutfull['seller_phone']))?$layoutfull['seller_phone']:'<span class="badge bg-red">Not Given</span>'; ?></p>
 
                         <strong> Seller Fax</strong>
-                        <p> <?php echo $layoutfull['seller_fax']; ?></p>
+                        <p> <?php echo (!empty($layoutfull['seller_fax']))?$layoutfull['seller_fax']:'<span class="badge bg-red">Not Given</span>';  ?></p>
 
 
 

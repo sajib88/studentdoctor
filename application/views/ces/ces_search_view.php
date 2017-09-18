@@ -10,7 +10,7 @@
 <div class="content-wrapper">
 
     <section class="content-header">
-        <h1><i class="fa fa-book"></i>
+        <h1><i class="fa fa-search"></i>
             Search personal
         </h1>
     </section>

@@ -27,7 +27,7 @@
                                     <li><a href="#">Group Name <span class="pull-right"><?php echo (!empty($row->group_name))?$row->group_name:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#">Group Category <span class="pull-right"><?php echo (!empty($row->category))?$row->category:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#">Group  Date<span class="pull-right"><?php echo (!empty($row->create_date))?$row->create_date:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
-                                    <li><a><?php echo substr( $row->description,0,90).'.....'; ?></a></li>
+                                    <li><a href="#"><?php echo substr($row->description,0,60).'.....'; ?></a></li>
 
                                 </ul>
                             </div>

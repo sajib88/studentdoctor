@@ -25,7 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   |
  */
 $config['base_url'] = 'http://localhost/studentdoctor/';
-
+$config['appID']	= '149973202268890';
+$config['appSecret']	= '48ecd22bb2c0b9507afb22a6a96462ea';
 /*
   |--------------------------------------------------------------------------
   | Index File

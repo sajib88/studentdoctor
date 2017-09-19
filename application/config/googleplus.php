@@ -1,7 +1,7 @@
 <?php
-$config['googleplus']['application_name'] = 'foralldoctors';
-$config['googleplus']['client_id'] = '540617026321-2eji6co19m7h6g66f15mvm80ls2oeqld.apps.googleusercontent.com';
-$config['googleplus']['client_secret'] = 'juGC_439dG7wYRdt0F3msTD4';
+$config['googleplus']['application_name'] = 'glogin';
+$config['googleplus']['client_id'] = '3172170868-bqceb35u5oj7v05rm85qrqac05b3k17q.apps.googleusercontent.com';
+$config['googleplus']['client_secret'] = '_u368ctFzdpIi00rr38gOWDg';
 $config['googleplus']['redirect_uri'] = base_url('home/auth_callback');
 $config['googleplus']['api_key'] = '';
 ?>

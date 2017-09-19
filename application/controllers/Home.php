@@ -9,11 +9,11 @@ class Home extends CI_Controller {
         $this->load->model('global_model');
         $this->load->helper('global');
         $this->load->library('encrypt');
-        
+
     }
 
     public function index() {
-       $this->load->library('rssparser');
+        $this->load->library('rssparser');
         $data = array();
 
         $data['countries'] = $this->global_model->get('countries');
@@ -40,9 +40,9 @@ class Home extends CI_Controller {
         $data['tabActive'] = 'login';
 
         $data = array();
-        
+
         if ($this->input->post('submit')) {
-            
+
 
             $this->form_validation->set_rules('email', 'email', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');
@@ -57,7 +57,7 @@ class Home extends CI_Controller {
                     if ($this->login_model->login($email, $password)) {
                         if ($this->login_model->login($email, $password)) {
                             $this->session->set_flashdata('success_login', 'You have successfully login.');
-                            
+
                             $redirect_link = base_url() . 'dashboard';
                             redirect($redirect_link);
                         } else {
@@ -88,7 +88,7 @@ class Home extends CI_Controller {
         //Login error! You have not activated your account.
         //Login denied! Your account has either been blocked or you have not activated it yet.
 
-        
+
         $this->load->view('header_guest_home');
         $this->load->view('login',$data);
         $this->load->view('foother_guest.php',$data);
@@ -116,8 +116,8 @@ class Home extends CI_Controller {
     public function get_admin_email_and_name()
     {
 
-        $data['admin_email'] = 'nur.swapan@gmail.com';
-        $data['admin_name']  = 'Alam';
+        $data['admin_email'] = 'info@allstudentdoctors.com';
+        $data['admin_name']  = 'allstudentdoctors';
 
         return $data;
     }
@@ -125,9 +125,9 @@ class Home extends CI_Controller {
     #send a confirmation email with confirmation link
     public function send_confirmation_email($data=array())
     {
-        $val = $this->get_admin_email_and_name();       
+        $val = $this->get_admin_email_and_name();
         $admin_email = $val['admin_email'];
-        $admin_name  = $val['admin_name'];        
+        $admin_name  = $val['admin_name'];
 
         $link = base_url('home/confirm'.'/'.$data['confirmation_key']);
 
@@ -210,7 +210,7 @@ class Home extends CI_Controller {
             }
         }
 
-        
+
 
         $this->load->view('header_guest_home');
         $this->load->view('registration',$data);
@@ -219,8 +219,10 @@ class Home extends CI_Controller {
     }
 
     public function log_out() {
+        $this->session->sess_destroy();
         $this->session->unset_userdata('login_id');
         $this->session->unset_userdata('user_type');
+        $this->session->unset_userdata('user_name');
         $this->session->set_flashdata('logu_out_message', 'You have successful log out!');
         $redirect_link = base_url('home/login');
         redirect($redirect_link);
@@ -271,7 +273,7 @@ class Home extends CI_Controller {
                 $is_ok = $this->login_model->forgot_password($user_email, $encrpassword);
 
                 if (!empty($is_ok)) {
-                    $this->email->from('shahinalomcse@gmail.com', 'All Doctors');
+                    $this->email->from('sajib@osourcebd.com', 'All Doctors');
                     $this->email->to($user_email);
                     $this->email->subject('Password Reset Confirmation');
 
@@ -302,11 +304,14 @@ class Home extends CI_Controller {
         $this->load->view('forget_password', $data);
     }
 
+
+
     public function newaccount($type='')
     {
-        if ($type == 'fb') {
-            $appId = '377742705925670';
-            $secret = 'cec04cf4f23c7eb21600816d19b3a10a';
+        if ($type == 'fb')
+        {
+            $appId = '2000358663574742';
+            $secret = 'c08c57748feee9b5342a5d65110d3ba4';
             $config = array('appId'=>$appId,'secret'=>$secret);
             $this->load->library('Facebook', $config);
 
@@ -315,18 +320,28 @@ class Home extends CI_Controller {
 
             // If user is not yet authenticated, the id will be zero
             if($userId == 0){
+
                 // Generate a login url
                 $data['url'] = $this->facebook->getLoginUrl(array('scope'=>'email'));
+
                 redirect($data['url']);
-            } else {
+            }
+            else {
+                //echo "1";
                 // Get user's data and print it
+
+
+
                 $user = $this->facebook->api('/me?fields=first_name,last_name,email,gender,picture');
+
+
                 $user['username']= $user['id'];
 
                 $row = register_user_if_not_exists($user);
 
                 if($row != null)
                 {
+
                     $this->loginfb($row);
                 }
             }
@@ -335,10 +350,8 @@ class Home extends CI_Controller {
         {
             $this->googleplus();
         }
-        
+
     }
-
-
 
     function loginfb($row)
     {
@@ -352,10 +365,12 @@ class Home extends CI_Controller {
         redirect(base_url('profile/dashboard'));
     }
 
+
+
     function googleplus(){
         $this->load->library('session');
         $this->load->library('Googleplus');
-        if($this->session->userdata('user_name'))
+        if($this->session->userdata('user_name')!= '')
         {
             echo 'name: '.$this->session->userdata('user_name');
         }
@@ -381,7 +396,7 @@ class Home extends CI_Controller {
                 $user_data = $this->googleplus->plus->people->get('me');
 
                 /******** For debuggin purpose*********/
-                // echo 'email: '.$user_data['emails']['0']['value'].'<br>';
+
                 // echo 'first_name: '.$user_data['name']['givenName'].'<br>';
                 // echo 'last_name: '.$user_data['name']['familyName'].'<br>';
                 // echo 'gender: '.$user_data['gender'].'<br>';
@@ -546,7 +561,7 @@ class Home extends CI_Controller {
     function update_password()
     {
         if($this->session->userdata('recovery')!='yes')
-        $this->form_validation->set_rules('current_password', 'current_password', 'required|callback_currentpass_check');
+            $this->form_validation->set_rules('current_password', 'current_password', 'required|callback_currentpass_check');
         $this->form_validation->set_rules('new_password', 'new_password', 'required|matches[re_password]');
         $this->form_validation->set_rules('re_password', 'confirm_password', 'required');
 

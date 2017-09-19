@@ -37,6 +37,7 @@ class DocController extends CI_Controller
         }
     }
 
+
     public function publicSearch(){
         if(!empty($_POST)){
             /*print '<pre>';

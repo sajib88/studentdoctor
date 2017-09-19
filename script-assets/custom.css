@@ -165,6 +165,7 @@ time.blue_green { background-color: #148aa5 }
 /*CSS FOR MOBILE*/
 @media only screen and (max-width: 600px) {
     .skin-black-light .main-header > .logo {border-bottom: 1px solid #eee; background: #fff;}
+    .skin-black-light .main-header > .logo:hover {border-bottom: 1px solid #eee; background: #fff;}
 
 }
 /*CSS FOR MOBILE*/
@@ -428,4 +429,28 @@ label {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+}
+
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img{
+    height: 45px;
+    margin:3px auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .skin-black-light .main-header .navbar-brand{
+        height: 80px;
+    }
+    .skin-black-light .content-header{
+        margin-top: 30px;
+    }
+    .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img{
+        height: 50px;
+        margin: 14px auto;
+    }
+
+    .sidebar{
+        margin-top: 30px;
+        padding-bottom: 10px;
+    }
+
 }

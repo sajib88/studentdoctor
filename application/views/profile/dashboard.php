@@ -22,6 +22,98 @@
        <!-- =========================================================== -->
     <div class="row">
     <div class="box box-primary">
+        <div class="col-md-3 col-xs-6">
+            <!-- small box -->
+
+
+
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3><?php
+                        if (!empty($appointment)) {
+                            echo $appointment;
+                        } else {
+                            echo '0';
+                        }
+
+                        ?></h3>
+
+                    <p>Appointment</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-md-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3>
+                        <?php
+                        if (!empty($events)) {
+                            echo $events;
+                        } else {
+                            echo '0';
+                        }
+
+                        ?>
+                        <sup style="font-size: 20px"></sup></h3>
+
+                    <p>Event</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-calendar-o"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-md-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3><?php
+                        if (!empty($users)) {
+                            echo $users;
+                        } else {
+                            echo '0';
+                        }
+
+                        ?></h3>
+
+                    <p>Doctor Registered</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-md-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3><?php
+                        if (!empty($public_website)) {
+                            echo $public_website;
+                        } else {
+                            echo '0';
+                        }
+
+                        ?></h3>
+
+                    <p>Public Website</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-fw fa-user-md"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-purple">
                 <span class="info-box-icon"><i class="fa fa-fw fa-list-alt"></i></span>
@@ -43,7 +135,7 @@
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
                   <span class="progress-description">
-                     Classified
+                     Classifieds
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -53,13 +145,13 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box bg-purple">
-                <span class="info-box-icon"><i class="glyphicon glyphicon-picture"></i></span>
+                <span class="info-box-icon"><i class="fa fa-heart-o"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Photos</span>
+                    <span class="info-box-text">Total</span>
                     <span class="info-box-number"> <?php
-                        if (!empty($photos)) {
-                            echo $photos;
+                        if (!empty($personals)) {
+                            echo $personals;
                         } else {
                             echo '0';
                         }
@@ -70,7 +162,7 @@
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
                   <span class="progress-description">
-                   Total Photos
+                   Personals
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -83,7 +175,7 @@
                 <span class="info-box-icon"><i class="glyphicon glyphicon-tags"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">Product</span>
+                    <span class="info-box-text">Total</span>
                     <span class="info-box-number">
 
                         <?php
@@ -101,7 +193,7 @@
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
                   <span class="progress-description">
-                    Total Product
+                    Products
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -114,11 +206,11 @@
                 <span class="info-box-icon"><i class="fa fa-book"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">CES</span>
+                    <span class="info-box-text">Total</span>
                     <span class="info-box-number">
                          <?php
-                         if (!empty($ces)) {
-                             echo $ces;
+                         if (!empty($forum)) {
+                             echo $forum;
                          } else {
                              echo '0';
                          }
@@ -131,7 +223,7 @@
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
                   <span class="progress-description">
-                   Total Product
+                   Forums
                   </span>
                 </div>
                 <!-- /.info-box-content -->
@@ -140,98 +232,7 @@
         </div>
         <!-- /.col -->
 
-        <div class="col-md-3 col-xs-6">
-          <!-- small box -->
 
-
-
-          <div class="small-box bg-purple">
-            <div class="inner">
-              <h3><?php
-                  if (!empty($appointment)) {
-                      echo $appointment;
-                  } else {
-                      echo '0';
-                  }
-
-                  ?></h3>
-
-              <p>Appointment</p>
-            </div>
-            <div class="icon">
-              <i class="glyphicon glyphicon-calendar"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-md-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-purple">
-            <div class="inner">
-              <h3>
-                  <?php
-                  if (!empty($privatewebsite)) {
-                      echo $privatewebsite;
-                  } else {
-                      echo '0';
-                  }
-
-                  ?>
-                  <sup style="font-size: 20px"></sup></h3>
-
-              <p>Private Profile</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-shield"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-md-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-purple">
-            <div class="inner">
-              <h3><?php
-                  if (!empty($users)) {
-                      echo $users;
-                  } else {
-                      echo '0';
-                  }
-
-                  ?></h3>
-
-              <p>Doctor Registered</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-md-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-purple">
-            <div class="inner">
-              <h3><?php
-                  if (!empty($public_website)) {
-                      echo $public_website;
-                  } else {
-                      echo '0';
-                  }
-
-                  ?></h3>
-
-              <p>Public Website</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-fw fa-user-md"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
     </div>
           <!-- user info -->
           <style type="text/css">

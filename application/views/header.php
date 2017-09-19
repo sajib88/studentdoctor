@@ -66,11 +66,8 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="<?php echo base_url(); ?>" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>ST</b>D</span>
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-md"><b>Student Doctors</b></span>
+        <a href="<?php echo base_url(); ?>" class="logo navbar-brand">
+            <img src="<?php echo base_url();?>/comp/img/logo.png" class="img-responsive" height="44px" alt="logo" >
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">

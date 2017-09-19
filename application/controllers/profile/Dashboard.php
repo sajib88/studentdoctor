@@ -19,14 +19,17 @@ class Dashboard extends CI_Controller {
         $data['error'] = '';
         /// TOP 4 box
         $data['classified'] = $this->global_model->count_row('classified');
-        $data['photos'] = $this->global_model->count_row_where('photos', array('ref_name' => 'image_album'));
+        $data['personals'] = $this->global_model->count_row('personals');
+        $data['forum'] = $this->global_model->count_row('forum_category');
+        //$data['photos'] = $this->global_model->count_row_where('photos', array('ref_name' => 'image_album'));
         $data['product'] = $this->global_model->count_row('product');
-        $data['ces'] = $this->global_model->count_row('ces');
+        //$data['ces'] = $this->global_model->count_row('ces');
 
         //bottom 4 box
         $data['appointment'] = $this->global_model->count_row_where('public_website', array('appointment' => '1'));
-        $data['privatewebsite'] = $this->global_model->count_row('private_website');
+        //$data['privatewebsite'] = $this->global_model->count_row('private_website');
         $data['users'] = $this->global_model->count_row('users');
+        $data['events'] = $this->global_model->count_row('event');
         $data['public_website'] = $this->global_model->count_row('public_website');
 
         $loginId = $this->session->userdata('login_id');

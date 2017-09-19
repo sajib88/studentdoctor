@@ -247,6 +247,20 @@
                                 Public Site</a>
                         </li>
 
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-shopping-cart"></i>
+                                <span>Online Store</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="">
+                                    <a href="<?php echo base_url('store/Store/'); ?>"><i class="fa fa-circle-o"></i>Add New
+                                        Store</a>
+                                </li>
+                            </ul>
+                        </li>
+
 
                     </ul>
 
@@ -280,56 +294,6 @@
                         } ?>">
                             <a href="<?php echo base_url('classifieds/classifieds/viewall'); ?>"><i
                                         class="fa fa-circle-o"></i>Show All List Classified</a>
-                        </li>
-
-
-                    </ul>
-
-                </li>
-
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="glyphicon glyphicon-shopping-cart"></i>
-                        <span>Online Store</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="">
-                            <a href="<?php echo base_url('store/Store/'); ?>"><i class="fa fa-circle-o"></i>Add New
-                                Store</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="treeview <?php if ($this->uri->segment(2)=="event"){
-                echo "active";
-                } ?>">
-                    <a href="#">
-                        <i class="fa fa-calendar"></i>
-                        <span>Event</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-
-                    <ul class="treeview-menu">
-                        <li class="<?php if ($this->uri->segment(3)=="index"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('event/event/index'); ?>"><i class="fa fa-circle-o"></i> Create
-                                New Event</a>
-                        </li>
-                        <li class="<?php if ($this->uri->segment(3)=="viewall"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('event/event/viewall'); ?>"><i class="fa fa-circle-o"></i>
-                                View All Events</a>
-                        </li>
-
-                        <li class="<?php if ($this->uri->segment(3)=="myevent"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('event/event/myevent'); ?>"><i class="fa fa-circle-o"></i>Manage
-                                Event List</a>
                         </li>
 
 
@@ -382,7 +346,6 @@
 
                 </li>
 
-
                 <li class="treeview <?php if ($this->uri->segment(2)=="forum"){
                 echo "active";
                 } ?>">
@@ -422,6 +385,150 @@
                 </li>
 
 
+                <li class="treeview <?php if ($this->uri->segment(2)=="event"){
+                echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Event</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(3)=="index"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('event/event/index'); ?>"><i class="fa fa-circle-o"></i> Create
+                                New Event</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(3)=="viewall"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('event/event/viewall'); ?>"><i class="fa fa-circle-o"></i>
+                                View All Events</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(3)=="myevent"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('event/event/myevent'); ?>"><i class="fa fa-circle-o"></i>Manage
+                                Event List</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="treeview <?php if ($this->uri->segment(2)=="group"){
+                echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-group"></i>
+                        <span>Group</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(3)=="index"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('group/group/index'); ?>"><i class="fa fa-circle-o"></i> Create
+                                New Group</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(3)=="viewall"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('group/group/viewall'); ?>"><i class="fa fa-circle-o"></i>
+                                View All Group</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(3)=="mygroup"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('group/group/mygroup'); ?>"><i class="fa fa-circle-o"></i>My
+                                Group List</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="treeview <?php if ($this->uri->segment(2)=="products"){
+                echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-tags"></i>
+                        <span>Product</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+
+                        <li class="<?php if ($this->uri->segment(3)=="add"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('product/products/add'); ?>"><i class="fa fa-circle-o"></i>
+                                Create New Product</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(3)=="allProductGrid"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('product/products/allProductGrid'); ?>"><i
+                                        class="fa fa-circle-o"></i>
+                                View All Product</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(3)=="myproduct"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('product/products/myproduct'); ?>"><i
+                                        class="fa fa-circle-o"></i>My Product List</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+                <li class="treeview <?php if ($this->uri->segment(2)=="insideblog"){
+                echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-unchecked"></i>
+                        <span>Blog</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(3)=="insideblogcreate"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('insideblog/insideblog/insideblogcreate'); ?>"><i
+                                        class="fa fa-circle-o"></i> Create New Blog</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(3)=="insidebloglist"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('insideblog/insideblog/insidebloglist'); ?>"><i
+                                        class="fa fa-circle-o"></i>
+                                View All Blog</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(3)=="insideblogmylist"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('insideblog/insideblog/insideblogmylist'); ?>"><i
+                                        class="fa fa-circle-o"></i>My Blog List</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
+                <!--
                 <li class="treeview <?php if ($this->uri->segment(1)=="ces"){
                 echo "active";
                 } ?>">
@@ -467,114 +574,10 @@
                 </li>
 
 
-                <li class="treeview <?php if ($this->uri->segment(2)=="insideblog"){
-                echo "active";
-                } ?>">
-                    <a href="#">
-                        <i class="glyphicon glyphicon-unchecked"></i>
-                        <span>Blog</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="<?php if ($this->uri->segment(3)=="insideblogcreate"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('insideblog/insideblog/insideblogcreate'); ?>"><i
-                                        class="fa fa-circle-o"></i> Create New Blog</a>
-                        </li>
-                        <li class="<?php if ($this->uri->segment(3)=="insidebloglist"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('insideblog/insideblog/insidebloglist'); ?>"><i
-                                        class="fa fa-circle-o"></i>
-                                View All Blog</a>
-                        </li>
-
-                        <li class="<?php if ($this->uri->segment(3)=="insideblogmylist"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('insideblog/insideblog/insideblogmylist'); ?>"><i
-                                        class="fa fa-circle-o"></i>My Blog List</a>
-                        </li>
 
 
-                    </ul>
-                </li>
-                <li class="treeview <?php if ($this->uri->segment(2)=="group"){
-                echo "active";
-                } ?>">
-                    <a href="#">
-                        <i class="fa fa-group"></i>
-                        <span>Group</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-
-                    <ul class="treeview-menu">
-                        <li class="<?php if ($this->uri->segment(3)=="index"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('group/group/index'); ?>"><i class="fa fa-circle-o"></i> Create
-                                New Group</a>
-                        </li>
-                        <li class="<?php if ($this->uri->segment(3)=="viewall"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('group/group/viewall'); ?>"><i class="fa fa-circle-o"></i>
-                                View All Group</a>
-                        </li>
-
-                        <li class="<?php if ($this->uri->segment(3)=="mygroup"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('group/group/mygroup'); ?>"><i class="fa fa-circle-o"></i>My
-                                Group List</a>
-                        </li>
 
 
-                    </ul>
-
-                </li>
-
-
-                <li class="treeview <?php if ($this->uri->segment(2)=="products"){
-                echo "active";
-                } ?>">
-                    <a href="#">
-                        <i class="glyphicon glyphicon-tags"></i>
-                        <span>Product</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-
-                    <ul class="treeview-menu">
-
-                        <li class="<?php if ($this->uri->segment(3)=="add"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('product/products/add'); ?>"><i class="fa fa-circle-o"></i>
-                                Create New Product</a>
-                        </li>
-
-                        <li class="<?php if ($this->uri->segment(3)=="allProductGrid"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('product/products/allProductGrid'); ?>"><i
-                                        class="fa fa-circle-o"></i>
-                                View All Product</a>
-                        </li>
-
-                        <li class="<?php if ($this->uri->segment(3)=="myproduct"){
-                        echo "active";
-                        } ?>">
-                            <a href="<?php echo base_url('product/products/myproduct'); ?>"><i
-                                        class="fa fa-circle-o"></i>My Product List</a>
-                        </li>
-
-
-                    </ul>
-
-                </li>
-
-                <!--
                 /*
                 <li class="treeview <?php if ($this->uri->segment(2)=="privateweb"){
                 echo "active";
@@ -614,7 +617,7 @@
                     </ul>
                 </li>
                 */
-                -->
+
 
 
                 <li class="treeview <?php if ($this->uri->segment(2)=="Photo" && "video"){
@@ -734,6 +737,7 @@
 
                     </ul>
                 </li>
+                -->
 
 
                 <li class="treeview">

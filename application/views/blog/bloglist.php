@@ -10,7 +10,7 @@
 
 
                         <!-- Tab panes -->
-                        <div class="content col-md-12">
+                        <div class="content col-md-8 col-md-offset-2">
                             <?php if(count($allblog)<=0){?>
                                 <div class="alert alert-info">No Blogs</div>
                             <?php }else{?>
@@ -21,24 +21,44 @@
                                     { ?>
 
                                         <!-- Content -->
-                                        <div class="content col-lg-6 col-md-6">
+                                        <div class="content col-md-12">
                                             <!-- Post -->
                                             <div class="post">
+                                                <h2><?php echo $row->title; ?></h2>
                                                 <div class="post-image">
-                                                    <img src="<?php echo base_url() . 'assets/file/blog/' .$row->primary_image; ?>" alt="">
+                                                    <img src="<?php echo base_url() . 'assets/file/blog/' .$row->primary_image; ?>" class="img-responsive" width="100%" alt="">
                                                 </div>
-                                                <ul class="post-meta">
-                                                    <li><span>Added:</span><?php echo date("d-m-Y", strtotime($row->date)); ?></li>
-                                                    <li><span>Author:</span><a href="#">Admin</a></li>
-                                                    <li><span>Tags:</span><a href="#"><?php echo $row->tag;?></a>, <a href="#"></a></li>
-                                                </ul>
-                                                <div class="post-content">
-                                                    <h2><?php echo $row->title; ?></h2>
-                                                    <div class="two-line-div">
-                                                        <p class="lead line-clamp line-clamp-2 two-line-div"><?php echo $shortdes=$row->description; ?>
-                                                        </p>
+                                                <div class="row">
+                                                    <ul class="post-meta">
+                                                        <li><span>Added:</span><?php echo date("d-m-Y", strtotime($row->date)); ?></li>
+                                                        <li><span>Author:</span>Admin</li>
+                                                        <li><span>Tags:</span><?php echo $row->tag;?></a></li>
+                                                    </ul>
+                                                    <div class="post-content">
+                                                        <div class="two-line-div">
+                                                            <p class="" max-lenght="200">
+                                                                <?php
+                                                                $link = base_url('blog/Postlist/singlepost/' . $row->id);
+                                                                $string = strip_tags($row->description);
+
+                                                                if (strlen($string) > 440) {
+
+                                                                    // truncate string
+                                                                    $stringCut = substr($string, 0, 440);
+
+                                                                    // make sure it ends in a word so assassinate doesn't become ass...
+                                                                    $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'...<a href="'.$link.'" class="btn btn-filled btn-info">Read more</a>';
+                                                                }
+                                                                echo $string;
+                                                                ?>
+                                                                <?php //echo substr($row->description, 0, 300); ?>
+                                                            </p>
+
+                                                        </div>
+                                                        <div class="visible-sm visible-xs">
+                                                        <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>" class="btn btn-filled mt-20 btn-info">Read more</a>
+                                                        </div>
                                                     </div>
-                                                    <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>" class="btn btn-filled mt-20 btn-info">Read more</a>
                                                 </div>
                                             </div>
                                             <!-- Post -->
@@ -71,14 +91,19 @@
 
 <style type="text/css">
 	.post{
-		width: 120%;
+		width: 100%;
 	}
 
+    .mt-20{
+        margin-top: 20px;
+    }
 	
 
 	.two-line-div{
-		max-height: 3em;
+		max-height: 180px;
 		overflow: hidden;
+        margin-top: 5px;
+        text-align: justify;
 	}
 
 	p.lead{
@@ -154,9 +179,13 @@
 		}
 
 		.two-line-div{
-			max-height: 10em;
+			max-height: 155px !important;
 			overflow: hidden;
 		}
+
+        .mt-20{
+            margin-top: 0;
+        }
 
 	}
 

@@ -49,8 +49,6 @@ class Postlist extends CI_Controller
         //$data_order = 'DESC';
        $data['allblog'] = $this->global_model->get('blog_front', False, array('limit' => '2', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
 
-       $data['recent_post'] = $this->global_model->get('blog_front', False, array('limit' => '3', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
-        
         //$data['join'] = $this->global_model->get_with_join('users', 'appointment', 'id', 'users.id = appointment.doctor_id');
 
         //$this->load->view('header', $data);
@@ -74,7 +72,8 @@ class Postlist extends CI_Controller
          
         $id = $this->uri->segment('4');
 
-        $data['single_post'] = $this->global_model->get_data('blog_front', array('id' => $id)); 
+        $data['single_post'] = $this->global_model->get_data('blog_front', array('id' => $id));
+          $data['recent_post'] = $this->global_model->get('blog_front', False, array('limit' => '3', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
         //$data['singlepost'] = $this->global_model->get('blog_front');
 
         $this->load->view('header_guest_home', $data);

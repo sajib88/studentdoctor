@@ -10,7 +10,7 @@
 
 
 
-            <?php if(is_array($myclassified)): ?>
+            <?php if(!empty($myclassified)){ ?>
             <?php foreach($myclassified as $row):?>
 
         <div class="col-lg-4 col-xs-12">
@@ -45,7 +45,12 @@
         </div>
 
                 <?php endforeach;?>
-            <?php endif; ?>
+            <?php }else{ ?>
+                <div class="alert alert-warning alert-dismissible text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    No classified found <i class="fa fa-info"></i>
+                </div>
+            <?php } ?>
 
 
         </div>

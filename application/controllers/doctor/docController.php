@@ -37,6 +37,7 @@ class DocController extends CI_Controller
         }
     }
 
+
     public function publicSearch(){
         if(!empty($_POST)){
             /*print '<pre>';
@@ -60,6 +61,17 @@ class DocController extends CI_Controller
             $this->load->view('foother_guest.php');
 
 
+        }
+        else {
+
+            $data['profession']=3;
+            $data['country'] = 18;
+
+
+            $result['searchData'] = $this->global_model->getPublicSearchData($data);
+            $this->load->view('header_guest_home');
+            $this->load->view('doctor/search_view',$result);
+            $this->load->view('foother_guest.php');
         }
     }
 

@@ -423,7 +423,20 @@
 
 </div>
 
+<div id="footer" class="visible-xs">
+    <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
+        <div class="row" id="bottomNav">
 
+            <div class="col-xs-2 text-center"><a href="#description_2" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-briefcase"></i><br></a></div>
+            <div class="col-xs-2 text-center"><a href="#additional-info_2" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-user"></i><br></a></div>
+            <div class="col-xs-2 text-center"><a href="#reviews_2" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-picture"></i><br></a></div>
+
+            <div class="col-xs-2 text-center"><a href="#reviews_3" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-film"></i><br></a></div>
+            <div class="col-xs-2 text-center"><a href="#reviews_4" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-volume-up"></i><br><small></small></a></div>
+            <div class="col-xs-2 text-center"><a href="#reviews_5" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-file"></i><br></a></div>
+        </div>
+    </div>
+</div>
 
 
 <!-- //The Team -->
@@ -445,6 +458,10 @@
 
 
 <style>
+
+
+
+
     .nav-stacked li{
         color: #fff;
         cursor: default;

@@ -115,7 +115,7 @@
 
 
                     <div class="col-md-4">
-                        <select id="exampleInputEmail2" class="selectpicker search"  name="profession" data-style="btn-info btn-filled">
+                        <select id="" class="search"  name="profession" data-live-search="true">
 
                             <?php
                             if (!empty($profession)) {

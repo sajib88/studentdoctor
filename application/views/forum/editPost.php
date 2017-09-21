@@ -82,7 +82,12 @@
                                             <textarea name="deatils" class="form-control"><?php echo $editMyPost['deatils']; ?></textarea>
                                         </div>
                                     </div>
-
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Attachment</label><span id='attachment-error' class='error' for='attachment'></span>
+                                            <input class="btn btn-default" name="attachment" type="file">
+                                        </div>
+                                    </div>
 
 
                                     <div col-lg-12>

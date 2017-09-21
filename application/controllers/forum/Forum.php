@@ -67,7 +67,7 @@ class Forum extends CI_Controller{
                 $save['cat_id'] = $postData['hiddencat'];
                 $save['author_id'] = $loginId;
                 $save['title'] = $postData['title'];
-                $save['deatils'] = $postData['title'];
+                $save['deatils'] = $postData['deatils'];
                 $save['status'] = '1';
 
                 //// (image upload funtion)
@@ -280,6 +280,16 @@ class Forum extends CI_Controller{
             $save['author_id'] = $loginId;
             $save['title'] = $postData['title'];
             $save['deatils'] = $postData['deatils'];
+
+            //// (image upload funtion)
+            uploadforum();
+
+            if ($this->upload->do_upload('attachment')) {
+                $fileInfo = $this->upload->data();
+                $pic1['name'] = $fileInfo['file_name'];
+                $save['attachment'] = $pic1['name'];
+
+            }
 
             if ($this->global_model->update('forum_post', $save, array('post_id' => $id))){
                 $this->session->set_flashdata('message', 'Post update successfully.');

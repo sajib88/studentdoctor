@@ -339,7 +339,7 @@ class Products extends CI_Controller{
         $data = array();
         $data['page_title'] = 'Add Product';
         $loginId = $this->session->userdata('login_id');
-        $data['allproducts']  	 = $this->global_model->get($table);
+        $data['allproducts']  	 = $this->global_model->get($table, array('uid'=> $loginId));
 
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['login_id'] = $loginId;

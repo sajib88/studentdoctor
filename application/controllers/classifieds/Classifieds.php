@@ -398,7 +398,7 @@ class Classifieds extends CI_Controller {
     {
         $id = $this->uri->segment('4');
         $data['layoutfull'] = $this->global_model->get_data('classified', array('id' => $id));
-       print_r($data['layoutfull']);
+       //print_r($data['layoutfull']);
 //        $path ='assets/file/classifieds/'.$data['layoutfull']['photo_primary'];
 //        echo $path ;
 //        //delete_files($path);

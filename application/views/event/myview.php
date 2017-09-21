@@ -10,7 +10,7 @@
 
 
 
-            <?php if(is_array($myevent)): ?>
+            <?php if(!empty($myevent)){ ?>
             <?php foreach($myevent as $row):?>
 
 
@@ -49,7 +49,12 @@
 
 
                 <?php endforeach;?>
-            <?php endif; ?>
+            <?php }else{ ?>
+                <div class="alert alert-warning text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    No events found <i class="fa fa-info"></i>
+                </div>
+            <?php } ?>
 
 
         </div>

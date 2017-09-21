@@ -24,7 +24,7 @@
             <div class="col-lg-12 alert alert-warning alert-dismissible text-center">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <h3><?php echo $message; ?> <i class="fa fa-info"></i></h3>
-                <p>Plese visit your public website edit menu to any farther modification ! Thanks.</p>
+                <p>Please click the menu create public website! Thanks.</p>
             </div>
             </div>
             <!-- /.col-lg-12 -->

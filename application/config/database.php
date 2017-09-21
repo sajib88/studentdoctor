@@ -76,7 +76,7 @@ $query_builder = TRUE;
 
 if ($_SERVER['HTTP_HOST'] == 'localhost') {
     $userName = 'root';
-    $pass = 'root';
+    $pass = '';
     $database = 'studentdoctors';
 } 
 
@@ -84,8 +84,8 @@ $db['default'] = array(
     'dsn' => '',
     'hostname' => 'localhost',
     'username' => 'root',
-    'password' => 'root',
-    'database' => 'studentdoctor',
+    'password' => '',
+    'database' => 'studentdoctors',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,

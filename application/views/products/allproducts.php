@@ -20,7 +20,7 @@
                     </div>
                 </div>
             <?php } ?>
-
+            <?php if(!empty($allproducts)){?>
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
@@ -77,6 +77,9 @@
                 </div>
                 <!-- /.box -->
             </div>
+            <?php }else{?>
+                <div class="alert alert-warning text-center">No Product Found <i class="fa fa-info"></i></div>
+            <?php }?>
         </div>
     </section>
 </div>

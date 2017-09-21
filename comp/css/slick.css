@@ -608,13 +608,10 @@ dd.catchPhrase2 {
 
 
 .navbar-header {
-    float:none;
-    width:100%;
-    padding:10px;
+
 }
 .navbar-brand {
-    font-size:20pt;
-    float:none;
+
 }
 #bottomNav {
     padding:8px;

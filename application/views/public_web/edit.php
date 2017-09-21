@@ -1,147 +1,171 @@
+<style>
+    .btn-cust{
+        width: 95%;
+    }
+</style>
 
 <div class="content-wrapper">
+
 <section class="content-header">
-    <h1>
-        Public Website
-        <small>Edit</small>
+    <h1><i class="fa fa-user-md"></i>
+       Edit Public Website
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Public website</a></li>
-        <li class="active">Edit</li>
-    </ol>
 </section>
 
 
      <section class="content">
 
          <div class="row">
-             <div class="col-lg-6">
-                 <div class="box box-info">
+             <form  id="website" role="form" method="post" enctype="multipart/form-data" action="<?php echo base_url('public_web/publicweb/edit'); ?>" >
+             <div class="col-md-6">
+                 <div class="box box-primary">
+                     <div class="box-header with-border">
+                         <i class="fa fa-th"></i>
+                         <h3 class="box-title">Public Website Info</h3></i>
+                     </div>
+                     <div class="padd">
+                         <div class="form-group">
+                             <label>Your Appointment</label>
+                             <select  name="appointment" class="form-control" id="appointment">
+                                 <option <?php if ($website_info['appointment'] == '1') echo 'selected'; ?> value="1">Yes</option>
+                                 <option <?php if ($website_info['appointment'] == '0') echo 'selected'; ?> value="0">No</option>
+                             </select>
+                         </div>
+                         <div id="set_date_time" style="display: none">
 
-                     <div class="box-body">
+                             <?php $days = array('Sat','Sun','Mon','Tue','Wed','Thr','Fri')?>
 
-
-                         <form  id="website" role="form" method="post" enctype="multipart/form-data" action="<?php echo base_url('public_web/publicweb/edit'); ?>" >
-                             <div class="form-group">
-                                 <label>Your Public Website URL</label>
-                                 <input  disabled value="<?php echo!empty($user_info['user_name']) ? $user_info['user_name'] : ''; ?>"  class="form-control">
-                             </div>
                              <div class="form-group">
                                  <label>Your Appointment</label>
-                                 <select  name="appointment" class="form-control" id="appointment">
-                                     <option <?php if ($website_info['appointment'] == '1') echo 'selected'; ?> value="1">Yes</option>
-                                     <option <?php if ($website_info['appointment'] == '0') echo 'selected'; ?> value="0">No</option>
+                                 <select name="appointment_day" class="form-control">
+                                     <?php foreach ($days as $day){
+                                         $sel = ($day == $website_info['appointment_day'])?'selected="selected"':'';?>
+                                         <option  value="<?php echo $day?>" <?php echo $sel;?>><?php echo $day;?></option>
+                                     <?php }?>
                                  </select>
                              </div>
 
-                             <div id="set_date_time" style="display: none">
 
-                                 <!--<div class="col-lg-6">
-                                     <div class="form-group">
-                                         <label>Appointment Start Date<span class="error">*</span></label><span id='start_date' class='error' for='start_date'></span>
-                                         <input name="start_date" type="text" class="form-control pull-right" id="datepicker" value="<?php /*echo !empty($website_info['start_date']) ? $website_info['start_date'] : ''; */?>" >
-                                     </div>
-                                 </div>-->
-                                 <?php $days = array('Sat','Sun','Mon','Tue','Wed','Thr','Fri')?>
-
+                             <div class="col-lg-6 bootstrap-timepicker">
                                  <div class="form-group">
-                                     <label>Your Appointment</label>
-                                     <select name="appointment_day" class="form-control">
-                                         <?php foreach ($days as $day){
-                                             $sel = ($day == $website_info['appointment_day'])?'selected="selected"':'';?>
-                                             <option  value="<?php echo $day?>" <?php echo $sel;?>><?php echo $day;?></option>
-                                         <?php }?>
-                                     </select>
-                                 </div>
-
-
-                                 <div class="col-lg-6 bootstrap-timepicker">
-                                     <div class="form-group">
-                                         <label>Start Appointment Time :</label>
-
-                                         <div class="input-group">
-                                             <input name="start_time" type="text" class="form-control timepicker" value="<?php echo !empty($website_info['start_time']) ? $website_info['start_time'] : ''; ?>" >
-
-                                             <div class="input-group-addon">
-                                                 <i class="fa fa-clock-o"></i>
-                                             </div>
+                                     <label>Start Appointment Time :</label>
+                                     <div class="input-group">
+                                         <input name="start_time" type="text" class="form-control timepicker" value="<?php echo !empty($website_info['start_time']) ? $website_info['start_time'] : ''; ?>" >
+                                         <div class="input-group-addon">
+                                             <i class="fa fa-clock-o"></i>
                                          </div>
-                                         <!-- /.input group -->
                                      </div>
-                                     <!-- /.form group -->
-                                 </div>
-
-
-                                 <div class="col-lg-6 bootstrap-timepicker">
-                                     <div class="form-group">
-                                         <label>End Appointment  Time:</label>
-
-                                         <div class="input-group">
-                                             <input name="end_time" type="text" class="form-control timepickerend" value="<?php echo !empty($website_info['end_time']) ? $website_info['end_time'] : ''; ?>" >
-
-                                             <div class="input-group-addon">
-                                                 <i class="fa fa-clock-o"></i>
-                                             </div>
-                                         </div>
-                                         <!-- /.input group -->
-                                     </div>
-                                     <!-- /.form group -->
                                  </div>
                              </div>
-
-                             <!--<div class="form-group">
-                                 <label>Profession</label>
-                                 <select name="profession" class="form-control" id="profession">
-                                     <option value="">Select Profession</option>
-                                     <?php
-/*                                     if (!empty($profession)) {
-                                         foreach ($profession as $row) {
-                                             $v = (set_value('profession')!='')?set_value('profession'):$website_info['profession'];
-                                             $sel = ($v == $row->id)?'selected="selected"':'';
-                                             */?>
-                                             <option value="<?php /*echo $row->id; */?>" <?php /*echo $sel;*/?>><?php /*echo $row->name; */?></option>
-                                             <?php
-/*                                         }
-                                     }
-                                     */?>
-                                 </select>
-                             </div>-->
-
-                             <div class="form-group">
-                                 <label>Do you want to add your online store?</label>
-                                     <select  name="store" class="form-control" id="js_store">
-                                         <option <?php if ($website_info['online_store'] == '1') echo 'selected'; ?> value="1">Yes</option>
-                                         <option <?php if ($website_info['online_store'] == '0') echo 'selected'; ?> value="0">No</option>
-                                     </select>
-                             </div>
-
-
-                             <div id="store_name" style="display: none">
+                             <div class="col-lg-6 bootstrap-timepicker">
                                  <div class="form-group">
-                                     <?php if(!empty($onlinestore)){
-                                         foreach ($onlinestore as $row){
-                                             ?>
-                                             <input type="hidden" name="store_id" value="<?php echo $row->id;?>">
-                                             <div class="alert alert-warning"> <?php echo "Your Store Name : ".$row->store_name;?></div>
-                                         <?php  }
-                                     }else { ?>
-                                         <div class="alert alert-danger"> <?php echo "You don't have any Store : "?><a class="btn btn-info" href="<?php echo base_url().'store/store/'?>">Create Here</a></div>
-                                     <?php }
-                                     ?>
+                                     <label>End Appointment  Time:</label>
+                                     <div class="input-group">
+                                         <input name="end_time" type="text" class="form-control timepickerend" value="<?php echo !empty($website_info['end_time']) ? $website_info['end_time'] : ''; ?>" >
+                                         <div class="input-group-addon">
+                                             <i class="fa fa-clock-o"></i>
+                                         </div>
+                                     </div>
                                  </div>
                              </div>
-
+                         </div>
+                         <div class="form-group">
+                             <label>Do you want to add your online store?</label>
+                             <select  name="store" class="form-control" id="js_store">
+                                 <option <?php if ($website_info['online_store'] == '1') echo 'selected'; ?> value="1">Yes</option>
+                                 <option <?php if ($website_info['online_store'] == '0') echo 'selected'; ?> value="0">No</option>
+                             </select>
+                         </div>
+                         <div id="store_name" style="display: none">
                              <div class="form-group">
-                                 <label>Title</label>
-                                 <input name="title" value="<?php echo!empty($website_info['title']) ? $website_info['title'] : ''; ?>"  class="form-control">
+                                 <?php if(!empty($onlinestore)){
+                                     foreach ($onlinestore as $row){
+                                         ?>
+                                         <input type="hidden" name="store_id" value="<?php echo $row->id;?>">
+                                         <div class="alert alert-warning"> <?php echo "Your Store Name : ".$row->store_name;?></div>
+                                     <?php  }
+                                 }else { ?>
+                                     <div class="alert alert-danger"> <?php echo "You don't have any Store : "?><a class="btn btn-info" href="<?php echo base_url().'store/store/'?>">Create Here</a></div>
+                                 <?php }
+                                 ?>
+                             </div>
+                         </div>
+                         <div class="form-group">
+                             <label>Title</label>
+                             <input name="title" value="<?php echo!empty($website_info['title']) ? $website_info['title'] : ''; ?>"  class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label>Your Public Website URL</label>
+                             <input  disabled value="<?php echo!empty($user_info['user_name']) ? $user_info['user_name'] : ''; ?>"  class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label>Description</label>
+                             <textarea  name="description" value="" class="form-control"><?php echo!empty($website_info['description']) ? $website_info['description'] : ''; ?></textarea>
+                         </div>
+                         <div class="form-group">
+                             <label>Specialty</label>
+                             <input name="specialty" value="<?php echo!empty($website_info['specialty']) ? $website_info['specialty'] : ''; ?>" class="form-control">
+                         </div>
+                         <div class="form-group">
+                             <label>Special Interest</label>
+                             <input name="special_interest" value="<?php echo!empty($website_info['special_interest']) ? $website_info['special_interest'] : ''; ?>" class="form-control">
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-md-12 no-padding">
+                     <div class="box box-primary">
+                         <div class="box-header with-border">
+                             <i class="fa fa-th"></i>
+                             <h3 class="box-title">Business Info</h3></i>
+                         </div>
+                         <div class="padd">
+                             <div class="form-group">
+                                 <label> Business Name </label>
+                                 <input name="business_name" value="<?php
+                                 echo!empty($website_info['business_name']) ? $website_info['business_name'] : '';
+                                 ?>" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <label> Business Web site </label>
+                                 <input name="business_website" value="<?php echo!empty($website_info['business_website']) ? $website_info['business_website'] : ''; ?>" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <label>Business Email</label>
+                                 <input name="business_email" value="<?php echo!empty($website_info['business_email']) ? $website_info['business_email'] : ''; ?>" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <label>Business Telephone</label>
+                                 <input name="business_telephone" value="<?php
+                                 echo!empty($website_info['business_telephone']) ? $website_info['business_telephone'] : '';
+                                 ?>" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <label>Business Fax</label>
+                                 <input name="business_fax" value="<?php
+                                 echo!empty($website_info['business_fax']) ? $website_info['business_fax'] : '';
+                                 ?>" class="form-control">
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-6">
+                 <div class="col-md-12 no-padding">
+                     <div class="box box-primary">
+                         <div class="box-header with-border">
+                             <i class="fa fa-map-marker"></i>
+                             <h3 class="box-title">Address</h3></i>
+                         </div>
+                         <div class="padd">
+                             <div class="form-group">
+                                 <label>Address 1</label>
+                                 <input name="address_1" value="<?php echo!empty($website_info['address_1']) ? $website_info['address_1'] : ''; ?>"  class="form-control">
                              </div>
 
                              <div class="form-group">
-                                 <label>Description</label>
-                                 <textarea  name="description" value="" class="form-control"><?php echo!empty($website_info['description']) ? $website_info['description'] : ''; ?></textarea>
+                                 <label>Address 2</label>
+                                 <input name="address_2" value="<?php echo!empty($website_info['address_2']) ? $website_info['address_2'] : ''; ?>"  class="form-control">
                              </div>
-
                              <div class="form-group">
                                  <label>Country<span class="error">*</span></label>
                                  <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
@@ -153,16 +177,13 @@
                                              $sel = ($v == $country->id)?'selected="selected"':'';
                                              ?>
                                              <option  value="<?php echo $country->id; ?>" <?php echo $sel;?>><?php echo $country->name; ?></option>
-                                         <?php
+                                             <?php
                                          }
                                      }
                                      ?>
                                  </select>
                                  <?php echo form_error('country');?>
                              </div>
-
-
-
                              <div id="result">
                                  <label>State<span class="error"></span></label>
                                  <select name="state"  class="form-control">
@@ -174,7 +195,7 @@
                                              $sel = ($v == $row->name)?'selected="selected"':'';
                                              ?>
                                              <option  value="<?php echo $row->name; ?>" <?php echo $sel;?>><?php echo $row->name; ?></option>
-                                         <?php
+                                             <?php
                                          }
                                      }
                                      ?>
@@ -185,191 +206,157 @@
                                  <label>City</label>
                                  <input name="city" type="text" placeholder="City" value="<?php echo!empty($website_info['city']) ? $website_info['city'] : ''; ?>" class="form-control">
                              </div>
-
-                             <div class="form-group">
-                                 <label>Address 1</label>
-                                 <input name="address_1" value="<?php echo!empty($website_info['address_1']) ? $website_info['address_1'] : ''; ?>"  class="form-control">
-                             </div>
-
-                             <div class="form-group">
-                                 <label>Address 2</label>
-                                 <input name="address_2" value="<?php echo!empty($website_info['address_2']) ? $website_info['address_2'] : ''; ?>"  class="form-control">
-                             </div>
-
                              <div class="form-group">
                                  <label>Zip/postal</label>
                                  <input name="postal" value="<?php
                                  echo!empty($website_info['postal']) ? $website_info['postal'] : '';
                                  ?>"  class="form-control">
                              </div>
-
-                             <div class="form-group">
-                                 <label> Business Name </label>
-                                 <input name="business_name" value="<?php
-                                 echo!empty($website_info['business_name']) ? $website_info['business_name'] : '';
-                                 ?>" class="form-control">
-                             </div>
-
-                             <div class="form-group">
-                                 <label> Business Web site </label>
-                                 <input name="business_website" value="<?php echo!empty($website_info['business_website']) ? $website_info['business_website'] : ''; ?>" class="form-control">
-                             </div>
-
-                             <div class="form-group">
-                                 <label>Business Email</label>
-                                 <input name="business_email" value="<?php echo!empty($website_info['business_email']) ? $website_info['business_email'] : ''; ?>" class="form-control">
-                             </div>
-
-                             <div class="form-group">
-                                 <label>Business Telephone</label>
-                                 <input name="business_telephone" value="<?php
-                                 echo!empty($website_info['business_telephone']) ? $website_info['business_telephone'] : '';
-                                 ?>" class="form-control">
-                             </div>
-
-                             <div class="form-group">
-                                 <label>Business Fax</label>
-                                 <input name="business_fax" value="<?php
-                                 echo!empty($website_info['business_fax']) ? $website_info['business_fax'] : '';
-                                 ?>" class="form-control">
-                             </div>
-
-                             <div class="form-group">
-                                 <label>Specialty</label>
-                                 <input name="specialty" value="<?php echo!empty($website_info['specialty']) ? $website_info['specialty'] : ''; ?>" class="form-control">
-                             </div>
-
-                             <div class="form-group">
-                                 <label>Special Interest</label>
-                                 <input name="special_interest" value="<?php echo!empty($website_info['special_interest']) ? $website_info['special_interest'] : ''; ?>" class="form-control">
-                             </div>
-
-
-                             <div class="form-group" id="photo_id">
-                                 <label>Photos</label>
-                             </div>
-
-                             <div class="form-group" id="photo_id">
-                                 <?php if (is_array($photos) && !empty($photos[0])) { ?>
-                                     <img src="<?php echo base_url() . '/assets/file/publicweb/' . $photos[0]->name ?>" width="100px;">
-                                 <?php }
-                                 ?>
-                                 <input name="photo1" type="file">
-                             </div>
-                             <div class="form-group" id="photo_id">
-                                 <?php if (is_array($photos) && !empty($photos[1])) { ?>
-                                     <img src="<?php echo base_url() . '/assets/file/publicweb/' . $photos[1]->name ?>" width="100px;">
-                                 <?php }
-                                 ?>
-                                 <input name="photo2" type="file">
-                             </div>
-                             <!--<a href="javascript:void(0)" id="photo">Add More</a>-->
-
-                             <div class="form-group" id="photo_id">
-                                 <label>Files</label>
-                             </div>
-
-                             <?php if (is_array($files) && !empty($files[0])) { ?>
-                                 <a href="<?php echo base_url() . '/assets/file/publicweb/' . $files[0]->name ?>"><?php echo!empty($files[0]->name) ? $files[0]->name : '' ?></a>
-                             <?php }
-                             ?>
-
-                             <div class="form-group" id="file_id">
-                                 <input name="file1" type="file">
-                             </div>
-                             <?php if (is_array($files) && !empty($files[1])) { ?>
-                                 <a href="<?php echo base_url() . '/assets/file/publicweb/' . $files[0]->name ?>"><?php echo!empty($files[1]->name) ? $files[1]->name : '' ?></a>
-                             <?php }
-                             ?>
-                             <div class="form-group" id="file_id">
-                                 <input name="file2" type="file">
-                             </div>
-
-                             <!--<a href="javascript:void(0)" id="file">Add More</a>-->
-                             <div class="form-group">
-                                 <label>Audio</label>
-
-                                 <input name="audio" type="file">
-                             </div>
-                             <div class="form-group">
-                                 <label>Video</label>
-                                 <input name="video" type="file">
-                             </div>
-
-                             <input type="submit" name="submit" class="btn btn-success" value="Update">
-                         </form>
-
-
-
+                         </div>
                      </div>
-
                  </div>
-
-             </div>
-             <div class="col-md-6 col-sm-6 col-xs-12">
-                 <div class="box box-primary">
-                     <div class="box-header with-border">
-                         <i class="fa fa-bullhorn"></i>
-
-                         <h3 class="box-title">Public Website  Help</h3>
+                 <div class="col-md-12 no-padding">
+                     <div class="box box-primary">
+                         <div class="box-header with-border">
+                             <i class="fa fa-user"></i>
+                             <h3 class="box-title">Profile Info</h3></i>
+                         </div>
+                         <div class="padd">
+                             <div class="form-group">
+                                 <label>First Name</label>
+                                 <input readonly name="first_name" value="<?php echo $user_info['first_name']; ?>" class="form-control">
+                             </div>
+                             <div class="form-group">
+                                 <label>Last Name</label>
+                                 <input readonly name="last_name" value="<?php echo!empty($user_info['last_name']) ? $user_info['last_name'] : ''; ?>" class="form-control">
+                             </div>
+                         </div>
                      </div>
+                 </div>
+                 <div class="col-md-12 no-padding">
+                     <div class="box box-primary">
+                         <div class="box-header with-border">
+                             <i class="fa fa-file"></i>
+                             <h3 class="box-title">Media</h3></i>
+                         </div>
+                         <div class="padd">
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group" id="photo_id">
+                                         <label>Photo</label>
+                                         <input name="photo1" class="btn btn-default btn-cust" type="file" >
+                                         <?php if (!empty($photos[0])) { ?>
+                                             <a href="<?php echo base_url() . '/assets/file/publicweb/' . $photos[0]->name; ?>" data-fancybox="images">
+                                                 View Picture Two
+                                             </a>
+                                         <?php }?>
+                                         <small class="badge bg-green"> JPG, GIF, PNG Format allow</small>
+                                     </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                     <div class="form-group" id="photo_id">
+                                         <label>Photo 2</label>
+                                         <input name="photo2" class="btn btn-default btn-cust" type="file">
+                                         <?php if (is_array($photos) && !empty($photos[1])) { ?>
+                                             <a href="<?php echo base_url() . '/assets/file/publicweb/' . $photos[1]->name; ?>" data-fancybox="images">
+                                                 View Picture Two
+                                             </a>
+                                         <?php }?>
+                                         <small class="badge bg-green"> JPG, GIF, PNG Format allow</small>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group" id="file_id">
+                                         <label>Files</label>
+                                         <input name="file1" class="btn btn-default btn-cust" type="file" >
+                                         <small class="badge bg-green"> DOCX,XLS,PDF, TXT, EXCEL Format allow</small>
+                                     </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                     <div class="form-group" id="file_id">
+                                         <label>Files</label>
+                                         <input name="file2" class="btn btn-default btn-cust" type="file">
+                                         <small class="badge bg-green"> DOCX,XLS,PDF, TXT, EXCEL Format allow</small>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="col-md-6">
+                                     <div class="form-group">
+                                         <label>Audio</label>
+                                         <input name="audio" class="btn btn-default btn-cust" type="file">
+                                         <small class="badge bg-green btn-cust"> MP3, OGG Format allow</small>
+                                     </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                     <div class="form-group">
+                                         <label>Video</label>
+                                         <input name="video" class="btn btn-default btn-cust"  type="file">
+                                         <small class="badge bg-green btn-cust"> MP4, WMV Format allow</small>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-12">
+                 <div class="box box-primary">
                      <!-- /.box-header -->
                      <div class="box-body">
-
-                         <div class="info-box bg-green">
-                             <span class="info-box-icon"><i class="fa fa-calendar"></i></span>
-
-                             <div class="info-box-content">
-                                 <span class="info-box-text">Appointment Settings</span>
-                                 <span class="info-box-number">Public Website Appointment </span>
-
-                                 <div class="progress">
-                                     <div class="progress-bar" style="width: 100%"></div>
+                         <div class="panel-body">
+                             <div class="row">
+                                 <div class="col-lg-12">
+                                     <div class="col-lg-6">
+                                         <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
+                                     </div>
+                                     <div class="col-lg-6 ">
+                                         <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
+                                             <i class="fa fa-check"></i> &nbsp; &nbsp; Update</button>
+                                     </div>
                                  </div>
-                  <span class="progress-description">
-                   Setup Your Appointment Public Contact You Directly
-                  </span>
                              </div>
-                             <!-- /.info-box-content -->
                          </div>
-
-                         <div class="info-box bg-yellow">
-                             <span class="info-box-icon"><i class="fa fa-shopping-cart"></i></span>
-
-                             <div class="info-box-content">
-                                 <span class="info-box-text">Store Settings</span>
-                                 <span class="info-box-number">Public Website Store </span>
-
-                                 <div class="progress">
-                                     <div class="progress-bar" style="width: 100%"></div>
-                                 </div>
-                              <span class="progress-description">
-                               Setup Your Online Store Public Contact You Directly
-                              </span>
-                             </div>
-                             <!-- /.info-box-content -->
-                         </div>
-
-
-
-                         <div class="callout callout-info">
-                             <h4>More Help </h4>
-
-                             <p>Contact Us : <b> info@foralldoctors.com</b> </p>
-                         </div>
-
                      </div>
-
-
-                     <!-- /.box-body -->
                  </div>
              </div>
-
+             </form>
          </div>
 
 
      </section>
 </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+
+
+<script type="text/javascript">
+    $().fancybox({
+        selector : '[data-fancybox="images"]',
+        thumbs   : false,
+        hash     : false,
+    });
+
+    $(".main-slider").slick({
+        slidesToShow   : 3,
+        slidesToScroll : 3,
+        infinite   : true,
+        dots       : false,
+        arrows     : false,
+        responsive : [
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+</script>
 
      <script>
 

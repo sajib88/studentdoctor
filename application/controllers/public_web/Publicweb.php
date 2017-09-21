@@ -84,30 +84,45 @@ class Publicweb extends CI_Controller {
                 $save['special_interest'] = $postData['special_interest'];
                 $save['online_store'] = $postData['store'];
                 $save['store_id'] = $postData['store_id'];
-                
-                
+
 
                 if ($insertedId = $this->global_model->insert('public_website', $save)) {
 
                     uploadpublicweb();
 
-                    if ($this->upload->do_upload('photo1')) {
-                        $fileInfo = $this->upload->data();
-                        // $audo_data['ref_id'] = $insertedId;
-                        $audo_data['ref_id'] = $loginId;
-                        $audo_data['ref_name'] = 'public_web';
-                        $audo_data['name'] = $fileInfo['file_name'];
-                        $this->global_model->insert('photos', $audo_data);
+                    if (isset($_FILES["photo1"]["name"]) && $_FILES["photo1"]["name"] != '') {
+                        $this->PATH = './assets/file/publicweb/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['photo1'] = $this->resizeimg->image_upload('photo1', $this->PATH, 'size[318,210]', '', $photo_name);
+                        $photo_data['ref_id'] = $loginId;
+                        $photo_data['ref_name'] = 'public_web';
+                        $photo_data['name'] = $save['photo1'];
+                        $this->global_model->insert('photos', $photo_data);
+                    }
+                    else {
+
                     }
 
-                    if ($this->upload->do_upload('photo2')) {
-                        $fileInfo = $this->upload->data();
-                        //$photo1_data['ref_id'] = $insertedId;
+                    if (isset($_FILES["photo2"]["name"]) && $_FILES["photo2"]["name"] != '') {
+                        $this->PATH = './assets/file/publicweb/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['photo2'] = $this->resizeimg->image_upload('photo2', $this->PATH, 'size[318,210]', '', $photo_name);
                         $photo1_data['ref_id'] = $loginId;
                         $photo1_data['ref_name'] = 'public_web';
-                        $photo1_data['name'] = $fileInfo['file_name'];
+                        $photo1_data['name'] = $save['photo2'];
                         $this->global_model->insert('photos', $photo1_data);
                     }
+                    else {
+
+                    }
+
+                    uploadpublicweb();
 
                     if ($this->upload->do_upload('file1')) {
                         $fileInfo = $this->upload->data();
@@ -158,7 +173,7 @@ class Publicweb extends CI_Controller {
         if ($this->global_model->get_data('public_website', array('user_id' => $loginId, 'profile_status' => 'public')))
         {
 
-            $data['message'] = "You have Alredy 1 Posted public Website";
+            $data['message'] = "You have Alredy Posted a public Website";
             $this->load->view('header', $data);
             $this->load->view('message', $data);
             $this->load->view('footer');
@@ -214,11 +229,16 @@ class Publicweb extends CI_Controller {
 
     public function delete() {
         $loginId = $this->session->userdata('login_id');
+        $data['photos'] = $photos = $this->global_model->get('photos', array('ref_id' => $loginId, 'ref_name' => 'public_web'));
+
         $this->global_model->delete('public_website', array('user_id' => $loginId, 'profile_status' => 'public'));
         $this->global_model->delete('files', array('ref_id' => $loginId, 'ref_name' => 'public_web'));
         $this->global_model->delete('photos', array('ref_id' => $loginId, 'ref_name' => 'public_web'));
-        $this->global_model->delete('video', array('ref_id' => $loginId, 'ref_name' => 'public_web'));
+        $this->global_model->delete('video', array('created_by' => $loginId, 'ref_name' => 'public_web'));
         $this->global_model->delete('audio', array('ref_id' => $loginId, 'ref_name' => 'public_web'));
+
+
+
         redirect('public_web/publicweb');
     }
 
@@ -253,6 +273,7 @@ class Publicweb extends CI_Controller {
         $data['profession']  = $this->global_model->get('profession');
         $data['files'] = $files = $this->global_model->get('files', array('ref_id' => $loginId, 'ref_name' => 'public_web'));
         $data['photos'] = $photos = $this->global_model->get('photos', array('ref_id' => $loginId, 'ref_name' => 'public_web'));
+        //print_r($data['photos']);die;
         $data['video'] = $video = $this->global_model->get_data('video', array('created_by' => $loginId, 'ref_name' => 'public_web'));
         $data['audio'] = $audio = $this->global_model->get_data('audio', array('ref_id' => $loginId, 'ref_name' => 'public_web'));
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
@@ -318,32 +339,41 @@ class Publicweb extends CI_Controller {
 
                 if ($this->global_model->update('public_website', $save, array('user_id' => $loginId))) {
 
-                    uploadpublicweb();
 
-                    if ($this->upload->do_upload('photo1')) {
 
-                        $fileInfo = $this->upload->data();
-                        //$audo_data['ref_id'] = $pubData['id'];
-                        $audo_data['ref_id'] = $loginId;
-                        $audo_data['ref_name'] = 'public_web';
-                        $audo_data['name'] = $fileInfo['file_name'];
-                        $this->global_model->insert('photos', $audo_data);
-                        if (is_array($photos) && !empty($photos[0])) {
-                            $this->global_model->delete('photos', array('id' => $photos[0]->id));
-                        }
+                    if (isset($_FILES["photo1"]["name"]) && $_FILES["photo1"]["name"] != '') {
+                    $this->PATH = './assets/file/publicweb/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                        $save['photo1'] = $this->resizeimg->image_upload('photo1', $this->PATH, 'size[318,210]', '', $photo_name);
+                        $photo_data['ref_id'] = $loginId;
+                        $photo_data['ref_name'] = 'public_web';
+                        $photo_data['name'] = $save['photo1'];
+                        $this->global_model->update('photos', $photo_data, array('id' => $photos[0]->id));
+                    }
+                    else {
+
                     }
 
-                    if ($this->upload->do_upload('photo2')) {
-                        $fileInfo = $this->upload->data();
-                        //$photo1_data['ref_id'] = $pubData['id'];
+                    if (isset($_FILES["photo2"]["name"]) && $_FILES["photo2"]["name"] != '') {
+                        $this->PATH = './assets/file/publicweb/';
+                        $photo_name = time();
+                        if (!file_exists($this->PATH)) {
+                            mkdir($this->PATH, 0777, true);
+                        }
+                        $save['photo2'] = $this->resizeimg->image_upload('photo2', $this->PATH, 'size[318,210]', '', $photo_name);
                         $photo1_data['ref_id'] = $loginId;
                         $photo1_data['ref_name'] = 'public_web';
-                        $photo1_data['name'] = $fileInfo['file_name'];
-                        $this->global_model->insert('photos', $photo1_data);
-                        if (is_array($photos) && !empty($photos[1])) {
-                            $this->global_model->delete('photos', array('id' => $photos[1]->id));
-                        }
+                        $photo1_data['name'] = $save['photo2'];
+                        $this->global_model->update('photos', $photo1_data, array('id' => $photos[1]->id));
                     }
+                    else {
+
+                    }
+
+                    uploadpublicweb();
 
                     if ($this->upload->do_upload('file1')) {
                         $fileInfo = $this->upload->data();

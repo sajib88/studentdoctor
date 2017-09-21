@@ -206,9 +206,13 @@ class Classifieds extends CI_Controller {
                 $save['fax'] = $postData['fax'];
                 $save['price'] = $postData['price'];
                 $save['user_id'] = $loginId;
-                $sata = array();
-                $sata ['profession_view'] = $this->input->post('profession_view');
-                $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
+                if(!empty($this->input->post('profession_view'))){
+                    $sata = array();
+                    $sata ['profession_view'] = $this->input->post('profession_view');
+                    $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
+                }else{
+                    $save['profession_view'] = 0;
+                }
 
                 if (isset($_FILES["photo_primary"]["name"]) && $_FILES["photo_primary"]["name"] != '') {
                     $this->PATH = './assets/file/classifieds/';
@@ -316,8 +320,8 @@ class Classifieds extends CI_Controller {
     public function viewmyclassfied(){
 
         $data = array();
-        $data['page_title'] = 'Private Web';
-        $data['tabActive'] = 'private';
+        $data['page_title'] = 'Classified List';
+        $data['tabActive'] = 'classified';
         $data['error'] = '';
 
         $loginId = $this->session->userdata('login_id');
@@ -335,8 +339,8 @@ class Classifieds extends CI_Controller {
     public function viewall(){
         $table = 'classified';
         $data = array();
-        $data['page_title'] = 'Private Web';
-        $data['tabActive'] = 'private';
+        $data['page_title'] = 'Classified List';
+        $data['tabActive'] = 'classified';
         $data['error'] = '';
 
 
@@ -367,8 +371,8 @@ class Classifieds extends CI_Controller {
 
         $data = array();
 
-        $data['page_title'] = 'Private Web';
-        $data['tabActive'] = 'private';
+        $data['page_title'] = 'Classified List';
+        $data['tabActive'] = 'classified';
         $data['error'] = '';
         $id = $this->uri->segment('4');
 
@@ -393,7 +397,29 @@ class Classifieds extends CI_Controller {
     public function delete()
     {
         $id = $this->uri->segment('4');
+        $data['layoutfull'] = $this->global_model->get_data('classified', array('id' => $id));
+       print_r($data['layoutfull']);
+//        $path ='assets/file/classifieds/'.$data['layoutfull']['photo_primary'];
+//        echo $path ;
+//        //delete_files($path);
+//        unlink($path);
+    //die;
         if ($this->global_model->delete('classified', array('id' => $id))) {
+
+            $files = array($data['layoutfull']['photo_primary'],
+                            $data['layoutfull']['photo_2'],
+                            $data['layoutfull']['photo_3'],
+                            $data['layoutfull']['photo_4'],
+                            $data['layoutfull']['primary_file'],
+                           // $data['layoutfull']['file_2'],
+                            $data['layoutfull']['primary_sound'],
+                            //$data['layoutfull']['sound1'],
+                            $data['layoutfull']['primary_video']
+                            //$data['layoutfull']['video1']
+                            );
+            foreach ($files as $file) {
+                unlink ( 'assets/file/classifieds/'.$file );
+            }
             $this->session->set_flashdata('success', 'Delete successfully!');
             redirect('classifieds/classifieds/viewmyclassfied');
         }

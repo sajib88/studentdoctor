@@ -6,15 +6,9 @@ print_r($website_info);die;*/?>
     
     
     <section class="content-header">
-      <h1>
-        Profile Edit
-        <small>Modify Your Profile Information</small>
+      <h1><i class="fa fa-user-md"></i>
+        Public Website
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Profile</a></li>
-        <li class="active">Edit</li>
-      </ol>
     </section>
     
     

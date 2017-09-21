@@ -1,15 +1,9 @@
 <div class="content-wrapper">
     
     <section class="content-header">
-      <h1>
-       View Details 
-        <small>Public Website</small>
+      <h1><i class="fa fa-user-md"></i>
+       Public Website Details
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Public website</a></li>
-        <li class="active">Detials View</li>
-      </ol>
     </section>
     
     
@@ -142,7 +136,7 @@
                                     foreach ($photos as $row) {
                                         {
                                             ?>
-                                            <img src="<?php echo base_url() . '/assets/file/publicweb/' . $row->name ?>" width="160px;">
+                                            <img src="<?php echo base_url() . '/assets/file/publicweb/' . $row->name ?>" width="160px;" height="160px">
                                             <?php
                                         }
                                     }
@@ -218,7 +212,7 @@
                                     $i = 1;
                                     foreach ($files as $row) {
                                         ?>
-                                        <a href="<?php echo base_url() . '/assets/file/publicweb/' . $row->name ?>">Download File  <?php echo $i; //echo!empty($row->name) ? $row->name : ''   ?></a><br/>
+                                        <a class="btn btn-small btn-dropbox" href="<?php echo base_url() . '/assets/file/publicweb/' . $row->name ?>">Download File  <?php echo $i; //echo!empty($row->name) ? $row->name : ''   ?></a>
                                         <?php
                                         $i++;
                                     }

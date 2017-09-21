@@ -3,7 +3,7 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1><i class="fa fa-fw fa-list-alt "></i>
-            Classifieds
+            All Classifieds
         </h1>
     </section>
 
@@ -28,8 +28,8 @@
             </div>
             <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
-                    <li><a href="#">Title <span class="pull-right"><?php echo (!empty($row['title']))?$row['title']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
-                    <li><a href="#">Price <span class="pull-right"><?php echo (!empty($row['price']))?$row['price']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                    <li><a href="#">Title <span class="pull-right"><?php echo (!empty($row['title']))?substr($row['title'], 0, 40):'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                    <li><a href="#">Price <span class="pull-right">$<?php echo (!empty($row['price']))?$row['price']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                     <li><a href="#">Email Id <span class="pull-right"><?php echo (!empty($row['email']))?$row['email']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                     <li><a href="#">Phone <span class="pull-right"><?php echo (!empty($row['phone']))?$row['phone']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                 </ul>

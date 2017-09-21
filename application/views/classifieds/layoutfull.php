@@ -258,7 +258,12 @@
                                             </tr>
                                             <tr>
                                                 <td>Country</td>
-                                                <td><?php echo $layoutfull['country']; ?></td>
+                                                <td>
+                                                    <?php
+                                                    $data = get_data('countries', array('id' => $layoutfull['country']));
+                                                    echo $data['name'];
+                                                    ?>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

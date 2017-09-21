@@ -1,14 +1,8 @@
 <div class="content-wrapper">
     <section class="content-header">
-      <h1>
-       Information messge
-        <small>Preview</small>
+      <h1><i class="fa fa-user-md"></i>
+       Public Website
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Mmessage</a></li>
-       
-      </ol>
 </section>
 
 
@@ -27,8 +21,10 @@
     <div class="">
         <div class="row">
              <div class="col-lg-12">
-            <div class="col-lg-12 alert alert-success alert-dismissible">
-                <h3><?php echo $message; ?></h3>
+            <div class="col-lg-12 alert alert-warning alert-dismissible text-center">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <h3><?php echo $message; ?> <i class="fa fa-info"></i></h3>
+                <p>Plese visit your public website edit menu to any farther modification ! Thanks.</p>
             </div>
             </div>
             <!-- /.col-lg-12 -->

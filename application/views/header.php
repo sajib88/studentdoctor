@@ -86,32 +86,27 @@
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning"><?php echo (!empty($doctor_appointment)) ? count($doctor_appointment) : "" ?></span>
+                            <span class="label label-warning"><?php echo (!empty($doctor_appointment))?count($doctor_appointment):""?></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You
-                                have <?php echo (!empty($doctor_appointment)) ? count($doctor_appointment) : "" ?>
-                                appointment
-                            </li>
+                            <li class="header">You have <?php echo (!empty($doctor_appointment))?count($doctor_appointment):""?> appointment</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
-                                    <?php if (!empty($doctor_appointment)) {
-                                        foreach ($doctor_appointment as $row) {
+                                    <?php if(!empty($doctor_appointment)){
+                                        foreach ($doctor_appointment as $row){
                                             ?>
                                             <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> <?php echo $row->first_name; ?>
-                                                    appointment request to you
+                                                <a href="<?php echo base_url('doctor/docController/allappointment')?>">
+                                                    <i class="fa fa-users text-aqua"></i> <?php echo $row->first_name;?> appointment request to you
                                                 </a>
                                             </li>
                                             <?php
                                         }
-                                    } ?>
+                                    }?>
                                 </ul>
                             </li>
-                            <li class="footer"><a href="<?php echo base_url('doctor/docController/allappointment') ?>">View
-                                    all</a></li>
+                            <li class="footer"><a href="<?php echo base_url('doctor/docController/allappointment')?>">View all</a></li>
                         </ul>
                     </li>
                     <li class="dropdown user user-menu">

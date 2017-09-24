@@ -282,29 +282,6 @@ margin-right: 10px;}
     width: 0%;
 }
 
-/* Set Label Properties*/
-.label {
-    position: absolute;
-    display: block;
-    padding: 0px 10px;
-    height: 29px;
-    line-height: 30px;
-    bottom: 31px;
-    background: #1570f4;
-    font-size: 12px;
-    font-family: sans-serif;
-    text-align: center;
-    color: #fff;
-
-    border-radius: 3px;
-    white-space: nowrap;
-    /* jQuery animates the opacity property to fade in the label*/
-    opacity: 0;
-    /*
-    left:/right: properties are set by jQuery.
-    They depend on data-percentage attributes of each .progress-bar <div>
-    */
-}
 
 /*
 Set Arrow Properties

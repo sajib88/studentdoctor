@@ -193,6 +193,14 @@ class DocController extends CI_Controller
         $this->load->view('footer');
     }
 
+    public function singleAppointment($id){
+        $data = array();
+        $data['appointmentView'] = $this->global_model->get_data('appointment', array('id' => $id));
+        echo $this->load->view('doctor/appointmentDetails', $data, TRUE);
+
+        exit;
+    }
+
 
 }
 ?>

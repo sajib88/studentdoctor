@@ -67,7 +67,12 @@
     <header class="main-header">
         <!-- Logo -->
         <a href="<?php echo base_url(); ?>" class="logo navbar-brand">
-            <img src="<?php echo base_url();?>/comp/img/logo.png" class="img-responsive" height="44px" alt="logo" >
+            <span class="logo-mini">
+                <img src="<?php echo base_url();?>/comp/img/logomini.png" class="img-responsive" height="44px" alt="logo" >
+            </span>
+           <span class="logo-lg">
+               <img src="<?php echo base_url();?>/comp/img/logo.png" class="img-responsive" height="44px" alt="logo" >
+           </span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -244,6 +249,7 @@
                                 Public Site</a>
                         </li>
 
+                       <!--
                         <li class="treeview">
                             <a href="#">
                                 <i class="glyphicon glyphicon-shopping-cart"></i>
@@ -257,7 +263,7 @@
                                 </li>
                             </ul>
                         </li>
-
+                        -->
 
                     </ul>
 

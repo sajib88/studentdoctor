@@ -88,7 +88,7 @@
                                           <a href="<?php echo base_url();?>home/login" >Login</a>
                                     </li>
 
-                                    <li class="dropdown hidden-lg">
+                                    <li class="dropdown hidden-lg hidden-md">
                                         <a href="<?php echo base_url();?>home/getPurpose" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <i class="fa fa-angle-down"></i></a>
                                         <div class="dropdown-menu mega-menu">
                                             <div class="row">

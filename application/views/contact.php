@@ -41,7 +41,7 @@
                       <input name="email" id="email" type="text" class="form-control" placeholder="E-mail address" required>
                   </div>
 
-                  <div class="form-group col-sm-12">
+                  <div class="form-group col-sm-6">
                       <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
                   </div>
                   <div class="row">

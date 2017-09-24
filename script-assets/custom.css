@@ -453,6 +453,13 @@ label {
         padding-bottom: 10px;
     }
 
+
+}
+
+@media only screen and (max-width: 700px) {
+    .skin-black-light .main-header .logo{
+        background-color: #fff !important;
+    }
 }
 
 

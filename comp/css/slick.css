@@ -164,7 +164,7 @@
         padding-right: 9px;
     }
     .contact-us > h2{
-        margin-left: 15px !important;
+        margin-left: 0px !important;
     }
 }
 
@@ -759,5 +759,24 @@ html[dir="rtl"] .comments > li ul { padding-right: 58px; padding-left: 0; }
 .list-lined { list-style: none; padding: 0; margin: 0; }
 .list-lined > li { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px dashed rgba(0, 0, 0, 0.15); }
 .list-lined > li:last-child { border-bottom: none; }
+
+/*resest password*/
+.reset-pass{
+    background-color: #fff;
+    height: auto;
+    width: 400px;
+    margin:100px auto;
+}
+
+.reset-pass-content{
+    padding: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+    .reset-pass{
+        width: 100%;
+        margin:50px auto;
+    }
+}
 
 

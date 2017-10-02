@@ -18,8 +18,14 @@
                                 }
                             }
                             ?>
+
+
+
                             <div class="login-bg">
                                 <div class="container col-md-4 col-md-offset-4">
+                                    <?php if(!empty($this->session->flashdata('msg'))){
+                                        echo $this->session->flashdata('msg');
+                                    }?>
 
                                     <div class="form-wrapper">
                                         <form class="form-signin wow fadeInUp" method="post" action="<?php echo base_url('home/login'); ?>" role="form">

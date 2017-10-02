@@ -7,8 +7,6 @@
     <!-- Section -->
     <section class="bg-black fullheight dark">
 
-
-        <div class="bg-image"><img src="<?php echo base_url(); ?>front/img/photos/classic_bg03.jpg" alt=""></div>
         <?php if (!empty($error)) {
             showErrorMessage($error);
         } else {
@@ -19,13 +17,14 @@
         ?>
         <div class="container v-center text-center">
             <div class="row">
-                <div class="col-lg-4 col-lg-push-4">
-                    <div class="bordered-box rounded animated" data-animation="fadeInDown">
+                <div class="col-lg-6 col-lg-push-3">
+                    <div class="bordered-box rounded animated reset-pass" data-animation="fadeInDown">
+                        <div class="reset-pass-content">
                         <h2>Recover</h2>
                         <?php echo $this->session->flashdata('msg');?>
 
 
-                        <form  class="text-center mb-30" method="post" action="<?php echo base_url('home/updatepassword'); ?>" role="form">
+                        <form  class="text-center mb-30" method="post" action="<?php echo base_url('home/update_password'); ?>" role="form">
 
                             <?php if($this->session->userdata('recovery')!='yes'){?>
                                 <div class="form-group mb-10">
@@ -51,6 +50,7 @@
                             <input type="submit" class="btn btn-filled btn-primary btn-block" name="submit" value="save" >
 
                         </form>
+                        </div>
 
 
                     </div>

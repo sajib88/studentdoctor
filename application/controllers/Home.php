@@ -116,8 +116,8 @@ class Home extends CI_Controller {
     public function get_admin_email_and_name()
     {
 
-        $data['admin_email'] = 'info@allstudentdoctors.com';
-        $data['admin_name']  = 'allstudentdoctors';
+        $data['admin_email'] = 'info@advertbd.com';
+        $data['admin_name']  = 'All Student Doctors';
 
         return $data;
     }
@@ -163,10 +163,8 @@ class Home extends CI_Controller {
         $data['error'] = '';
 
         if ($this->input->post()) {
-            uploadConfiguration();
+
             $this->form_validation->set_rules('profession', 'profession', 'trim|required');
-            $this->form_validation->set_rules('first_name', 'first name', 'trim');
-            $this->form_validation->set_rules('last_name', 'last name', 'trim');
             $this->form_validation->set_rules('user_name', 'user name', 'trim');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[128]|is_unique[users.email]');
             $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
@@ -183,25 +181,18 @@ class Home extends CI_Controller {
 
                 $save['confirmation_key'] 	= uniqid();
                 $save['confirmed'] 	= 0;
-                $save['status']		= 0;
+                $save['status']		= 1;
 
-                if ($this->upload->do_upload('image')) {
-                    $fileInfo = $this->upload->data();
-                    $save['file_name'] = $fileInfo['file_name'];
-                }
+
 
                 if ($this->global_model->insert('users', $save)) {
-                    $this->load->library('email');
-                    $this->email->from('omarfci99@gmail.com', 'All Doctors');
-                    $this->email->to($save['email']);
-                    $this->email->subject('Activation Link');
-                    $this->email->message('This is activation link for active user.');
-                    $this->email->send();
-                    $this->session->set_flashdata('success', 'Your account has been created and an activation link has been sent to the email address you entered. Note that you must activate the account by selecting the activation link when you get the email before you can login.');
-                    $redirect_link = base_url() . 'home/login';
 
                     $this->send_confirmation_email($save);
-                    $this->session->set_flashdata('msg', 'Email send Successfully');
+                    $this->session->set_flashdata('msg', '<div class="alert alert-block alert-success fade in">
+                                                            <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                <i class="icon-remove"></i>
+                                                            </button>
+                                                            <strong>Email send successfully. <br>Check your email to active your acount.</strong> </div>');
                 } else {
                     $this->session->set_flashdata('success', 'Something worng please try again.');
                 }
@@ -438,8 +429,6 @@ class Home extends CI_Controller {
     }
 
 
-
-
     #reset password email link points here
     function resetpassword($recovery_key='')
     {
@@ -528,7 +517,7 @@ class Home extends CI_Controller {
     #load forgot password view
     function forgotpassword()
     {
-        $this->load->view('header_guest');
+        $this->load->view('header_guest_home');
         $this->load->view('forgotpass_view');
         $this->load->view('foother_guest.php');
     }
@@ -552,7 +541,7 @@ class Home extends CI_Controller {
 
     function changepass()
     {
-        $this->load->view('header_guest');
+        $this->load->view('header_guest_home');
         $this->load->view('changepass_view');
         $this->load->view('foother_guest.php');
     }
@@ -591,16 +580,16 @@ class Home extends CI_Controller {
         $this->load->view('foother_guest.php');
     }
 
-    public function contact(){
-        $data = array();
-
-        $data['countries'] = $this->global_model->get('countries');
-        $data['profession'] = $this->global_model->get('profession');
-
-        $this->load->view('header_guest_home');
-        $this->load->view('contact',$data);
-        $this->load->view('foother_guest.php');
-    }
+//    public function contact(){
+//        $data = array();
+//
+//        $data['countries'] = $this->global_model->get('countries');
+//        $data['profession'] = $this->global_model->get('profession');
+//
+//        $this->load->view('header_guest_home');
+//        $this->load->view('contact',$data);
+//        $this->load->view('foother_guest.php');
+//    }
 
     public function feature(){
         $data = array();
@@ -623,5 +612,53 @@ class Home extends CI_Controller {
         $this->load->view('email',$data);
         $this->load->view('foother_guest.php');
     }
+
+    public function contact()
+    {
+        $data = array();
+        $data['countries'] = $this->global_model->get('countries');
+        $data['profession'] = $this->global_model->get('profession');
+
+        $this->load->library('form_validation');
+        $this->load->library('session');
+
+
+        $this->form_validation->set_rules('name', 'name', 'required');
+        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|max_length[128]');
+        $this->form_validation->set_rules('message', 'message', 'required');
+
+        if($this->form_validation->run() == FALSE){
+
+            $this->session->set_flashdata('error_msg', validation_errors('<div class="alert alert-danger text-center">', '</div>'));
+
+            $this->load->view('header_guest_home');
+            $this->load->view('contact',$data);
+            $this->load->view('foother_guest.php');
+        }else{
+            $this->load->library('email');
+
+            $this->email->from(set_value('email'), set_value('name'));
+            $this->email->to('info@advertbd.com');
+            $this->email->subject('Contact Email');
+            $this->email->message(set_value('message'));
+
+            if($this->email->send()){
+                $this->session->set_flashdata('msg','<div class="alert alert-success text-center">We received your message! Will get back to you shortly!!!</div>');
+            }else{
+                $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Something went wrong! Please try again later.</div>');
+            }
+
+            $this->load->view('header_guest_home');
+            $this->load->view('contact',$data);
+            $this->load->view('foother_guest.php');
+        }
+
+
+    }
+
+
+
+
+
 
 }

@@ -21,22 +21,25 @@
                                 }
                                 ?>
 
+                                <?php if(!empty($this->session->flashdata('msg'))){
+                                    echo $this->session->flashdata('msg');
+                                }?>
+
                                 <form class="form-signin wow fadeInUp" action="<?php echo base_url('home/registration'); ?>" method="post" enctype="multipart/form-data">
-
-
-                                    <div class="form-group mb-10">
-                                        <a href="#" class="btn btn-small btn-block btn-fb"><i class="pull-cnter fa fa-facebook"></i>&nbsp &nbsp Facebook Login</a>
-                                        </br> </br>
-
-                                        <div class="hr-text">
-                                            <hr>
-                                            <span>or</span>
-                                        </div>
-                                    </div>
 
 
                                     <div class="login-wrap">
 
+                                        <div class="form-group mb-10">
+                                            <a href="<?php echo base_url('home/newaccount/fb');?>" class="btn btn-small btn-block btn-fb"><i class="pull-cnter fa fa-facebook"></i>&nbsp &nbsp Facebook Login</a>
+                                            </br> </br>
+                                            <a href="<?php echo base_url('home/newaccount/google_plus');?>" class="btn btn-filled btn-danger btn-block"><i class="fa fa-google-plus"></i> &nbsp; Login with Google</a>
+                                            </br> </br>
+                                            <div class="hr-text">
+                                                <hr>
+                                                <span>or</span>
+                                            </div>
+                                        </div>
 
                                         <div  class="form-group">
                                             <p>Select  Your Profession First </p>

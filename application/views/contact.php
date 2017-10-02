@@ -25,11 +25,15 @@
 
 
           <div class="col-lg-7 col-lg-push-1">
+              <?php if(!empty($this->session->flashdata('msg'))){
+                  echo $this->session->flashdata('msg');
+              }?>
+              <?php echo $this->session->flashdata('error_msg'); ?>
               <div class="text-left helpig-hand contact-us">
                   <h2>Contact With<span> Us</span></h2>
               </div>
 
-              <form class="contact-form validate-form" id="contact-form" method="POST"
+              <form action="<?php echo base_url('home/contact'); ?>" class="contact-form validate-form" id="contact-form" method="POST"
                     data-message-error="Opps... Something went wrong - please try again later"
                     data-message-success="Thank you form your message! We will answer within 24 hours."
               >
@@ -41,11 +45,11 @@
                       <input name="email" id="email" type="text" class="form-control" placeholder="E-mail address" required>
                   </div>
 
-                  <div class="form-group col-sm-6">
-                      <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+                  <div class="form-group col-sm-12">
+                      <textarea name="message" id="message" cols="30" rows="9" class="form-control" placeholder="Message" required></textarea>
                   </div>
                   <div class="row">
-                      <div class="col-md-4 col-sm-6">
+                      <div class="col-md-12 col-sm-6">
                           <button type="submit" class="btn   btn-yellow"><span>Send it <i class="i-after ti-arrow-right"></i></span></button>
                       </div>
                   </div>

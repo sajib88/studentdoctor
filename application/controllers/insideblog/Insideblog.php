@@ -55,8 +55,6 @@ class Insideblog extends CI_Controller
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $this->form_validation->set_rules('title', 'title', 'required');
         $this->form_validation->set_rules('description', 'description', 'required');
-        $this->form_validation->set_rules('tag', 'tag', 'required');
-        $this->form_validation->set_rules('keyword', 'keyword', 'required');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -76,68 +74,75 @@ class Insideblog extends CI_Controller
             $data['status'] = 1;
             $data['tag'] = $this->input->post('tag');
             $data['keyword'] = $this->input->post('keyword');
-            $sata = array();
-            $sata ['profession_view'] = $this->input->post('profession_view');
-            $data['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
+            if(!empty($this->input->post('profession_view'))){
+                $sata = array();
+                $sata ['profession_view'] = $this->input->post('profession_view');
+                $data['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
+            }else{
+                $save['profession_view'] = 0;
+            }
 
-          
-             $this->PATH = './assets/file/insideblog';
             if (isset($_FILES["primary_image"]["name"]) && $_FILES["primary_image"]["name"] != '') {
+                $this->PATH = './assets/file/insideblog';
                 $photo_name = time();
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
                 $data['primary_image'] = $this->resizeimg->image_upload('primary_image', $this->PATH, 'size[300,300]', '', $photo_name);
-            } else {
-                $data['primary_image'] = '';
+            }
+            else {
+
             }
 
+            if (isset($_FILES["image1"]["name"]) && $_FILES["image1"]["name"] != '') {
+                $this->PATH = './assets/file/insideblog';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image1'] = $this->resizeimg->image_upload('image1', $this->PATH, 'size[300,300]', '', $photo_name);
+            }
+            else {
 
-            // uploadBLOG();
+            }
 
-            // // PHOTO UPLOAD
-            // if ($this->upload->do_upload('primary_image')) {
+            if (isset($_FILES["image2"]["name"]) && $_FILES["image2"]["name"] != '') {
+                $this->PATH = './assets/file/insideblog';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image2'] = $this->resizeimg->image_upload('image2', $this->PATH, 'size[300,300]', '', $photo_name);
+            }
+            else {
 
-            //     $fileInfo = $this->upload->data();
-            //     $pic1['name'] = $fileInfo['file_name'];
-            //     $data['primary_image'] = $pic1['name'];
-            // }
+            }
 
-            //  if ($this->upload->do_upload('image1')) {
-            //     $fileInfo = $this->upload->data();
-            //     $pic2['name'] = $fileInfo['file_name'];
-            //     $data['image1'] = $pic2['name'];
-            // }
-            
-            // if ($this->upload->do_upload('image2')) {
-            //     $fileInfo = $this->upload->data();
-            //     $pic2['name'] = $fileInfo['file_name'];
-            //     $data['image2'] = $pic2['name'];
-            // }
+            if (isset($_FILES["image3"]["name"]) && $_FILES["image3"]["name"] != '') {
+                $this->PATH = './assets/file/insideblog';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image3'] = $this->resizeimg->image_upload('image3', $this->PATH, 'size[300,300]', '', $photo_name);
+            }
+            else {
 
-            // if ($this->upload->do_upload('image3')) {
-            //     $fileInfo = $this->upload->data();
-            //     $pic3['name'] = $fileInfo['file_name'];
-            //     $data['image3'] = $pic3['name'];
-            // }
+            }
 
            
-
-
-
-           
-            if ($post_id = $this->global_model->insert('insideblog', $data)) {
-                        $this->session->set_flashdata('message', 'Save Success');
-                        redirect('insideblog/insideblog/insidebloglist');
-                       //redirect('profile/profile');
-                    }
+            if ($this->global_model->insert('insideblog', $data)) {
+                $this->session->set_flashdata('message', 'Blog created successfully.');
+                //redirect('insideblog/insideblog/insidebloglist');
+               //redirect('profile/profile');
+            }
 
              
                 
 
         }
 
-
+        $data['login_id'] = $loginId;
          $this->load->view('header', $data);
         $this->load->view('insideblog/insideblogcreate', $data);
         $this->load->view('footer', $data);

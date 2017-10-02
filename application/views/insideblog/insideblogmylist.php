@@ -1,8 +1,16 @@
 
 
 <div class="content-wrapper" id="page-wrapper">
-<div class="row">
 
+
+    <section class="content-header">
+        <h1><i class="fa fa-square-o"></i>
+            Blog List
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
 
      <?php if($data = $this->session->flashdata('message')){ ?>
             <div class="col-lg-12">
@@ -16,9 +24,9 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">List All Blogs Info</h3>
+                    <h3 class="box-title">List of All Blogs</h3>
                 </div>
-                <div class="box-body no-padding">
+                <div class="box-body">
                     <?php if(count($allblog)<=0){?>
                         <div class="alert alert-info">No Blogs</div>
                     <?php }else{?>
@@ -38,8 +46,6 @@
 
                                     <th class="numeric"><?php echo 'Tme & Date';?></th>
 
-                                    <th class="numeric"><?php echo 'Image';?></th>
-
                                     <th class="numeric"><?php echo 'Action';?></th>
 
                                     <th class="numeric"><?php echo 'Remove';?></th>
@@ -57,21 +63,18 @@
                                         <tr>
                                             <td><?php echo $i; ?></td>
                                             <td data-title="<?php echo 'Title'; ?>"
-                                                class="numeric"><span class="label label-info"><?php echo substr($row->title, 0, 60); ?></span></td>
+                                                class="numeric"><span class=""><?php echo substr($row->title, 0, 60); ?></span></td>
                                             
                                             <td data-title="<?php echo 'Category'; ?>"
-                                                class="numeric"><span class="label label-info"><?php echo $row->cat_type; ?></span></td>
+                                                class="numeric"><span class=""><?php echo $row->cat_type; ?></span></td>
 
                                             <td data-title="<?php echo 'Date & Time'; ?>"
                                                 class="numeric">
-                                                <span class="label label-info">
+                                                <span class="">
                                                 <?php echo date("d-m-Y", strtotime($row->date)); ?></span>
                                                      <br>
-                                                <span class="label label-info"><?php echo date("h:i:sa", strtotime($row->time)); ?></span>
+                                                <span class=""><?php echo date("h:i:sa", strtotime($row->time)); ?></span>
                                             </td>
-                                        
-                                            <td data-title="<?php echo 'Image'; ?>"
-                                                class="numeric"><span class=""><img src="<?php echo base_url() . '/assets/file/insideblog/' .$row->primary_image; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
 
                                             <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('insideblog/Insideblog/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
 
@@ -87,7 +90,8 @@
                 </div>
             </div>
        </div>
-</div>
+        </div>
+    </section>
 </div>
 
 <link href="<?php echo base_url('script-assets/plugins/datatables/dataTables.bootstrap.css');?>" rel="stylesheet">

@@ -3,15 +3,9 @@
 
 
 <section class="content-header">
-        <h1>
-            Blog
-            <small>View Single Blog</small>
+        <h1><i class="fa fa-square-o"></i>
+            Blog Details
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Blog</a></li>
-            <li class="active">View Single Blog</li>
-        </ol>
     </section>
     
 <section class="content">
@@ -43,7 +37,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body" style="display: block;">
-          <img class="img-responsive pad" width="100%" src="<?php echo base_url() . 'assets/file/insideblog/' .$single_post['primary_image'] ?>" alt="Photo">
+          <img class="pad" width="100%" src="<?php echo base_url() . 'assets/file/insideblog/' .$single_post['primary_image'] ?>" alt="Photo">
 
           <p><?php echo $single_post['description'];?><button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"><a href="<?php echo base_url('insideblog/Insideblog/insidebloglist/'); ?>">Back to postlist</a></i></button></p>
           <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>

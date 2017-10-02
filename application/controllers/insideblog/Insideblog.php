@@ -180,7 +180,8 @@ class Insideblog extends CI_Controller
         //$this->db->order_by("id", "DESC");
         //$data_id = 'id';
         //$data_order = 'DESC';
-        $data['allblog'] = $this->global_model->get('insideblog', False, array('limit' => '4', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
+        $profession = $this->session->userdata('user_type');
+        $data['allblog'] = $this->global_model->getViewByProfession('insideblog', $profession);
 
         //$data['allblog'] = $this->global_model->get('insideblog');
 

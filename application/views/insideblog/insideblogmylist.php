@@ -28,7 +28,7 @@
                 </div>
                 <div class="box-body">
                     <?php if(count($allblog)<=0){?>
-                        <div class="alert alert-info">No Blogs</div>
+                        <div class="alert alert-warning text-center">No Blogs Found <i class="fa fa-info"></i> </div>
                     <?php }else{?>
                         <div id="no-more-tables">
 

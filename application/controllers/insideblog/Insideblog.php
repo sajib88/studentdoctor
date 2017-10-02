@@ -55,7 +55,6 @@ class Insideblog extends CI_Controller
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $this->form_validation->set_rules('title', 'title', 'required');
         $this->form_validation->set_rules('description', 'description', 'required');
-
         if ($this->form_validation->run() == FALSE)
         {
             $msg = '<div class="alert alert-danger form-error">'.'ERROR'.'</div>';
@@ -64,20 +63,20 @@ class Insideblog extends CI_Controller
         }
         else{
             //echo 'alert(message successfully sent No)';
-            $data = array();
-            $data['user_id'] = $loginId;
-            $data['title'] = $this->input->post('title');
-            $data['description'] = $this->input->post('description');
-            $data['cat_type'] = $this->input->post('cat_type');
-            $data['date'] = $this->input->post('date');
-            $data['time'] = $this->input->post('time');
-            $data['status'] = 1;
-            $data['tag'] = $this->input->post('tag');
-            $data['keyword'] = $this->input->post('keyword');
+            $save = array();
+            $save['user_id'] = $loginId;
+            $save['title'] = $this->input->post('title');
+            $save['description'] = $this->input->post('description');
+            $save['cat_type'] = $this->input->post('cat_type');
+            $save['date'] = $this->input->post('date');
+            $save['time'] = $this->input->post('time');
+            $save['status'] = 1;
+            $save['tag'] = $this->input->post('tag');
+            $save['keyword'] = $this->input->post('keyword');
             if(!empty($this->input->post('profession_view'))){
                 $sata = array();
                 $sata ['profession_view'] = $this->input->post('profession_view');
-                $data['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
+                $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
             }else{
                 $save['profession_view'] = 0;
             }
@@ -88,7 +87,7 @@ class Insideblog extends CI_Controller
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
-                $data['primary_image'] = $this->resizeimg->image_upload('primary_image', $this->PATH, 'size[300,300]', '', $photo_name);
+                $save['primary_image'] = $this->resizeimg->image_upload('primary_image', $this->PATH, 'size[300,300]', '', $photo_name);
             }
             else {
 
@@ -100,7 +99,7 @@ class Insideblog extends CI_Controller
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
-                $data['image1'] = $this->resizeimg->image_upload('image1', $this->PATH, 'size[300,300]', '', $photo_name);
+                $save['image1'] = $this->resizeimg->image_upload('image1', $this->PATH, 'size[300,300]', '', $photo_name);
             }
             else {
 
@@ -112,7 +111,7 @@ class Insideblog extends CI_Controller
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
-                $data['image2'] = $this->resizeimg->image_upload('image2', $this->PATH, 'size[300,300]', '', $photo_name);
+                $save['image2'] = $this->resizeimg->image_upload('image2', $this->PATH, 'size[300,300]', '', $photo_name);
             }
             else {
 
@@ -124,14 +123,14 @@ class Insideblog extends CI_Controller
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
-                $data['image3'] = $this->resizeimg->image_upload('image3', $this->PATH, 'size[300,300]', '', $photo_name);
+                $save['image3'] = $this->resizeimg->image_upload('image3', $this->PATH, 'size[300,300]', '', $photo_name);
             }
             else {
 
             }
 
            
-            if ($this->global_model->insert('insideblog', $data)) {
+            if ($this->global_model->insert('insideblog', $save)) {
                 $this->session->set_flashdata('message', 'Blog created successfully.');
                 //redirect('insideblog/insideblog/insidebloglist');
                //redirect('profile/profile');
@@ -258,8 +257,6 @@ class Insideblog extends CI_Controller
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $this->form_validation->set_rules('title', 'title', 'required');
         $this->form_validation->set_rules('description', 'description', 'required');
-        $this->form_validation->set_rules('tag', 'tag', 'required');
-        $this->form_validation->set_rules('keyword', 'keyword', 'required');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -276,25 +273,57 @@ class Insideblog extends CI_Controller
             $data['cat_type'] = $this->input->post('cat_type');
             $data['date'] = $this->input->post('date');
             $data['time'] = $this->input->post('time');
-            $data['status'] = 1;
             $data['tag'] = $this->input->post('tag');
             $data['keyword'] = $this->input->post('keyword');
-            $sata = array();
-            $sata ['profession_view'] = $this->input->post('profession_view');
-            $data['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
+            $data['profession_view'] = (!empty($this->input->post('profession_view')))?implode(',', $this->input->post('profession_view')):'';
 
-          
-             $this->PATH = './assets/file/insideblog';
             if (isset($_FILES["primary_image"]["name"]) && $_FILES["primary_image"]["name"] != '') {
+                $this->PATH = './assets/file/insideblog';
                 $photo_name = time();
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
                 $data['primary_image'] = $this->resizeimg->image_upload('primary_image', $this->PATH, 'size[300,300]', '', $photo_name);
-            } else {
-                $data['primary_image'] = '';
+            }
+            else {
+
             }
 
+            if (isset($_FILES["image1"]["name"]) && $_FILES["image1"]["name"] != '') {
+                $this->PATH = './assets/file/insideblog';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image1'] = $this->resizeimg->image_upload('image1', $this->PATH, 'size[300,300]', '', $photo_name);
+            }
+            else {
+
+            }
+
+            if (isset($_FILES["image2"]["name"]) && $_FILES["image2"]["name"] != '') {
+                $this->PATH = './assets/file/insideblog';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image2'] = $this->resizeimg->image_upload('image2', $this->PATH, 'size[300,300]', '', $photo_name);
+            }
+            else {
+
+            }
+
+            if (isset($_FILES["image3"]["name"]) && $_FILES["image3"]["name"] != '') {
+                $this->PATH = './assets/file/insideblog';
+                $photo_name = time();
+                if (!file_exists($this->PATH)) {
+                    mkdir($this->PATH, 0777, true);
+                }
+                $data['image3'] = $this->resizeimg->image_upload('image3', $this->PATH, 'size[300,300]', '', $photo_name);
+            }
+            else {
+
+            }
 
 
 
@@ -302,7 +331,7 @@ class Insideblog extends CI_Controller
            
             $id = $this->uri->segment('4');
                 if ($this->global_model->update('insideblog', $data, array('id' => $id))){
-                    $this->session->set_flashdata('message', 'Save Success');
+                    $this->session->set_flashdata('message', 'Blog updated successfully.');
                     redirect('insideblog/insideblog/insideblogmylist');
 
                     //redirect('profile/profile');

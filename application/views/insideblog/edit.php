@@ -1,25 +1,36 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: alam
- * Date: 12/18/2016
- * Time: 11:32 PM
- */
-?>
-<style>
-    .error{
-        color: red;
-        font-size: 12px;
+<style type="text/css">
+    .box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title{
+        margin-left: 20px;
+        margin-right: -12px;
+    }
+    .btn-cust{
+        width: 95%;
+    }
+    .professionView{
+        margin: 15px 0px -7px 0px;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .professionView{
+
+        }
+        .professionView label h4{
+            margin-top: 0px;
+        }
+    }
+
+    .professionView label h4{
+        margin-top: 5px;
+        margin-left: 15px;
     }
 </style>
 
 <div class="content-wrapper" id="page-wrapper">
-<div class="row">
+
 
     <section class="content-header">
-        <h1>
-            Blog
-            <small>Edit Blog</small>
+        <h1><i class="fa fa-square-o"></i>
+            Edit Blog
         </h1>
     </section>
 
@@ -35,187 +46,235 @@
                 </div>
             </div>
         <?php } ?>
-            <div class="col-lg-12">
+            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url('insideblog/Insideblog/edit/'. $editblog['id']); ?>">
+                <input type="hidden" name="id" value="<?php echo $editblog['id']; ?>">
+
+            <div class="col-md-6 ">
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-th"></i>
+                            <h3 class="box-title">Blog Info</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="form-group">
+                                <?php $v = (set_value('title')!='')?set_value('title'):$editblog['title'];?>
+                                <label>Title<span class="error">*</span></label>
+                                <input name="title" type="text" placeholder="Title" value="<?php echo $v?>"  class="form-control">
+                                <?php echo form_error('title');?>
+                            </div>
+                            <div class="form-group">
+                                <label>Category </label>
+                                <?php $cat_type = array('General surgery','Radiation therapy','Neurosociology','Neurosurgery','Medical genetics','Dermatology','Cardiologists‎','Plastic surgery','Vaginogram');?>
+                                <select name="cat_type" class="form-control chosen-select" id="cat_type">
+                                    <option value="">Select Category</option>
+
+                                    <?php foreach ($cat_type as $row) {
+                                        $v = (set_value('cat_type')!='')?set_value('cat_type'):$editblog['cat_type'];
+                                        $sel = ($v == $row)?'selected="selected"':'';?>
+                                        <option value="<?php echo $row;?>" <?php echo $sel;?>><?php echo $row?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <?php $v = (set_value('description')!='')?set_value('description'):$editblog['description'];?>
+                                <label>Description<span class="error">*</span></label>
+                                <textarea rows="6" cols="50"  name="description" placeholder="description" class="form-control"><?php echo $v;?></textarea>
+                                <?php echo form_error('description');?>
+                            </div>
+                            <div class="form-group">
+                                <label>Tag</label>
+                                <input name="tag" value="<?php echo $editblog['tag']; ?>" type="text" placeholder="Tag"  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Keyword</label>
+                                <input name="keyword" value="<?php echo $editblog['keyword']; ?>" type="text" placeholder="Keyword"  class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-calendar"></i>
+                            <h3 class="box-title">Date Time</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="form-group">
+                                <label>Post Date</label><span id='date' class='error' for='start_date'></span>
+                                <input name="date" value="<?php echo $editblog['date']; ?>" type="text" class="form-control pull-right" id="datepicker">
+                            </div>
+                            <div class="form-group bootstrap-timepicker">
+                                <label>Post Time :</label>
+                                <div class="input-group">
+                                    <input name="time" value="<?php echo $editblog['time']; ?>" type="text" class="form-control timepicker">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 no-padding">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-file"></i>
+                            <h3 class="box-title">Media</h3></i>
+                        </div>
+                        <div class="padd">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" id="photo_id">
+                                        <label>Picture One</label>
+                                        <input class="btn btn-default btn-cust" name="primary_image" type="file">
+                                        <?php if(!empty($editblog['primary_image'])){ ?>
+                                            <a href="<?php echo base_url() . 'assets/file/insideblog/' .$editblog['primary_image']; ?>" data-fancybox="images">
+                                                View Picture One
+                                            </a>
+                                        <?php }?>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Picture Two</label>
+                                        <input class="btn btn-default btn-cust" name="image1" type="file">
+                                        <?php if(!empty($editblog['image1'])){ ?>
+                                            <a href="<?php echo base_url() . 'assets/file/insideblog/' .$editblog['image1']; ?>" data-fancybox="images">
+                                                View Picture Two
+                                            </a>
+                                        <?php }?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Picture Three</label>
+                                        <input class="btn btn-default btn-cust" name="image2" type="file" >
+                                        <?php if(!empty($editblog['image2'])){ ?>
+                                            <a href="<?php echo base_url() . 'assets/file/insideblog/' .$editblog['image2']; ?>" data-fancybox="images">
+                                                View Picture Three
+                                            </a>
+                                        <?php }?>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Picture Four</label>
+                                        <input class="btn btn-default btn-cust" name="image3" type="file" >
+                                        <?php if(!empty($editblog['image3'])){ ?>
+                                            <a href="<?php echo base_url() . 'assets/file/insideblog/' .$editblog['image3']; ?>" data-fancybox="images">
+                                                View Picture Four
+                                            </a>
+                                        <?php }?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
                 <div class="box box-primary">
-                    <div class="panel-body">
-                        <div class="row">
-                            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url('insideblog/Insideblog/edit/'. $editblog['id']); ?>">
-                                <div class="col-lg-6">
-                                    <input type="hidden" name="id" value="<?php echo $editblog['id']; ?>">
-
-                                    <div class="col-lg-12">
+                    <!-- /.box-header -->
+                    <div class="">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-lg-12 professionView">
+                                    <div class="col-lg-6">
+                                        <label><h4>Who can see this?</h4></label>
+                                    </div>
+                                    <div class="col-lg-6 ">
                                         <div class="form-group">
-                                            <?php $v = (set_value('title')!='')?set_value('title'):$editblog['title'];?>
-                                            <label>Title<span class="error">*</span></label>
-                                            <input name="title" type="text" placeholder="Title" value="<?php echo $v?>"  class="form-control">
-                                            <?php echo form_error('title');?>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <?php $v = (set_value('description')!='')?set_value('description'):$editblog['description'];?>
-                                            <label>Description<span class="error">*</span></label>
-                                            <textarea rows="6" cols="50"  name="description" placeholder="description" class="form-control"><?php echo $v;?></textarea>
-                                            <?php echo form_error('description');?>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Category </label>
-                                            <?php $cat_type = array('General surgery','Radiation therapy','Neurosociology','Neurosurgery','Medical genetics','Dermatology','Cardiologists‎','Plastic surgery','Vaginogram');?>
-                                            <select name="cat_type" class="form-control chosen-select" id="cat_type">
-                                                <option value="">Select Category</option>
-                                                
-                                                <?php foreach ($cat_type as $row) {
-                                                    $v = (set_value('cat_type')!='')?set_value('cat_type'):$editblog['cat_type'];
-                                                    $sel = ($v == $row)?'selected="selected"':'';?>
-                                                    <option value="<?php echo $row;?>" <?php echo $sel;?>><?php echo $row?></option>
-                                                <?php }?>
-
-                                                
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                   
-                                  <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Post Date<span class="error">*</span></label><span id='date' class='error' for='start_date'></span>
-                                        <input name="date" value="<?php echo $editblog['date']; ?>" type="text" class="form-control pull-right" id="datepicker">
-                                    </div>
-                                </div>
-
-
-                                 <div class="col-lg-6 bootstrap-timepicker">
-                                    <div class="form-group">
-                                        <label>Post Time :</label>
-
-                                        <div class="input-group">
-                                            <input name="time" value="<?php echo $editblog['time']; ?>" type="text" class="form-control timepicker">
-
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-clock-o"></i>
-                                            </div>
-                                        </div>
-                                        <!-- /.input group -->
-                                    </div>
-                                    <!-- /.form group -->
-                                </div>
-
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Tag</label>
-                                            <input name="tag" value="<?php echo $editblog['tag']; ?>" type="text" placeholder="Tag"  class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Keyword</label>
-                                            <input name="keyword" value="<?php echo $editblog['keyword']; ?>" type="text" placeholder="Keyword"  class="form-control">
-                                        </div>
-                                    </div>
-
-                                     <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Profession<span class="error">*</span></label><span id='profession_view-error' class='error' for='profession_view'></span>
-                                            <select multiple name="profession[]" class="selectpicker form-control">
-                                                <option value="">All Profession</option>
+                                            <select multiple name="profession_view[]" class="selectpicker form-control">
                                                 <?php
                                                 if (is_array($profession)) {
                                                     foreach ($profession as $row) {
-                                                        $v = (set_value('profession')!='')?set_value('profession'):$personaldata['profession'];
-                                                        $sel = ($v == $row)?'selected="selected"':'';
+                                                        $selectedProfessions = explode(',',$editblog['profession_view']);
+                                                        $ifExist = in_array($row->id,$selectedProfessions);
+                                                        if($ifExist){
+                                                            $selected = 'Selected';
+                                                        }else
+                                                            $selected = '';
                                                         ?>
-                                                        <option  value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
+                                                        <option value="<?php echo $row->id; ?>" <?=$selected?>><?php echo $row->name; ?></option>
                                                         <?php
                                                     }
                                                 }
                                                 ?>
                                             </select>
                                         </div>
-                                     </div>
-                                    
-
-                                   <div class="col-lg-12">
-                                        <div class="form-group" id="photo_id">
-                                            <label>Picture One</label>
-                                            <input class="btn btn-default" name="primary_image" type="file" >
-                                             <?php if (!empty($editblog['primary_image'])) { ?>
-                                                <div class="col-lg-6 pull-right">
-                                                    <img src="<?php echo base_url() . 'assets/file/insideblog/' .$editblog['primary_image']; ?>" alt="" width="100" class="img-circle img-responsive" />
-                                                </div>
-                                            <?php }
-                                            ?>
-        
-                                            
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Picture Two</label>
-                                            <input class="btn btn-default" name="image1" type="file" >
-                                            <?php if (!empty($editblog['image1'])) { ?>
-                                                <div class="col-lg-6 pull-right">
-                                                    <img src="<?php echo base_url() . 'assets/file/insideblog/' .$editblog['image1']; ?>" alt="" width="100" class="img-circle img-responsive" />
-                                                </div>
-                                            <?php }
-                                            ?>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Picture Three</label>
-                                            <input class="btn btn-default" name="image2" type="file" >
-                                            <?php if (!empty($editblog['image2'])) { ?>
-                                                <div class="col-lg-6 pull-right">
-                                                    <img src="<?php echo base_url() . '/assets/file/insedeblog/' .$editblog['image2']; ?>" alt="" width="100" class="img-circle img-responsive" />
-                                                </div>
-                                            <?php }
-                                            ?>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Picture Four</label>
-                                            <input class="btn btn-default" name="image3" type="file" >
-                                            <?php if (!empty($editblog['image3'])) { ?>
-                                                <div class="col-lg-6 pull-right">
-                                                    <img src="<?php echo base_url() . '/assets/file/insideblog/' .$editblog['image3']; ?>" alt="" width="100" class="img-circle img-responsive" />
-                                                </div>
-                                            <?php }
-                                            ?>
-                                        </div>
-                                    </div>
-                                   
-                                  
-
-                                
-
-                                <div class="col-lg-12">
-                                    <div style="text-align: center">
-                                        <input type="submit" name="submit" class="btn btn-info" value="Save">
-                                        
                                     </div>
                                 </div>
-
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
+                                    </div>
+                                    <div class="col-lg-6 ">
+                                        <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
+                                            <i class="fa fa-check"></i> &nbsp; &nbsp; Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
         </div>
     </section>
 </div>
-</div>
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js"></script>
+
+
+<script type="text/javascript">
+    $().fancybox({
+        selector : '[data-fancybox="images"]',
+        thumbs   : false,
+        hash     : false,
+    });
+
+    $(".main-slider").slick({
+        slidesToShow   : 3,
+        slidesToScroll : 3,
+        infinite   : true,
+        dots       : false,
+        arrows     : false,
+        responsive : [
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+</script>
 
 
 <script type="text/javascript">
@@ -224,10 +283,13 @@
 jQuery(document).ready(function() {
     //Date picker
     $('#datepicker2').datepicker({
-        autoclose: true
+        autoclose: true,
+        minDate: new Date()
     });
     $('#datepicker').datepicker({
-        autoclose: true
+        autoclose: true,
+        startDate: new Date(),
+        todayHighlight: true
     });
 
 
@@ -289,98 +351,47 @@ jQuery(document).ready(function() {
 </script>
 
 <script type="application/javascript">
-    $('#cesform').validate({
+    $('#blogform').validate({
         rules: {
             title: {
                 required:true
             },
-            main_category:{
+            cat_type:{
                 required:true
             },
             description:{
                 required:true
             },
 
-            ce_type:{
-                required:true
-            },
-
-            country:{
-                required:true
-            },
-            price:{
-                required:true,
-                number: true
-            },
-            special_price:{
-                required:true,
-                number: true
-            },
-            city:{
-                required:true
-
-            },
-            validateprof:{
-                required:true
-            },
-
             'primary_image': {
-                required: true,
+                extension: "png,jpg,jpeg,gif,bmp"
+            },
+            'image1': {
                 extension: "png,jpg,jpeg,gif,bmp"
             },
             'image2': {
-
                 extension: "png,jpg,jpeg,gif,bmp"
             },
             'image3': {
-
                 extension: "png,jpg,jpeg,gif,bmp"
-            },
-            'primary_file': {
-
-                extension: "jpg,png,bmp,gif,pdf,tif,tiff,txt,csv,doc,docx,xls,xlsx,xlt,pps,ppt,pptx,ods"
-            },
-
-            'primary_sound': {
-
-                extension: "mp3,aac,ogg,wma"
-            },
-            'primary_video': {
-
-                extension: "mp4,avi,mov"
             }
-
-
         },
         messages:{
             title: {
-                required: "Classified Title is Required",},
+                required: "Blog Title is Required",},
+
+            cat_type: {
+                required: "Category is Required",},
 
             description: {
                 required: "Description is Required",},
 
-            ce_type: {
-                required: "CES Type is Required",},
-
-            country: {
-                required: "Product Country is Required",
-            },
-            price: {
-                required: "Price is Required, 0-9 Number digit only allow",
-            },
-            city: {
-                required: "City is Required",
-            },
-
-
-            special_price: {
-                required: "Special Price is Required, 0-9 Number digit only allow",
-            },
-            validateprof: {
-                required: "prof is Required",
-            },
             'primary_image':{
-                required : "<p class='text-danger'>Please upload atleast 1 photo</p>",
+                extension:"Only Image Format  file is allowed!"
+            },
+
+            'image1':{
+
                 extension:"Only Image Format  file is allowed!"
             },
             'image2':{
@@ -388,20 +399,8 @@ jQuery(document).ready(function() {
                 extension:"Only Image Format  file is allowed!"
             },
             'image3':{
-
                 extension:"Only Image Format  file is allowed!"
-            },
-
-            'primary_file':{
-                extension:"Only File Format  file is allowed!"
-            },
-            'primary_sound':{
-                extension:"Only Sound/Audio Format  file is allowed!"
-            },
-            'primary_video':{
-                extension:"Only Video Format  file is allowed!"
             }
-
         }
     });
 

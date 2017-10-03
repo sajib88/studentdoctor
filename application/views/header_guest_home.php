@@ -97,7 +97,7 @@
 
                                                     <ul class="entry-list">
                                                         <li class="active "><a href="<?php echo base_url(); ?>home/about_us">About Us</a></li>
-                                                        <li class="active "><a href="<?php echo base_url(); ?>blog/Postlist">Blog</a></li>
+                                                        <li class="active "><a href="<?php echo base_url(); ?>blog">Blog</a></li>
                                                         <li class="active "><a href="<?php echo base_url(); ?>home/feature">Features</a></li>
                                                         <li class="active "><a href="<?php echo base_url(); ?>home/contact">Contact</a></li>
                                                     </ul>
@@ -117,7 +117,7 @@
                 <div class="col-md-4 mobile-nav pdl pdr">
                     <ul class="nav navbar-nav navbar-right secondary-nav">
                         <li class="active hidden-xs"><a href="<?php echo base_url(); ?>home/about_us">About Us</a></li>
-                        <li class="active hidden-xs"><a href="<?php echo base_url(); ?>blog/Postlist">Blog</a></li>
+                        <li class="active hidden-xs"><a href="<?php echo base_url(); ?>blog">Blog</a></li>
                         <li class="active hidden-xs"><a href="<?php echo base_url(); ?>home/feature">Features</a></li>
                         <li class="active hidden-xs"><a href="<?php echo base_url(); ?>home/contact">Contact</a></li>
 

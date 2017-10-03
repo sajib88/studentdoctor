@@ -59,18 +59,16 @@ class Postlist extends CI_Controller
 
         $this->load->view('header_guest_home', $data);
         $this->load->view('blog/bloglist', $data);
-        
         $this->load->view('foother_guest.php', $data);
 
 
     }
 
-      public function singlepost($msg =''){
+      public function singlepost1($str_slug = FALSE, $id = ''){
         $data = array();
         $data['page_title'] = 'Blogs';
-        $data['error'] = $msg;
          
-        $id = $this->uri->segment('4');
+        //$id = $this->uri->segment('4');
 
         $data['single_post'] = $this->global_model->get_data('blog_front', array('id' => $id));
           $data['recent_post'] = $this->global_model->get('blog_front', False, array('limit' => '3', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
@@ -82,15 +80,8 @@ class Postlist extends CI_Controller
     }
 
 
-     public function get_ars
-     () {
-        // echo 'hello';
-        // exit();
-    // Load RSS Parser
+     public function get_ars() {
         $rss = $this->rssparser->set_feed_url('http://www.espncricinfo.com/rss/content/story/feeds/1083436.xml')->set_cache_life(30)->getFeed(6);
-
-        
-
         foreach ($rss as $item)
         {
             echo '<h6>1'.$item['title'].'</h6>';
@@ -105,10 +96,22 @@ class Postlist extends CI_Controller
             echo '<br />';echo '<br />';echo '<br />';
         }
         return true;
+    }
 
+    function singlepost($int_id = NULL, $str_slug = '' ) {
 
+        $row = $this->db->get_where('blog_front', array('id' => $int_id))->row();
 
-        
+        if ($row and ! $str_slug) {
+
+            $this->load->helper('url');
+
+            $str_slug = url_title($row->title, 'dash', TRUE);
+            redirect(base_url("blog/{$str_slug}/{$int_id}"));
+
+        }
+
+        // Run the rest of the code here
 
     }
 }

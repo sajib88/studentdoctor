@@ -80,10 +80,9 @@ $route['ces/detail/(:any)'] = 'ces/ces_controller/detail/$1';
 
 
 ///front blog route
-$route['blog'] = 'blog/postlist';
-$route['blog/post/(:any)'] = 'blog/Postlist/singlepost/$1';
-
-
+$route['blog'] = 'blog/Postlist';
+$route['blog/(:any)'] = 'blog/Postlist/singlepost/$1';
+$route['blog/(:any)/(:any)'] = 'blog/Postlist/singlepost1/$1/$2';
 
 //Public Search
 $route['publicsearch'] = 'doctor/DocController/publicSearch';

@@ -22,9 +22,9 @@
       <div class="row">
 
 	 	<div class="col-md-8 col-md-offset-2">
-            <div class="clear-fix vissible-xs"></div>
+            <div class="clear-fix hidden-md hidden-lg"></div>
         
-      	<div class=" box box-widget">
+      	<div class=" box box-widget pad">
 
       
 
@@ -40,15 +40,14 @@
           <img class="" height="450px" width="100%" src="<?php echo base_url() . 'assets/file/insideblog/' .$single_post['primary_image'] ?>" alt="Photo">
 
           <p><?php echo $single_post['description'];?></p>
-            <button type="button" class="btn btn-default btn-xs pull-righ"><i class="fa fa-share"><a href="<?php echo base_url('insideblog/Insideblog/insidebloglist/'); ?>">Back to postlist</a></i></button>
+            <button type="button" class="btn btn-default btn-xs pull-righ"><i class="fa fa-share"><a href="<?php echo base_url('insideblog/Insideblog/insidebloglist/'); ?>">Back to postlist</a></i></button type="button">
           <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
           <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
           <span class="pull-right text-muted">127 likes - 3 comments</span>
         </div>
         <!-- /.box-body -->
-     </div>
             <div class="box-footer box-comments" style="display: block; margin-bottom: 20px;">
-                <div class="box-comment">
+                <div class="box-comment pad">
                     <!-- User image -->
                     <img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">
 
@@ -63,7 +62,7 @@
                     <!-- /.comment-text -->
                 </div>
                 <!-- /.box-comment -->
-                <div class="box-comment">
+                <div class="box-comment pad">
                     <!-- User image -->
                     <img class="img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="User Image">
 
@@ -80,7 +79,7 @@
                 <!-- /.box-comment -->
             </div>
             <div class="box-footer" style="display: block;">
-                <form action="#" method="post">
+                <form action="#" class="pad" method="post">
                     <img class="img-responsive img-circle img-sm" src="../dist/img/user4-128x128.jpg" alt="Alt Text">
                     <!-- .img-push is used to add margin to elements next to floating images -->
                     <div class="img-push">
@@ -88,7 +87,10 @@
                     </div>
                 </form>
             </div>
-    
+
+        </div>
+
+
 
          </div>   
       <!-- /.box -->

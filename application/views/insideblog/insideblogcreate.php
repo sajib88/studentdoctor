@@ -104,10 +104,10 @@
                         </div>
                         <div class="padd">
                             <div class="form-group">
-                                <label>Post Date<span class="error">*</span></label><span id='date' class='error' for='start_date'></span>
+                                <label>Post Date</label><span id='date' class='error' for='start_date'></span>
                                 <input name="date" type="text" class="form-control pull-right date" id="datepicker">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group bootstrap-timepicker">
                                 <label>Post Time :</label>
 
                                 <div class="input-group">
@@ -236,7 +236,9 @@ jQuery(document).ready(function() {
     //Date picker
     $('#datepicker').datepicker({
         autoclose: true,
-        todayHighlight: true
+        startDate: new Date(),
+        todayHighlight: true,
+        defaultDate: new Date()
     });
 
     //Timepicker

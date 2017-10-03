@@ -6,11 +6,34 @@
             <div class="row">
                 <div class="col-md-12 pdl">
                     <div class="tab-wrapper row">
-                        <!-- Nav tabs -->
+                        <div class="col-md-4 pull-right">
+                            <div class="recentpostList">
+                                <h3>Recent Post</h3>
+                                <ul>
+                                    <?php foreach ($recent_post as $row){?>
+                                        <li>
+                                            <img src="<?php echo base_url('assets/file/blog/'.$row->primary_image);?>" class="img-responsive recentpostimg">
+                                            <a href="#"><?php echo $row->title; ?></a>
+                                            <span class="pull-right"><?php echo $row->date; ?></span>
+                                        </li>
+                                    <?php }?>
+                                </ul>
+                            </div>
 
+                            <div class="post-cat">
+                                <h3>Post Category</h3>
+                                <ul>
+                                    <?php foreach ($blog_category as $row){?>
+                                        <li>
+                                            <a href="#"><?php echo $row->cat_type; ?></a>
+                                        </li>
+                                    <?php }?>
+                                </ul>
+                            </div>
+                        </div>
 
                         <!-- Tab panes -->
-                        <div class="content col-md-8 col-md-offset-2">
+                        <div class="content col-md-8">
                             <?php if(count($allblog)<=0){?>
                                 <div class="alert alert-info">No Blogs</div>
                             <?php }else{?>
@@ -73,9 +96,13 @@
                             ?>
 
                         </div>
+
                 </div>
 
             </div>
+
+
+
         </div><!--container-->
     </section>
 
@@ -100,7 +127,6 @@
 	
 
 	.two-line-div{
-		max-height: 180px;
 		overflow: hidden;
         margin-top: 5px;
         text-align: justify;
@@ -188,6 +214,64 @@
         }
 
 	}
+
+    .recentpostimg{
+        float: left;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        margin-top: -2px;
+    }
+    .recentpostList{
+        float: left;
+        margin-bottom: 20px;
+    }
+    .recentpostList ul{
+        float: left;
+    }
+
+    .recentpostList li {
+        float: left;
+        display: block;
+        margin: 10px auto;
+    }
+
+    .recentpostList li a{
+        width: 100%;
+        font-size: 15px;
+        font-weight: lighter;
+        color: #113058;
+    }
+
+    .post-cat{
+        float: left;
+    }
+    .post-cat ul{
+        float: left;
+    }
+    .post-cat ul li{
+        float: left;
+        display: inline-block;
+        margin-right: 5px;
+    }
+    .post-cat ul li a{
+        float: left;
+        display: inline;
+        padding: .2em .6em .3em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+        height: auto;
+        width: auto;
+        padding: 5px;
+        background: #113058;
+    }
 
 
 </style>

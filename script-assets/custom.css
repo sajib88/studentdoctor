@@ -460,6 +460,10 @@ label {
     .skin-black-light .main-header .logo{
         background-color: #fff !important;
     }
+    .skin-black-light .main-header > .navbar{
+        border-bottom: 1px solid #eee;
+    }
 }
+
 
 

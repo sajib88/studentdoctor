@@ -81,12 +81,21 @@
                         <div class="col-md-8 pdl pdr">
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav primary-nav">
+                                    <?php
+                                    $loginId = $this->session->userdata('login_id');
+                                    if($loginId != 0){
+                                    ?>
+                                        <li class="dropdown">
+                                            <a href="<?php echo base_url();?>profile/dashboard" >Dashboard</a>
+                                        </li>
+                                    <?php }else{?>
                                     <li class="dropdown">
                                         <a href="<?php echo base_url();?>home/registration" >Sign up</a>
                                     </li>
                                     <li class="dropdown">
                                           <a href="<?php echo base_url();?>home/login" >Login</a>
                                     </li>
+                                    <?php }?>
 
                                     <li class="dropdown hidden-lg hidden-md">
                                         <a href="<?php echo base_url();?>home/getPurpose" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <i class="fa fa-angle-down"></i></a>

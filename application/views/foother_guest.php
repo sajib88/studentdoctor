@@ -2,10 +2,18 @@
 <div id="footer" class="visible-xs">
     <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
         <div class="row" id="bottomNav">
+            <?php $loginId = $this->session->userdata('login_id');
+                if($loginId != 0){
+            ?>
+                    <div class="col-xs-6 text-center"><a href="<?php echo base_url(); ?>profile/dashboard" ><i class="glyphicon glyphicon-dashboard"></i>  <small>Dashboard</small> </a></div>
+                    <div class="col-xs-6 text-center"><a href="<?php echo base_url(); ?>publicsearch" ><i class="glyphicon glyphicon-zoom-in"></i> <small>Search </small></a></div>
+                <?php }else{ ?>
+                    <div class="col-xs-4 text-center"><a href="<?php echo base_url(); ?>home/registration" ><i class="glyphicon glyphicon-plus-sign"></i>  <small>Sign Up</small> </a></div>
+                    <div class="col-xs-4 text-center"><a href="<?php echo base_url(); ?>home/login" ><i class="glyphicon glyphicon-user"></i> <small>Login</small></a></div>
+                    <div class="col-xs-4 text-center"><a href="<?php echo base_url(); ?>publicsearch" ><i class="glyphicon glyphicon-zoom-in"></i> <small>Search </small></a></div>
+                <?php } ?>
 
-            <div class="col-xs-4 text-center"><a href="<?php echo base_url(); ?>home/registration" ><i class="glyphicon glyphicon-plus-sign"></i>  <small>Sign Up</small> </a></div>
-            <div class="col-xs-4 text-center"><a href="<?php echo base_url(); ?>home/login" ><i class="glyphicon glyphicon-user"></i> <small>Login</small></a></div>
-            <div class="col-xs-4 text-center"><a href="<?php echo base_url(); ?>publicsearch" ><i class="glyphicon glyphicon-zoom-in"></i> <small>Search </small></a></div>
+
 
 
         </div>

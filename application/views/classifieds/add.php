@@ -36,7 +36,7 @@
             New Classified
         </h1>
     </section>
-    <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('classifieds/classifieds/add'); ?>">
+    <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('classifieds/add'); ?>">
         <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
     <section class="content">
     <div class="row">
@@ -138,7 +138,7 @@
                             <input name="address_2" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>City</label>
+                            <label>City<span class="error">*</span></label>
                             <input name="city" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                         <div class="form-group">
@@ -146,7 +146,7 @@
                             <input name="postal" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Country</label>
+                            <label>Country<span class="error">*</span></label>
                             <select onchange="getComboA(this)" name="country" class="form-control">
                                 <option value="">Select</option>
                                 <?php

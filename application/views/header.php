@@ -265,7 +265,7 @@
                 </li>
 
 
-                <li class="treeview <?php if ($this->uri->segment(2)=="classifieds"){
+                <li class="treeview <?php if ($this->uri->segment(1)=="classifieds"){
                 echo "active";
                 } ?>">
                     <a href="#">
@@ -275,22 +275,22 @@
                     </a>
 
                     <ul class="treeview-menu">
-                        <li class="<?php if ($this->uri->segment(3)=="add"){
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('classifieds/classifieds/add'); ?>"><i
+                            <a href="<?php echo base_url('classifieds/add'); ?>"><i
                                         class="fa fa-circle-o"></i>Add New Classified</a>
                         </li>
-                        <li class="<?php if ($this->uri->segment(3)=="viewmyclassfied"){
+                        <li class="<?php if ($this->uri->segment(2)=="viewmyclassfied"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('classifieds/classifieds/viewmyclassfied'); ?>"><i
+                            <a href="<?php echo base_url('classifieds/viewmyclassfied'); ?>"><i
                                         class="fa fa-circle-o"></i>Manage All My Classified</a>
                         </li>
-                        <li class="<?php if ($this->uri->segment(3)=="viewall"){
+                        <li class="<?php if ($this->uri->segment(2)=="viewall"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('classifieds/classifieds/viewall'); ?>"><i
+                            <a href="<?php echo base_url('classifieds/all'); ?>"><i
                                         class="fa fa-circle-o"></i>Show All List Classified</a>
                         </li>
 

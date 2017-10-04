@@ -10,7 +10,7 @@
 
             <?php if($this->session->flashdata('success')){ ?>
                 <div class="col-lg-12">
-                    <div class="alert alert-success alert-dismissible">
+                    <div class="alert alert-success alert-dismissible text-center">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <strong><?php echo $this->session->flashdata('success');?></strong>
                     </div>
@@ -44,8 +44,8 @@
             </div>
 
             <div class="box-footer">
-                <a href="<?php echo base_url('classifieds/classifieds/layoutfull/' . $row->id); ?>" class="btn btn-block btn-primary"> View</a>
-                <a href="<?php echo base_url('classifieds/classifieds/edit/' . $row->id); ?>" class="btn btn-block btn-success"> Edit</a>
+                <a href="<?php echo base_url('classifieds/layoutfull/' . $row->id); ?>" class="btn btn-block btn-primary"> View</a>
+                <a href="<?php echo base_url('classifieds/edit/' . $row->id); ?>" class="btn btn-block btn-success"> Edit</a>
                 <a href="<?php  echo base_url('classifieds/classifieds/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a>
             </div>
          </div>
@@ -53,9 +53,11 @@
 
                 <?php endforeach;?>
             <?php }else{ ?>
+                <div class="col-md-12">
                 <div class="alert alert-warning alert-dismissible text-center">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     No classified found <i class="fa fa-info"></i>
+                </div>
                 </div>
             <?php } ?>
 

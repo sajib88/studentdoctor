@@ -282,14 +282,14 @@ class Classifieds extends CI_Controller {
                     $video['name'] = $fileInfo['file_name'];
                     $save['primary_video'] = $video['name'];
                 }
-                $id = $this->uri->segment('4');
+                $id = $this->uri->segment('3');
                 if ($this->global_model->update('classified', $save, array('id' => $id))){
                     $this->session->set_flashdata('message', 'Save Success');
                     //redirect('profile/profile');
                 }
             }
         }
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
@@ -374,7 +374,7 @@ class Classifieds extends CI_Controller {
         $data['page_title'] = 'Classified List';
         $data['tabActive'] = 'classified';
         $data['error'] = '';
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
 
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
@@ -418,10 +418,10 @@ class Classifieds extends CI_Controller {
                             //$data['layoutfull']['video1']
                             );
             foreach ($files as $file) {
-                unlink ( 'assets/file/classifieds/'.$file );
+                @unlink ( 'assets/file/classifieds/'.$file );
             }
-            $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('classifieds/classifieds/viewmyclassfied');
+            $this->session->set_flashdata('success', 'Delete successfully');
+            redirect(base_url('classifieds/viewmyclassfied'));
         }
 
     }

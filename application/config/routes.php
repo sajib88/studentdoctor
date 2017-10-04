@@ -97,3 +97,11 @@ $route['personal/list'] = 'personal/Personal/all';
 $route['personal/search'] = 'personal/Personal/search';
 $route['personal/detail/(:any)'] = 'personal/Personal/detail/$1';
 $route['personal/edit/(:any)'] = 'personal/Personal/edit/$1';
+
+//classified
+$route['classifieds/add'] = 'classifieds/classifieds/add';
+$route['classifieds/viewmyclassfied'] = 'classifieds/classifieds/viewmyclassfied';
+$route['classifieds/all'] = 'classifieds/classifieds/viewall';
+$route['classifieds/layoutfull/(:any)'] = 'classifieds/classifieds/layoutfull/$1';
+$route['classifieds/edit/(:any)'] = 'classifieds/classifieds/edit//$1';
+

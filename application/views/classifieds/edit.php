@@ -31,7 +31,7 @@
             Edit Classified
         </h1>
     </section>
-    <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('classifieds/classifieds/edit/'. $editclassified['id']); ?>">
+    <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('classifieds/edit/'. $editclassified['id']); ?>">
         <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
         <section class="content">
             <div class="row">

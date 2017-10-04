@@ -37,7 +37,7 @@
 
             <div class="box-footer">
 
-                <a href="<?php echo base_url('classifieds/classifieds/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-success"> Details View</a>
+                <a href="<?php echo base_url('classifieds/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-success"> Details View</a>
 
             </div>
          </div>

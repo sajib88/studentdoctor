@@ -65,6 +65,7 @@ $route['profile/search'] = 'profile/profile/search';
 $route['pub/add'] = 'public_web/publicweb/index';
 $route['pub/viewedit'] = 'public_web/publicweb/viewForEdit';
 $route['pub/details'] = 'public_web/publicweb/view';
+$route['pub/edit'] = 'public_web/publicweb/edit';
 
 
 ///ces Route set

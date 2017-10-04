@@ -17,6 +17,14 @@ print_r($website_info);die;*/?>
      <section class="content">  
     
     <div class="row">
+        <?php if($this->session->flashdata('message')){ ?>
+            <div class="col-lg-12">
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><?php echo $this->session->flashdata('message');?></strong>
+                </div>
+            </div>
+        <?php } $this->session->unset_userdata('message'); ?>
     <div class="col-lg-6">
         <!--<div class="panel panel-info">
             <div class="panel-body">
@@ -60,7 +68,7 @@ print_r($website_info);die;*/?>
                 <b>  Business Name </b>  : <?php echo $website_info['business_name']; ?><br/>
                 <b>  Business Email </b>  : <?php echo $website_info['business_email']; ?><br/>
                 <br/>
-                <a href="<?php echo base_url('public_web/publicweb/view'); ?>"><button class="btn btn-warning">Details</button></a> &nbsp;&nbsp;<a href="<?php echo base_url('public_web/publicweb/edit'); ?>"><button class="btn btn-success">Edit</button></a>&nbsp;&nbsp;<a href="<?php echo base_url('public_web/publicweb/delete'); ?>"><button class="btn btn-danger">Delete</button></a>
+                <a href="<?php echo base_url('pub/details'); ?>"><button class="btn btn-warning">Details</button></a> &nbsp;&nbsp;<a href="<?php echo base_url('pub/edit'); ?>"><button class="btn btn-success">Edit</button></a>&nbsp;&nbsp;<a href="<?php echo base_url('public_web/publicweb/delete'); ?>"><button class="btn btn-danger">Delete</button></a>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>

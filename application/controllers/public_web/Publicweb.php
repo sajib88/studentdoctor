@@ -425,7 +425,7 @@ class Publicweb extends CI_Controller {
                     }
 
                     $this->session->set_flashdata('message', 'Save Success');
-                    redirect('public_web/publicweb/viewForEdit');
+                    redirect(base_url('pub/viewedit'));
                 }
             } else {
                 $data['error'] = validation_errors();

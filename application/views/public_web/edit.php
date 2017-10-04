@@ -16,7 +16,7 @@
      <section class="content">
 
          <div class="row">
-             <form  id="website" role="form" method="post" enctype="multipart/form-data" action="<?php echo base_url('public_web/publicweb/edit'); ?>" >
+             <form  id="website" role="form" method="post" enctype="multipart/form-data" action="<?php echo base_url('pub/edit'); ?>" >
              <div class="col-md-6">
                  <div class="box box-primary">
                      <div class="box-header with-border">

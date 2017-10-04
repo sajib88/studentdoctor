@@ -492,7 +492,7 @@
                 </li>
 
 
-                <li class="treeview <?php if ($this->uri->segment(2)=="insideblog"){
+                <li class="treeview <?php if ($this->uri->segment(1)=="insideblog"){
                 echo "active";
                 } ?>">
                     <a href="#">
@@ -501,24 +501,24 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="<?php if ($this->uri->segment(3)=="insideblogcreate"){
+                        <li class="<?php if ($this->uri->segment(2)=="create"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('insideblog/insideblog/insideblogcreate'); ?>"><i
+                            <a href="<?php echo base_url('insideblog/create'); ?>"><i
                                         class="fa fa-circle-o"></i> Create New Blog</a>
                         </li>
-                        <li class="<?php if ($this->uri->segment(3)=="insidebloglist"){
+                        <li class="<?php if ($this->uri->segment(2)=="all"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('insideblog/insideblog/insidebloglist'); ?>"><i
+                            <a href="<?php echo base_url('insideblog/all'); ?>"><i
                                         class="fa fa-circle-o"></i>
                                 View All Blog</a>
                         </li>
 
-                        <li class="<?php if ($this->uri->segment(3)=="insideblogmylist"){
+                        <li class="<?php if ($this->uri->segment(2)=="list"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('insideblog/insideblog/insideblogmylist'); ?>"><i
+                            <a href="<?php echo base_url('insideblog/list'); ?>"><i
                                         class="fa fa-circle-o"></i>My Blog List</a>
                         </li>
 

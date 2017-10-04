@@ -40,10 +40,8 @@
           <img class="" height="450px" width="100%" src="<?php echo base_url() . 'assets/file/insideblog/' .$single_post['primary_image'] ?>" alt="Photo">
 
           <p><?php echo $single_post['description'];?></p>
-            <button type="button" class="btn btn-default btn-xs pull-righ"><i class="fa fa-share"><a href="<?php echo base_url('insideblog/Insideblog/insidebloglist/'); ?>">Back to postlist</a></i></button type="button">
-          <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-          <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
-          <span class="pull-right text-muted">127 likes - 3 comments</span>
+            <button type="button" class="btn btn-default btn-xs pull-right"><i class="fa fa-share"><a href="<?php echo base_url('insideblog/Insideblog/insidebloglist/'); ?>">Back to postlist</a></i></button type="button">
+
         </div>
         <!-- /.box-body -->
             <div class="box-footer box-comments" style="display: block; margin-bottom: 20px;">

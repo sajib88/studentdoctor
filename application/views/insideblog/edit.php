@@ -46,7 +46,7 @@
                 </div>
             </div>
         <?php } ?>
-            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url('insideblog/Insideblog/edit/'. $editblog['id']); ?>">
+            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url('insideblog/edit/'. $editblog['id']); ?>">
                 <input type="hidden" name="id" value="<?php echo $editblog['id']; ?>">
 
             <div class="col-md-6 ">

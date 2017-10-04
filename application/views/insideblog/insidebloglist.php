@@ -8,6 +8,9 @@
         overflow: hidden;
         margin: 10px 0 0 0;
     }
+    .blog-list-article a{
+        margin-top: 10px;
+    }
 </style>
 
 <div class="content-wrapper">
@@ -54,7 +57,10 @@
                 <div class="box-body" style="display: block;">
                   <img class="" height="340px" width="100%" src="<?php echo base_url() . 'assets/file/insideblog/' .$row['primary_image']; ?>" alt="Photo">
 
-                  <div class="blog-list-article"><?php echo substr($row['description'],0, 150);?>&nbsp&nbsp&nbsp<button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> <a href="<?php echo base_url('insideblog/Insideblog/insideblogsinglepost/' . $row['id']); ?>"> Read More</a></button></div>
+                  <div class="blog-list-article">
+                      <?php echo substr($row['description'],0, 150);?>
+                          <a class="btn bg-blue btn-md pull-right" href="<?php echo base_url('insideblog/Insideblog/insideblogsinglepost/' . $row['id']); ?>"> Read More</a>
+                      </div>
 
                 </div>
                 <!-- /.box-body -->

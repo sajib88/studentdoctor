@@ -240,7 +240,7 @@ class Insideblog extends CI_Controller
         $id = $this->uri->segment('4');
         if ($this->global_model->delete('insideblog', array('id' => $id))) {
             $this->session->set_flashdata('message', 'Delete successfully!');
-            redirect('insideblog/Insideblog/insideblogmylist', $data);
+            redirect(base_url('insideblog/list'));
         }
 
     }
@@ -329,10 +329,10 @@ class Insideblog extends CI_Controller
 
 
            
-            $id = $this->uri->segment('4');
+            $id = $this->uri->segment('3');
                 if ($this->global_model->update('insideblog', $data, array('id' => $id))){
                     $this->session->set_flashdata('message', 'Blog updated successfully.');
-                    redirect('insideblog/insideblog/insideblogmylist');
+                    redirect(base_url('insideblog/list'));
 
                     //redirect('profile/profile');
                 }
@@ -340,7 +340,7 @@ class Insideblog extends CI_Controller
 
         }
 
-         $id = $this->uri->segment('4');
+         $id = $this->uri->segment('3');
 
         $data['editblog'] = $this->global_model->get_data('insideblog', array('id' => $id));
 

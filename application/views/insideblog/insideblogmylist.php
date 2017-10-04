@@ -76,7 +76,7 @@
                                                 <span class=""><?php echo date("h:i:sa", strtotime($row->time)); ?></span>
                                             </td>
 
-                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('insideblog/Insideblog/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
+                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('insideblog/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
 
                                             <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('insideblog/Insideblog/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
                                         </tr>

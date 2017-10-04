@@ -118,5 +118,13 @@ $route['group/viewall'] = 'group/group/viewall';
 $route['group/mygroup'] = 'group/group/mygroup';
 $route['group/edit/(:any)'] = 'group/group/edit/$1';
 
+///inside blog
+$route['insideblog/create'] = 'insideblog/insideblog/insideblogcreate';
+$route['insideblog/all'] = 'insideblog/insideblog/insidebloglist';
+$route['insideblog/list'] = 'insideblog/insideblog/insideblogmylist';
+$route['insideblog/edit/(:any)'] = 'insideblog/Insideblog/edit/$1';
+
+
+
 
 

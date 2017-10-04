@@ -49,7 +49,7 @@
                 </div>
             </div>
         <?php } ?>
-            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url().'insideblog/insideblog/insideblogcreate'; ?>">
+            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url().'insideblog/create'; ?>">
                 <input type="hidden" name="user_id" value="<?php echo $login_id; ?>">
                 <div class="col-md-6 ">
                 <div class="col-md-12 no-padding">

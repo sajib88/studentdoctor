@@ -54,22 +54,34 @@ class Profile extends CI_Controller {
                 $save['city'] = $this->input->post('city');
                 $save['phone'] = $this->input->post('phone');
 
-
-                uploadConfiguration();
-                if ($this->upload->do_upload('profilepicture')) {
-                    $fileInfo = $this->upload->data();
-                   
-                  
-                    $audo_data['name'] = $fileInfo['file_name'];
-                    $this->global_model->insert('photos', $audo_data);
-
-                    $save['profilepicture'] = $audo_data['name'];
+                if (isset($_FILES["profilepicture"]["name"]) && $_FILES["profilepicture"]["name"] != '') {
+                    $this->PATH = './assets/file/';
+                    $photo_name = time();
+                    if (!file_exists($this->PATH)) {
+                        mkdir($this->PATH, 0777, true);
+                    }
+                    $save['profilepicture'] = $this->resizeimg->image_upload('profilepicture', $this->PATH, 'size[318,210]', '', $photo_name);
+                }
+                else {
 
                 }
 
+
+//                uploadConfiguration();
+//                if ($this->upload->do_upload('profilepicture')) {
+//                    $fileInfo = $this->upload->data();
+//
+//
+//                    $audo_data['name'] = $fileInfo['file_name'];
+//                    $this->global_model->insert('photos', $audo_data);
+//
+//                    $save['profilepicture'] = $audo_data['name'];
+//
+//                }
+
                 if ($this->global_model->update('users', $save, array('id' => $loginId))) {
                     $this->session->set_flashdata('message', 'Update Success');
-                    redirect('profile/profile');
+                    redirect(base_url('profile/update'));
                 }
             } else {
                 echo validation_errors();

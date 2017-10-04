@@ -99,7 +99,7 @@
                           </li>
                       </ul>
 
-                      <a href="<?php echo base_url('profile/profile/index'); ?>" class="btn btn-primary btn-block"><b>Update Your Information</b> <i class="fa fa-arrow-circle-right"></i></a>
+                      <a href="<?php echo base_url('profile/update'); ?>" class="btn btn-primary btn-block"><b>Update Your Information</b> <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                   <!-- /.box-body -->
               </div>

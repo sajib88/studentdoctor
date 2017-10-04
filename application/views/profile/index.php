@@ -1,3 +1,13 @@
+<style>
+    .upProPic{
+        margin: 10px 33.33333% auto 31.333%;
+    }
+    @media (max-width: 767px) {
+        .upProPic{
+            margin: 10px 33.33333% auto 15.333%;
+        }
+    }
+</style>
 <div id="page-content">
     <div class="content-wrapper">
         <section class="content-header">
@@ -5,17 +15,19 @@
                 Profile Manage
             </h1>
         </section>
-        <?php if($this->session->flashdata('message')){ ?>
-            <div class="col-lg-12">
-                <div class="alert alert-success alert-dismissible">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Your Profile Updatted Successfully.</strong>
-                </div>
-            </div>
-        <?php } $this->session->unset_userdata('message'); ?>
+
         <section class="content">
             <!-- /.row -->
             <div class="row">
+                <?php if($this->session->flashdata('message')){ ?>
+                    <div class="col-lg-12">
+                        <div class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Your Profile Updatted Successfully.</strong>
+                        </div>
+                    </div>
+                <?php } $this->session->unset_userdata('message'); ?>
+
                 <form role="form" method="post" enctype="multipart/form-data" action="<?php echo base_url('profile/profile/index'); ?>">
 
                     <div class="col-lg-6 ">
@@ -137,10 +149,6 @@
                             <div class="padd">
                                 <!-- form start -->
                                 <div class="form-group">
-                                    <label>Address</label>
-                                    <input name="address" value="<?php echo!empty($user_info['address']) ? $user_info['address'] : ''; ?>" class="form-control">
-                                </div>
-                                <div class="form-group">
                                     <label>Country</label>
                                     <select onchange="getComboA(this)" name="country" class="form-control">
                                         <?php
@@ -211,7 +219,7 @@
                                         <div class="form-group text-center" id="profilepicture">
                                             <div class="input-profile">
                                                 <label>Your Profile picture Format <br><small> jpg,gif,png format </small></label>
-                                                <input style="margin: 0px 33.33333% auto 26.33333%" name="profilepicture" type="file">
+                                                <input class="upProPic" style="" name="profilepicture" type="file">
                                             </div>
                                         </div>
                                     </div>

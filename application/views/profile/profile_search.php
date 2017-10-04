@@ -31,7 +31,7 @@ exit();*/
                 <div class="box box-primary">
                     <div class="panel-body">
                         <div class="row">
-                            <form role="form" method="post"  action="<?php echo base_url('profile/profile/search'); ?>">
+                            <form role="form" method="post"  action="<?php echo base_url('profile/search'); ?>">
 
                                 <div class="col-lg-6">
 
@@ -54,7 +54,6 @@ exit();*/
                                         <div class="form-group">
                                             <label>Profession</label><span id='profession_view-error' class='error' for='profession_view'></span>
                                             <select name="profession" class="selectpicker form-control">
-                                                <option value="">All Profession</option>
                                                 <?php
                                                 if (is_array($profession)) {
                                                     foreach ($profession as $row) {
@@ -104,24 +103,33 @@ exit();*/
                                             <input name="city" type="text" value="<?php echo $v;?>" placeholder="City" class="form-control">
                                         </div>
                                     </div>
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <button class="btn btn-success" type="submit">Search</button>
-                                        </div>
-                                    </div>
                                 </div>
-
-
-
-                            </form>
-
-
 
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                        <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
+                                    </div>
+                                    <div class="col-lg-6 ">
+                                        <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
+                                            <i class="fa fa-check"></i> &nbsp; &nbsp; Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
         </div>
                     <hr/>
                     <div class="row">
@@ -131,7 +139,9 @@ exit();*/
                                 if (empty($result)) {
                                     ?>
                                     <div class="col-md-12">
-                                    <div class="alert alert-danger text-center"><i class="fa fa-info"></i> No Profile Found</div>
+                                    <div class="alert alert-danger text-center">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <i class="fa fa-info"></i> No Profile Found</div>
                                     </div>
                                 <?php } else {
                                     if (!empty($result)) { ?>

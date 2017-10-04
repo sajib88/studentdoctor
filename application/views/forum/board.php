@@ -102,7 +102,7 @@
 
                     <tr>
                         <td><i class="fa fa-fw fa-bell-o"></i></td>
-                        <td><a href="<?php echo base_url('Forum/forum/listcat/' . $row->cat_id); ?>">  <?php echo $row->cat_title; ?></a></td>
+                        <td><a href="<?php echo base_url('forum/forum/listcat/' . $row->cat_id); ?>">  <?php echo $row->cat_title; ?></a></td>
                         <td>
                             <?php echo $row->total_post; ?>
                         </td>

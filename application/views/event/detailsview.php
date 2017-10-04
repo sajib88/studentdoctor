@@ -16,7 +16,7 @@
 
                     <div class="col-sm-4">
                         <div class="panel panel-primary event-primary">
-                            <div class="panel-heading"><h2><a href="#"><?php echo $row['title']; ?></a></h2></div>
+                            <div class="panel-heading"><h2><a href="#"><?php   echo substr($row['title'], 0, 50); ?></a></h2></div>
                             <div class="panel-body nopadding">
                                 <img src="<?php echo base_url() . '/assets/file/event/' .$row['primary_photo']; ?>" alt="event image" width="100%" height="30%" class="img-responsive"/>
                                 <div class="row nopadding">
@@ -58,3 +58,9 @@
     </section>
 
 </div>
+<style>
+
+    .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img{
+        margin: 0px;
+    }
+</style>

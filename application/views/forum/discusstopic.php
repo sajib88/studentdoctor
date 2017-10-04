@@ -30,7 +30,7 @@
 
             <!-- /.MENU FORUM SAJIB -->
             <div class="col-md-12">
-                <div class="box box-default box-solid">
+                <div class="box box-default">
                     <div class="box-header with-border">
                         <h3 class="box-title">Forum Board</h3>
 
@@ -45,41 +45,28 @@
 
 
 
-                        <div class="col-md-2 text-center">
-                            <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
+                        <div class="col-md-3 text-center">
+                            <a  href="<?php echo base_url('forum/board'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
 
                         </div>
 
 
 
 
-                        <div class="col-md-2 text-center">
-                            <a data-toggle="modal" href="<?php echo base_url('forum/forum/addcat'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
+                        <div class="col-md-3 text-center">
+                            <a data-toggle="modal" href="<?php echo base_url('forum/addCategory'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
 
                         </div>
 
 
-                        <div class="col-md-2 text-center">
-                            <a  href="<?php echo base_url('forum/forum/allmypostlist'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
+                        <div class="col-md-3 text-center">
+                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
 
                         </div>
 
 
-                        <div class="col-md-2 text-center">
-                            <a  href="<?php echo base_url('forum/forum/allmycomments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
-
-                        </div>
-
-
-
-                        <div class="col-md-2 text-center">
-
-                            <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn"><i class="fa fa-backward"></i> Go Back Post</a>
-
-                        </div>
-
-                        <div class="col-md-2 text-center">
-                            <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default "><i class="fa fa-share"></i> Reply This Topic</button>
+                        <div class="col-md-3 text-center">
+                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
 
                         </div>
 
@@ -96,7 +83,7 @@
 
 
             <div class="col-md-12">
-          <div class="box box-default box-solid">
+          <div class="box box-default">
             <div class="box-header with-border">
               <h3 class="box-title">Discussion <?php
                   $data = get_data('forum_category', array('cat_id' => $postdeatils['cat_id'])); echo $data['cat_title'];
@@ -104,6 +91,7 @@
                   ?> Forum</h3>
 
               <div class="box-tools pull-right">
+                  <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default bg-blue btn-md"><i class="fa fa-share"></i> Reply This Topic</button>
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
               </div>
@@ -316,7 +304,7 @@
             </div>
 
             <form role="form" method="post" id="post" enctype="multipart/form-data"
-                  action="<?php echo base_url('Forum/forum/discuss/' . $getid); ?>">
+                  action="<?php echo base_url('forum/discuss/' . $getid); ?>">
 
                 <div class="modal-body">
                     <input name="postid" value="<?php  echo $getid; ?>" type="hidden" class="form-control">

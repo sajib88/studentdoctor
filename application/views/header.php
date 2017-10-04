@@ -344,7 +344,7 @@
 
                 </li>
 
-                <li class="treeview <?php if ($this->uri->segment(2)=="forum"){
+                <li class="treeview <?php if ($this->uri->segment(1)=="forum"){
                 echo "active";
                 } ?>">
                     <a href="#">
@@ -354,24 +354,24 @@
                     </a>
 
                     <ul class="treeview-menu">
-                        <li class="<?php if ($this->uri->segment(3)=="index"){
+                        <li class="<?php if ($this->uri->segment(2)=="board"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('forum/forum/index'); ?>"><i class="fa fa-circle-o"></i> Forum
+                            <a href="<?php echo base_url('forum/board'); ?>"><i class="fa fa-circle-o"></i> Forum
                                 Dashboard</a>
                         </li>
-                        <li class="<?php if ($this->uri->segment(3)=="allmypostlist"){
+                        <li class="<?php if ($this->uri->segment(2)=="posts"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('forum/forum/allmypostlist'); ?>"><i
+                            <a href="<?php echo base_url('forum/posts'); ?>"><i
                                         class="fa fa-circle-o"></i>
                                 All My Post</a>
                         </li>
 
-                        <li class="<?php if ($this->uri->segment(3)=="allmycomments"){
+                        <li class="<?php if ($this->uri->segment(2)=="comments"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('forum/forum/allmycomments'); ?>"><i
+                            <a href="<?php echo base_url('forum/comments'); ?>"><i
                                         class="fa fa-circle-o"></i>
                                 All My Comments</a>
                         </li>

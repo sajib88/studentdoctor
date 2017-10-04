@@ -29,7 +29,7 @@
 
             <!-- /.MENU FORUM SAJIB -->
             <div class="col-md-12">
-                <div class="box box-default box-solid">
+                <div class="box box-default">
                     <div class="box-header with-border">
                         <h3 class="box-title">Forum Board</h3>
 
@@ -41,39 +41,24 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        <div class="col-md-3 text-center">
+                            <a  href="<?php echo base_url('forum/board'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
 
-
-
-                        <div class="col-md-2 text-center col-md-offset-1">
-                            <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a data-toggle="modal" href="<?php echo base_url('forum/addCategory'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
 
                         </div>
 
 
-
-
-                        <div class="col-md-2 text-center">
-                            <a data-toggle="modal" href="<?php echo base_url('forum/forum/addcat'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
+                        <div class="col-md-3 text-center">
+                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
 
                         </div>
 
 
-                        <div class="col-md-2 text-center">
-                            <a  href="<?php echo base_url('forum/forum/allmypostlist'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
-
-                        </div>
-
-
-                        <div class="col-md-2 text-center">
-                            <a  href="<?php echo base_url('forum/forum/allmycomments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
-
-                        </div>
-
-
-
-                        <div class="col-md-2 text-center">
-
-                            <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn"><i class="fa fa-backward"></i> Go Back Forum</a>
+                        <div class="col-md-3 text-center">
+                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
 
                         </div>
 
@@ -126,7 +111,7 @@
                         <td><?php echo $row->reply; ?></td>
                         <td><?php echo $row->datetime; ?></td>
                         <td>
-                            <a class="btn  btn-primary" href="<?php echo base_url('Forum/forum/discuss/' . $row->post_id); ?>">  Reply</a>
+                            <a class="btn  btn-primary" href="<?php echo base_url('forum/discuss/' . $row->post_id); ?>">  Reply</a>
 
                         </td>
                     </tr>
@@ -168,7 +153,7 @@
 
             <div class="modal-body">
                 <form role="form" method="post" id="post" enctype="multipart/form-data"
-                      action="<?php echo base_url('Forum/forum/listcat/' . $getid); ?>">
+                      action="<?php echo base_url('forum/listcat/' . $getid); ?>">
                 <input name="hiddencat" value="<?php echo $getid; ?>" type="hidden" class="form-control">
                 <div class="col-lg-12">
                     <div class="form-group">

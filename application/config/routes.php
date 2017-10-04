@@ -124,6 +124,17 @@ $route['insideblog/all'] = 'insideblog/insideblog/insidebloglist';
 $route['insideblog/list'] = 'insideblog/insideblog/insideblogmylist';
 $route['insideblog/edit/(:any)'] = 'insideblog/Insideblog/edit/$1';
 
+//forum
+$route['forum/board'] = 'forum/forum/index';
+$route['forum/posts'] = 'forum/forum/allmypostlist';
+$route['forum/comments'] = 'forum/forum/allmycomments';
+$route['forum/addCategory'] = 'forum/forum/addcat';
+$route['forum/listcat/(:any)'] = 'Forum/forum/listcat/$1';
+$route['forum/discuss/(:any)'] = 'Forum/forum/discuss/$1';
+$route['forum/editPost/(:any)'] = 'forum/forum/editPost/$1';
+$route['forum/editComment/(:any)'] = 'forum/forum/editComment/$1';
+
+
 
 
 

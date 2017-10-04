@@ -51,7 +51,7 @@ class Forum extends CI_Controller{
 
 
         $user_type = $this->session->userdata('user_type');
-        $data['getid']  = $this->uri->segment('4');
+        $data['getid']  = $this->uri->segment('3');
 
         $data['postdeatils'] = $this->global_model->get('forum_post', array('cat_id' => $data['getid']));
 
@@ -84,7 +84,7 @@ class Forum extends CI_Controller{
                 {
 
                     $this->session->set_flashdata('message', 'New Forum Post Create Successfully');
-                    $redirect_link = base_url() . 'Forum/forum/listcat/'. $postData['hiddencat'];
+                    $redirect_link = base_url() . 'forum/listcat/'. $postData['hiddencat'];
                     redirect($redirect_link);
 
                 }
@@ -105,7 +105,7 @@ class Forum extends CI_Controller{
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
 
-        $data['getid']  = $this->uri->segment('4');
+        $data['getid']  = $this->uri->segment('3');
         $data['postdeatils'] = $this->global_model->get_data('forum_post', array('post_id' => $data['getid']));
         /// Author
         $data['user_post_info'] = $this->global_model->get_data('users', array('id' => $data['postdeatils']['author_id']));
@@ -147,7 +147,7 @@ class Forum extends CI_Controller{
                 if ($ref_id = $this->global_model->insert('forum_comments', $save)) {
 
                     $this->session->set_flashdata('message', 'New Forum Post Create Successfully');
-                    $redirect_link = base_url() . 'Forum/forum/discuss/'. $postData['postid'];
+                    $redirect_link = base_url() . 'forum/discuss/'. $postData['postid'];
                     redirect($redirect_link);
 
                 }
@@ -308,7 +308,7 @@ class Forum extends CI_Controller{
     public function deletePost($id){
         if ($this->global_model->delete('forum_post', array('post_id' => $id))) {
             $this->session->set_flashdata('success', 'Post delete successfully!');
-            redirect('forum/Forum/allmycomments');
+            redirect(base_url('forum/posts'));
         }
     }
 
@@ -345,7 +345,7 @@ class Forum extends CI_Controller{
     public function deleteComment($id){
         if ($this->global_model->delete('forum_comments', array('comment_id' => $id))) {
             $this->session->set_flashdata('success', 'Comment delete successfully!');
-            redirect('forum/Forum/allmycomments');
+            redirect(base_url('forum/comments'));
         }
     }
 

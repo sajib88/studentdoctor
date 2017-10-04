@@ -19,7 +19,7 @@
 
 
             <div class="col-md-12">
-                <div class="box box-default box-solid">
+                <div class="box box-default">
                     <div class="box-header with-border">
                         <h3 class="box-title">Forum Board</h3>
 
@@ -32,19 +32,19 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="col-md-3 text-center">
-                            <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
+                            <a  href="<?php echo base_url('forum/board'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
 
                         </div>
                         <div class="col-md-3 text-center">
-                            <a data-toggle="modal" href="<?php echo base_url('forum/forum/addcat'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
+                            <a data-toggle="modal" href="<?php echo base_url('forum/addCategory'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
 
                         </div>
                         <div class="col-md-3 text-center">
-                            <a  href="<?php echo base_url('forum/forum/allmypostlist'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
+                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
 
                         </div>
                         <div class="col-md-3 text-center">
-                            <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
+                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
 
                         </div>
 
@@ -63,7 +63,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form role="form" method="post" id="forumcat" enctype="multipart/form-data" action="<?php echo base_url('Forum/forum/addcat'); ?>">
+                                <form role="form" method="post" id="forumcat" enctype="multipart/form-data" action="<?php echo base_url('forum/addCategory'); ?>">
                                     <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
                                     <div class="col-lg-12">
                                         <div class="form-group">

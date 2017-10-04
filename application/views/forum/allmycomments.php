@@ -42,7 +42,7 @@
 
                             <!-- /.MENU FORUM SAJIB -->
                             <div class="col-md-12">
-                                <div class="box box-default box-solid">
+                                <div class="box box-default ">
                                     <div class="box-header with-border">
                                         <h3 class="box-title">Forum Board</h3>
 
@@ -57,43 +57,30 @@
 
 
 
-                                        <div class="col-md-2 text-center col-md-offset-1">
-                                            <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
+                                        <div class="col-md-3 text-center">
+                                            <a  href="<?php echo base_url('forum/board'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
 
                                         </div>
 
 
 
 
-                                        <div class="col-md-2 text-center">
-                                            <a data-toggle="modal" href="<?php echo base_url('forum/forum/addcat'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
+                                        <div class="col-md-3 text-center">
+                                            <a data-toggle="modal" href="<?php echo base_url('forum/addCategory'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
 
                                         </div>
 
 
-                                        <div class="col-md-2 text-center">
-                                            <a  href="<?php echo base_url('forum/forum/allmypostlist'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
+                                        <div class="col-md-3 text-center">
+                                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
 
                                         </div>
 
 
-                                        <div class="col-md-2 text-center">
-                                            <a  href="<?php echo base_url('forum/forum/allmycomments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
+                                        <div class="col-md-3 text-center">
+                                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
 
                                         </div>
-
-
-
-                                        <div class="col-md-2 text-center">
-
-                                            <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn"><i class="fa fa-backward"></i> Go Back Forum</a>
-
-                                        </div>
-
-
-
-
-
 
                                     </div>
                                     <!-- /.box-body -->
@@ -102,9 +89,9 @@
                             </div>
 
                             <!-- /.MENU FORUM SAJIB -->
-
+                            <?php if(!empty($allmycomments)){ ?>
                             <div class="col-lg-12">
-                                <div class="box box-default box-solid">
+                                <div class="box box-default ">
                                     <div class="box-header with-border">
                                         <h3 class="box-title">Comment List</h3>
 
@@ -115,6 +102,7 @@
                                         <!-- /.box-tools -->
                                     </div>
                             <!-- /.box-header -->
+
                             <div class="box-body">
                                 <table class="table table-bordered">
                                     <tbody><tr>
@@ -125,8 +113,9 @@
                                         <th>Comments Delete</th>
 
                                     </tr>
-                                    <?php if(!empty($allmycomments)){ ?>
-                                    <?php foreach ($allmycomments as $row){?><tr>
+
+                                    <?php foreach ($allmycomments as $row){?>
+                                            <tr>
 
                                         <td><?php echo $row->comments_title; ?></td>
                                         <td>
@@ -134,7 +123,7 @@
                                         </td>
                                         <td>  <?php echo date('d-m-Y', strtotime($row->added_date_time)); ?></td>
                                         <td>
-                                            <a href="<?php echo base_url('forum/forum/editComment/'.$row->comment_id);?>" type="button" class="btn btn-block btn-primary">
+                                            <a href="<?php echo base_url('forum/editComment/'.$row->comment_id);?>" type="button" class="btn btn-block btn-primary">
                                                 Edit
                                             </a>
                                         </td>
@@ -144,15 +133,22 @@
                                             </a>
                                         </td>
                                         </tr>
-                                    <?php
-                                    }?> <?php
-                                    }?>
+                                    <?php  }?>
 
                                     </tbody>
                                 </table>
                             </div>
+
                                 </div>
                         </div>
+                            <?php }else{?>
+                                <div class="col-lg-12">
+                                    <div class="alert alert-warning alert-dismissible text-center">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong> No comment found <i class="fa fa-info"></i> </strong>
+                                    </div>
+                                </div>
+                            <?php }?>
 
 
 

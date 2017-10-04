@@ -21,7 +21,7 @@
 
         <!-- /.MENU FORUM SAJIB -->
         <div class="col-md-12">
-            <div class="box box-default box-solid">
+            <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">Forum Board</h3>
 
@@ -37,7 +37,7 @@
 
 
                     <div class="col-md-3 text-center">
-                        <a  href="<?php echo base_url('forum/forum/index'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
+                        <a  href="<?php echo base_url('forum/board'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
 
                     </div>
 
@@ -45,19 +45,19 @@
 
 
                     <div class="col-md-3 text-center">
-                        <a data-toggle="modal" href="<?php echo base_url('forum/forum/addcat'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
+                        <a data-toggle="modal" href="<?php echo base_url('forum/addCategory'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
 
                     </div>
 
 
                     <div class="col-md-3 text-center">
-                        <a  href="<?php echo base_url('forum/forum/allmypostlist'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
+                        <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
 
                     </div>
 
 
                     <div class="col-md-3 text-center">
-                        <a  href="<?php echo base_url('forum/forum/allmycomments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
+                        <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
 
                     </div>
 
@@ -102,7 +102,7 @@
 
                     <tr>
                         <td><i class="fa fa-fw fa-bell-o"></i></td>
-                        <td><a href="<?php echo base_url('forum/forum/listcat/' . $row->cat_id); ?>">  <?php echo $row->cat_title; ?></a></td>
+                        <td><a href="<?php echo base_url('forum/listcat/' . $row->cat_id); ?>">  <?php echo $row->cat_title; ?></a></td>
                         <td>
                             <?php echo $row->total_post; ?>
                         </td>
@@ -129,7 +129,7 @@
             
       <!-- /.Orage BOX SAJIB -->
         <div class="col-md-12">
-          <div class="box box-default box-solid">
+          <div class="box box-default">
             <div class="box-header with-border">
               <h3 class="box-title"> All Professions Forums</h3>
 
@@ -156,7 +156,7 @@
                 ?>
                     <tr>
                         <td><i class="fa fa-fw fa-bell-o"></i></td>
-                        <td><a href="<?php echo base_url('Forum/forum/listcat/' . $row->cat_id); ?>">  <?php echo $row->cat_title; ?></a></td>
+                        <td><a href="<?php echo base_url('forum/listcat/' . $row->cat_id); ?>">  <?php echo $row->cat_title; ?></a></td>
                         <td>
                             <?php echo $row->total_post; ?>
                         </td>
@@ -208,7 +208,7 @@
                                 ?>
                                 <tr>
                                     <td><i class="fa fa-fw fa-bell-o"></i></td>
-                                    <td><a href="<?php echo base_url('Forum/forum/listcat/' . $row->cat_id); ?>">  <?php echo $row->cat_title; ?></a></td>
+                                    <td><a href="<?php echo base_url('forum/listcat/' . $row->cat_id); ?>">  <?php echo $row->cat_title; ?></a></td>
                                     <td>
                                         <?php echo $row->total_post; ?>
                                     </td>

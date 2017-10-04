@@ -38,7 +38,7 @@
             </div>
         </div>
     <?php } ?>
-        <form  method="post" id="event" name="event" enctype="multipart/form-data" action="<?php echo base_url('event/event/index'); ?>">
+        <form  method="post" id="event" name="event" enctype="multipart/form-data" action="<?php echo base_url('event/add'); ?>">
             <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
         <div class="col-md-6 ">
             <div class="col-md-12 no-padding">

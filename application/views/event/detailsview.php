@@ -40,7 +40,7 @@
                                 <p><?php echo $row['summary']; ?>
                                 </p>
 
-                                <a href="<?php echo base_url('event/event/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-warning"> View Details</a>
+                                <a href="<?php echo base_url('event/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-warning"> View Details</a>
 
                             </div>
                         </div>

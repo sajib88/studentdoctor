@@ -103,5 +103,13 @@ $route['classifieds/add'] = 'classifieds/classifieds/add';
 $route['classifieds/viewmyclassfied'] = 'classifieds/classifieds/viewmyclassfied';
 $route['classifieds/all'] = 'classifieds/classifieds/viewall';
 $route['classifieds/layoutfull/(:any)'] = 'classifieds/classifieds/layoutfull/$1';
-$route['classifieds/edit/(:any)'] = 'classifieds/classifieds/edit//$1';
+$route['classifieds/edit/(:any)'] = 'classifieds/classifieds/edit/$1';
+
+//events
+$route['event/add'] = 'event/event/index';
+$route['event/viewall'] = 'event/event/viewall';
+$route['event/myevent'] = 'event/event/myevent';
+$route['event/edit/(:any)'] = 'event/event/edit/$1';
+$route['event/layoutfull/(:any)'] = 'event/event/layoutfull/$1';
+
 

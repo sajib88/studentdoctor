@@ -55,10 +55,13 @@ class event extends CI_Controller {
                     $save['user_id'] = $loginId;
                     $save['event_join'] = '0';
                     $save['status'] = '1';
-                    $sata = array();
-                    $sata ['profession_view'] = $this->input->post('profession_view');
-                    $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
-
+                    if(!empty($this->input->post('profession_view'))) {
+                        $sata = array();
+                        $sata ['profession_view'] = $this->input->post('profession_view');
+                        $save['profession_view'] = (!empty($sata['profession_view'])) ? implode(',', $sata['profession_view']) : '';
+                    }else{
+                        $save['profession_view'] = 0;
+                    }
 
                     if (isset($_FILES["primary_photo"]["name"]) && $_FILES["primary_photo"]["name"] != '') {
                         $this->PATH = './assets/file/event/';
@@ -190,7 +193,7 @@ class event extends CI_Controller {
                 else {
 
                 }
-                $id = $this->uri->segment('4');
+                $id = $this->uri->segment('3');
                 if ($this->global_model->update('event', $save, array('id' => $id))){
                     $this->session->set_flashdata('message', 'Save Success');
                     //redirect('profile/profile');
@@ -205,7 +208,7 @@ class event extends CI_Controller {
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
 
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
         $data['editevent'] = $this->global_model->get_data('event', array('id' => $id));
         $data['profession'] = $this->global_model->get('profession');
         $this->load->view('header', $data);
@@ -273,7 +276,7 @@ class event extends CI_Controller {
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
 
 
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
         $data['layoutfull'] = $this->global_model->get_data('event', array('id' => $id));
 
 
@@ -291,7 +294,7 @@ class event extends CI_Controller {
         $id = $this->uri->segment('4');
         if ($this->global_model->delete('event', array('id' => $id))) {
             $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('event/event/myevent');
+            redirect(base_url('event/myevent'));
         }
 
     }

@@ -8,7 +8,14 @@
     <section class="content">
         <div class="row">
 
-
+            <?php if($this->session->flashdata('success')){ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong> <?php echo $this->session->flashdata('success');?></strong>
+                    </div>
+                </div>
+            <?php } ?>
 
             <?php if(!empty($myevent)){ ?>
             <?php foreach($myevent as $row):?>
@@ -39,8 +46,8 @@
                             <div class="panel-footer panel-primary">
                                 <p><?php echo $row->summary; ?>
                                 </p>
-                                <a href="<?php echo base_url('event/event/edit/' . $row->id); ?>" class="btn btn-success">Edit</a>
-                                <a href="<?php echo base_url('event/event/layoutfull/' . $row->id); ?>" class="btn btn-warning"> View Details</a>
+                                <a href="<?php echo base_url('event/edit/' . $row->id); ?>" class="btn btn-success">Edit</a>
+                                <a href="<?php echo base_url('event/layoutfull/' . $row->id); ?>" class="btn btn-warning"> View Details</a>
                                 <a href="<?php echo base_url('event/event/delete/' . $row->id); ?>" class="btn  btn-danger">Delete</a>
                             </div>
                         </div>
@@ -50,9 +57,11 @@
 
                 <?php endforeach;?>
             <?php }else{ ?>
-                <div class="alert alert-warning text-center">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                    No events found <i class="fa fa-info"></i>
+                <div class="col-md-12">
+                    <div class="alert alert-warning text-center">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                        No events found <i class="fa fa-info"></i>
+                    </div>
                 </div>
             <?php } ?>
 

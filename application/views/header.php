@@ -287,7 +287,7 @@
                             <a href="<?php echo base_url('classifieds/viewmyclassfied'); ?>"><i
                                         class="fa fa-circle-o"></i>Manage All My Classified</a>
                         </li>
-                        <li class="<?php if ($this->uri->segment(2)=="viewall"){
+                        <li class="<?php if ($this->uri->segment(2)=="all"){
                         echo "active";
                         } ?>">
                             <a href="<?php echo base_url('classifieds/all'); ?>"><i
@@ -383,7 +383,7 @@
                 </li>
 
 
-                <li class="treeview <?php if ($this->uri->segment(2)=="event"){
+                <li class="treeview <?php if ($this->uri->segment(1)=="event"){
                 echo "active";
                 } ?>">
                     <a href="#">
@@ -393,23 +393,23 @@
                     </a>
 
                     <ul class="treeview-menu">
-                        <li class="<?php if ($this->uri->segment(3)=="index"){
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('event/event/index'); ?>"><i class="fa fa-circle-o"></i> Create
+                            <a href="<?php echo base_url('event/add'); ?>"><i class="fa fa-circle-o"></i> Create
                                 New Event</a>
                         </li>
-                        <li class="<?php if ($this->uri->segment(3)=="viewall"){
+                        <li class="<?php if ($this->uri->segment(2)=="viewall"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('event/event/viewall'); ?>"><i class="fa fa-circle-o"></i>
+                            <a href="<?php echo base_url('event/viewall'); ?>"><i class="fa fa-circle-o"></i>
                                 View All Events</a>
                         </li>
 
-                        <li class="<?php if ($this->uri->segment(3)=="myevent"){
+                        <li class="<?php if ($this->uri->segment(2)=="myevent"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('event/event/myevent'); ?>"><i class="fa fa-circle-o"></i>Manage
+                            <a href="<?php echo base_url('event/myevent'); ?>"><i class="fa fa-circle-o"></i>Manage
                                 Event List</a>
                         </li>
 

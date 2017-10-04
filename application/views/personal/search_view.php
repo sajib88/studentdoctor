@@ -20,7 +20,7 @@
             <div class="col-lg-6">
                 <div class="box box-primary">
                     <div class="panel-body">
-                            <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('personal/Personal/search'); ?>">
+                            <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('personal/search'); ?>">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Country</label>
@@ -225,7 +225,7 @@
                                                                         class=""><?php echo $row->age; ?></span>
                                                                 </td>
                                                                 <td data-title="<?php echo 'View'; ?>" class="numeric">
-                                                                    <a href="<?php echo base_url('personal/Personal/detail/' . $row->id); ?>" class="btn btn-block btn-dropbox"> View</a></td>
+                                                                    <a href="<?php echo base_url('personal/detail/' . $row->id); ?>" class="btn btn-block btn-dropbox"> View</a></td>
 
                                                             </tr>
                                                             <?php $i++;
@@ -235,15 +235,10 @@
                                                 </table>
                                                 <?php }else{?>
                                                         <div class="col-lg-12">
-                                                            <div class="box box-primary">
-                                                                <div class="box-header with-border">
-                                                                    <i class="fa fa-search"></i>
-                                                                    <h3 class="box-title">Search Result</h3></i>
-                                                                </div>
-                                                                <div class="panel-body">
-                                                                    <div class="box-body table-responsive no-padding">
-                                                                        <div class="alert alert-danger"> No search result found</div>
-                                                                    </div>
+                                                            <div class="box-body table-responsive no-padding">
+                                                                <div class="alert alert-danger text-center">
+                                                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                                    No search result found <i class="fa fa-info"></i>
                                                                 </div>
                                                             </div>
                                                         </div>

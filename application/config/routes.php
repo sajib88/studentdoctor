@@ -88,3 +88,11 @@ $route['blog/(:any)/(:any)'] = 'blog/Postlist/singlepost1/$1/$2';
 $route['publicsearch'] = 'doctor/DocController/publicSearch';
 $route['publicsearch/detail/(:any)'] = 'doctor/DocController/details_profile/$1';
 
+
+//personals
+$route['personal/add'] = 'personal/Personal/add';
+$route['personal/all'] = 'personal/Personal/grid';
+$route['personal/list'] = 'personal/Personal/all';
+$route['personal/search'] = 'personal/Personal/search';
+$route['personal/detail/(:any)'] = 'personal/Personal/detail/$1';
+$route['personal/edit/(:any)'] = 'personal/Personal/edit/$1';

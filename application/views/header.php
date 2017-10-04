@@ -299,7 +299,7 @@
 
                 </li>
 
-                <li class="treeview <?php if ($this->uri->segment(2)=="Personal"){
+                <li class="treeview <?php if ($this->uri->segment(1)=="personal"){
                 echo "active";
                 } ?>">
                     <a href="#">
@@ -310,32 +310,32 @@
 
                     <ul class="treeview-menu">
 
-                        <li class="<?php if ($this->uri->segment(3)=="add"){
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('personal/Personal/add'); ?>"><i class="fa fa-circle-o"></i>
+                            <a href="<?php echo base_url('personal/add'); ?>"><i class="fa fa-circle-o"></i>
                                 Add New Personals</a>
                         </li>
 
-                        <li class="<?php if ($this->uri->segment(3)=="grid"){
+                        <li class="<?php if ($this->uri->segment(2)=="all"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('personal/Personal/grid'); ?>"><i class="fa fa-circle-o"></i>
+                            <a href="<?php echo base_url('personal/all'); ?>"><i class="fa fa-circle-o"></i>
                                 Show All Personals</a>
                         </li>
 
-                        <li class="<?php if ($this->uri->segment(3)=="all"){
+                        <li class="<?php if ($this->uri->segment(2)=="list"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('personal/Personal/all'); ?>"><i class="fa fa-circle-o"></i>Manage
+                            <a href="<?php echo base_url('personal/list'); ?>"><i class="fa fa-circle-o"></i>Manage
                                 My Personals</a>
                         </li>
 
 
-                        <li class="<?php if ($this->uri->segment(3)=="search"){
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('personal/Personal/search'); ?>"><i class="fa fa-circle-o"></i>Search
+                            <a href="<?php echo base_url('personal/search'); ?>"><i class="fa fa-circle-o"></i>Search
                                 Personals</a>
                         </li>
 

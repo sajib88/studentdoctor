@@ -210,7 +210,7 @@ class Personal extends CI_Controller{
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
 
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
@@ -361,7 +361,7 @@ class Personal extends CI_Controller{
             {
                 $this->session->set_flashdata('msg', '<div class="alert alert-success" id="success-alert">'.'Data Update Successfully'.'</div>');
             }
-            redirect(base_url('personal/Personal/edit/'.$id));
+            redirect(base_url('personal/edit/'.$id));
 
 
         }
@@ -372,7 +372,7 @@ class Personal extends CI_Controller{
 
         $data['page_title'] = 'personal detail';
         $data['error'] = '';
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
 
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
@@ -447,7 +447,7 @@ class Personal extends CI_Controller{
         $id = $this->uri->segment('4');
         if ($this->global_model->delete('personals', array('id' => $id))) {
             $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('personal/Personal/all');
+            redirect('personal/list');
         }
 
     }

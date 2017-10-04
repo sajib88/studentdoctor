@@ -85,8 +85,8 @@ print_r($allpersonals);die;*/
                                             <td data-title="<?php echo 'age'; ?>"
                                                 class="numeric"><span class=""><?php echo $row->age; ?></span></td>
 
-                                            <td data-title="<?php echo 'Edit'; ?>" class="numeric"><a href="<?php echo base_url('personal/Personal/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>
-                                            <td data-title="<?php echo 'Detail'; ?>" class="numeric"><a href="<?php echo base_url('personal/Personal/detail/' . $row->id); ?>" class="btn btn-block btn-success"> View</a></td>
+                                            <td data-title="<?php echo 'Edit'; ?>" class="numeric"><a href="<?php echo base_url('personal/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>
+                                            <td data-title="<?php echo 'Detail'; ?>" class="numeric"><a href="<?php echo base_url('personal/detail/' . $row->id); ?>" class="btn btn-block btn-success"> View</a></td>
                                             <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('personal/Personal/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
                                         </tr>
                                         <?php $i++;

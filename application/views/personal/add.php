@@ -51,7 +51,7 @@ print_r($user_info);die;*/
                 </div>
             <?php } $this->session->unset_userdata('message'); ?>
 
-            <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('personal/Personal/add'); ?>">
+            <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('personal/add'); ?>">
             <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
 
             <div class="col-md-6 ">
@@ -431,6 +431,12 @@ print_r($user_info);die;*/
             description:{
                 required:true
             },
+            iam:{
+                required:true
+            },
+            interestedin:{
+                required:true
+            },
             country:{
                 required:true
             },
@@ -447,6 +453,12 @@ print_r($user_info);die;*/
 
             description: {
                 required: "Description is Required",
+            },
+            iam: {
+                required: "This is Required",
+            },
+            interestedin: {
+                required: "This is Required",
             },
             country: {
                 required: "Description is Required",

@@ -673,6 +673,8 @@ dd.catchPhrase2 {
     }
     .post .post-image img{
         height: 300px !important;
+        width: 100% !important;
+        padding: 0 !important;
     }
     .two-line-div{
         margin-bottom: 13px !important;
@@ -687,17 +689,26 @@ dd.catchPhrase2 {
 .post { margin-bottom: 40px; }
 .post .post-image { margin-bottom: 30px; }
 .post .post-image img{
-    height: 500px;
+    float: left;
+    height: 190px;
+    width: 200px;
+    padding-right: 20px;
 }
-.post ul.post-meta { list-style: none; padding: 0; margin: 5px 0 0 0; text-align: right; width: 170px; float: left; }
-.post ul.post-meta > li { font-weight: 600; margin-bottom: 20px; line-height: 1.2; }
-@media only screen and (max-width: 767px) { .post ul.post-meta > li { display: inline-block; margin-right: 20px; }
+.post ul.post-meta { list-style: none; padding: 0; margin: 0 0 0 0; float: left; }
+.post ul.post-meta > li { font-weight: 600; margin-bottom: 20px; line-height: 1.2; float: left; width: 150px; }
+@media only screen and (max-width: 767px) { .post ul.post-meta > li { display: inline-block; margin-right: 20px; float: left; padding: 0; margin: 0px 30px 6px 0px; width: 100%; display: inline-flex; }
     .post ul.post-meta > li:last-child { margin-right: 0; } }
 .post ul.post-meta > li > span { display: block; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5; font-size: 12px; }
-@media only screen and (max-width: 767px) { .post ul.post-meta { float: none; width: 100%; margin-bottom: 10px; text-align: left; } }
-.post .post-content { margin-left: 200px; }
-@media only screen and (max-width: 767px) { .post .post-content { margin-left: 0; } }
+@media (max-width: 600px) {
+    .post ul.post-meta > li > span { display: block; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5; font-size: 12px; }
+}
+@media only screen and (max-width: 767px) { .post ul.post-meta { float: none; width: 100%; margin-bottom: 10px; text-align: left; padding-right: 5px;} }
+.post h1{font-size: 20px;}
+@media (max-width: 600px){.post h1{float: left; font-size: 20px;}}
+.post .post-content {  float: left; position: absolute;  margin: 50px 0px 0 200px;}
+@media only screen and (max-width: 767px) { .post .post-content {float: left; margin: 0 0 0 200px; } }
 .post .post-content h1, .post .post-content h2 { font-size: 30px; margin-bottom: 35px; }
+.post .post-content a{text-decoration: none;}
 .post.post-boxed { color: #434343; }
 .post.post-boxed .post-image { position: relative; margin-bottom: 0; }
 .post.post-boxed .post-image img { -moz-border-radius: 3px 3px 0 0; -webkit-border-radius: 3px; border-radius: 3px 3px 0 0; }
@@ -745,6 +756,30 @@ html[dir="rtl"] .comments > li .avatar { float: right; }
 html[dir="rtl"] .comments > li .content { margin-right: 78px; margin-left: 0; }
 html[dir="rtl"] .comments > li ul { padding-right: 58px; padding-left: 0; }
 
+/*single post */
+
+.single-post{
+    margin-bottom: 40px;
+}
+
+@media (max-width: 600px) {
+
+}
+
+.single-post ul.post-meta { display: inline-block; padding: 0; margin: 0 0 0 0;}
+.single-post ul.post-meta li{
+    float: left;
+    display: inline-block;
+    width: 180px;
+    padding: 27px 0 0 0;
+    font-weight: 600;
+}
+.single-post ul.post-meta > li > span{
+    padding-right: 10px;
+    opacity: 0.5;
+}
+
+
 
 /* Recent Posts
 ----------------------------------------------------------*/
@@ -777,6 +812,68 @@ html[dir="rtl"] .comments > li ul { padding-right: 58px; padding-left: 0; }
         width: 100%;
         margin:50px auto;
     }
+}
+
+/*blog right side*/
+
+.recentpostimg{
+    float: left;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
+}
+.recentpostList{
+    float: left;
+}
+.recentpostList ul{
+    float: left;
+}
+
+.recentpostList li {
+    float: left;
+    display: block;
+    margin: 10px auto;
+}
+
+.recentpostList li a{
+    width: 100%;
+    font-size: 15px;
+    font-weight: lighter;
+    color: #113058;
+    text-decoration: none;
+}
+
+.post-cat{
+    float: left;
+    margin: 0 0 20px 0;
+}
+.post-cat ul{
+    float: left;
+}
+.post-cat ul li{
+    float: left;
+    display: inline-block;
+    margin-right: 5px;
+}
+.post-cat ul li a{
+    float: left;
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    height: auto;
+    width: auto;
+    padding: 5px;
+    background: #113058;
+    text-decoration: none;
 }
 
 

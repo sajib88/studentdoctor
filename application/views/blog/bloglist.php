@@ -2,7 +2,7 @@
 
 
     <section class="content-wrapper">
-        <div class="container">
+        <div class="container no-padding">
             <div class="row">
                 <div class="col-md-12 pdl">
                     <div class="tab-wrapper row">
@@ -13,7 +13,7 @@
                                     <?php foreach ($recent_post as $row){?>
                                         <li>
                                             <img src="<?php echo base_url('assets/file/blog/'.$row->primary_image);?>" class="img-responsive recentpostimg">
-                                            <a href="#"><?php echo $row->title; ?></a>
+                                            <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>"><?php echo $row->title; ?></a>
                                             <span class="pull-right"><?php echo $row->date; ?></span>
                                         </li>
                                     <?php }?>
@@ -33,7 +33,7 @@
                         </div>
 
                         <!-- Tab panes -->
-                        <div class="content col-md-8">
+                        <div class="content col-md-8 no-padding">
                             <?php if(count($allblog)<=0){?>
                                 <div class="alert alert-info">No Blogs</div>
                             <?php }else{?>
@@ -47,16 +47,16 @@
                                         <div class="content col-md-12">
                                             <!-- Post -->
                                             <div class="post">
-                                                <h2><?php echo $row->title; ?></h2>
                                                 <div class="post-image">
-                                                    <img src="<?php echo base_url() . 'assets/file/blog/' .$row->primary_image; ?>" class="img-responsive" width="100%" alt="">
+                                                    <img height="100px" src="<?php echo base_url() . 'assets/file/blog/' .$row->primary_image; ?>" class="img-responsive" width="100px" alt="">
                                                 </div>
+                                                <h1><?php echo $row->title; ?></h1>
+                                                <ul class="post-meta">
+                                                    <li><span>Added:</span><?php echo date("d-m-Y", strtotime($row->date)); ?></li>
+                                                    <li><span>Author:</span>Admin</li>
+<!--                                                    <li><span>Tags:</span>--><?php //echo $row->tag;?><!--</a></li>-->
+                                                </ul>
                                                 <div class="row">
-                                                    <ul class="post-meta">
-                                                        <li><span>Added:</span><?php echo date("d-m-Y", strtotime($row->date)); ?></li>
-                                                        <li><span>Author:</span>Admin</li>
-                                                        <li><span>Tags:</span><?php echo $row->tag;?></a></li>
-                                                    </ul>
                                                     <div class="post-content">
                                                         <div class="two-line-div">
                                                             <p class="" max-lenght="200">
@@ -64,13 +64,13 @@
                                                                 $link = base_url('blog/Postlist/singlepost/' . $row->id);
                                                                 $string = strip_tags($row->description);
 
-                                                                if (strlen($string) > 440) {
+                                                                if (strlen($string) > 240) {
 
                                                                     // truncate string
-                                                                    $stringCut = substr($string, 0, 440);
+                                                                    $stringCut = substr($string, 0, 240);
 
                                                                     // make sure it ends in a word so assassinate doesn't become ass...
-                                                                    $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'...<a href="'.$link.'" class="btn btn-filled btn-info">Read more</a>';
+                                                                    $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'...<a href="'.$link.'" class="pull-right hidden-sm hidden-xs">Read more <i class="fa fa-arrow-right"></i></a>';
                                                                 }
                                                                 echo $string;
                                                                 ?>
@@ -79,9 +79,11 @@
 
                                                         </div>
                                                         <div class="visible-sm visible-xs">
-                                                        <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>" class="btn btn-filled mt-20 btn-info">Read more</a>
+                                                            <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>" class="btn btn-filled mt-20 btn-info">Read more</a>
                                                         </div>
                                                     </div>
+
+
                                                 </div>
                                             </div>
                                             <!-- Post -->
@@ -207,6 +209,7 @@
 		.two-line-div{
 			max-height: 155px !important;
 			overflow: hidden;
+            margin: 10px auto;
 		}
 
         .mt-20{
@@ -215,62 +218,20 @@
 
 	}
 
-    .recentpostimg{
-        float: left;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-        margin-top: -2px;
+
+
+    .no-padding{
+        padding: 0;
     }
-    .recentpostList{
-        float: left;
-        margin-bottom: 20px;
-    }
-    .recentpostList ul{
+
+    .post-meta ul{
         float: left;
     }
 
-    .recentpostList li {
-        float: left;
-        display: block;
-        margin: 10px auto;
-    }
-
-    .recentpostList li a{
-        width: 100%;
-        font-size: 15px;
-        font-weight: lighter;
-        color: #113058;
-    }
-
-    .post-cat{
-        float: left;
-    }
-    .post-cat ul{
-        float: left;
-    }
-    .post-cat ul li{
+    .post .post-meta ul li{
         float: left;
         display: inline-block;
         margin-right: 5px;
-    }
-    .post-cat ul li a{
-        float: left;
-        display: inline;
-        padding: .2em .6em .3em;
-        font-size: 75%;
-        font-weight: 700;
-        line-height: 1;
-        color: #fff;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: baseline;
-        border-radius: .25em;
-        height: auto;
-        width: auto;
-        padding: 5px;
-        background: #113058;
     }
 
 

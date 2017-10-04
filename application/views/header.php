@@ -418,7 +418,7 @@
 
                 </li>
 
-                <li class="treeview <?php if ($this->uri->segment(2)=="group"){
+                <li class="treeview <?php if ($this->uri->segment(1)=="group"){
                 echo "active";
                 } ?>">
                     <a href="#">
@@ -428,23 +428,23 @@
                     </a>
 
                     <ul class="treeview-menu">
-                        <li class="<?php if ($this->uri->segment(3)=="index"){
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('group/group/index'); ?>"><i class="fa fa-circle-o"></i> Create
+                            <a href="<?php echo base_url('group/add'); ?>"><i class="fa fa-circle-o"></i> Create
                                 New Group</a>
                         </li>
-                        <li class="<?php if ($this->uri->segment(3)=="viewall"){
+                        <li class="<?php if ($this->uri->segment(2)=="viewall"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('group/group/viewall'); ?>"><i class="fa fa-circle-o"></i>
+                            <a href="<?php echo base_url('group/viewall'); ?>"><i class="fa fa-circle-o"></i>
                                 View All Group</a>
                         </li>
 
-                        <li class="<?php if ($this->uri->segment(3)=="mygroup"){
+                        <li class="<?php if ($this->uri->segment(2)=="mygroup"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('group/group/mygroup'); ?>"><i class="fa fa-circle-o"></i>My
+                            <a href="<?php echo base_url('group/mygroup'); ?>"><i class="fa fa-circle-o"></i>My
                                 Group List</a>
                         </li>
 

@@ -7,6 +7,16 @@
 
     <section class="content">
         <div class="row">
+
+            <?php if($this->session->flashdata('success')){ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong><?php echo $this->session->flashdata('success');?></strong>
+                    </div>
+                </div>
+            <?php } $this->session->unset_userdata('message')?>
+
             <?php if(!empty($mygroup)){ ?>
             <?php foreach($mygroup as $row):?>
 
@@ -34,7 +44,7 @@
 
                             <div class="box-footer">
 
-                                <a href="<?php echo base_url('group/group/edit/' . $row->id); ?>" class="btn btn-block btn-success"> Edit</a>
+                                <a href="<?php echo base_url('group/edit/' . $row->id); ?>" class="btn btn-block btn-success"> Edit</a>
                                 <a href="<?php echo base_url('group/group/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a>
 
 

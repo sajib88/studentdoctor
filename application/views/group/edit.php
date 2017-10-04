@@ -40,7 +40,7 @@
             </div>
         <?php } $this->session->unset_userdata('message')?>
 
-        <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('group/group/edit/'. $editgroup['id']); ?>">
+        <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('group/edit/'. $editgroup['id']); ?>">
             <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
 
         <div class="col-md-6 ">

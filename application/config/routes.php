@@ -112,4 +112,11 @@ $route['event/myevent'] = 'event/event/myevent';
 $route['event/edit/(:any)'] = 'event/event/edit/$1';
 $route['event/layoutfull/(:any)'] = 'event/event/layoutfull/$1';
 
+//group
+$route['group/add'] = 'group/group/index';
+$route['group/viewall'] = 'group/group/viewall';
+$route['group/mygroup'] = 'group/group/mygroup';
+$route['group/edit/(:any)'] = 'group/group/edit/$1';
+
+
 

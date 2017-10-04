@@ -38,7 +38,7 @@
                 </div>
             </div>
         <?php } $this->session->unset_userdata('message') ?>
-        <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('group/group/index'); ?>">
+        <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('group/add'); ?>">
             <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
             <div class="col-md-6 ">
                 <div class="col-md-12 no-padding">

@@ -1,5 +1,6 @@
 
-<link href="<?php echo base_url('assets/datatable/dataTables.bootstrap.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('script-assets/plugins/datatables/dataTables.bootstrap.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('script-assets/no_more_table.css');?>" rel="stylesheet">
 
 <div class="content-wrapper">
 
@@ -74,9 +75,9 @@
 
             <!-- /.Orage BOX SAJIB -->
         <div class="col-md-12">
-          <div class="box box-warning">
+          <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">General Topic Discussion</h3>
+              <h3 class="box-title">Topic Category : <?php echo $catName['cat_title'];?> </h3>
               <a data-toggle="modal" href="#myModal" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add New Topic</a>
               <!-- /.box-tools -->
             </div>
@@ -84,44 +85,53 @@
             <div class="box-body">
 
               <?php if(!empty($postdeatils)){ ?>
-                <table class="table table-striped">
-                <tbody>
-                <tr>
-                  <th style="width: 100px">#</th>
-                  <th>Topic</th>
-                    <th style="width: 100px"> Author</th>
-                  <th style="width: 100px"> Replies</th>
-                  <th style="width: 140px"> Views </th>
-                  <th style="width: 140px"> Last post  </th>
-                  <th style="width: 140px"> Reply  </th>
-                </tr>
-
+                <div id="no-more-tables">
+                <table class="table table-hover" id="js_personal_table">
+                    <thead>
+                        <tr>
+                          <th class="numeric" >#</th>
+                          <th class="numeric">Topic</th>
+                          <th class="numeric" > Author</th>
+                          <th class="numeric" > Replies</th>
+                          <th class="numeric" > Views </th>
+                          <th class="numeric" > Last post  </th>
+                          <th class="numeric" > Reply  </th>
+                        </tr>
+                    </thead>
+                    <tbody>
             <?php if (is_array($postdeatils)) {
+                $i = 1;
                 foreach ($postdeatils as $row) {
                     ?>
                     <tr>
-                        <td><i class="fa fa-fw fa-bell-o"></i></td>
-                        <td>     <?php echo $row->title; ?></td>
-                        <td>
+                        <td data-title="#" class="numeric"><?php echo $i;?></td>
+                        <td data-title="Topic" class="numeric" >     <?php echo $row->title; ?></td>
+                        <td data-title="Author" class="numeric">
                             <?php echo getNameById($row->author_id); ?>
                         </td>
-                        <td>
+                        <td data-title="Replies" class="numeric" ><?php echo $row->reply; ?></td>
+                        <td data-title="Views" class="numeric" >
                             <?php echo $row->views; ?>
                         </td>
-                        <td><?php echo $row->reply; ?></td>
-                        <td><?php echo $row->datetime; ?></td>
-                        <td>
+
+                        <td data-title="Last post" class="numeric" ><?php echo $row->datetime; ?></td>
+                        <td data-title="Reply" class="numeric" >
                             <a class="btn  btn-primary" href="<?php echo base_url('forum/discuss/' . $row->post_id); ?>">  Reply</a>
 
                         </td>
                     </tr>
-                <?php
+                <?php $i++;
                 } }
                 ?>
                 
-              </tbody></table>
+                </tbody></table></div>
                 <?php }else{?>
-                  <div class="alert alert-warning text-center">No topic found <i class="fa fa-info"></i></div>
+                <div class="col-lg-12">
+                  <div class="alert alert-warning text-center">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      No topic found <i class="fa fa-info"></i>
+                  </div>
+                </div>
                 <?php }?>
 
                 
@@ -217,5 +227,17 @@
     });
 
 
+</script>
+
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/dataTables.bootstrap.js"></script>
+<script rel="stylesheet" href="<?php echo base_url();?>script-assets/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"></script>
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var personaltable = document.getElementById("js_personal_table");
+        $(personaltable).dataTable();
+    });
 </script>
 

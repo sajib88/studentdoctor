@@ -91,7 +91,6 @@
                   ?> Forum</h3>
 
               <div class="box-tools pull-right">
-                  <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default bg-blue btn-md"><i class="fa fa-share"></i> Reply This Topic</button>
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
               </div>
@@ -100,7 +99,9 @@
             <!-- /.box-header -->
             <div class="box-body">
                 <?php  echo $postdeatils['title']; ?>
+                <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default bg-blue btn-md pull-right"><i class="fa fa-share"></i> Reply This Topic</button>
             </div>
+
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -117,8 +118,8 @@
             <div class="box-header with-border">
               <div class="user-block">
 
-                <span class="username"><a href="#">Shopon</a></span>
-                <span class="description">Shared Disccforum - 7:30 PM Today</span>
+                <span class="username"><a href="#"><?php echo getNameById($postdeatils['author_id']);?></a></span>
+                <span class="description">Shared Disccforum - <?php echo date('m-d-Y h:m:i A', strtotime($postdeatils['datetime']));?></span>
               </div>
               <!-- /.user-block -->
               <div class="box-tools">
@@ -143,7 +144,7 @@
 
                         <th style="width: 260px">Author</th>
                         <th>Post Details</th>
-                        <th style="width: 70px">Date</th>
+                        <th style="width: 100px">Date</th>
                     </tr>
                     <tr>
 
@@ -172,7 +173,7 @@
                         <td>
                             <?php  echo $postdeatils['deatils']; ?>
                         </td>
-                        <td>7:30 PM Today</td>
+                        <td><?php echo date('m-d-Y', strtotime($postdeatils['datetime']));?></td>
                     </tr></br>
 
 
@@ -189,7 +190,7 @@
                     <div class="box-comment">
                 <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default "><i class="fa fa-share"></i> Reply This Topic</button>
 
-                <span class="pull-right text-muted">Total - 2 comments</span>
+                <span class="pull-right text-muted">Total - <?php if(!empty($totalComments)){echo $totalComments.' comments';}else{echo '0 comment';} ;?> </span>
                         </div>
                 </div>
 

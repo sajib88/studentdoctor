@@ -1,15 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ALAM
- * Date: 10-Dec-16
- * Time: 11:35 PM
- */
-
-?>
-
-
-
+<link href="<?php echo base_url('script-assets/plugins/datatables/dataTables.bootstrap.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('script-assets/no_more_table.css');?>" rel="stylesheet">
 
 
 
@@ -104,39 +94,48 @@
                             <!-- /.box-header -->
 
                             <div class="box-body">
-                                <table class="table table-bordered">
-                                    <tbody><tr>
-                                        <th>Comments Title</th>
-                                        <th>Comments Details</th>
-                                        <th style="width: 140px">Date</th>
-                                        <th>Comments Edit</th>
-                                        <th>Comments Delete</th>
+                                <div id="no-more-tables">
+                                    <table class="table table-hover" id="js_personal_table">
+                                    <thead>
+                                    <tr>
+                                        <th class="numeric">#</th>
+                                        <th class="numeric">Comments Title</th>
+                                        <th class="numeric">Comments Details</th>
+                                        <th class="numeric">Date</th>
+                                        <th class="numeric">Comments Edit</th>
+                                        <th class="numeric">Comments Delete</th>
 
                                     </tr>
-
-                                    <?php foreach ($allmycomments as $row){?>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $i = 1;
+                                    foreach ($allmycomments as $row){?>
                                             <tr>
-
-                                        <td><?php echo $row->comments_title; ?></td>
-                                        <td>
-                                            <?php echo $row->comments_details; ?>
-                                        </td>
-                                        <td>  <?php echo date('d-m-Y', strtotime($row->added_date_time)); ?></td>
-                                        <td>
-                                            <a href="<?php echo base_url('forum/editComment/'.$row->comment_id);?>" type="button" class="btn btn-block btn-primary">
-                                                Edit
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="<?php echo base_url('forum/forum/deleteComment/'.$row->comment_id);?>" type="button" class="btn btn-block btn-danger">
-                                                Delete
-                                            </a>
-                                        </td>
+                                                <td data-title="#" class="numeric"><?php echo $i; ?></td>
+                                                <td data-title="Comments Title" class="numeric"><?php echo $row->comments_title; ?></td>
+                                                <td data-title="Comments Details" class="numeric">
+                                                    <?php echo $row->comments_details; ?>
+                                                </td>
+                                                <td data-title="Date" class="numeric">  <?php echo date('d-m-Y', strtotime($row->added_date_time)); ?></td>
+                                                <td data-title="Comments Edit" class="numeric">
+                                                    <a href="<?php echo base_url('forum/editComment/'.$row->comment_id);?>" type="button" class="btn btn-block btn-primary">
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                                <td data-title="Comments Delete" class="numeric">
+                                                    <a href="<?php echo base_url('forum/forum/deleteComment/'.$row->comment_id);?>" type="button" class="btn btn-block btn-danger">
+                                                        Delete
+                                                    </a>
+                                                </td>
                                         </tr>
-                                    <?php  }?>
+                                    <?php
+                                    $i++;
+                                    }?>
 
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
 
                                 </div>
@@ -158,3 +157,14 @@
 
             </section></div>
 
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/dataTables.bootstrap.js"></script>
+<script rel="stylesheet" href="<?php echo base_url();?>script-assets/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"></script>
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var personaltable = document.getElementById("js_personal_table");
+        $(personaltable).dataTable();
+    });
+</script>

@@ -54,6 +54,7 @@ class Forum extends CI_Controller{
         $data['getid']  = $this->uri->segment('3');
 
         $data['postdeatils'] = $this->global_model->get('forum_post', array('cat_id' => $data['getid']));
+        $data['catName'] = $this->global_model->get_data('forum_category', array('cat_id' => $data['getid']));
 
         if ($this->input->post()) {
             $postData = $this->input->post();
@@ -70,6 +71,12 @@ class Forum extends CI_Controller{
                 $save['deatils'] = $postData['deatils'];
                 $save['status'] = '1';
 
+                $bata = array();
+                $countneedid = $this->uri->segment('3');
+                $i = 1;
+                $bata['total_post'] = $this->global_model->count_row_where('forum_post', array('cat_id' => $countneedid));
+                $bata['total_post'] = $bata['total_post'] + $i;
+
                 //// (image upload funtion)
                 uploadforum();
 
@@ -82,6 +89,8 @@ class Forum extends CI_Controller{
 
                 if ($ref_id = $this->global_model->insert('forum_post', $save))
                 {
+                    $id = $this->uri->segment('3');
+                    if($ref_id = $this->global_model->update('forum_category', $bata, array('cat_id' => $id)))
 
                     $this->session->set_flashdata('message', 'New Forum Post Create Successfully');
                     $redirect_link = base_url() . 'forum/listcat/'. $postData['hiddencat'];
@@ -111,6 +120,7 @@ class Forum extends CI_Controller{
         $data['user_post_info'] = $this->global_model->get_data('users', array('id' => $data['postdeatils']['author_id']));
         /// Comments retrive
         $data['comments'] = $this->global_model->get('forum_comments', array('post_id' => $data['getid']));
+        $data['totalComments'] = $this->global_model->count_row_where('forum_comments', array('post_id' => $data['getid']));
 
         /// comments author
         $data['getcommentsid'] = $this->global_model->get_data('forum_comments', array('post_id' => $data['getid']));

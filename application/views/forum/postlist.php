@@ -1,4 +1,5 @@
-
+<link href="<?php echo base_url('script-assets/plugins/datatables/dataTables.bootstrap.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('script-assets/no_more_table.css');?>" rel="stylesheet">
 
         <div class="content-wrapper">
             <section class="content-header">
@@ -71,38 +72,47 @@
                                             <!-- /.box-tools -->
                                         </div>
                                 <div class="box-body">
-                                    <table class="table table-bordered">
-                                        <tbody><tr>
-
-                                            <th>Post Title</th>
-                                            <th>Post Details</th>
-                                            <th style="width: 140px">Date</th>
-                                            <th>Post Edit</th>
-                                            <th>Post Delete</th>
+                                    <div id="no-more-tables">
+                                    <table class="table table-hover" id="js_personal_table">
+                                        <thead>
+                                        <tr>
+                                            <th class="numeric">#</th>
+                                            <th class="numeric">Post Title</th>
+                                            <th class="numeric">Post Details</th>
+                                            <th class="numeric" >Date</th>
+                                            <th class="numeric">Post Edit</th>
+                                            <th class="numeric">Post Delete</th>
 
                                         </tr>
-
-                                        <?php foreach ($allmypostlist as $row){?><tr>
-
-                                            <td><?php echo $row->title; ?></td>
-                                            <td>
-                                                <?php echo $row->deatils; ?>
-                                            </td>
-                                            <td><?php echo date('d-m-Y', strtotime($row->datetime)); ?></td>
-                                            <td>
-                                                <a href="<?php echo base_url('forum/editPost/'.$row->post_id);?>" type="button" class="btn btn-block btn-primary">
-                                                    Edit
-                                                </a>
-                                            </td>
-                                            <td><a href="<?php echo base_url('forum/forum/deletePost/'.$row->post_id);?>" type="button" class="btn btn-block btn-danger">
-                                                    Delete
-                                                </a>
-                                            </td>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        $i = 1;
+                                        foreach ($allmypostlist as $row){?>
+                                            <tr>
+                                                <td data-title="#" class="numeric"><?php echo $i; ?></td>
+                                                <td data-title="Post Title" class="numeric"><?php echo $row->title; ?></td>
+                                                <td data-title="Post Details" class="numeric">
+                                                    <?php echo $row->deatils; ?>
+                                                </td>
+                                                <td data-title="Date" class="numeric"><?php echo date('d-m-Y', strtotime($row->datetime)); ?></td>
+                                                <td data-title="Post Edit" class="numeric">
+                                                    <a href="<?php echo base_url('forum/editPost/'.$row->post_id);?>" type="button" class="btn btn-block btn-primary">
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                                <td data-title="Post Delete" class="numeric"><a href="<?php echo base_url('forum/forum/deletePost/'.$row->post_id);?>" type="button" class="btn btn-block btn-danger">
+                                                        Delete
+                                                    </a>
+                                                </td>
                                             </tr>
-                                        <?php } ?>
+                                        <?php $i++;
+
+                                        }  ?>
 
                                         </tbody>
                                     </table>
+                                    </div>
                                 </div>
                                     </div>
                                 </div>
@@ -122,3 +132,14 @@
         </div>
 
 
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/dataTables.bootstrap.js"></script>
+<script rel="stylesheet" href="<?php echo base_url();?>script-assets/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"></script>
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var personaltable = document.getElementById("js_personal_table");
+        $(personaltable).dataTable();
+    });
+</script>

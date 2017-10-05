@@ -72,7 +72,7 @@ class Forum extends CI_Controller{
                 $save['status'] = '1';
 
                 $bata = array();
-                $countneedid = $this->uri->segment('3');
+                $countneedid  = $this->uri->segment('3');
                 $i = 1;
                 $bata['total_post'] = $this->global_model->count_row_where('forum_post', array('cat_id' => $countneedid));
                 $bata['total_post'] = $bata['total_post'] + $i;
@@ -315,8 +315,14 @@ class Forum extends CI_Controller{
         $this->load->view('footer');
     }
 
-    public function deletePost($id){
+    public function deletePost($id = '', $cat_id = ' '){
+        $bata = array();
+        $countPost = $this->global_model->count_row_where('forum_post', array('cat_id' => $cat_id));
+        $bata['total_post'] = $countPost - 1;
+        //print_r($bata['total_post']);die;
+
         if ($this->global_model->delete('forum_post', array('post_id' => $id))) {
+            if($this->global_model->update('forum_category', $bata, array('cat_id' => $cat_id)))
             $this->session->set_flashdata('success', 'Post delete successfully!');
             redirect(base_url('forum/posts'));
         }

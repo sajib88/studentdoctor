@@ -101,7 +101,7 @@
                                                         Edit
                                                     </a>
                                                 </td>
-                                                <td data-title="Post Delete" class="numeric"><a href="<?php echo base_url('forum/forum/deletePost/'.$row->post_id);?>" type="button" class="btn btn-block btn-danger">
+                                                <td data-title="Post Delete" class="numeric"><a href="<?php echo base_url('forum/forum/deletePost/'.$row->post_id.'/'.$row->cat_id);?>" type="button" class="btn btn-block btn-danger">
                                                         Delete
                                                     </a>
                                                 </td>

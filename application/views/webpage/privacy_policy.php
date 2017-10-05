@@ -3,13 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1><i class="ti-layout-menu"></i>Privacy Policy</h1>
-            </div>
-            <div class="col-md-6">
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home Page</a></li>
-                    <li class="active">Privacy Policy</li>
-                </ol>
+
             </div>
         </div>
     </div>
@@ -25,6 +19,8 @@
         <hr>
         <div class="row">
             <div itemprop="articleBody">
+                <h1><i class="ti-layout-menu"></i>Privacy Policy</h1>
+                <hr class="hr-class">
 		<h3 class="innerText">foralldoctors.com Privacy Policy</h3>
 <div class="innerText">&nbsp;</div>
 <div class="innerText">This privacy policy has been compiled to better serve those who are concerned with how their 'Personally Identifiable Information' (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.</div>
@@ -145,7 +141,7 @@
 <div class="innerText">USA</div>
 
 <div class="innerText"><br>Last Edited on 2016-09-18</div> 	</div>
-      
+            <hr>
        </div>
     </div>
     <!--container end-->

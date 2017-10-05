@@ -431,6 +431,10 @@ hr {
     border-width: 0px;
 }
 
+.hr-class{
+    border-width: 1px;
+}
+
 
 .right-bg{
     background-image: url('../img/banner-right.png');
@@ -706,7 +710,7 @@ dd.catchPhrase2 {
 .post h1{font-size: 20px;}
 @media (max-width: 600px){.post h1{float: left; font-size: 20px;}}
 .post .post-content {  float: left; position: absolute;  margin: 50px 0px 0 200px;}
-@media only screen and (max-width: 767px) { .post .post-content {float: left; margin: 0 0 0 200px; } }
+@media only screen and (max-width: 767px) { .post .post-content {float: left; position: unset; margin: 0 0 0 0; } }
 .post .post-content h1, .post .post-content h2 { font-size: 30px; margin-bottom: 35px; }
 .post .post-content a{text-decoration: none;}
 .post.post-boxed { color: #434343; }

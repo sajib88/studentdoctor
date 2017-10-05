@@ -28,10 +28,10 @@
                     <div class="col-sm-4 pdl widget">
                         <h3 class="entry-title">Get to know us</h3>
                         <ul class="entry-list">
-                            <li><a href="<?php echo base_url(); ?>page/about">About us</a></li>
-                            <li><a href="<?php echo base_url(); ?>page/ourmission">Our Mission</a></li>
-                            <li><a href="#">FAQ's</a></li>
-                            <li><a href="#">How it Works</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/about_us">About us</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/about_us">Our Mission</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/feature">Our Features</a></li>
+                            <li><a href="<?php echo base_url(); ?>blog">Blog</a></li>
 
                         </ul>
                     </div>
@@ -48,11 +48,10 @@
                     <div class="col-sm-4 widget pdr">
                         <h3 class="entry-title">Resources</h3>
                         <ul class="entry-list">
-                            <li><a href="#">Terms of use</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Blog</a></li>
-
+                            <li><a href="<?php echo base_url(); ?>home/terms">Terms of use</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/privacy">Privacy Policy</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/contact">Contact Us</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/disclaimer">Disclimer</a></li>
                         </ul>
                     </div>
                 </div>

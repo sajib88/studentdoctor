@@ -3,13 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h1><i class="ti-layout-menu"></i>Terms  and Condition</h1>
-            </div>
-            <div class="col-md-5">
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home Page</a></li>
-                    <li class="active">Terms  and Condition</li>
-                </ol>
+
             </div>
         </div>
     </div>
@@ -26,6 +20,8 @@
         <div class="row">
             <div itemprop="articleBody">
 		<div class="dbContent">
+            <h1 class="text-center"><i class="ti-layout-menu"></i>Terms  and Condition</h1>
+            <hr class="hr-class">
             <div class="col-md-12 career-head">
                 <h5 class="wow fadeIn text-center">Welcome To ForAllDoctors.Com We truly thank you for your interest.</h5>
 
@@ -218,7 +214,7 @@
 <p class="MsoNormalCxSpMiddle" style="margin: 0cm 0cm 0.0001pt 72pt; text-indent: -18pt;"><!-- [if !supportLists]--><span style="font-size: 12.0pt; font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol;" lang="EN-US">· </span><!--[endif]--><strong><span style="font-size: 12.0pt; font-family: 'Times New Roman','serif'; mso-fareast-font-family: 'Times New Roman';" lang="EN-US">Communicate/Communication/Communicating/Communicated</span></strong><span style="font-size: 12.0pt; font-family: 'Times New Roman','serif'; mso-fareast-font-family: 'Times New Roman';" lang="EN-US">:&nbsp; Include, e-mail, correspond, contact, display, publish, post, distribute, broadcast, transmit, call, convey, upload, download, send, declare, produce, reproduce, duplicate, disseminate, suggest, imply, advocate, link, hyperlink, print, relicense, sell, advise, offer, write, relay, say, inform, direct, offer, advertise, circulate, make available, make visible, present, exhibit, demonstrate, show, illustrate and other such similar means regardless of whether in digital or electronic form or not.</span></p>
 <p class="MsoListParagraphCxSpFirst" style="margin-left: 72.0pt; mso-add-space: auto; text-indent: -18.0pt; mso-list: l3 level1 lfo3;"><!-- [if !supportLists]--><span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol;" lang="EN-US">· </span><!--[endif]--><strong><span lang="EN-US">Account</span></strong><span lang="EN-US">:&nbsp; Consist of a Member’s or other authorized party’s username or login and password or pass code, a means of accessing the ForAllDoctors.com Site.</span></p>
 </div> 	</div>
-      
+            <hr>
        </div>
     </div>
     <!--container end-->

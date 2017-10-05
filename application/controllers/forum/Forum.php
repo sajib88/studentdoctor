@@ -338,6 +338,16 @@ class Forum extends CI_Controller{
             $save['comments_title'] = $postData['comments_title'];
             $save['comments_details'] = $postData['comments_details'];
 
+            //// (image upload funtion)
+            uploadforum();
+
+            if ($this->upload->do_upload('attachment')) {
+                $fileInfo = $this->upload->data();
+                $pic1['name'] = $fileInfo['file_name'];
+                $save['attachment'] = $pic1['name'];
+
+            }
+
             if ($this->global_model->update('forum_comments', $save, array('comment_id' => $id))){
                 $this->session->set_flashdata('message', 'Comment update successfully.');
                 //redirect('profile/profile');

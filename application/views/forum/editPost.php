@@ -85,7 +85,7 @@
                                                 <input style="width: 95%" class="btn btn-default" name="attachment" type="file">
                                             </div>
                                         </div>
-                                            <?php if(!empty($editMyPost['aattachment'])){?>
+                                            <?php if(!empty($editMyPost['attachment'])){?>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                             <label>See Attachment</label><br>

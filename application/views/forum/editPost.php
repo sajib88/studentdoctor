@@ -78,9 +78,21 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Attachment</label><span id='attachment-error' class='error' for='attachment'></span>
-                                            <input class="btn btn-default" name="attachment" type="file">
+                                        <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Attachment</label><span id='attachment-error' class='error' for='attachment'></span>
+                                                <input style="width: 95%" class="btn btn-default" name="attachment" type="file">
+                                            </div>
+                                        </div>
+                                            <?php if(!empty($editMyPost['aattachment'])){?>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                            <label>See Attachment</label><br>
+                                            <a class="btn bg-aqua "  href="<?php echo base_url() . '/assets/file/forum/' .$editMyPost['attachment']; ?>">Attachment</a>
+                                            </div>
+                                        </div>
+                                            <?php }?>
                                         </div>
                                     </div>
 

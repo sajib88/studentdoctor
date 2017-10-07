@@ -88,7 +88,7 @@
 
                                 <div class="form-group">
                                     <label>Phone</label>
-                                    <input name="phone" value="<?php echo!empty($user_info['phone']) ? $user_info['phone'] : ''; ?>"  class="form-control">
+                                    <input name="phone" value="<?php echo $user_info['phone']; ?>"  class="form-control">
                                 </div>
 
                             </div>
@@ -101,7 +101,7 @@
                             <div class="padd">
                                 <div class="form-group">
                                     <label>Change Password</label>
-                                    <input   name="password" type="password" value="" class="form-control">
+                                    <input name="password" type="password" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <!--           <label>Password</label>

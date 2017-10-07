@@ -144,7 +144,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="<?php echo base_url('profile/profile/index'); ?>"
+                                    <a href="<?php echo base_url('profile/update'); ?>"
                                        class="btn btn-default btn-flat">Update Information</a>
 
 

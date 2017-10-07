@@ -188,7 +188,7 @@
 
                 <div class="box-footer box-comments">
                     <div class="box-comment">
-                <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default "><i class="fa fa-share"></i> Reply This Topic</button>
+                <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default btn-dropbox"><i class="fa fa-share"></i> Reply This Topic</button>
 
                 <span class="pull-right text-muted">Total - <?php if(!empty($totalComments)){echo $totalComments.' comments';}else{echo '0 comment';} ;?> </span>
                         </div>

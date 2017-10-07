@@ -67,7 +67,7 @@ $this->load->helper('global_helper');
                                 </li>
                             </ul>
 
-                            <a href="<?php echo base_url() . 'personal/Personal/detail/' .$row['id']; ?>" class="btn btn-primary btn-block"><b>View Detail</b></a>
+                            <a href="<?php echo base_url() . 'personal/detail/' .$row['id']; ?>" class="btn btn-primary btn-block"><b>View Detail</b></a>
                         </div>
                         <!-- /.box-body -->
                     </div>

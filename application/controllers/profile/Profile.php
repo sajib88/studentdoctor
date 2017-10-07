@@ -84,7 +84,7 @@ class Profile extends CI_Controller {
                     redirect(base_url('profile/update'));
                 }
             } else {
-                echo validation_errors();
+                validation_errors();
             }
         }
 

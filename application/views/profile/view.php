@@ -59,43 +59,43 @@
 
                       <ul class="list-group list-group-unbordered">
                           <li class="list-group-item">
-                              <b>First Name</b> <span class="pull-right"><?php echo (!empty($user_info['first_name']))?$user_info['first_name']:''?></span>
+                              <b>First Name</b> <span class="pull-right"><?php echo (!empty($user_info['first_name']))?$user_info['first_name']:'<span class="badge bg-red">Not Given</span>'?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>Last Name</b> <span class="pull-right"><?php echo (!empty($user_info['last_name']))?$user_info['last_name']:''?></span>
+                              <b>Last Name</b> <span class="pull-right"><?php echo (!empty($user_info['last_name']))?$user_info['last_name']:'<span class="badge bg-red">Not Given</span>'?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>Email</b> <span class="pull-right"><?php echo $user_info['email']; ?></span>
+                              <b>Email</b> <span class="pull-right"><?php echo (!empty($user_info['email']))?$user_info['email']:'<span class="badge bg-red">Not Given</span>';?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>Professional Licensing Country</b> <span class="pull-right"><?php echo $user_info['plc']; ?></span>
+                              <b>Professional Licensing Country</b> <span class="pull-right"><?php echo (!empty($user_info['plc']))?$user_info['plc']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>Professional Licensing State</b> <span class="pull-right"><?php echo $user_info['pls']; ?></span>
+                              <b>Professional Licensing State</b> <span class="pull-right"><?php echo (!empty($user_info['pls']))?$user_info['pls']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>NPI</b> <span class="pull-right"><?php echo $user_info['npi']; ?></span>
+                              <b>NPI</b> <span class="pull-right"><?php echo (!empty($user_info['npi']))?$user_info['npi']:'<span class="badge bg-red">Not Given</span>'?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>Professional License Number</b> <span class="pull-right"><?php echo $user_info['pln']; ?></span>
+                              <b>Professional License Number</b> <span class="pull-right"><?php echo (!empty($user_info['pln']))?$user_info['pln']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>Gender </b> <span class="pull-right"><?php echo ucfirst($user_info['gender']); ?></span>
+                              <b>Gender </b> <span class="pull-right"><?php echo ucfirst(!empty($user_info['gender']))?$user_info['gender']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                           </li>
                           <li class="list-group-item">
                               <b>Country</b> <span class="pull-right"><?php
                                   $data = get_data('countries', array('id' => $user_info['country']));
-                                  echo $data['name'];
+                                  echo (!empty($data['name']))?$data['name']:'<span class="badge bg-red">Not Given</span>';
                                   ?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>State </b> <span class="pull-right"><?php echo $user_info['state']; ?></span>
+                              <b>State </b> <span class="pull-right"><?php echo (!empty($user_info['state']))?$user_info['state']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>City</b> <span class="pull-right"><?php echo $user_info['city']; ?></span>
+                              <b>City</b> <span class="pull-right"><?php echo (!empty($user_info['city']))?$user_info['city']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                           </li>
                           <li class="list-group-item">
-                              <b>Phone</b> <span class="pull-right"><?php echo $user_info['phone']; ?></span>
+                              <b>Phone</b> <span class="pull-right"><?php echo (!empty($user_info['phone']))?$user_info['phone']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                           </li>
                       </ul>
 

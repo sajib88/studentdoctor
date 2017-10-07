@@ -265,41 +265,41 @@
               <?php }
               ?>
 
-              <h3 class="profile-username text-center"><?php echo $user_info['user_name']; ?></h3>
+              <h3 class="profile-username text-center"><?php echo (!empty($user_info['user_name']))?$user_info['user_name']:'<span class="badge bg-red">Not Given</span>'; ?></h3>
 
               <p class="text-muted text-center">
 
-              <i class="glyphicon glyphicon-envelope"></i>&nbsp&nbsp<?php echo $user_info['email']; ?></p>
+              <i class="glyphicon glyphicon-envelope"></i>&nbsp&nbsp<?php echo (!empty($user_info['email']))?$user_info['email']:'<span class="badge bg-red">Not Given</span>'; ?></p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>First Name</b> <span class="pull-right"><?php echo $user_info['first_name']; ?></span>
+                  <b>First Name</b> <span class="pull-right"><?php echo (!empty($user_info['first_name']))?$user_info['first_name']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                 </li>
                 <li class="list-group-item">
-                  <b>Last Name</b> <span class="pull-right"><?php echo $user_info['last_name']; ?></span>
+                  <b>Last Name</b> <span class="pull-right"><?php echo (!empty($user_info['last_name']))?$user_info['last_name']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                 </li>
                 </li>
                  <li class="list-group-item">
-                  <b>Gender </b> <span class="pull-right"><?php echo ucfirst($user_info['gender']); ?></span>
+                  <b>Gender </b> <span class="pull-right"><?php echo (!empty($user_info['gender']))?$user_info['gender']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                 </li>
                 <li class="list-group-item">
                   <b>Country</b> <span class="pull-right"><?php
                   $data = get_data('countries', array('id' => $user_info['country']));
-                  echo $data['name'];
+                  echo (!empty($data['name']))?$data['name']:'<span class="badge bg-red">Not Given</span>';
                   ?></span>
                 </li>
                 <li class="list-group-item">
-                  <b>State </b> <span class="pull-right"><?php echo $user_info['state']; ?></span>
+                  <b>State </b> <span class="pull-right"><?php echo (!empty($user_info['state']))?$user_info['state']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                 </li>
                 <li class="list-group-item">
-                  <b>City</b> <span class="pull-right"><?php echo $user_info['city']; ?></span>
+                  <b>City</b> <span class="pull-right"><?php echo (!empty($user_info['city']))?$user_info['city']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                 </li>
                 <li class="list-group-item">
-                  <b>Phone</b> <span class="pull-right"><?php echo $user_info['phone']; ?></span>
+                  <b>Phone</b> <span class="pull-right"><?php echo (!empty($user_info['phone']))?$user_info['phone']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                 </li>
               </ul>
 
-              <a href="<?php echo base_url('profile/profile/index'); ?>" class="btn btn-primary btn-block"><b>Update Your Profile</b><i class="fa fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url('profile/update'); ?>" class="btn btn-primary btn-block"><b>Update Your Profile</b><i class="fa fa-arrow-circle-right"></i></a>
             </div>
             <!-- /.box-body -->
           </div>
@@ -319,21 +319,21 @@
                             <span class="pull-right">
                                 <?php
                                     $data = get_data('profession', array('id' => $user_info['profession']));
-                                    echo $data['name'];
+                                    echo (!empty($data['name']))?$data['name']:'<span class="badge bg-red">Not Given</span>';
                                 ?>
                             </span>
                         </li>
                         <li class="list-group-item">
-                            <b>Professional <br class="visible-xs">Licensing Country </b> <span class="pull-right item-center"><?php echo $user_info['plc']; ?></span>
+                            <b>Professional <br class="visible-xs">Licensing Country </b> <span class="pull-right item-center"><?php echo (!empty($user_info['plc']))?$user_info['plc']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Professional <br class="visible-xs">Licensing State </b> <span class="pull-right item-center"><?php echo $user_info['pls']; ?></span>
+                            <b>Professional <br class="visible-xs">Licensing State </b> <span class="pull-right item-center"><?php echo (!empty($user_info['pls']))?$user_info['pls']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>NPI </b> <span class="pull-right"><?php echo $user_info['npi']; ?></span>
+                            <b>NPI </b> <span class="pull-right"><?php echo (!empty($user_info['npi']))?$user_info['npi']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Professional <br class="visible-xs">License Number </b> <span class="pull-right item-center"><?php echo $user_info['pln']; ?></span>
+                            <b>Professional <br class="visible-xs">License Number </b> <span class="pull-right item-center"><?php echo (!empty($user_info['pln']))?$user_info['pln']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                         </li>
                     </ul>
                 </div>

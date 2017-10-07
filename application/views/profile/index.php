@@ -7,6 +7,9 @@
             margin: 10px 33.33333% auto 15.333%;
         }
     }
+    .form-group p{
+        color: red;
+    }
 </style>
 <div id="page-content">
     <div class="content-wrapper">
@@ -46,11 +49,13 @@
                                 <div class="form-group">
                                     <label>First Name</label>
                                     <input name="first_name" value="<?php echo $user_info['first_name']; ?>" class="form-control">
+                                    <?php echo form_error('first_name');?>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Last Name</label>
                                     <input name="last_name" value="<?php echo!empty($user_info['last_name']) ? $user_info['last_name'] : ''; ?>" class="form-control">
+                                    <?php echo form_error('last_name');?>
                                 </div>
 
                                 <div class="form-group">

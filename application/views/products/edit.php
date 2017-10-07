@@ -41,9 +41,9 @@
                         <strong>Product Update successfully.</strong>
                     </div>
                 </div>
-            <?php } ?>|
+            <?php } ?>
 
-            <form role="form" method="post" id="editProductForm" enctype="multipart/form-data" action="<?php echo base_url('product/products/edit/' . $editProduct['id']); ?>">
+            <form role="form" method="post" id="editProductForm" enctype="multipart/form-data" action="<?php echo base_url('product/edit/' . $editProduct['id']); ?>">
                 <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
 
             <div class="col-md-6 ">

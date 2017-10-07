@@ -453,7 +453,7 @@
 
                 </li>
 
-                <li class="treeview <?php if ($this->uri->segment(2)=="products"){
+                <li class="treeview <?php if ($this->uri->segment(1)=="product"){
                 echo "active";
                 } ?>">
                     <a href="#">
@@ -464,25 +464,25 @@
 
                     <ul class="treeview-menu">
 
-                        <li class="<?php if ($this->uri->segment(3)=="add"){
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('product/products/add'); ?>"><i class="fa fa-circle-o"></i>
+                            <a href="<?php echo base_url('product/add'); ?>"><i class="fa fa-circle-o"></i>
                                 Create New Product</a>
                         </li>
 
-                        <li class="<?php if ($this->uri->segment(3)=="allProductGrid"){
+                        <li class="<?php if ($this->uri->segment(2)=="all"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('product/products/allProductGrid'); ?>"><i
+                            <a href="<?php echo base_url('product/all'); ?>"><i
                                         class="fa fa-circle-o"></i>
                                 View All Product</a>
                         </li>
 
-                        <li class="<?php if ($this->uri->segment(3)=="myproduct"){
+                        <li class="<?php if ($this->uri->segment(2)=="list"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('product/products/myproduct'); ?>"><i
+                            <a href="<?php echo base_url('product/list'); ?>"><i
                                         class="fa fa-circle-o"></i>My Product List</a>
                         </li>
 

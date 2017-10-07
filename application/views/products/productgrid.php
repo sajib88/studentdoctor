@@ -132,7 +132,7 @@
                             </div>
                             <div class="col-md-12">
 
-                                <a href="<?php echo base_url('product/products/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-success"> View</a>
+                                <a href="<?php echo base_url('product/details/' . $row['id']); ?>" class="btn btn-block btn-success"> View</a>
                             </div>
                         </div>
 

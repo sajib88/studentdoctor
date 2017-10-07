@@ -292,14 +292,14 @@ class Products extends CI_Controller{
                     $save['video1'] = $video['name'];
                 }
 
-                $id = $this->uri->segment('4');
+                $id = $this->uri->segment('3');
 
                 if ($this->global_model->update('product', $save, array('id' => $id))){
                     $this->session->set_flashdata('message', 'Edit Success');
                 }
             }
         }
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
@@ -328,7 +328,7 @@ class Products extends CI_Controller{
         $id = $this->uri->segment('4');
         if ($this->global_model->delete('product', array('id' => $id))) {
             $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('product/products/myproduct');
+            redirect(base_url('product/list'));
         }
 
     }
@@ -380,7 +380,7 @@ class Products extends CI_Controller{
         $data['page_title'] = 'Private Web';
         $data['tabActive'] = 'private';
         $data['error'] = '';
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
 
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));

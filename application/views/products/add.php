@@ -40,7 +40,7 @@
         </div>
     <?php } ?>
 
-    <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('product/products/add'); ?>">
+    <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('product/add'); ?>">
         <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
 
         <div class="col-md-6 ">

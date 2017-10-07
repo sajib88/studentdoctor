@@ -40,7 +40,7 @@
           <img class="" height="450px" width="100%" src="<?php echo base_url() . 'assets/file/insideblog/' .$single_post['primary_image'] ?>" alt="Photo">
 
           <p><?php echo $single_post['description'];?></p>
-            <button type="button" class="btn btn-default btn-xs pull-right"><i class="fa fa-share"><a href="<?php echo base_url('insideblog/Insideblog/insidebloglist/'); ?>">Back to postlist</a></i></button type="button">
+            <a class="btn btn-md bg-blue pull-right" href="<?php echo base_url('insideblog/all'); ?>"><i class="fa fa-share"></i> Back to postlist</a>
 
         </div>
         <!-- /.box-body -->

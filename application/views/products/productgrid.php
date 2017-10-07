@@ -128,25 +128,14 @@
                                         <li><a href="#"> Seller Phone <span class=" pull-right"><?php echo (!empty( $row['seller_phone']))? $row['seller_phone']:'<span class="badge bg-red">Not Given</span>';?></span> </a></li>
                                     </ul>
 
-
+                                    <a href="<?php echo base_url('product/details/' . $row['id']); ?>" class="btn btn-block btn-success"> View</a>
 
                                 </div>
-
                                 <!-- /.col -->
                             </div>
-                            <div class="col-md-12">
-
-                                <a href="<?php echo base_url('product/details/' . $row['id']); ?>" class="btn btn-block btn-success"> View</a>
-                            </div>
                         </div>
-
                         <!-- /.box-body -->
-
-                        <!-- /.footer -->
                     </div>
-
-
-
                 </div>
                 <?php } }?>
                 <?php endif; ?>

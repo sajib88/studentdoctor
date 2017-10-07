@@ -209,7 +209,7 @@ class Insideblog extends CI_Controller
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
          
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
 
         $data['single_post'] = $this->global_model->get_data('insideblog', array('id' => $id)); 
         //$data['singlepost'] = $this->global_model->get('blog_front');

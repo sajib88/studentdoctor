@@ -123,6 +123,7 @@ $route['insideblog/create'] = 'insideblog/insideblog/insideblogcreate';
 $route['insideblog/all'] = 'insideblog/insideblog/insidebloglist';
 $route['insideblog/list'] = 'insideblog/insideblog/insideblogmylist';
 $route['insideblog/edit/(:any)'] = 'insideblog/Insideblog/edit/$1';
+$route['insideblog/details/(:any)'] = 'insideblog/Insideblog/insideblogsinglepost/$1';
 
 //forum
 $route['forum/board'] = 'forum/forum/index';

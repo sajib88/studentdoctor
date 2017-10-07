@@ -59,7 +59,7 @@
 
                   <div class="blog-list-article">
                       <?php echo substr($row['description'],0, 150);?>
-                          <a class="btn bg-blue btn-md pull-right" href="<?php echo base_url('insideblog/Insideblog/insideblogsinglepost/' . $row['id']); ?>"> Read More</a>
+                          <a class="btn bg-blue btn-md pull-right" href="<?php echo base_url('insideblog/details/' . $row['id']); ?>"> Read More</a>
                       </div>
 
                 </div>

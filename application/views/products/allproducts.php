@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <!-- /.box-header -->
-                    <div class="box-body table-responsive no-padding">
+                    <div class="box-body table-responsive">
                         <?php if(is_array($allproducts)): ?>
                         <?php if(count($allproducts)<=0){?>
                             <div class="alert alert-warning text-center">No Product Found <i class="fa fa-info"></i></div>
@@ -59,8 +59,8 @@
                                 <td><?php echo $i;?></td>
                                 <td><?php echo $row->name;?></td>
                                 <td><span class=""><?php echo $row->type;?></span></td>
-                                <td><span class=""><?php echo $row->price;?></span></td>
-                                <td><span class=""><?php echo $row->special_price;?></span></td>
+                                <td><span class="">$<?php echo $row->price;?></span></td>
+                                <td><span class="">$<?php echo $row->special_price;?></span></td>
                                 <td><a href="<?php echo base_url('product/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>
                                 <td><a href="<?php echo base_url('product/details/' . $row->id); ?>" class="btn btn-block btn-success"> View</a></td>
                                 <td><a href="<?php echo base_url('product/products/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>

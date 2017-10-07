@@ -69,6 +69,10 @@
     {
         margin: 0 0 11px;
     }
+    .img-product{
+        height: 150px;
+        width: 150px;
+    }
 
 </style>
 
@@ -106,8 +110,8 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="thumbnail">
-                                        <img class="group list-group-image" src="<?php echo base_url().'assets/file/product/'.$row['photo_primary'];?>" alt="" />
+                                    <div class="">
+                                        <img class="img-circle img-responsive img-product" src="<?php echo base_url().'assets/file/product/'.$row['photo_primary'];?>" alt="" />
                                     </div>
                                     <!-- ./chart-responsive -->
                                 </div>

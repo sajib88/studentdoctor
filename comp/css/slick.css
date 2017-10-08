@@ -118,10 +118,17 @@
 .contact-us{
     margin-left: 12px;
 }
+@media (max-width: 510px) {
+    .top-header {
+        height: 270px;
+    }
+}
+
+
 @media (max-width: 950px) {
 
     .top-header {
-        height: 270px;
+        height: 170px;
         background: url('../img/slide1.jpg') center center no-repeat scroll;
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -131,8 +138,9 @@
     }
 
     .ptop-300 {padding-top:50px !important;}
-    .top-header h1{font-size: 25px !important;
-        color:gold  !important;}
+    .top-header h1{font-size: 20px !important;
+        color:#337AFD  !important;}
+    .top-header p {color:greenyellow  !important; font-size: 14px !important;}
     .mobiletext {text-align: center !important;}
     .mobile-200{padding-top: 200px !important;}
     .newsletter-widget input[type="text"]{
@@ -170,10 +178,10 @@
 
 @media (max-width: 768px) {
     .top-header{
-        height: 316px;
+        height: 290px;
     }
     .ptop-300{
-        padding-top: 100px !important;
+        padding-top: 80px !important;
     }
 
 }
@@ -190,7 +198,7 @@
         padding: 40px;
     }
     .top-header {
-        height: 685px;
+        /*height: 685px;*/
         background: url('../img/slide1.jpg') center center no-repeat scroll;
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -227,8 +235,13 @@
 .bottom-banner h3 {font-size: 20px; color: #113058; font-weight: normal; }
 
 
-.top-header h1 {font-size: 42px; color: #fff; font-weight: normal; }
-.top-header p { color: #fff; font-weight: normal; }
+.top-header h1 {font-size: 42px; color:#337AFD; font-weight: normal;
+
+
+}
+.top-header p { color:#f1c500; font-weight: normal; font-size: 20px;}
+
+
 
 .ptop-300{padding-top:300px;}
 .business-header {

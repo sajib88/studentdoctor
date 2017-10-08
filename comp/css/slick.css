@@ -880,4 +880,8 @@ html[dir="rtl"] .comments > li ul { padding-right: 58px; padding-left: 0; }
     text-decoration: none;
 }
 
+/*header changes*/
+.header-wrapper .primary-nav > li > a{
+    border-right: 2px solid rgba(177, 193, 218, 0.14);
+}
 

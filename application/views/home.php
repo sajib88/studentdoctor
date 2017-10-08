@@ -101,7 +101,7 @@
 
 
         <div class="entry-head text-center">
-            <h2>Search  Doctors & Students Profile</h2>
+            <h2>Member Search</h2>
         </div>
 
         <div class="col-md-7 col-md-offset-3">
@@ -172,7 +172,6 @@
 
 
 <div class="col-md-12 text-center styletext">
-    <h5>or</h5>
     <h4>Features That You Would like To have!</h4>
 </div>
 
@@ -181,15 +180,7 @@
     <div class="right-bg">
         <div class="container">
             <!--category first 5 image start-->
-
-
-
             <div class="row">
-
-
-
-
-
                 <div class="cat-widget col-md-3">
                     <div class="inner-item">
                         <a href="<?php echo base_url('home/feature');?>">
@@ -219,15 +210,6 @@
                         </a>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
             </div>
             <!--category first 5 image end-->
 
@@ -238,7 +220,7 @@
         <!--get free with image-->
         <div class="row ptop-40 ">
             <div class="col-md-6 col-md-offset-3 text-center">
-                <h4>AllStudentDoctors.com All Doctors Can Join and Contribute to Global Advancement</h4>
+                <h4></h4>
                 <img src="<?php echo base_url(); ?>comp/img/dimond.jpg"  class="img-responsive center-block dimond ptop-20" />
             </div>
         </div>
@@ -268,7 +250,7 @@
     <div class="jumbotron">
 
         <div class="slide">
-            <h2 class="text-center"><span class="text-primary">Medical</span> News</h2>
+            <h2 class="text-center"><span class="text-primary">Medical</span> News Today</h2>
             <?php if(!empty($hello)) {
 
                 foreach ($hello as $row)

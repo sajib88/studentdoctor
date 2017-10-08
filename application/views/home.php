@@ -4,9 +4,9 @@
             <div class="col-lg-12  text-center ptop-300">
 
 
-                <h1>All Students & Doctors In The World </h1>
-                <p>All Doctors Can Join and Contribute to Global Advancement<br>Register and Join Now Free</p>
-                <a href="<?php echo base_url('home/registration');?>">   <input type="submit" value="Sign up now" class="btn   btn-yellow"></a>
+                <h1>All Student Doctors And Doctors In The World </h1>
+                <p>Can Meet, Advance Personally and Contribute Globally.</p>
+                <a href="<?php echo base_url('home/registration');?>">   <input type="submit" value="Join Now Free" class="btn   btn-yellow"></a>
             </div>
         </div>
     </div>
@@ -220,7 +220,6 @@
         <!--get free with image-->
         <div class="row ptop-40 ">
             <div class="col-md-6 col-md-offset-3 text-center">
-                <h4></h4>
                 <img src="<?php echo base_url(); ?>comp/img/dimond.jpg"  class="img-responsive center-block dimond ptop-20" />
             </div>
         </div>
@@ -257,9 +256,9 @@
                 { ?>
                     <div class="slider-item">
 
-                        <h3 class="text-center"><a href="<?php echo $row['link'];?>"><?php echo $row['title'];?></a></h3>
+                        <h3 class="text-center"><a href="<?php echo $row['link'];?>"><?php echo substr($row['title'], 20, 200);?></a></h3>
 
-                        <p class="text-muted text-justify" style="font-size: 15px; color: #000; text-align: center;"><?php echo $row['description'];?></p>
+                        <p class="text-muted text-justify" style="font-size: 20px; color: #000; text-align: center;"><?php echo $row['description'];?></p>
 
                         <p style="font-size: 11px; color: #000; text-align: center;" class="lead"><?php echo $row['pubDate'];?></p>
 

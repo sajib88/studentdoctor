@@ -23,12 +23,11 @@
 <footer class="footer-wrapper">
     <div class="container">
         <div class="row">
-            <div class="col-md-7 pdl">
+            <div class="col-md-7 pdl ptop-20">
                 <div class="row">
                     <div class="col-sm-4 pdl widget">
-                        <h3 class="entry-title">Get to know us</h3>
                         <ul class="entry-list">
-                            <li><a href="<?php echo base_url(); ?>home/about_us">About us</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/about_us">About Us</a></li>
                             <li><a href="<?php echo base_url(); ?>home/about_us">Our Mission</a></li>
                             <li><a href="<?php echo base_url(); ?>home/feature">Our Features</a></li>
                             <li><a href="<?php echo base_url(); ?>blog">Blog</a></li>
@@ -36,32 +35,30 @@
                         </ul>
                     </div>
                     <div class="col-sm-4 widget ">
-                        <h3 class="entry-title">Explore</h3>
                         <ul class="entry-list">
                             <li><a href="<?php echo base_url(); ?>home/registration">Registration</a></li>
                             <li><a href="<?php echo base_url(); ?>home/login">Login</a></li>
-                            <li><a href="<?php echo base_url(); ?>home/forgotpassword">Forget Password</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/forgotpassword">Forgot Password</a></li>
                             <li><a href="#">Support</a></li>
 
                         </ul>
                     </div>
                     <div class="col-sm-4 widget pdr">
-                        <h3 class="entry-title">Resources</h3>
                         <ul class="entry-list">
-                            <li><a href="<?php echo base_url(); ?>home/terms">Terms of use</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/terms">Terms Of Use</a></li>
                             <li><a href="<?php echo base_url(); ?>home/privacy">Privacy Policy</a></li>
                             <li><a href="<?php echo base_url(); ?>home/contact">Contact Us</a></li>
-                            <li><a href="<?php echo base_url(); ?>home/disclaimer">Disclimer</a></li>
+                            <li><a href="<?php echo base_url(); ?>home/disclaimer">Disclaimer</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-5 pdr">
                 <div class="newsletter-widget widget">
-                    <h3 class="entry-title">Subscribe to latest News from allstudentdoctors</h4>
+                    <h3 class="entry-title">Subscribe to latest News from allstudentdoctors.com</h4>
                         <form class="form-inline">
                             <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter Email Address">
-                            <button type="submit" class="btn btn-blue">Sign up now</button>
+                            <button type="submit" class="btn btn-blue">Sign Up Now</button>
                         </form>
                 </div>
                 <div class="row">
@@ -75,7 +72,7 @@
                         <li><a href=""><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
-                <p class="copyright">© 2017 allstudentdoctors.com. All rights reserved.</p>
+                <p class="copyright">© 2017 allstudentdoctors.com. All Rights Reserved.</p>
             </div>
         </div>
     </div>

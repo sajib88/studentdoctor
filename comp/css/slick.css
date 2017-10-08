@@ -139,8 +139,8 @@
 
     .ptop-300 {padding-top:50px !important;}
     .top-header h1{font-size: 20px !important;
-        color:#337AFD  !important;}
-    .top-header p {color:greenyellow  !important; font-size: 14px !important;}
+        color:#000000  !important;}
+    .top-header p {color:#000000  !important; font-size: 14px !important;}
     .mobiletext {text-align: center !important;}
     .mobile-200{padding-top: 200px !important;}
     .newsletter-widget input[type="text"]{
@@ -232,14 +232,14 @@
 
 }
 .bottom-banner h1 {font-size: 30px; color: #fff; font-weight: normal; }
-.bottom-banner h3 {font-size: 20px; color: #113058; font-weight: normal; }
+.bottom-banner h3 {font-size: 20px; color: #113058; font-weight: normal; text-transform: capitalize; }
 
 
-.top-header h1 {font-size: 42px; color:#337AFD; font-weight: normal;
+.top-header h1 {font-size: 42px; color:#000000; font-weight: normal;
 
 
 }
-.top-header p { color:#f1c500; font-weight: normal; font-size: 20px;}
+.top-header p { color:#000000; font-weight: normal; font-size: 20px;}
 
 
 
@@ -896,5 +896,10 @@ html[dir="rtl"] .comments > li ul { padding-right: 58px; padding-left: 0; }
 /*header changes*/
 .header-wrapper .primary-nav > li > a{
     border-right: 2px solid rgba(177, 193, 218, 0.14);
+}
+
+.footer-wrapper .widget .entry-title{
+    text-transform: capitalize;
+    font-size: 15px !important;
 }
 

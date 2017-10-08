@@ -192,7 +192,7 @@ class Home extends CI_Controller {
                                                             <button data-dismiss="alert" class="close close-sm" type="button">
                                                                 <i class="icon-remove"></i>
                                                             </button>
-                                                            <strong>Email send successfully. <br>Check your email to active your acount.</strong> </div>');
+                                                            <strong>Email sent successfully. <br>Check your email to active your acount.</strong> </div>');
                 } else {
                     $this->session->set_flashdata('success', 'Something worng please try again.');
                 }

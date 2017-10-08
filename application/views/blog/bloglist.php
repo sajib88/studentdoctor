@@ -8,7 +8,7 @@
                     <div class="tab-wrapper row">
                         <div class="col-md-4 pull-right">
                             <div class="recentpostList">
-                                <h3>Recent Post</h3>
+                                <h3>Recent Posts</h3>
                                 <ul>
                                     <?php foreach ($recent_post as $row){?>
                                         <li>
@@ -48,9 +48,9 @@
                                             <!-- Post -->
                                             <div class="post">
                                                 <div class="post-image">
-                                                    <img height="100px" src="<?php echo base_url() . 'assets/file/blog/' .$row->primary_image; ?>" class="img-responsive" width="100px" alt="">
+                                                    <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id);?>"><img height="100px" src="<?php echo base_url() . 'assets/file/blog/' .$row->primary_image; ?>" class="img-responsive" width="100px" alt=""></a>
                                                 </div>
-                                                <h1><?php echo $row->title; ?></h1>
+                                                <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id);?>"><h1><?php echo $row->title; ?></h1></a>
                                                 <ul class="post-meta">
                                                     <li><span>Added:</span><?php echo date("d-m-Y", strtotime($row->date)); ?></li>
                                                     <li><span>Author:</span>Admin</li>

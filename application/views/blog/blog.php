@@ -6,7 +6,7 @@
                 <div class="sidebar col-md-4 pull-right">
                     <!-- Widget - Recent posts -->
                     <div class="recentpostList">
-                        <h3>Recent Post</h3>
+                        <h3>Recent Posts</h3>
                         <ul>
                             <?php foreach ($recent_post as $row){?>
                                 <li>

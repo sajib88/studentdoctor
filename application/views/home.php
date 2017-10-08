@@ -101,7 +101,7 @@
 
 
         <div class="entry-head text-center">
-            <h2>Member Search</h2>
+            <h2>Meet Some Of Our Professionals</h2>
         </div>
 
         <div class="col-md-7 col-md-offset-3">
@@ -171,8 +171,8 @@
 
 
 
-<div class="col-md-12 text-center styletext">
-    <h4>Features That You Would like To have!</h4>
+<div class="col-md-12 text-center styletext ptop-20">
+    <h4>Browse Some Of Our Awesome Features.</h4>
 </div>
 
 <!--category with image-->

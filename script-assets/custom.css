@@ -461,9 +461,9 @@ label {
         background-color: #fff !important;
     }
     .skin-black-light .main-header > .navbar{
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #353F53;
     }
-
+    .skin-black-light .main-header > .navbar{border-top: 1px solid #353F53}
     .main-header{min-height: 101px;}
     .skin-black-light .main-header > .navbar .navbar-custom-menu .navbar-nav > li > a, .skin-black-light .main-header > .navbar .navbar-right > li > a {border-left: 1px solid #353F53;}
     .skin-black-light .main-header > .navbar > .sidebar-toggle {

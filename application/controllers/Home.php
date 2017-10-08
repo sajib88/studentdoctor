@@ -102,12 +102,12 @@ class Home extends CI_Controller {
 
         if($res==TRUE)
         {
-            $this->session->set_flashdata('msg', '<div class="alert alert-success">'.'Email Confirmed. Now You can login '.'</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-success">'.'Email Confirmed. You can now login. '.'</div>');
             redirect(base_url('home/login'));
         }
         else
         {
-            $this->session->set_flashdata('msg', '<div class="alert alert-danger">'.'Email Confirmed failed'.'</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-danger">'.'Email Confirmation failed. Please try again.'.'</div>');
             redirect(base_url('home/login'));
         }
     }
@@ -117,7 +117,7 @@ class Home extends CI_Controller {
     {
 
         $data['admin_email'] = 'info@advertbd.com';
-        $data['admin_name']  = 'All Student Doctors';
+        $data['admin_name']  = 'AllStudentDoctors';
 
         return $data;
     }
@@ -534,15 +534,15 @@ class Home extends CI_Controller {
             $user_email = $this->input->post('user_email');
             $val = set_recovery_key($user_email);
             $this->_send_recovery_email($val);
-            $this->session->set_flashdata('msg', '<div class="alert alert-success">'.'Email is send to your inbox.Check your email.'.'</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-success">'.'Email sent successfully'.'<br>'.'Check your email to reset your password.'.'</div>');
             redirect(site_url('home/login'));
         }
     }
 
-    function changepass()
+    function changepass($data='')
     {
         $this->load->view('header_guest_home');
-        $this->load->view('changepass_view');
+        $this->load->view('changepass_view', $data);
         $this->load->view('foother_guest.php');
     }
 
@@ -551,12 +551,13 @@ class Home extends CI_Controller {
     {
         if($this->session->userdata('recovery')!='yes')
             $this->form_validation->set_rules('current_password', 'current_password', 'required|callback_currentpass_check');
-        $this->form_validation->set_rules('new_password', 'new_password', 'required|matches[re_password]');
+        $this->form_validation->set_rules('new_password', 'new_password', 'required|min_length[6]|matches[re_password]');
         $this->form_validation->set_rules('re_password', 'confirm_password', 'required');
 
         if ($this->form_validation->run() == FALSE)
         {
-            $this->changepass();
+            $data['error'] = validation_errors();
+            $this->changepass($data);
         }
         else
         {

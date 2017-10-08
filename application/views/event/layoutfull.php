@@ -17,6 +17,7 @@
             <div class="col-md-7">
                 <div class="box box-warning">
                     <div class="box-header with-border">
+                        <i class="fa fa-paragraph"></i>
                         <h3 class="box-title">Event Summary</h3>
 
                         <div class="box-tools pull-right">
@@ -34,6 +35,7 @@
                 </div>
                 <div class="box box-warning">
                     <div class="box-header with-border">
+                        <i class="fa fa-paragraph"></i>
                         <h3 class="box-title">Event Details Description</h3>
 
                         <div class="box-tools pull-right">

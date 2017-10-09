@@ -59,7 +59,11 @@
     </script>
 </head>
 <body>
-
+<div itemscope itemtype="http://schema.org/WebSite">
+    <meta itemprop="name" content="AllStudentDoctors.com"/>
+    <meta itemprop="alternateName" content="AllStudentDoctors.com"/>
+    <meta itemprop="url" content="http://student.advertbd.com/"/>
+</div>
 <header class="header-wrapper">
     <nav class="navbar" role="navigation">
         <div class="container">

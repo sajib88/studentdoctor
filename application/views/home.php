@@ -249,7 +249,7 @@
     <div class="jumbotron">
 
         <div class="slide">
-            <h2 class="text-center"><span class="text-primary">Medical</span> News Today</h2>
+            <h2 class="text-center"><span class="text-primary">Medical </span> News <span class="text-primary"> Today</span></h2>
             <?php if(!empty($hello)) {
 
                 foreach ($hello as $row)

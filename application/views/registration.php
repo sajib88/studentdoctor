@@ -87,16 +87,16 @@
 
                                         <div class="form-group mb-10">
 
-                                            <input required="" type="checkbox" value="agree this condition"> I agree to the Terms of condition and Privacy Policy
+                                            <input required="" type="checkbox" value="agree this condition"> I agree to the Terms & Conditions and Privacy Policy
 
                                         </div>
                                         <div class="form-group mb-10">
                                             <input type="submit" name="submit" class="btn btn-mid btn-yellow btn-block" value="Sign Up">
                                         </div>
                                         <div class="registration">
-                                            Already Registered ?
+                                            Already Registered?
                                             <a class="" href="<?php echo base_url(); ?>home/login">
-                                                Login
+                                                Login Here
                                             </a>
                                         </div>
                                     </div>

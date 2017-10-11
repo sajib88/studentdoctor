@@ -32,12 +32,12 @@
 
                                         <div class="form-group mb-10">
                                             <a href="<?php echo base_url('home/newaccount/fb');?>" class="btn btn-small btn-block btn-fb"><i class="pull-cnter fa fa-facebook"></i>&nbsp &nbsp Facebook Login</a>
-                                            </br> </br>
+                                            <h5 class="text-center">or</h5>
                                             <a href="<?php echo base_url('home/newaccount/google_plus');?>" class="btn btn-filled btn-danger btn-block"><i class="fa fa-google-plus"></i> &nbsp; Login with Google</a>
-                                            </br> </br>
+                                            <h5 class="text-center">or</h5>
                                             <div class="hr-text">
                                                 <hr>
-                                                <span>or</span>
+
                                             </div>
                                         </div>
 
@@ -87,16 +87,16 @@
 
                                         <div class="form-group mb-10">
 
-                                            <input required="" type="checkbox" value="agree this condition"> I agree to the Terms & Conditions and Privacy Policy
+                                            <input required="" type="checkbox" value="agree this condition"> <a href="<?php echo base_url('home/privacy');?>">I agree to the Terms of condition and Privacy Policy</a>
 
                                         </div>
                                         <div class="form-group mb-10">
                                             <input type="submit" name="submit" class="btn btn-mid btn-yellow btn-block" value="Sign Up">
                                         </div>
                                         <div class="registration">
-                                            Already Registered?
+                                            Already Registered ?
                                             <a class="" href="<?php echo base_url(); ?>home/login">
-                                                Login Here
+                                                Login
                                             </a>
                                         </div>
                                     </div>

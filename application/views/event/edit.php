@@ -76,7 +76,7 @@
                             <textarea  name="description" class="form-control"><?php echo $editevent['description']; ?></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Seats No<span class="error">*</span></label><span id='seats_no' class='error' for='seats_no'></span>
+                            <label>Total Seats<span class="error">*</span></label><span id='seats_no' class='error' for='seats_no'></span>
                             <input name="seats_no" value="<?php echo $editevent['seats_no']; ?>"  class="form-control">
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                     </div>
                     <div class="padd">
                         <div class="form-group">
-                            <label>Event Location/ Place<span class="error">*</span></label><span id='location' class='error' for='location'></span>
+                            <label>Event Location<span class="error">*</span></label><span id='location' class='error' for='location'></span>
                             <input name="location" value="<?php echo $editevent['location']; ?>"  class="form-control">
                         </div>
                     </div>
@@ -354,9 +354,7 @@
                     required:true
                 },
 
-                seats_no:{
-                    required:true
-                },
+
                 start_date:{
                     required:true
                 },

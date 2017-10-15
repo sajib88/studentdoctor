@@ -75,8 +75,16 @@ class Global_model extends CI_Model {
      *
      * @return mixed
      */
-    public function update($table, $data, $where) {
+    public function update($table, $data, $where, $limit = false, $order_by = false) {
         $this->db->where($where);
+
+        if (!empty($limit)) {
+            $this->db->limit($limit['limit'], $limit['start']);
+        }
+
+        if (!empty($order_by)) {
+            $this->db->order_by($order_by['filed'], $order_by['order']);
+        }
 
         return $this->db->update($table, $data);
     }
@@ -576,7 +584,11 @@ class Global_model extends CI_Model {
             ->from($table)
             ->get();
 
+
+
         $array=$sql->result_array();
+
+
 
         foreach ($array as $row){
             if($row['profession_view'] != null){
@@ -588,6 +600,9 @@ class Global_model extends CI_Model {
                 }
             }
         }
+
+
+
         return $productList;
     }
 

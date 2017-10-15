@@ -180,7 +180,7 @@ exit();*/
                                                                     <ul class=" list-group list-group-unbordered">
                                                                         <li class="list-group-item">First Name <span class="pull-right  "><?php echo (!empty($row->first_name))?$row->first_name:''?></span></li>
                                                                         <li class="list-group-item">Last Name <span class="pull-right  "><?php echo (!empty($row->last_name))?$row->last_name:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
-                                                                        <li class="list-group-item">Email Id <span class="pull-right  "><?php echo (!empty($row->email))?$row->email:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                        <li class="list-group-item">Email <span class="pull-right  "><?php echo (!empty($row->email))?$row->email:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                                         <li class="list-group-item">Phone <span class="pull-right "><?php echo (!empty($row->phone))?$row->phone:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                                     </ul>
                                                                     <span class="show_button"><a href="#" class=" btn btn-block btn-success">See More</a></span>

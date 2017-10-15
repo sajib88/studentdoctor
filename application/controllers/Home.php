@@ -117,7 +117,7 @@ class Home extends CI_Controller {
     {
 
         $data['admin_email'] = 'info@advertbd.com';
-        $data['admin_name']  = 'AllStudentDoctors';
+        $data['admin_name']  = 'AllStudentDoctors.com';
 
         return $data;
     }
@@ -192,7 +192,7 @@ class Home extends CI_Controller {
                                                             <button data-dismiss="alert" class="close close-sm" type="button">
                                                                 <i class="icon-remove"></i>
                                                             </button>
-                                                            <strong>Email sent successfully. <br>Check your email to active your acount.</strong> </div>');
+                                                            <strong>Email sent successfully. <br>Please check your email to active your acount.</strong> </div>');
                 } else {
                     $this->session->set_flashdata('success', 'Something worng please try again.');
                 }
@@ -208,6 +208,7 @@ class Home extends CI_Controller {
         $this->load->view('foother_guest.php',$data);
 
     }
+
 
     public function log_out() {
         $this->session->sess_destroy();
@@ -534,7 +535,7 @@ class Home extends CI_Controller {
             $user_email = $this->input->post('user_email');
             $val = set_recovery_key($user_email);
             $this->_send_recovery_email($val);
-            $this->session->set_flashdata('msg', '<div class="alert alert-success">'.'Email sent successfully'.'<br>'.'Check your email to reset your password.'.'</div>');
+            $this->session->set_flashdata('msg', '<div class="alert alert-success">'.'Email sent successfully'.'<br>'.'Please check your email to reset your password.'.'</div>');
             redirect(site_url('home/login'));
         }
     }

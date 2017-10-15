@@ -1,4 +1,3 @@
-
 <!--breadcrumbs end-->
 <main class="main-wrapper">
 
@@ -37,7 +36,6 @@
                                             <h5 class="text-center">or</h5>
                                             <div class="hr-text">
                                                 <hr>
-
                                             </div>
                                         </div>
 
@@ -87,16 +85,17 @@
 
                                         <div class="form-group mb-10">
 
-                                            <input required="" type="checkbox" value="agree this condition"> <a href="<?php echo base_url('home/privacy');?>">I agree to the Terms of condition and Privacy Policy</a>
+                                            <input required="" type="checkbox" value="agree this condition"> I agree to the <a href="<?php echo base_url('home/terms');?>">Terms & Conditions </a> and
+                                            <a href="<?php echo base_url('home/privacy');?>">Privacy Policy </a>
 
                                         </div>
                                         <div class="form-group mb-10">
                                             <input type="submit" name="submit" class="btn btn-mid btn-yellow btn-block" value="Sign Up">
                                         </div>
                                         <div class="registration">
-                                            Already Registered ?
+                                            Already Registered?
                                             <a class="" href="<?php echo base_url(); ?>home/login">
-                                                Login
+                                                Login Here
                                             </a>
                                         </div>
                                     </div>
@@ -116,6 +115,8 @@
     </section>
 
 </main>
+
+
 
     
 

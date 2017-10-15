@@ -76,7 +76,7 @@
                             <textarea  name="description" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Seats No<span class="error">*</span></label><span id='seats_no' class='error' for='seats_no'></span>
+                            <label>Total Seats</label><span id='seats_no' class='error' for='seats_no'></span>
                             <input name="seats_no" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="padd">
                         <div class="form-group">
-                            <label>Event Location/ Place</label><span id='location' class='error' for='location'></span>
+                            <label>Event Location</label><span id='location' class='error' for='location'></span>
                             <input name="location" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                     </div>
@@ -317,9 +317,7 @@ jQuery(document).ready(function() {
                     required:true
                 },
 
-                seats_no:{
-                    required:true
-                },
+
                 start_date:{
                     required:true
                 },
@@ -354,9 +352,7 @@ jQuery(document).ready(function() {
                 category: {
                     required: "Event Category is Required",},
 
-                seats_no: {
-                    required: "Seats no is Required, Number digit provide",
-                },
+
 
                 start_date: {
                     required: "Event Start Date is Required",

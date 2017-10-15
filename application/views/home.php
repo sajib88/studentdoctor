@@ -4,7 +4,7 @@
             <div class="col-lg-12  text-center ptop-300">
 
 
-                <h1>All Student Doctors And Doctors In The World </h1>
+                <h1>All Student Doctors And Doctors In The World</h1>
                 <p>Can Meet, Advance Personally and Contribute Globally.</p>
                 <a href="<?php echo base_url('home/registration');?>">   <input type="submit" value="Join Now Free" class="btn   btn-yellow"></a>
             </div>

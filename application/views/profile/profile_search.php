@@ -1,17 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: alam
- * Date: 12/17/2016
- * Time: 5:05 PM
- */
-
-
-/*print '<pre>';
-print_r($result);
-exit();*/
-?>
-
 <style type="text/css">
     .list-group{
        margin-bottom: 10px;

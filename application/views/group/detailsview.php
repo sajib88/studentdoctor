@@ -35,8 +35,8 @@
 
                             <div class="box-footer">
 
-                                <a href="<?php //echo base_url('classifieds/classifieds/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-dropbox">Join Now</a>
 
+                                <a href="<?php echo base_url('Group/group/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-dropbox"> Discussion</a>
                             </div>
                         </div>
                     </div>

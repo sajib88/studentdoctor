@@ -403,8 +403,18 @@
                         echo "active";
                         } ?>">
                             <a href="<?php echo base_url('event/viewall'); ?>"><i class="fa fa-circle-o"></i>
-                                View All Events</a>
+                                View All  Events</a>
                         </li>
+
+
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('event/search'); ?>"><i class="fa fa-circle-o"></i>
+                                Search  Events</a>
+                        </li>
+
+
 
                         <li class="<?php if ($this->uri->segment(2)=="myevent"){
                         echo "active";
@@ -446,6 +456,13 @@
                         } ?>">
                             <a href="<?php echo base_url('group/mygroup'); ?>"><i class="fa fa-circle-o"></i>My
                                 Group List</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('group/search'); ?>"><i class="fa fa-circle-o"></i>
+                                Search  Group</a>
                         </li>
 
 

@@ -30,7 +30,7 @@
                                     <div class="col-sm-6 nopadding">
                                         <time class="end purple">
                                             EVENT <span class="day">END</span>
-                                            <span class ="month"><?php echo date('m-d-y', strtotime($row['end_date'])); ?></span>
+                                            <span class ="month"><?php echo date('M-d-y', strtotime($row['end_date'])); ?></span>
                                             <span class="year"><?php echo date('H:i:s A', strtotime($row['end_time'])); ?></span>
                                         </time>
                                     </div>
@@ -63,4 +63,6 @@
     .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img{
         margin: 0px;
     }
+    .panel-heading{height: 135px;}
+    .panel-primary > .panel-footer{height: 135px;}
 </style>

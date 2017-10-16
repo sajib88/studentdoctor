@@ -57,20 +57,23 @@
                         </div>
                         <div class="form-group">
                             <label>Group Category <span class="error">*</span></label><span id='category' class='error' for='main_category'></span>
+
+
                             <select onchange="getSubCat(this)" name="category" class="form-control">
-                                <option value="<?php echo $editgroup['category']; ?>"><?php echo $editgroup['category']; ?></option>
+                                <option value="">Select</option>
+                                <?php
+                                if (is_array($main_cat)) {
 
-                                <option value="Chiropractor">Chiropractor</option>
-                                <option value="Dentist">Dentist</option>
-                                <option value="General">General</option>
-                                <option value="Optometrist">Optometrist</option>
-                                <option value="Ph.D">Ph.D</option>
-                                <option value="Pharmacist">Pharmacist</option>
-                                <option value="Physician">Physician</option>
-                                <option value="Podiatrist">Podiatrist</option>
-                                <option value="Professional">Professional</option>
-
+                                    foreach ($main_cat as $eventcat) {
+                                        ?>
+                                        <option <?php if ($eventcat->id == $editgroup['category']) echo 'selected'; ?> value="<?php echo $eventcat->id; ?>"><?php echo $eventcat->cat_name; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </select>
+
+
                         </div>
                         <div class="form-group">
                             <label>Group Description<span class="error">*</span></label><span id='Description' class='error' for='description'></span>
@@ -137,7 +140,7 @@
                             <div class="row">
                                 <div class="col-lg-12 professionView">
                                     <div class="col-lg-6">
-                                        <label><h4>Who can see this?</h4></label>
+                                        <label><h4>Select profession(s) permitted to see your group.</h4></label>
                                     </div>
                                     <div class="col-lg-6 ">
                                         <div class="form-group">

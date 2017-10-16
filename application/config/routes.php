@@ -109,6 +109,7 @@ $route['classifieds/edit/(:any)'] = 'classifieds/classifieds/edit/$1';
 $route['event/add'] = 'event/event/index';
 $route['event/viewall'] = 'event/event/viewall';
 $route['event/myevent'] = 'event/event/myevent';
+$route['event/search'] = 'event/event/search';
 $route['event/edit/(:any)'] = 'event/event/edit/$1';
 $route['event/layoutfull/(:any)'] = 'event/event/layoutfull/$1';
 
@@ -116,6 +117,7 @@ $route['event/layoutfull/(:any)'] = 'event/event/layoutfull/$1';
 $route['group/add'] = 'group/group/index';
 $route['group/viewall'] = 'group/group/viewall';
 $route['group/mygroup'] = 'group/group/mygroup';
+$route['group/search'] = 'group/group/search';
 $route['group/edit/(:any)'] = 'group/group/edit/$1';
 
 ///inside blog

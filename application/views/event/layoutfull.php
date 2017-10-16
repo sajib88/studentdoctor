@@ -65,19 +65,52 @@
 
                     <div class="box-body">
 
-                        <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['primary_photo'] ?>" width="130" height="138"">
+                        <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['primary_photo'] ?>" width="150" height="138"">
 
 
                         <?php if($layoutfull['photo_2'] != 0){?>
-                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_2'] ?>" width="130" height="138">
+                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_2'] ?>" width="150" height="138">
                         <?php }?>
                         <?php if($layoutfull['photo_3'] != 0){?>
-                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_3'] ?>" width="130" height="138"">
+                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_3'] ?>" width="150" height="138"">
                         <?php }?>
                     </div>
 
 
                 </div>
+
+
+
+                <?php if($layoutfull['file1'] != 0 && $layoutfull['file1'] !=0){?>
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <i class="fa fa-ticket"></i>
+                        <h3 class="box-title">Event Files</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+
+                    <div class="box-body">
+                        <div class="col-md-6">
+                        <?php if($layoutfull['file1'] != 0){?>
+                        <a href="<?php echo base_url() . '/assets/file/event/' .$layoutfull['file1']; ?>">
+                            File Download 1
+                        </a>
+                        <?php }else{}  ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?php if($layoutfull['file2'] != 0){?>
+                            <a href="<?php echo base_url() . '/assets/file/event/' .$layoutfull['file2']; ?>">
+                            File Download 2
+                            </a>
+                            <?php }else{}  ?>
+                        </div>
+                    </div>
+
+
+                </div>
+                <?php }else{}  ?>
+
 
 
                 <!-- /.END LEFT PANEL-DIV -->
@@ -96,7 +129,10 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Event Type</span>
-                        <span class="info-box-number"> <?php echo $layoutfull['category']; ?></span>
+                        <span class="info-box-number">  <?php
+                            $data = get_data('event_main_cat', array('id' => $layoutfull['category']));
+                            echo $data['cat_name'];
+                            ?></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>

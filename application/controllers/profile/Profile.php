@@ -53,6 +53,7 @@ class Profile extends CI_Controller {
                 $save['state'] = $this->input->post('state');
                 $save['city'] = $this->input->post('city');
                 $save['phone'] = $this->input->post('phone');
+                $save['university_clg'] = $this->input->post('university_clg');
 
                 if (isset($_FILES["profilepicture"]["name"]) && $_FILES["profilepicture"]["name"] != '') {
                     $this->PATH = './assets/file/';
@@ -65,19 +66,6 @@ class Profile extends CI_Controller {
                 else {
 
                 }
-
-
-//                uploadConfiguration();
-//                if ($this->upload->do_upload('profilepicture')) {
-//                    $fileInfo = $this->upload->data();
-//
-//
-//                    $audo_data['name'] = $fileInfo['file_name'];
-//                    $this->global_model->insert('photos', $audo_data);
-//
-//                    $save['profilepicture'] = $audo_data['name'];
-//
-//                }
 
                 if ($this->global_model->update('users', $save, array('id' => $loginId))) {
                     $this->session->set_flashdata('message', 'Update Success');
@@ -139,9 +127,6 @@ class Profile extends CI_Controller {
 
         if($this->input->post()){
             $postData = $this->input->post();
-            /*print '<pre>';
-            print_r($this->input->post());
-            die;*/
             $value = array();
             $value['first_name'] = (!empty($postData['first_name']))?$postData['first_name']:'';
             $value['last_name'] = (!empty($postData['last_name']))?$postData['last_name']:'';

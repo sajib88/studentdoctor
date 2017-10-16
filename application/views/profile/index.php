@@ -91,6 +91,11 @@
                                     <input name="phone" value="<?php echo $user_info['phone']; ?>"  class="form-control">
                                 </div>
 
+                                <div class="form-group">
+                                    <label>University / College Name</label>
+                                    <input name="university_clg" value="<?php echo $user_info['university_clg']; ?>"  class="form-control">
+                                </div>
+
                             </div>
                         </div>
                         <!-- /.box -->

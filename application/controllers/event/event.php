@@ -99,16 +99,37 @@ class event extends CI_Controller {
 
                     }
 
+                    uploadEvent();
+                    //// File UPLOAD
+                    if ($this->upload->do_upload('file1')) {
+                        $fileInfo = $this->upload->data();
+                        $file1['name'] = $fileInfo['file_name'];
+                        $save['file1'] = $file1['name'];
+                    }
+
+                    if ($this->upload->do_upload('file2')) {
+                        $fileInfo = $this->upload->data();
+                        $file1['name'] = $fileInfo['file_name'];
+                        $save['file2'] = $file1['name'];
+                    }
+
+
+
                     if ($ref_id = $this->global_model->insert('event', $save)) {
 
-                        $this->session->set_flashdata('message', 'Save Success');
+                        $this->session->set_flashdata('message', 'New Event Category Create Successfully');
 
                     }
+
+
+
+
                 }
             }
             $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
             $data['login_id'] = $loginId;
             $data['profession'] = $this->global_model->get('profession');
+            $data['main_cat'] = $this->global_model->get('event_main_cat');
             $this->load->view('header', $data);
             $this->load->view('event/add', $data);
             $this->load->view('footer');
@@ -211,6 +232,7 @@ class event extends CI_Controller {
         $id = $this->uri->segment('3');
         $data['editevent'] = $this->global_model->get_data('event', array('id' => $id));
         $data['profession'] = $this->global_model->get('profession');
+        $data['main_cat'] = $this->global_model->get('event_main_cat');
         $this->load->view('header', $data);
         $this->load->view('event/edit', $data);
         $this->load->view('footer');
@@ -232,6 +254,7 @@ class event extends CI_Controller {
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
 
         $data['myevent'] = $this->global_model->get('event', array('user_id' => $loginId));
+        $data['main_cat'] = $this->global_model->get('event_main_cat');
 
         $this->load->view('header', $data);
         $this->load->view('event/myview', $data);
@@ -247,12 +270,16 @@ class event extends CI_Controller {
         $data['tabActive'] = 'private';
         $data['error'] = '';
 
+      // echo  $today = strtotime(date('Y-m-d', time()));
+
 
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
 
         $profession = $this->session->userdata('user_type');
-        $data['viewallevent'] = $this->global_model->getViewByProfession('event', $profession);
+        $newcomefirst = $order_by = FALSE;
+        $data['viewallevent'] = $this->global_model->getViewByProfession('event', $profession, $newcomefirst);
+        $data['main_cat'] = $this->global_model->get('event_main_cat');
 
         $this->load->view('header', $data);
         $this->load->view('event/detailsview', $data);
@@ -278,6 +305,7 @@ class event extends CI_Controller {
 
         $id = $this->uri->segment('3');
         $data['layoutfull'] = $this->global_model->get_data('event', array('id' => $id));
+        $data['main_cat'] = $this->global_model->get('event_main_cat');
 
 
         $this->load->view('header', $data);
@@ -317,6 +345,96 @@ class event extends CI_Controller {
         echo $this->load->view('classified_sub_cat', $data, TRUE);
         exit;
     }
+
+    public function eventcat()
+    {
+        $data = array();
+        $data['page_title'] = 'Add New Category';
+        $data['tabActive'] = 'Event Category';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $user_type = $this->session->userdata('user_type');
+
+        if ($this->input->post()) {
+            $postData = $this->input->post();
+            $this->form_validation->set_rules('cat_name', 'cat_name', 'trim');
+
+
+            if ($this->form_validation->run() == true) {
+
+                $save['cat_name'] = $postData['cat_name'];
+                $save['created_by'] = $loginId;
+                $save['status'] = '1';
+
+                if ($ref_id = $this->global_model->insert('event_main_cat', $save)) {
+
+                    $this->session->set_flashdata('message2');
+
+                }
+            }
+        }
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['login_id'] = $loginId;
+        $this->load->view('header', $data);
+        $this->load->view('event/add', $data);
+        $this->load->view('footer');
+    }
+
+
+    public function search(){
+        $this->load->helper('global_helper');
+        $data = array();
+        $data['page_title'] = 'Search';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+
+
+
+        if($this->input->post()){
+            $postData = $this->input->post();
+            /*print '<pre>';
+            print_r($this->input->post());
+            die;*/
+            $value = array();
+
+            $value['title'] = (!empty($postData['title']))?$postData['title']:'';
+            $value['summary'] = (!empty($postData['summary']))?$postData['summary']:'';
+            $value['description'] = (!empty($postData['description']))?$postData['description']:'';
+            $value['category'] = (!empty($postData['category']))?$postData['category']:'';
+            $value['location'] = (!empty($postData['location']))?$postData['location']:'';
+
+
+            $data['result'] = $this->global_model->get_event_search_data('event',$value,FALSE,FALSE);
+
+
+        }
+
+        $id = $this->uri->segment('4');
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['countries'] = $this->global_model->get('countries');
+        $data['main_cat'] = $this->global_model->get('event_main_cat');
+        $data['profession'] = $this->global_model->get('profession');
+        //$data['states'] = $this->global_model->get('states');
+        $data['login_id'] = $loginId;
+
+        $this->form_validation->set_rules('title', 'title', 'xss_clean');
+        $this->form_validation->set_rules('summary', 'summary', 'xss_clean');
+        $this->form_validation->set_rules('description', 'description', 'xss_clean');
+        $this->form_validation->set_rules('category', 'category', 'xss_clean');
+        $this->form_validation->set_rules('location', 'location', 'xss_clean');
+
+
+        $this->load->view('header', $data);
+        $this->load->view('event/search_view', $data);
+        $this->load->view('footer');
+
+
+
+
+    }
+
+
+
 
 }
 

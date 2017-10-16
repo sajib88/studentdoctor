@@ -79,6 +79,7 @@ class group extends CI_Controller {
                 }
             }
             $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+            $data['main_cat'] = $this->global_model->get('group_main_cat');
             $data['login_id'] = $loginId;
             $this->load->view('header', $data);
             $this->load->view('group/add', $data);
@@ -154,7 +155,7 @@ class group extends CI_Controller {
 
         $id = $this->uri->segment('3');
         $data['editgroup'] = $this->global_model->get_data('gorupfad', array('id' => $id));
-
+        $data['main_cat'] = $this->global_model->get('group_main_cat');
         $this->load->view('header', $data);
         $this->load->view('group/edit', $data);
         $this->load->view('footer');
@@ -216,6 +217,159 @@ class group extends CI_Controller {
             $this->session->set_flashdata('success', 'Delete successfully!');
             redirect(base_url('group/mygroup'));
         }
+
+    }
+
+    public function grouptcat()
+    {
+        $data = array();
+        $data['page_title'] = 'Add New Category';
+        $data['tabActive'] = 'Group Category';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $user_type = $this->session->userdata('user_type');
+
+        if ($this->input->post()) {
+            $postData = $this->input->post();
+            $this->form_validation->set_rules('cat_name', 'cat_name', 'trim');
+
+
+            if ($this->form_validation->run() == true) {
+
+                $save['cat_name'] = $postData['cat_name'];
+                $save['created_by'] = $loginId;
+                $save['status'] = '1';
+
+                if ($ref_id = $this->global_model->insert('group_main_cat', $save)) {
+
+                    $this->session->set_flashdata('message2');
+
+                }
+            }
+        }
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['main_cat'] = $this->global_model->get('group_main_cat');
+        $data['login_id'] = $loginId;
+        $this->load->view('header', $data);
+        $this->load->view('group/add', $data);
+        $this->load->view('footer');
+    }
+
+    //// Detisls View
+
+
+
+    public function layoutfull(){
+        $data = array();
+        $data['page_title'] = 'Add Product';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+
+        $id = $this->uri->segment('4');
+
+        $data['getid']  = $this->uri->segment('4');
+        $data['layoutfull'] = $this->global_model->get_data('gorupfad', array('id' => $id));
+        $data['main_cat'] = $this->global_model->get('group_main_cat');
+        /// Author
+        //$data['user_post_info'] = $this->global_model->get_data('users', array('id' => $data['postdeatils']['author_id']));
+        /// Comments retrive
+        $data['comments'] = $this->global_model->get('group_comments', array('group_id' => $data['getid']));
+        ///$data['totalComments'] = $this->global_model->count_row_where('forum_comments', array('post_id' => $data['getid']));
+
+        /// comments author
+        //$data['getcommentsid'] = $this->global_model->get_data('forum_comments', array('post_id' => $data['getid']));
+        ///$data['user_comments_info'] = $this->global_model->get_data('users', array('id' => $data['getcommentsid']['user_id']));
+
+
+
+        if ($this->input->post()) {
+            $postData = $this->input->post();
+            $this->form_validation->set_rules('comments_title', 'comments_title', 'trim');
+            $this->form_validation->set_rules('comments_details', 'comments_details', 'trim');
+
+
+
+            if ($this->form_validation->run() == true) {
+
+                $save['group_id'] = $postData['postid'];
+                $save['user_id'] = $loginId;
+                $save['comments_title'] = $postData['comments_title'];
+                $save['comments_details'] = $postData['comments_details'];
+                $save['status'] = '1';
+
+
+
+
+                if ($ref_id = $this->global_model->insert('group_comments', $save)) {
+
+                    $this->session->set_flashdata('message', 'New Forum Post Create Successfully');
+                    $redirect_link = base_url() . 'Group/group/layoutfull/'. $postData['postid'];
+                    redirect($redirect_link);
+
+                }
+            }
+        }
+
+
+        $this->load->view('header', $data);
+        $this->load->view('group/layoutfull', $data);
+        $this->load->view('footer');
+
+
+
+    }
+
+
+    public function search(){
+        $this->load->helper('global_helper');
+        $data = array();
+        $data['page_title'] = 'Search';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+
+
+
+        if($this->input->post()){
+            $postData = $this->input->post();
+            /*print '<pre>';
+            print_r($this->input->post());
+            die;*/
+            $value = array();
+
+            $value['group_name'] = (!empty($postData['group_name']))?$postData['group_name']:'';
+            $value['discussion'] = (!empty($postData['discussion']))?$postData['discussion']:'';
+            $value['description'] = (!empty($postData['description']))?$postData['description']:'';
+            $value['category'] = (!empty($postData['category']))?$postData['category']:'';
+
+
+
+            $data['result'] = $this->global_model->get_group_search_data('gorupfad',$value,FALSE,FALSE);
+
+
+        }
+
+        $id = $this->uri->segment('4');
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['countries'] = $this->global_model->get('countries');
+        $data['main_cat'] = $this->global_model->get('group_main_cat');
+        $data['profession'] = $this->global_model->get('profession');
+        //$data['states'] = $this->global_model->get('states');
+        $data['login_id'] = $loginId;
+
+        $this->form_validation->set_rules('title', 'title', 'xss_clean');
+        $this->form_validation->set_rules('summary', 'summary', 'xss_clean');
+        $this->form_validation->set_rules('description', 'description', 'xss_clean');
+        $this->form_validation->set_rules('category', 'category', 'xss_clean');
+        $this->form_validation->set_rules('location', 'location', 'xss_clean');
+
+
+        $this->load->view('header', $data);
+        $this->load->view('group/search_view', $data);
+        $this->load->view('footer');
+
+
+
 
     }
 

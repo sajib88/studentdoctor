@@ -41,6 +41,7 @@
         <?php } ?>
         <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('event/edit/'. $editevent['id']); ?>">
             <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
+
         <div class="col-lg-6">
             <div class="col-md-12 no-padding">
                 <div class="box box-primary">
@@ -56,15 +57,18 @@
                         <div class="form-group">
                             <label>Event Category <span class="error">*</span></label><span id='main_category-error' class='error' for='main_category'></span>
                             <select onchange="getSubCat(this)" name="category" class="form-control">
-                                <option value="<?php echo $editevent['category']; ?>"><?php echo $editevent['category']; ?></option>
-                                <option value="Conferences">Conferences</option>
-                                <option value="Education">Education</option>
-                                <option value="Fundraisers">Fundraisers</option>
-                                <option value="Health Observances">Health Observances</option>
-                                <option value="Public Events">Public Events</option>
-                                <option value="Seminars">Seminars</option>
-                                <option value="Special Events">Special Events</option>
-                                <option value="Support Groups">Support Groups</option>
+                                <option value="">Select</option>
+                                <?php
+                                if (is_array($main_cat)) {
+
+                                    foreach ($main_cat as $eventcat) {
+                                        echo $editevent['category'];
+                                        ?>
+                                        <option <?php if ($eventcat->id == $editevent['category']) echo 'selected'; ?> value="<?php echo $eventcat->id; ?>"><?php echo $eventcat->cat_name; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="form-group">
@@ -76,7 +80,7 @@
                             <textarea  name="description" class="form-control"><?php echo $editevent['description']; ?></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Total Seats<span class="error">*</span></label><span id='seats_no' class='error' for='seats_no'></span>
+                            <label>Total Seats</span>
                             <input name="seats_no" value="<?php echo $editevent['seats_no']; ?>"  class="form-control">
                         </div>
                     </div>
@@ -200,6 +204,38 @@
                                     <?php }?>
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Document 1</label><span id='picture3-error' class='error' for='picture3'></span>
+                                    <input class="btn btn-default btn-cust" name="file1" type="file">
+                                    <?php if(!empty($editevent['photo_3'])){?>
+                                        <a href="<?php echo base_url() . '/assets/file/event/' .$editevent['file1']; ?>">
+                                            File Download
+                                        </a>
+                                    <?php }?>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Document 2</label><span id='picture3-error' class='error' for='picture3'></span>
+                                    <input class="btn btn-default btn-cust" name="file1" type="file">
+                                    <?php if(!empty($editevent['photo_3'])){?>
+                                        <a href="<?php echo base_url() . '/assets/file/event/' .$editevent['file2']; ?>">
+                                            File Download
+                                        </a>
+                                    <?php }?>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -214,7 +250,7 @@
                         <div class="row">
                             <div class="col-lg-12 professionView">
                                 <div class="col-lg-6">
-                                    <label><h4>Who can see this?</h4></label>
+                                    <label><h4>Select profession(s) permitted to see your Event</h4></label>
                                 </div>
                                 <div class="col-lg-6 ">
                                     <div class="form-group">

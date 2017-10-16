@@ -380,6 +380,126 @@ class Global_model extends CI_Model {
     }
 
 
+
+    public function get_event_search_data($table, $data, $limit = FALSE, $order_by = FALSE) {
+        $this->db->select('*')->from($table);
+
+        $value['title'] = (!empty($postData['title']))?$postData['title']:'';
+        $value['summary'] = (!empty($postData['summary']))?$postData['summary']:'';
+        $value['description'] = (!empty($postData['description']))?$postData['description']:'';
+        $value['category'] = (!empty($postData['category']))?$postData['category']:'';
+        $value['location'] = (!empty($postData['location']))?$postData['location']:'';
+
+
+        if (!empty($data['category'])) {
+
+            $this->db->where('category', $data['category']);
+        }
+
+
+        if (!empty($data['title'])) {
+
+            $this->db->like('title', $data['title']);
+        }
+        if (!empty($data['summary'])) {
+
+            $this->db->like('summary', $data['summary']);
+        }
+        if (!empty($data['description'])) {
+
+            $this->db->like('description', $data['description']);
+        }
+        if (!empty($data['location'])) {
+
+            $this->db->like('location', $data['location']);
+        }
+
+
+
+
+        if (!empty($limit)) {
+
+            $this->db->limit($limit['limit'], $limit['start']);
+        }
+
+        if (!empty($order_by)) {
+            $this->db->order_by($order_by['filed'], $order_by['order']);
+        }
+
+        $query = $this->db->get();
+
+        //echo $this->db->last_query();exit();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+        //return $query;
+    }
+
+
+
+    public function get_group_search_data($table, $data, $limit = FALSE, $order_by = FALSE) {
+        $this->db->select('*')->from($table);
+
+        $value['title'] = (!empty($postData['title']))?$postData['title']:'';
+        $value['summary'] = (!empty($postData['summary']))?$postData['summary']:'';
+        $value['description'] = (!empty($postData['description']))?$postData['description']:'';
+        $value['category'] = (!empty($postData['category']))?$postData['category']:'';
+        $value['location'] = (!empty($postData['location']))?$postData['location']:'';
+
+
+        if (!empty($data['category'])) {
+
+            $this->db->where('category', $data['category']);
+        }
+
+
+        if (!empty($data['title'])) {
+
+            $this->db->like('title', $data['title']);
+        }
+        if (!empty($data['summary'])) {
+
+            $this->db->like('summary', $data['summary']);
+        }
+        if (!empty($data['description'])) {
+
+            $this->db->like('description', $data['description']);
+        }
+        if (!empty($data['location'])) {
+
+            $this->db->like('location', $data['location']);
+        }
+
+
+
+
+        if (!empty($limit)) {
+
+            $this->db->limit($limit['limit'], $limit['start']);
+        }
+
+        if (!empty($order_by)) {
+            $this->db->order_by($order_by['filed'], $order_by['order']);
+        }
+
+        $query = $this->db->get();
+
+        //echo $this->db->last_query();exit();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+        //return $query;
+    }
+
+
+
+
     public function getStateByAjax() {
         $data = array();
         $id = $this->input->post('state');
@@ -580,9 +700,11 @@ class Global_model extends CI_Model {
 
     public function getViewByProfession($table, $profession){
         $productList = array();
+        $this->db->order_by("$table" ."."."id", "DESC");
         $sql = $this->db->select('*')
             ->from($table)
             ->get();
+
 
 
 
@@ -601,6 +723,7 @@ class Global_model extends CI_Model {
             }
         }
 
+        ///echo $this->db->last_query();exit();
 
 
         return $productList;

@@ -97,6 +97,10 @@
                           <li class="list-group-item">
                               <b>Phone</b> <span class="pull-right"><?php echo (!empty($user_info['phone']))?$user_info['phone']:'<span class="badge bg-red">Not Given</span>'; ?></span>
                           </li>
+
+                          <li class="list-group-item">
+                              <b>University / College Name</b> <span class="pull-right"><?php echo (!empty($user_info['university_clg']))?$user_info['university_clg']:'<span class="badge bg-red">Not Given</span>'; ?></span>
+                          </li>
                       </ul>
 
                       <a href="<?php echo base_url('profile/update'); ?>" class="btn btn-primary btn-block"><b>Update Your Information</b> <i class="fa fa-arrow-circle-right"></i></a>

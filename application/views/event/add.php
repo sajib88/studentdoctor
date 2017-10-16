@@ -38,6 +38,16 @@
             </div>
         </div>
     <?php } ?>
+
+        <?php if($this->session->flashdata('message2')){ ?>
+            <div class="col-lg-12">
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong> New Category  Create successfully.</strong>
+                </div>
+            </div>
+        <?php } ?>
+
         <form  method="post" id="event" name="event" enctype="multipart/form-data" action="<?php echo base_url('event/add'); ?>">
             <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
         <div class="col-md-6 ">
@@ -54,19 +64,24 @@
                         </div>
                         <div class="form-group">
                             <label>Event Category <span class="error">*</span></label><span id='category' class='error' for='main_category'></span>
-                            <select onchange="getSubCat(this)" name="category" class="form-control">
-                                <option value="">Select Event category</option>
-                                <option value="Conferences">Conferences</option>
-                                <option value="Education">Education</option>
-                                <option value="Fundraisers">Fundraisers</option>
-                                <option value="Health Observances">Health Observances</option>
-                                <option value="Public Events">Public Events</option>
-                                <option value="Seminars">Seminars</option>
-                                <option value="Special Events">Special Events</option>
-                                <option value="Support Groups">Support Groups</option>
 
+
+                            <select onchange="getSubCat(this)" name="category"  class="form-control">
+                                <option value="">Select</option>
+                                <?php
+                                if (is_array($main_cat)) {
+                                    foreach ($main_cat as $dynmic_cat) {
+                                        ?>
+                                        <option value="<?php echo $dynmic_cat->id; ?>"><?php echo $dynmic_cat->cat_name; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </select>
+
+                            <a data-toggle="modal" href="#myModal" >Create New Event Category</a>
                         </div>
+
                         <div class="form-group">
                             <label>Event Summary<span class="error">*</span></label><span id='summary' class='error' for='summary'></span>
                             <textarea  name="summary" class="form-control"></textarea>
@@ -167,6 +182,7 @@
                                 <div class="form-group" id="photo_id">
                                     <label>Event Main Picture<span class="error">*</span></label><span  class='error' for='picture1'></span>
                                     <input class="btn btn-default btn-cust" id='primary_photo' name="primary_photo" onchange="validateImage()" type="file">
+                                    <small class="label bg-green"> JPG, GIF, PNG Format allow</small>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -181,6 +197,21 @@
                                     <input class="btn btn-default btn-cust" name="photo_3" type="file">
                                 </div>
                             </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group" id="file_id">
+                                        <label>Event Document One</label><span id='file1-error' class='error' for='file1'></span>
+                                        <input class="btn btn-default btn-cust" name="file1" type="file">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Event Document Two</label><span id='audio-error' class='error' for='file'></span>
+                                        <input class="btn btn-default btn-cust" name="file2" type="file">
+                                    </div>
+                                </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -194,7 +225,7 @@
                         <div class="row">
                             <div class="col-lg-12 professionView">
                                 <div class="col-lg-6">
-                                    <label><h4>Who can see this?</h4></label>
+                                    <label><h4>Select profession(s) permitted to see your Event</h4></label>
                                 </div>
                                 <div class="col-lg-6 ">
                                     <div class="form-group">
@@ -237,24 +268,42 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
     </div>
-
-
         </form>
-
-
         </section>
+</div>
 
 
-    <!-- /.container-fluid -->
+
+
+<div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add New Category</h4>
+            </div>
+
+
+            <div class="modal-body">
+                <form role="form" method="post" id="post" enctype="multipart/form-data"
+                      action="<?php  echo base_url('Event/event/eventcat/'); ?>">
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Event Category Name<span class="error">*</span></label><span id="title-error" class="error" for="title"></span>
+                            <input name="cat_name" value="" class="form-control" required="">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-danger pull-left" type="button">Cancel</button>
+                        <input type="submit" name="submit" class="btn  btn-success" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -336,6 +385,14 @@ jQuery(document).ready(function() {
                 'photo_3': {
 
                     extension: "png,jpg,jpeg,gif"
+                },
+                'file1': {
+
+                    extension: "jpg,png,bmp,gif,pdf,tif,tiff,txt,csv,doc,docx,xls,xlsx,xlt,pps,ppt,pptx,ods"
+                },
+                'file2': {
+
+                    extension: "jpg,png,bmp,gif,pdf,tif,tiff,txt,csv,doc,docx,xls,xlsx,xlt,pps,ppt,pptx,ods"
                 }
 
 
@@ -361,7 +418,7 @@ jQuery(document).ready(function() {
                     required: "Event End Date is Required",
                 },
                 'primary_photo':{
-                    required : "<p class='text-danger'>Please upload atleast 1 photo</p>",
+                    required : "<p class='text-danger'>Please upload at least 1 photo.</p>",
                     extension:"Only Image Format  file is allowed!"
                 },
                 'photo_2':{
@@ -371,6 +428,12 @@ jQuery(document).ready(function() {
                 'photo_3':{
 
                     extension:"Only Image Format  file is allowed!"
+                },
+                'file1':{
+                    extension:"Only File Format  file is allowed!"
+                },
+                'file2':{
+                    extension:"Only File Format  file is allowed!"
                 }
 
             }

@@ -38,6 +38,15 @@
                 </div>
             </div>
         <?php } $this->session->unset_userdata('message') ?>
+
+        <?php if($this->session->flashdata('message2')){ ?>
+            <div class="col-lg-12">
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>  Group Category Create successfully.</strong>
+                </div>
+            </div>
+        <?php } $this->session->unset_userdata('message2') ?>
         <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('group/add'); ?>">
             <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
             <div class="col-md-6 ">
@@ -54,20 +63,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Group Category <span class="error">*</span></label><span id='category' class='error' for='main_category'></span>
-                                <select onchange="getSubCat(this)" name="category" class="form-control">
-                                    <option value="">Select Group Category</option>
-
-                                    <option value="Chiropractor">Chiropractor</option>
-                                    <option value="Dentist">Dentist</option>
-                                    <option value="General">General</option>
-                                    <option value="Optometrist">Optometrist</option>
-                                    <option value="Ph.D">Ph.D</option>
-                                    <option value="Pharmacist">Pharmacist</option>
-                                    <option value="Physician">Physician</option>
-                                    <option value="Podiatrist">Podiatrist</option>
-                                    <option value="Professional">Professional</option>
-
+                                <select onchange="getSubCat(this)" name="category"  class="form-control">
+                                    <option value="">Select</option>
+                                    <?php
+                                    if (is_array($main_cat)) {
+                                        foreach ($main_cat as $dynmic_cat) {
+                                            ?>
+                                            <option value="<?php echo $dynmic_cat->id; ?>"><?php echo $dynmic_cat->cat_name; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </select>
+                                <a data-toggle="modal" href="#myModal" >Create New Group Category</a>
                             </div>
                             <div class="form-group">
                                 <label>Group Description<span class="error">*</span></label><span id='Description' class='error' for='description'></span>
@@ -123,7 +131,7 @@
                             <div class="row">
                                 <div class="col-lg-12 professionView">
                                     <div class="col-lg-6">
-                                        <label><h4>Who can see this?</h4></label>
+                                        <label><h4>Select profession(s) permitted to see your group. </h4></label>
                                     </div>
                                     <div class="col-lg-6 ">
                                         <div class="form-group">
@@ -171,6 +179,47 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.container-fluid -->
+</div>
+
+
+
+
+
+<div aria-hidden="false" aria-labelledby="myModal" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add New Category</h4>
+            </div>
+            <?php if($this->session->flashdata('message2')){ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>  Group Category Create successfully.</strong>
+                    </div>
+                </div>
+            <?php } $this->session->unset_userdata('message2') ?>
+
+            <div class="modal-body">
+                <form role="form" method="post" id="post" enctype="multipart/form-data"
+                      action="<?php  echo base_url('Group/group/grouptcat/'); ?>">
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Group Category Name<span class="error">*</span></label><span id="title-error" class="error" for="title"></span>
+                            <input name="cat_name" value="" class="form-control" required="required">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-danger pull-left" type="button">Cancel</button>
+                        <input type="submit" name="submit" class="btn  btn-success" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
     <script type="text/javascript">
 

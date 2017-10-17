@@ -35,7 +35,10 @@
                             <div class="box-footer no-padding">
                                 <ul class="nav nav-stacked">
                                     <li><a href="#">Group Name <span class="pull-right"><?php echo (!empty($row->group_name))?$row->group_name:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
-                                    <li><a href="#">Group Category <span class="pull-right"><?php echo (!empty($row->category))?$row->category:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#">Group Category <span class="pull-right">  <?php
+                                                $data = get_data('group_main_cat', array('id' => $row->category));
+                                                echo $data['cat_name'];
+                                                ?></span></a></li>
                                     <li><a href="#">Group  Date<span class="pull-right"><?php echo (!empty($row->create_date))?$row->create_date:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#"><?php echo substr($row->description,0,60).'.....'; ?></a></li>
 
@@ -47,7 +50,7 @@
                                 <a href="<?php echo base_url('group/edit/' . $row->id); ?>" class="btn btn-block btn-success"> Edit</a>
                                 <a href="<?php echo base_url('group/group/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a>
 
-
+                                p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoO8L647bJH9/IUIC2TwyjrwEVClOyqb3tYVgW4qCbgpS/kWHQTkkndG/D6i4vRnPyj+iW8JR4UkYYYohgbeBi4NcZ70I1vfUDx46szSMVGci5f1CQEnfkWHoaImHyRNmiFvrM0H91nZ90+tVscIC6Wt83exguascvMZR+ZA9XnIVT+RWVD97fPCpjiodvSHqo" VGMkMTMqpGvAYaH+XDDMEgEzBJScCOaD1c1ZEjeUdwTUMGFEK44QCvk6dbG8XnlNeRLGr9EW1LEqAkIEmkQufRiTe9KyjMwyez4zpzq0ic7+2WGSFU/Sz2cmiZrgxa2ncmUGpZkHX3k7JYq4TLgqQIDAQAB\;
                             </div>
                         </div>
                     </div>

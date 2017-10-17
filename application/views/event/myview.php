@@ -30,14 +30,14 @@
                                     <div class="col-sm-6 nopadding">
                                         <time class="start pink">
                                             EVENT <span class="day">START</span>
-                                            <span class="month"><?php echo date('m-d-Y', strtotime($row->start_date)); ?></span>
+                                            <span class="month"><?php echo date('d-m-Y', strtotime($row->start_date)); ?></span>
                                             <span class="year"><?php echo date('H:i:s A', strtotime($row->start_time)); ?></span>
                                         </time>
                                     </div>
                                     <div class="col-sm-6 nopadding">
                                         <time class="end purple">
                                             EVENT <span class="day">END</span>
-                                            <span class ="month"><?php echo date('m-d-Y', strtotime($row->end_date)); ?></span>
+                                            <span class ="month"><?php echo date('d-m-Y', strtotime($row->end_date)); ?></span>
                                             <span class="year"><?php echo date('H:i:s A', strtotime($row->end_time)); ?></span>
                                         </time>
                                     </div>

@@ -25,9 +25,12 @@
                             </div>
                             <div class="box-footer no-padding">
                                 <ul class="nav nav-stacked">
-                                    <li><a href="#">Group Name <span class="pull-right"><?php echo (!empty($row['group_name']))?$row['group_name']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
-                                    <li><a href="#">Group Category <span class="pull-right"><?php echo (!empty($row['category']))?$row['category']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
-                                    <li><a href="#">Group  Date<span class="pull-right"><?php echo (!empty($row['create_date']))?$row['create_date']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#"><b>Group Name</b> <span class="pull-right"><?php echo substr( $row['group_name'],0,30).'More..'; ?></a></span></a></li>
+                                    <li><a href="#"><b>Group Category </b><span class="pull-right"><?php
+                                                $data = get_data('group_main_cat', array('id' => $row['category']));
+                                                echo $data['cat_name'];
+                                                ?></span></a></li>
+                                    <li><a href="#"><b>Group  Date </b><span class="pull-right"><?php echo date('d-m-y', strtotime($row['create_date'])); ?></span></a></li>
                                     <li><a><?php echo substr( $row['description'],0,90).'.....'; ?></a></li>
 
                                 </ul>
@@ -36,7 +39,7 @@
                             <div class="box-footer">
 
 
-                                <a href="<?php echo base_url('Group/group/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-dropbox"> Discussion</a>
+                                <a href="<?php echo base_url('group/layoutfull/' . $row['id']); ?>" class="btn btn-block btn-dropbox"> Discussion</a>
                             </div>
                         </div>
                     </div>

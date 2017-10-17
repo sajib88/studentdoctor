@@ -197,7 +197,7 @@ class group extends CI_Controller {
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
         $profession = $this->session->userdata('user_type');
         $data['viewallevent'] = $this->global_model->getViewByProfession('gorupfad', $profession);
-        //$data['viewallevent'] = $this->global_model->get('gorupfad');
+
 
         $this->load->view('header', $data);
         $this->load->view('group/detailsview', $data);
@@ -266,9 +266,9 @@ class group extends CI_Controller {
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
 
-        $id = $this->uri->segment('4');
+        $id = $this->uri->segment('3');
 
-        $data['getid']  = $this->uri->segment('4');
+        $data['getid']  = $this->uri->segment('3');
         $data['layoutfull'] = $this->global_model->get_data('gorupfad', array('id' => $id));
         $data['main_cat'] = $this->global_model->get('group_main_cat');
         /// Author

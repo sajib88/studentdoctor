@@ -119,6 +119,9 @@ $route['group/viewall'] = 'group/group/viewall';
 $route['group/mygroup'] = 'group/group/mygroup';
 $route['group/search'] = 'group/group/search';
 $route['group/edit/(:any)'] = 'group/group/edit/$1';
+$route['group/layoutfull/(:any)'] = 'group/group/layoutfull/$1';
+
+
 
 ///inside blog
 $route['insideblog/create'] = 'insideblog/insideblog/insideblogcreate';

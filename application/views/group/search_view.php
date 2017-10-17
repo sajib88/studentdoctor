@@ -139,11 +139,11 @@
 
                                                         <th class="numeric"><?php echo 'Group Title'; ?></th>
 
-                                                        <th class="numeric"><?php echo 'Group Description '; ?></th>
+                                                        <th class="numeric"><?php echo 'Description '; ?></th>
 
-                                                        <th class="numeric"><?php echo 'Group Category'; ?></th>
+                                                        <th class="numeric"><?php echo 'Category'; ?></th>
 
-                                                        <th class="numeric"><?php echo 'Group  	Discussion '; ?></th>
+
 
 
                                                         <th class="numeric"><?php echo 'View'; ?></th>
@@ -158,10 +158,10 @@
                                                             <tr>
                                                                 <td><?php echo $i; ?></td>
                                                                 <td data-title="<?php echo 'Event Title'; ?>"
-                                                                    class="numeric"><?php echo $row->group_name; ?></td>
+                                                                    class="numeric"><b><?php echo $row->group_name; ?></b></td>
                                                                 <td data-title="<?php echo 'summary'; ?>"
                                                                     class="numeric"><span
-                                                                        class=""><?php echo $row->description; ?></span>
+                                                                        class=""> <?php echo substr( $row->description,0,40).'More..'; ?></span>
                                                                 </td>
                                                                 <td data-title="<?php echo 'Category'; ?>"
                                                                     class="numeric"><span
@@ -170,10 +170,7 @@
                                                                         echo $data['cat_name'];
                                                                         ?></span>
                                                                 </td>
-                                                                <td data-title="<?php echo 'location'; ?>"
-                                                                    class="numeric"><span
-                                                                        class=""><?php echo $row->discussion; ?></span>
-                                                                </td>
+
 
                                                                 <td data-title="<?php echo 'View'; ?>" class="numeric">
                                                                     <a href="<?php echo base_url('group/layoutfull/' . $row->id); ?>" class="btn btn-block btn-dropbox"> View</a></td>

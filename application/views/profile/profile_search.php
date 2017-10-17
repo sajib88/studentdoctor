@@ -169,7 +169,9 @@
                                                                         <li class="list-group-item">Email <span class="pull-right  "><?php echo (!empty($row->email))?$row->email:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                                         <li class="list-group-item">Phone <span class="pull-right "><?php echo (!empty($row->phone))?$row->phone:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                                     </ul>
-                                                                    <span class="show_button"><a href="#" class=" btn btn-block btn-success">See More</a></span>
+                                                                    <span class="show_button">
+                                                                        <a href="<?php echo base_url() .'showProfile/' .$row->id; ?>" class=" btn btn-block btn-success">See More</a>
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -144,6 +144,10 @@ $route['product/list'] = 'product/products/myproduct';
 $route['product/details/(:any)'] = 'product/products/layoutfull/$1';
 $route['product/edit/(:any)'] = 'product/products/edit/$1';
 
+///search profile detail
+$route['showProfile/(:any)'] = 'profile/profile/showThisProfile/$1';
+
+
 
 
 

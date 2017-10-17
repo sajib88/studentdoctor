@@ -100,6 +100,17 @@ class Profile extends CI_Controller {
         $this->load->view('footer');
     }
 
+    public function showThisProfile($id="") {
+        $data = array();
+        $data['page_title'] = 'Profile';
+        $data['tabActive'] = 'profile';
+        $data['error'] = '';
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $id));
+        $this->load->view('header', $data);
+        $this->load->view('profile/searchProfileView', $data);
+        $this->load->view('footer');
+    }
+
     public function getStateByAjax() {
         $data = array();
         $id = $this->input->post('state');

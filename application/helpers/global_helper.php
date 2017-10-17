@@ -158,6 +158,21 @@ if (!function_exists('uploadEvent')) {
 
 }
 
+if (!function_exists('uploadInsideBlog')) {
+    function uploadInsideBlog() {
+        $CI = &get_instance();
+        $CI->load->library('upload');
+        $config['upload_path'] = './assets/file/insideblog/';
+
+        $config['allowed_types'] = '*';
+        $config['overwrite'] = FALSE;
+        $config['remove_spaces'] = TRUE;
+        $config['file_name'] =time();
+        $CI->upload->initialize($config);
+    }
+
+}
+
 if (!function_exists('uploadGroup')) {
     function uploadGroup() {
         $CI = &get_instance();
@@ -402,6 +417,21 @@ if (!function_exists('getNameById')) {
         $result = $CI->global_model->get_data('users', array('id' => $Id));
         if ($result['first_name']) {
             return $result['first_name'];
+        } else {
+            return false;
+        }
+    }
+
+}
+
+if (!function_exists('catNameById')) {
+
+    function catNameById($Id='') {
+        $CI = &get_instance();
+
+        $result = $CI->global_model->get_data('insideblog_cat', array('id' => $Id));
+        if ($result['cat_name']) {
+            return $result['cat_name'];
         } else {
             return false;
         }

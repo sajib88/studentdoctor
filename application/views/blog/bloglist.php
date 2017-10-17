@@ -94,11 +94,13 @@
                             }
                             ?>
                         </div>
+
                     </div>
                 </div>
             </div><!--container-->
     </section>
 </main>
+
 
 
 
@@ -223,5 +225,11 @@
         margin-right: 5px;
     }
 
+    #colorstar { color: #ee8b2d;}
+    .badForm {color: #FF0000;}
+    .goodForm {color: #00FF00;}
+    .evaluation { margin-left:30px;}
+
 
 </style>
+

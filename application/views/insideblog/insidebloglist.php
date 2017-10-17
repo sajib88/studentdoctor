@@ -10,6 +10,7 @@
     }
     .blog-list-article a{
         margin-top: 10px;
+        width: 100%;
     }
 </style>
 

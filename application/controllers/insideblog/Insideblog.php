@@ -129,6 +129,20 @@ class Insideblog extends CI_Controller
 
             }
 
+            uploadInsideBlog();
+            //// File UPLOAD
+            if ($this->upload->do_upload('file1')) {
+                $fileInfo = $this->upload->data();
+                $file1['name'] = $fileInfo['file_name'];
+                $save['file1'] = $file1['name'];
+            }
+
+            if ($this->upload->do_upload('file2')) {
+                $fileInfo = $this->upload->data();
+                $file1['name'] = $fileInfo['file_name'];
+                $save['file2'] = $file1['name'];
+            }
+
            
             if ($this->global_model->insert('insideblog', $save)) {
                 $this->session->set_flashdata('message', 'Blog created successfully.');
@@ -142,10 +156,43 @@ class Insideblog extends CI_Controller
         }
 
         $data['login_id'] = $loginId;
+        $data['main_cat'] = $this->global_model->get('insideblog_cat');
          $this->load->view('header', $data);
         $this->load->view('insideblog/insideblogcreate', $data);
         $this->load->view('footer', $data);
         
+    }
+
+    public function blogtcat()
+    {
+        $data = array();
+        $data['page_title'] = 'Add New Category';
+        $data['tabActive'] = 'Event Category';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $user_type = $this->session->userdata('user_type');
+
+        if ($this->input->post()) {
+            $postData = $this->input->post();
+            $this->form_validation->set_rules('cat_name', 'cat_name', 'trim');
+
+
+            if ($this->form_validation->run() == true) {
+
+                $save['cat_name'] = $postData['cat_name'];
+                $save['created_by'] = $loginId;
+                $save['status'] = '1';
+
+                if ($ref_id = $this->global_model->insert('insideblog_cat', $save)) {
+
+                    $this->session->set_flashdata('message2');
+
+                }
+            }
+        }
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['login_id'] = $loginId;
+        redirect(base_url('insideblog/create'));
     }
 
 
@@ -226,7 +273,7 @@ class Insideblog extends CI_Controller
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
 
-        $data['allblog'] = $this->global_model->get('insideblog'); 
+        $data['allblog'] = $this->global_model->get('insideblog', array('user_id' => $loginId));
         //$data['singlepost'] = $this->global_model->get('blog_front');
 
         $this->load->view('header', $data);
@@ -325,6 +372,20 @@ class Insideblog extends CI_Controller
 
             }
 
+            uploadInsideBlog();
+            //// File UPLOAD
+            if ($this->upload->do_upload('file1')) {
+                $fileInfo = $this->upload->data();
+                $file1['name'] = $fileInfo['file_name'];
+                $save['file1'] = $file1['name'];
+            }
+
+            if ($this->upload->do_upload('file2')) {
+                $fileInfo = $this->upload->data();
+                $file1['name'] = $fileInfo['file_name'];
+                $save['file2'] = $file1['name'];
+            }
+
 
 
 
@@ -344,7 +405,7 @@ class Insideblog extends CI_Controller
 
         $data['editblog'] = $this->global_model->get_data('insideblog', array('id' => $id));
 
-
+        $data['main_cat'] = $this->global_model->get('insideblog_cat');
          $this->load->view('header', $data);
         $this->load->view('insideblog/edit', $data);
         $this->load->view('footer', $data);

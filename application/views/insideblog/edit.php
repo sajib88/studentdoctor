@@ -64,16 +64,21 @@
                                 <?php echo form_error('title');?>
                             </div>
                             <div class="form-group">
-                                <label>Category </label>
+                                <label>Blog Category </label>
                                 <?php $cat_type = array('General surgery','Radiation therapy','Neurosociology','Neurosurgery','Medical genetics','Dermatology','Cardiologists‎','Plastic surgery','Vaginogram');?>
                                 <select name="cat_type" class="form-control chosen-select" id="cat_type">
-                                    <option value="">Select Category</option>
+                                    <option value="">Select</option>
+                                    <?php
+                                    if (is_array($main_cat)) {
 
-                                    <?php foreach ($cat_type as $row) {
-                                        $v = (set_value('cat_type')!='')?set_value('cat_type'):$editblog['cat_type'];
-                                        $sel = ($v == $row)?'selected="selected"':'';?>
-                                        <option value="<?php echo $row;?>" <?php echo $sel;?>><?php echo $row?></option>
-                                    <?php }?>
+                                        foreach ($main_cat as $eventcat) {
+                                            echo $editblog['cat_type'];
+                                            ?>
+                                            <option <?php if ($eventcat->id == $editblog['cat_type']) echo 'selected'; ?> value="<?php echo $eventcat->id; ?>"><?php echo $eventcat->cat_name; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -106,9 +111,9 @@
                                 <label>Post Date</label><span id='date' class='error' for='start_date'></span>
                                 <input name="date" value="<?php echo $editblog['date']; ?>" type="text" class="form-control pull-right" id="datepicker">
                             </div>
-                            <div class="form-group bootstrap-timepicker">
+                            <div class="form-group">
                                 <label>Post Time :</label>
-                                <div class="input-group">
+                                <div class="input-group bootstrap-timepicker">
                                     <input name="time" value="<?php echo $editblog['time']; ?>" type="text" class="form-control timepicker">
                                     <div class="input-group-addon">
                                         <i class="fa fa-clock-o"></i>
@@ -174,6 +179,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>File One</label>
+                                        <input class="btn btn-default btn-cust" name="file1" type="file">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>File Two</label>
+                                        <input class="btn btn-default btn-cust" name="file2" type="file">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -186,7 +205,7 @@
                             <div class="row">
                                 <div class="col-lg-12 professionView">
                                     <div class="col-lg-6">
-                                        <label><h4>Who can see this?</h4></label>
+                                        <label><h4>Select profession(s) permitted to see your blog.</h4></label>
                                     </div>
                                     <div class="col-lg-6 ">
                                         <div class="form-group">
@@ -282,14 +301,11 @@
 
 jQuery(document).ready(function() {
     //Date picker
-    $('#datepicker2').datepicker({
-        autoclose: true,
-        minDate: new Date()
-    });
     $('#datepicker').datepicker({
         autoclose: true,
         startDate: new Date(),
-        todayHighlight: true
+        todayHighlight: true,
+        minDate: new Date()
     });
 
 

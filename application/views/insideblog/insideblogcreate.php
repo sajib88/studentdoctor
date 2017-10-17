@@ -26,7 +26,6 @@
         margin-top: 5px;
         margin-left: 15px;
     }
-
 </style>
 
 <div class="content-wrapper">
@@ -49,6 +48,14 @@
                 </div>
             </div>
         <?php } ?>
+            <?php if($this->session->flashdata('message2')){ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong> New Category  Create successfully.</strong>
+                    </div>
+                </div>
+            <?php } ?>
             <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url().'insideblog/create'; ?>">
                 <input type="hidden" name="user_id" value="<?php echo $login_id; ?>">
                 <div class="col-md-6 ">
@@ -66,19 +73,26 @@
                                 <?php echo form_error('title');?>
                             </div>
                             <div class="form-group">
-                                <label>Category </label>
-                                <?php $cat_type = array('General surgery','Radiation therapy','Neurosociology','Neurosurgery','Medical genetics','Dermatology','Cardiologists‎','Plastic surgery','Vaginogram');?>
-                                <select name="cat_type" class="form-control chosen-select" id="cat_type">
-                                    <option value="0">Select Category</option>
-                                    <?php foreach ($cat_type as $row) {?>
-                                        <option value="<?php echo $row;?>"><?php echo $row?></option>
-                                    <?php }?>
+                                <label>Blog Category <span class="error">*</span></label><span id='category' class='error' for='main_category'></span>
+                                <select onchange="getSubCat(this)" name="cat_type"  class="form-control">
+                                    <option value="">Select</option>
+                                    <?php
+                                    if (is_array($main_cat)) {
+                                        foreach ($main_cat as $dynmic_cat) {
+                                            ?>
+                                            <option value="<?php echo $dynmic_cat->id; ?>"><?php echo $dynmic_cat->cat_name; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </select>
+
+                                <a data-toggle="modal" href="#myModal" >Create New Blog Category</a>
                             </div>
                             <div class="form-group">
                                 <?php $v = (set_value('description')!='')?set_value('description'):'';?>
                                 <label>Description<span class="error">*</span></label>
-                                <textarea  name="description" placeholder="description" class="form-control textarea"><?php echo $v;?></textarea>
+                                <textarea name="description" placeholder="description" class="form-control textarea"><?php echo $v;?></textarea>
                                 <?php echo form_error('description');?>
                             </div>
                             <div class="form-group">
@@ -107,18 +121,17 @@
                                 <label>Post Date</label><span id='date' class='error' for='start_date'></span>
                                 <input name="date" type="text" class="form-control pull-right date" id="datepicker">
                             </div>
-                            <div class="form-group bootstrap-timepicker">
+                            <div class="form-group">
                                 <label>Post Time :</label>
-
-                                <div class="input-group">
+                                <div class="input-group bootstrap-timepicker">
                                     <input name="time" type="text" class="form-control timepicker">
-
                                     <div class="input-group-addon">
                                         <i class="fa fa-clock-o"></i>
                                     </div>
                                 </div>
                                 <!-- /.input group -->
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -132,7 +145,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group" id="photo_id">
-                                        <label>Picture One</label>
+                                        <label>Picture One <span class="error">*</span></label>
                                         <?php $v = (set_value('primary_image') != '')?set_value('primary_image'):'';?>
                                         <input class="btn btn-default btn-cust" name="primary_image" type="file" value="<?php echo $v;?>">
                                     </div>
@@ -161,6 +174,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>File One</label>
+                                        <input class="btn btn-default btn-cust" name="file1" type="file">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>File Two</label>
+                                        <input class="btn btn-default btn-cust" name="file2" type="file">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,7 +200,7 @@
                             <div class="row">
                                 <div class="col-lg-12 professionView">
                                     <div class="col-lg-6">
-                                        <label><h4>Who can see this?</h4></label>
+                                        <label class="cust-level">Select profession(s) permitted to see your blog.</h4></label>
                                     </div>
                                     <div class="col-lg-6 ">
                                         <div class="form-group">
@@ -222,6 +249,36 @@
     </section>
 </div>
 
+<div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add New Category</h4>
+            </div>
+
+
+            <div class="modal-body">
+                <form role="form" method="post" id="post" enctype="multipart/form-data"
+                      action="<?php  echo base_url('insideblog/Insideblog/blogtcat/'); ?>">
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Blog Category Name<span class="error">*</span></label><span id="title-error" class="error" for="title"></span>
+                            <input name="cat_name" value="" class="form-control" required="">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-danger pull-left" type="button">Cancel</button>
+                        <input type="submit" name="submit" class="btn  btn-success" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
@@ -235,10 +292,11 @@
 jQuery(document).ready(function() {
     //Date picker
     $('#datepicker').datepicker({
-        autoclose: true,
         startDate: new Date(),
         todayHighlight: true,
-        defaultDate: new Date()
+        defaultDate: new Date(),
+        autoclose: true,
+        format: "mm/dd/yyyy"
     });
 
     //Timepicker
@@ -317,7 +375,16 @@ jQuery(document).ready(function() {
             },
             'image3': {
                 extension: "png,jpg,jpeg,gif,bmp"
+            },
+            'file1': {
+
+                extension: "jpg,png,bmp,gif,pdf,tif,tiff,txt,csv,doc,docx,xls,xlsx,xlt,pps,ppt,pptx,ods"
+            },
+            'file2': {
+
+                extension: "jpg,png,bmp,gif,pdf,tif,tiff,txt,csv,doc,docx,xls,xlsx,xlt,pps,ppt,pptx,ods"
             }
+
         },
         messages:{
             title: {
@@ -344,6 +411,12 @@ jQuery(document).ready(function() {
             },
             'image3':{
                 extension:"Only Image Format  file is allowed!"
+            },
+            'file1':{
+                extension:"Only File Format  file is allowed!"
+            },
+            'file2':{
+                extension:"Only File Format  file is allowed!"
             }
         }
     });

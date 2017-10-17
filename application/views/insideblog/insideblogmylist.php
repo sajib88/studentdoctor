@@ -20,7 +20,7 @@
                 </div>
             </div>
         <?php } ?>
-
+        <?php if(!empty($allblog)){ ?>
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
@@ -66,7 +66,7 @@
                                                 class="numeric"><span class=""><?php echo substr($row->title, 0, 60); ?></span></td>
                                             
                                             <td data-title="<?php echo 'Category'; ?>"
-                                                class="numeric"><span class=""><?php echo $row->cat_type; ?></span></td>
+                                                class="numeric"><span class=""><?php echo catNameById($row->cat_type); ?></span></td>
 
                                             <td data-title="<?php echo 'Date & Time'; ?>"
                                                 class="numeric">
@@ -90,6 +90,14 @@
                 </div>
             </div>
        </div>
+            <?php }else{?>
+            <div class="col-md-12">
+                <div class="alert alert-warning text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    No Blog found <i class="fa fa-info"></i>
+                </div>
+            </div>
+        <?php }?>
         </div>
     </section>
 </div>

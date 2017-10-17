@@ -52,19 +52,19 @@ print_r($website_info);die;*/?>
                 <b>  Posted By </b>  : <?php echo $user_info['first_name'] . ' ' . $user_info['last_name']; ?><br/>
                 <?php if($website_info['appointment'] == 1){?>
                     <b>  Appointment </b>  : <?php echo 'Yes'; ?><br/>
-                    <b>  Start Appointment Date </b>  : <?php echo $website_info['start_date']; ?><br/>
-                    <b>  End Appointment Date </b>  : <?php echo $website_info['end_date']; ?><br/>
+                    <b>  Appointment Start Day </b>  : <?php echo $website_info['appointment_start_day']; ?><br/>
+                    <b>  Appointment End Day </b>  : <?php echo $website_info['appointment_end_day']; ?><br/>
                     <b>  Start Appointment Time </b>  : <?php echo $website_info['start_time']; ?><br/>
                     <b>  End Appointment Time </b>  : <?php echo $website_info['end_time']; ?><br/>
                 <?php }else{?>
                     <b>  Appointment </b>  : <?php echo 'No'; ?><br/>
                 <?php }?>
                 <b>  Country </b>  : <?php
-                $data = get_data('countries', array('id' => $user_info['country']));
+                $data = get_data('countries', array('id' => $website_info['country']));
                 echo $data['name'];
                 ?>
                 <br/>
-                <b>  City </b>  : <?php echo $user_info['state']; ?><br/>
+                <b>  City </b>  : <?php echo $website_info['state']; ?><br/>
                 <b>  Business Name </b>  : <?php echo $website_info['business_name']; ?><br/>
                 <b>  Business Email </b>  : <?php echo $website_info['business_email']; ?><br/>
                 <br/>

@@ -554,8 +554,8 @@ class Global_model extends CI_Model {
         $this->db->select('u.id, u.profession,u.first_name,u.last_name,u.user_name,u.email, u.profilepicture as photo,u.gender,u.phone,u.country,u.state,u.created,u.city,
                             public_website.business_name,public_website.business_website,public_website.business_email,public_website.business_telephone,public_website.business_fax,public_website.postal,
                             public_website.appointment,public_website.address_1,public_website.description,public_website.country,
-                            public_website.state,public_website.city,public_website.specialty,public_website.special_interest,public_website.start_date,
-                            public_website.end_date,public_website.start_time,public_website.end_time');
+                            public_website.state,public_website.city,public_website.specialty,public_website.special_interest,public_website.appointment_start_day,
+                            public_website.appointment_end_day,public_website.start_time,public_website.end_time');
         $this->db->from('users as u');
         $this->db->join('public_website', 'u.id = public_website.user_id' );
 

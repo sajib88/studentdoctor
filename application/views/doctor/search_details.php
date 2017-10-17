@@ -12,6 +12,14 @@
                     ?>
 	<section class="section-xs content-wrapper">
 		<div class="container">
+            <?php if($this->session->flashdata('message')){ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong><?php echo $this->session->flashdata('message');?></strong>
+                    </div>
+                </div>
+            <?php } $this->session->unset_userdata('message'); ?>
 			<div class="row v-center-items first-col-title  first-col-title">
 
 
@@ -75,8 +83,8 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="event">
-                                                <h5 class="mb-0">Start  Date &amp; Time</h5>
-                                                <div class="date"><?php echo date('d-m-y', strtotime(!(empty($row->start_date)) ? $row->start_date : '')); ?> - <?php echo (!(empty($row->start_time)) ? $row->start_time : '') ?></div>
+                                                <h5 class="mb-0">Start  Day &amp; Time</h5>
+                                                <div class="date"><?php echo !(empty($row->appointment_start_day))?$row->appointment_start_day.' - ' : ''; ?>  <?php echo (!(empty($row->start_time)) ? $row->start_time : '') ?></div>
 
 
                                             </div>
@@ -84,7 +92,7 @@
                                         <div class="col-sm-6">
                                             <div class="event">
                                                 <h5 class="mb-0">End  Date &amp; Time</h5>
-                                                <div class="date"><?php echo date('d-m-y', strtotime(!(empty($row->end_date)) ? $row->end_date : '')); ?> - <?php echo (!(empty($row->end_time)) ? $row->end_time : '') ?></div>
+                                                <div class="date"><?php echo !(empty($row->appointment_end_day))? $row->appointment_end_day.' - ' : ''; ?> <?php echo (!(empty($row->end_time)) ? $row->end_time : '') ?></div>
 
 
                                             </div>
@@ -120,24 +128,24 @@
                                 <form id="app-email-form" method="post">
                                     <div class="modal-body">
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="event">
-                                                    <div class="date"><?php echo date('F d, Y', strtotime(!(empty($row->start_date)) ? $row->start_date : '')); ?> - <?php echo (!(empty($row->start_time)) ? $row->start_time : '') ?></div>
-                                                    <h5 class="mb-0">Start  Date &amp; Time</h5>
-
+                                            <div class="col-md-12">
+                                                <div class="col-sm-6">
+                                                    <div class="event">
+                                                        <h5 class="mb-0">Start Day &amp; Time</h5>
+                                                        <div class="date"><?php echo !(empty($row->appointment_start_day))?$row->appointment_start_day.' - ' : ''; ?> <?php echo (!(empty($row->start_time)) ? $row->start_time : '') ?></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="event">
+                                                        <h5 class="mb-0">End  Day &amp; Time</h5>
+                                                        <div class="date"><?php echo !(empty($row->appointment_end_day))? $row->appointment_end_day.' - ' : ''; ?> - <?php echo (!(empty($row->end_time)) ? $row->end_time : '') ?></div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="event">
-                                                    <div class="date"><?php echo date('F d, Y', strtotime(!(empty($row->end_date)) ? $row->end_date : '')); ?> - <?php echo (!(empty($row->end_time)) ? $row->end_time : '') ?></div>
-                                                    <h5 class="mb-0">End  Date &amp; Time</h5>
-
-                                                </div>
-                                            </div>
 
 
 
-                                                <div class="col-md-12">
+                                                <div class="col-md-12 ptop-10">
                                                     <div class="col-md-12 mb-10">
                                                         <label for="login">Full Name:</label>
                                                         <input id="login" name="appointment_name" placeholder="First & Last name" class="form-control input-2" type="text">
@@ -160,7 +168,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                                        <button data-dismiss="modal" class="btn btn-danger pull-left" type="button">Cancel</button>
                                         <button class="btn btn-success" type="submit">Submit</button>
                                     </div>
                                 </form>
@@ -271,7 +279,7 @@
                                             foreach ($photos as $row) {
                                                 {
                                                     ?>
-                                                    <img src="<?php echo base_url() . '/assets/file/publicweb/' . $row->name ?>" width="160px;">
+                                                    <img src="<?php echo base_url() . '/assets/file/publicweb/' . $row->name ?>" width="160px;" height="160px">
                                                 <?php
                                                 }
                                             }
@@ -297,9 +305,6 @@
                                                 <h3 class="box-title"> <i class="fa fa-file-video-o"></i> MEDIA VIDEO</h3>
                                             </div>
                                             <div class="box-body">
-
-
-
                                                 <video id="my-video" class="video-js" controls preload="auto" width="340" height="164"
                                                        poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
                                                     <source src="<?php echo base_url() . '/assets/file/publicweb/' . $row->name; ?>" type='video/mp4'>
@@ -563,6 +568,7 @@
                 function(result){
                     if(result=='success'){
                         console.log('test'+result);
+                        alert(result);
                     }
 
                 },

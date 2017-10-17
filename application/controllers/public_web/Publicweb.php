@@ -58,7 +58,8 @@ class Publicweb extends CI_Controller {
 
                 $save['user_id'] = $loginId;
                 $save['appointment'] = $postData['appointment'];
-                $save['appointment_day'] = $postData['appointment_day'];
+                $save['appointment_start_day'] = $postData['appointment_start_day'];
+                $save['appointment_end_day'] = $postData['appointment_end_day'];
                 /*$save['start_date'] = $postData['start_date'];
                 $save['end_date'] = $postData['end_date'];*/
                 $save['start_time'] = $postData['start_time'];
@@ -88,7 +89,7 @@ class Publicweb extends CI_Controller {
 
                 if ($insertedId = $this->global_model->insert('public_website', $save)) {
 
-                    uploadpublicweb();
+
 
                     if (isset($_FILES["photo1"]["name"]) && $_FILES["photo1"]["name"] != '') {
                         $this->PATH = './assets/file/publicweb/';
@@ -307,7 +308,8 @@ class Publicweb extends CI_Controller {
                 if($save['appointment'] == 0){
                     /*$save['start_date'] = 'null';
                     $save['end_date'] = 'null';*/
-                    $save['appointment_day'] = 'null';
+                    $save['appointment_start_day'] = 'null';
+                    $save['appointment_end_day'] = 'null';
                     $save['start_time'] = 'null';
                     $save['end_time'] = 'null';
 
@@ -315,7 +317,8 @@ class Publicweb extends CI_Controller {
                 else{
                     /*$save['start_date'] = $postData['start_date'];
                     $save['end_date'] = $postData['end_date'];*/
-                    $save['appointment_day'] = $postData['appointment_day'];
+                    $save['appointment_start_day'] = $postData['appointment_start_day'];
+                    $save['appointment_end_day'] = $postData['appointment_end_day'];
                     $save['start_time'] = $postData['start_time'];
                     $save['end_time'] = $postData['end_time'];
                 }

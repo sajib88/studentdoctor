@@ -36,18 +36,33 @@
                         <div id="set_date_time" style="display: none">
 
                             <?php $days = array('Sat','Sun','Mon','Tue','Wed','Thr','Fri')?>
-
-                            <div class="form-group">
-                                <label>Your Appointment</label>
-                                <select name="appointment_day" class="form-control">
-                                    <?php foreach ($days as $day){
-                                        $sel = ($day == $website_info['appointment_day'])?'selected="selected"':'';?>
-                                        <option  value="<?php echo $day?>" <?php echo $sel;?>><?php echo $day;?></option>
-                                    <?php }?>
-                                </select>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Appointment Start Day</label>
+                                        <select name="appointment_start_day" class="form-control">
+                                            <?php foreach ($days as $day){
+                                                $sel = ($day == $website_info['appointment_day'])?'selected="selected"':'';?>
+                                                <option  value="<?php echo $day?>" <?php echo $sel;?>><?php echo $day;?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Appointment End Day</label>
+                                        <select name="appointment_end_day" class="form-control">
+                                            <?php foreach ($days as $day){
+                                                $sel = ($day == $website_info['appointment_day'])?'selected="selected"':'';?>
+                                                <option  value="<?php echo $day?>" <?php echo $sel;?>><?php echo $day;?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
 
+                            <div class="row">
                             <div class="col-lg-6 bootstrap-timepicker">
                                 <div class="form-group">
                                     <label>Start Appointment Time :</label>
@@ -80,29 +95,30 @@
                                 </div>
                                 <!-- /.form group -->
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Do you want to add your online store?</label>
-                            <select name="store" class="form-control" id="js_store" >
-                                <option value="">Please Select</option>
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </select>
-                        </div>
-                        <div id="store_name" style="display: none">
-                            <div class="form-group">
-                                <?php if(!empty($onlinestore)){
-                                    foreach ($onlinestore as $row){
-                                        ?>
-                                        <input type="hidden" name="store_id" value="<?php echo $row->id;?>">
-                                        <div class="alert alert-warning"> <?php echo "Your Store Name : ".$row->store_name;?></div>
-                                    <?php  }
-                                }else { ?>
-                                    <div class="alert alert-danger"> <?php echo "You don't have any Store : "?><a class="btn btn-info" href="<?php echo base_url().'store/store/'?>">Create Here</a></div>
-                                <?php }
-                                ?>
                             </div>
                         </div>
+<!--                        <div class="form-group">-->
+<!--                            <label>Do you want to add your online store?</label>-->
+<!--                            <select name="store" class="form-control" id="js_store" >-->
+<!--                                <option value="">Please Select</option>-->
+<!--                                <option value="1">Yes</option>-->
+<!--                                <option value="0">No</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                        <div id="store_name" style="display: none">-->
+<!--                            <div class="form-group">-->
+<!--                                --><?php //if(!empty($onlinestore)){
+//                                    foreach ($onlinestore as $row){
+//                                        ?>
+<!--                                        <input type="hidden" name="store_id" value="--><?php //echo $row->id;?><!--">-->
+<!--                                        <div class="alert alert-warning"> --><?php //echo "Your Store Name : ".$row->store_name;?><!--</div>-->
+<!--                                    --><?php // }
+//                                }else { ?>
+<!--                                    <div class="alert alert-danger"> --><?php //echo "You don't have any Store : "?><!--<a class="btn btn-info" href="--><?php //echo base_url().'store/store/'?><!--">Create Here</a></div>-->
+<!--                                --><?php //}
+//                                ?>
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="form-group">
                             <label>Public Website Title</label>
                             <input name="title" value="<?php echo set_value('title'); ?>"  class="form-control">

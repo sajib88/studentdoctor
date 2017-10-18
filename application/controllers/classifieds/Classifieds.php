@@ -16,6 +16,38 @@ class Classifieds extends CI_Controller {
 
     }
 
+    public function addCat()
+    {
+        $data = array();
+        $data['page_title'] = 'Add New Category';
+        $data['tabActive'] = 'Classified Category';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $user_type = $this->session->userdata('user_type');
+
+        if ($this->input->post()) {
+            $postData = $this->input->post();
+            $this->form_validation->set_rules('cat_name', 'cat_name', 'trim');
+
+
+            if ($this->form_validation->run() == true) {
+
+                $save['name'] = $postData['cat_name'];
+                $save['created_by'] = $loginId;
+                $save['status'] = '1';
+
+                if ($ref_id = $this->global_model->insert('classified_main_cat', $save)) {
+
+                    $this->session->set_flashdata('message2', 'New Category Create successfully.');
+                    redirect(base_url('classifieds/add'));
+                }
+            }
+        }
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['login_id'] = $loginId;
+
+    }
+
 
 
     public function add()
@@ -443,6 +475,47 @@ class Classifieds extends CI_Controller {
         $data['cld_sub_cat'] = $states;
         echo $this->load->view('classified_sub_cat', $data, TRUE);
         exit;
+    }
+
+    public function search(){
+        $this->load->helper('global_helper');
+        $data = array();
+        $data['page_title'] = 'Search';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+
+
+        $this->form_validation->set_rules('title');
+        $this->form_validation->set_rules('main_cat');
+        $this->form_validation->set_rules('price');
+        $this->form_validation->set_rules('description');
+
+
+        if($this->input->post()){
+            $postData = $this->input->post();
+            $value = array();
+            $value['title'] = (!empty($postData['title']))?$postData['title']:'';
+            $value['main_cat'] = (!empty($postData['main_cat']))?$postData['main_cat']:'';
+            $value['price'] = (!empty($postData['price']))?$postData['price']:'';
+            $value['description'] = (!empty($postData['description']))?$postData['description']:'';
+
+            $data['result'] = $this->global_model->get_classified_search_data('classified',$value,FALSE,FALSE);
+
+
+        }
+
+        $data['page_title'] = 'Classified search';
+        $data['tabActive'] = 'Classifie';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['countries'] = $this->global_model->get('countries');
+        $data['profession'] = $this->global_model->get('profession');
+        $data['main_cat'] = $this->global_model->get('classified_main_cat');
+        $this->load->view('header', $data);
+        $this->load->view('classifieds/classified_search', $data);
+        $this->load->view('footer');
+
     }
 
 }

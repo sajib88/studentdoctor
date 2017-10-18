@@ -554,8 +554,8 @@ class Global_model extends CI_Model {
         $this->db->select('u.id, u.profession,u.first_name,u.last_name,u.user_name,u.email, u.profilepicture as photo,u.gender,u.phone,u.country,u.state,u.created,u.city,
                             public_website.business_name,public_website.business_website,public_website.business_email,public_website.business_telephone,public_website.business_fax,public_website.postal,
                             public_website.appointment,public_website.address_1,public_website.description,public_website.country,
-                            public_website.state,public_website.city,public_website.specialty,public_website.special_interest,public_website.start_date,
-                            public_website.end_date,public_website.start_time,public_website.end_time');
+                            public_website.state,public_website.city,public_website.specialty,public_website.special_interest,public_website.appointment_start_day,
+                            public_website.appointment_end_day,public_website.start_time,public_website.end_time');
         $this->db->from('users as u');
         $this->db->join('public_website', 'u.id = public_website.user_id' );
 
@@ -653,6 +653,48 @@ class Global_model extends CI_Model {
         if (!empty($data['last_name'])) {
 
             $this->db->where('last_name', $data['last_name']);
+        }
+
+        if (!empty($limit)) {
+
+            $this->db->limit($limit['limit'], $limit['start']);
+        }
+
+        if (!empty($order_by)) {
+            $this->db->order_by($order_by['filed'], $order_by['order']);
+        }
+
+        $query = $this->db->get();
+
+        //echo $this->db->last_query();exit();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+        //return $query;
+    }
+
+    public function get_classified_search_data($table, $data, $limit = FALSE, $order_by = FALSE) {
+        $this->db->select('*')->from($table);
+
+        if (!empty($data['main_cat'])) {
+
+            $this->db->where('main_cat', $data['main_cat']);
+        }
+        if (!empty($data['title'])) {
+
+            $this->db->like('title', $data['title']);
+        }
+
+        if (!empty($data['price'])) {
+
+            $this->db->like('price', $data['price']);
+        }
+        if (!empty($data['description'])) {
+
+            $this->db->like('description', $data['description']);
         }
 
         if (!empty($limit)) {

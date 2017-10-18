@@ -47,15 +47,15 @@
                     <strong><?php echo $data;?></strong>
                 </div>
             </div>
-        <?php } ?>
+        <?php } $this->session->unset_userdata('message'); ?>
             <?php if($this->session->flashdata('message2')){ ?>
                 <div class="col-lg-12">
                     <div class="alert alert-success alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong> New Category  Create successfully.</strong>
+                        <strong><?php echo $this->session->flashdata('message2'); ?></strong>
                     </div>
                 </div>
-            <?php } ?>
+            <?php } $this->session->unset_userdata('message2'); ?>
             <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url().'insideblog/create'; ?>">
                 <input type="hidden" name="user_id" value="<?php echo $login_id; ?>">
                 <div class="col-md-6 ">

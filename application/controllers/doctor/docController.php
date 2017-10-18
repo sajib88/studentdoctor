@@ -169,7 +169,7 @@ class DocController extends CI_Controller
             $savedata['date'] = date("Y-m-d");
 
             if ($ref_id = $this->global_model->insert('appointment', $savedata)) {
-                $this->session->set_flashdata('message', 'Save Success');
+                $this->session->set_flashdata('message', 'Your Appointment sent successfully.');
             }
             $this->_send_appointment_email($postdata);
             $this->session->set_flashdata('msg', 'Email send Successfully');

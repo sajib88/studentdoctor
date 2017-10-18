@@ -59,9 +59,9 @@
                                 <td data-title="<?php echo 'email'; ?>"
                                     class="numeric"><span class="label label-info"><?php echo $row->email; ?></span></td>
 
-                                <td data-title="<?php echo 'action'; ?>" class="numeric"> <a href="<?php echo base_url('admin/users/changeUserStatus') . '/' . $row->id . '/' . $row->confirmed; ?>">
+                                <td data-title="<?php echo 'action'; ?>" class="numeric"> <a href="<?php echo base_url('admin/users/changeUserStatus') . '/' . $row->id . '/' . $row->status; ?>">
                                         <?php
-                                        if ($row->confirmed == 1) {
+                                        if ($row->status == 1) {
                                             echo '<button class="btn btn-success">Active</button>';
                                         } else {
                                             echo '<button class="btn btn-danger">Inactive</button>';

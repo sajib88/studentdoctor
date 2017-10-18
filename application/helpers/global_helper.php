@@ -454,6 +454,21 @@ if (!function_exists('classifiedcatName')) {
 
 }
 
+if (!function_exists('productCatName')) {
+
+    function productCatName($Id='') {
+        $CI = &get_instance();
+
+        $result = $CI->global_model->get_data('product_main_cat', array('id' => $Id));
+        if ($result['cat_name']) {
+            return $result['cat_name'];
+        } else {
+            return false;
+        }
+    }
+
+}
+
 if (!function_exists('getImage')) {
 
     function getImage($imageType='',$Id='') {

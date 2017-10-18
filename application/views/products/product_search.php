@@ -144,7 +144,7 @@
                                                     <div class="box-footer no-border">
                                                         <ul class=" list-group list-group-unbordered">
                                                             <li class="list-group-item">Product Name <span class="pull-right  "><?php echo (!empty($row->name))?substr($row->name, 0, 20):''?></span></li>
-                                                            <li class="list-group-item">Category <span class="pull-right  "><?php echo (!empty($row->type))?$row->type:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                            <li class="list-group-item">Category <span class="pull-right  "><?php echo (!empty($row->type))?productCatName($row->type):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                             <li class="list-group-item">Price <span class="pull-right  ">$<?php echo (!empty($row->price))?$row->price:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                             <li class="list-group-item">Speacial Price <span class="pull-right  ">$<?php echo (!empty($row->special_price))?$row->special_price:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                             <li class="list-group-item">Description <span class="pull-right "><?php echo (!empty($row->description))?substr($row->description, 0 ,20):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>

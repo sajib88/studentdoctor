@@ -40,6 +40,15 @@
         </div>
     <?php } ?>
 
+    <?php if($this->session->flashdata('message2')){ ?>
+        <div class="col-lg-12">
+            <div class="alert alert-success alert-dismissible">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong><?php echo $this->session->flashdata('message2'); ?></strong>
+            </div>
+        </div>
+    <?php } $this->session->unset_userdata('message2'); ?>
+
     <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('product/add'); ?>">
         <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
 
@@ -59,13 +68,20 @@
                         </div>
                         <div class="form-group">
                             <label>Type<span class="error">*</span></label><span id='type-error' class='error' for='type'></span>
-                            <?php $types = array('For Sales','Exchange','Free','Urgent');?>
-                            <select name="type" class="form-control chosen-select" id="type">
-                                <option value="">Select Type</option>
-                                <?php foreach ($types as $row) {?>
-                                    <option value="<?php echo $row;?>"><?php echo $row?></option>
-                                <?php }?>
+
+                            <select onchange="getSubCat(this)" name="type" class="form-control">
+                                <option value="">Select</option>
+                                <?php
+                                if (is_array($main_cat)) {
+                                    foreach ($main_cat as $cat) {
+                                        ?>
+                                        <option value="<?php echo $cat->id; ?>"><?php echo $cat->cat_name; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
                             </select>
+                            <a data-toggle="modal" href="#myModal" >Create New Blog Category</a>
                         </div>
                         <div class="form-group">
                             <?php $v = (set_value('description')!='')?set_value('description'):'';?>
@@ -258,7 +274,7 @@
                         <div class="row">
                             <div class="col-lg-12 professionView">
                                 <div class="col-lg-6">
-                                    <label><h4>Who can see this?</h4></label>
+                                    <label><h4>Select profession(s) permitted to see your product. </h4></label>
                                 </div>
                                 <div class="col-lg-6 ">
                                     <div class="form-group">
@@ -307,6 +323,37 @@
 </section>
 
 </div>
+
+<div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add New Category</h4>
+            </div>
+
+
+            <div class="modal-body">
+                <form role="form" method="post" id="post" enctype="multipart/form-data"
+                      action="<?php  echo base_url('product/Products/addCat/'); ?>">
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Product Category Name<span class="error">*</span></label><span id="title-error" class="error" for="title"></span>
+                            <input name="cat_name" value="" class="form-control" required="">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-danger pull-left" type="button">Cancel</button>
+                        <input type="submit" name="submit" class="btn  btn-success" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
 
 <!-- Latest compiled and minified JavaScript -->

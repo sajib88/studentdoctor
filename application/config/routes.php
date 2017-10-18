@@ -145,6 +145,7 @@ $route['forum/editComment/(:any)'] = 'forum/forum/editComment/$1';
 $route['product/add'] = 'product/products/add';
 $route['product/all'] = 'product/products/allProductGrid';
 $route['product/list'] = 'product/products/myproduct';
+$route['product/search'] = 'product/products/search';
 $route['product/details/(:any)'] = 'product/products/layoutfull/$1';
 $route['product/edit/(:any)'] = 'product/products/edit/$1';
 

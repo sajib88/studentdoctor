@@ -509,6 +509,13 @@
                                         class="fa fa-circle-o"></i>My Product List</a>
                         </li>
 
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('product/search'); ?>"><i
+                                        class="fa fa-circle-o"></i>Product Search</a>
+                        </li>
+
 
                     </ul>
 

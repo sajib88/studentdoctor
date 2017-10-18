@@ -309,6 +309,30 @@
 
                     </ul>
                  </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-fw fa-square-o"></i> Manage Category</a>
+
+                    <ul class="treeview-menu">
+                        <li class="<?php if($this->uri->segment(4)=="index"){echo "active";}?>">
+                            <a href="<?php echo base_url('admin/category/event_main_cat'); ?>"><i class="fa fa-square-o"></i> Event</a>
+                        </li>
+                        <li class="<?php if($this->uri->segment(3)=="classified_main_cat"){echo "active";}?>">
+                            <a href="<?php echo base_url('admin/category/classified_main_cat');?>"><i class="fa fa-square-o"></i>
+                                Classified</a>
+                        </li>
+                        <li class="<?php if($this->uri->segment(3)=="group_main_cat"){echo "active";}?>">
+                            <a href="<?php echo base_url('admin/category/group_main_cat'); ?>"><i class="fa fa-square-o"></i>Group</a>
+                        </li>
+                        <li class="<?php if($this->uri->segment(3)=="product_main_cat"){echo "active";}?>">
+                            <a href="<?php echo base_url('admin/category/product_main_cat'); ?>"><i class="fa fa-square-o"></i>Product</a>
+                        </li>
+                        <li class="<?php if($this->uri->segment(3)=="insideblog_cat"){echo "active";}?>">
+                            <a href="<?php echo base_url('admin/category/insideblog_cat'); ?>"><i class="fa fa-square-o"></i>Blog</a>
+                        </li>
+                    </ul>
+                </li>
                 
 
 

@@ -2,7 +2,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header">Event Category Manage </h3>
+            <h3 class="page-header">Group Category Manage </h3>
         </div>
     </div>
     <div class="row">
@@ -19,8 +19,8 @@
             <div class="panel with-nav-tabs panel-default">
                 <div class="panel-heading">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1default" data-toggle="tab">Pending Event Category</a></li>
-                        <li><a href="#tab2default" data-toggle="tab">Active Event Category</a></li>
+                        <li class="active"><a href="#tab1default" data-toggle="tab">Pending Group Category</a></li>
+                        <li><a href="#tab2default" data-toggle="tab">Active Group Category</a></li>
 
                     </ul>
                 </div>
@@ -70,7 +70,7 @@
 
 
 
-                                                    <td data-title="<?php echo 'action'; ?>" class="numeric"> <a href="<?php echo base_url('admin/Category/event_main_cat') . '/' . $row->id . '/' . $row->status. '/event_main_cat'; ?>">
+                                                    <td data-title="<?php echo 'action'; ?>" class="numeric"> <a href="<?php echo base_url('admin/Category/eventupdate') . '/' . $row->id . '/' . $row->status .'/group_main_cat'; ?>">
                                                             <?php
                                                             if ($row->status == 1) {
                                                                 echo '<button class="btn btn-success">Active</button>';
@@ -134,7 +134,7 @@
 
 
 
-                                                    <td data-title="<?php echo 'action'; ?>" class="numeric"> <a href="<?php echo base_url('admin/Category/eventupdate') . '/' . $row->id . '/' . $row->status. '/event_main_cat'; ?>">
+                                                    <td data-title="<?php echo 'action'; ?>" class="numeric"> <a href="<?php echo base_url('admin/Category/eventupdate') . '/' . $row->id . '/' . $row->status . '/group_main_cat'; ?>">
                                                             <?php
                                                             if ($row->status == 1) {
                                                                 echo '<button class="btn btn-info">Approved</button>';
@@ -166,8 +166,8 @@
     </div>
 
 
-        </div>
-    </div>
+</div>
+</div>
 </div>
 </div>
 

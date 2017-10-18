@@ -102,10 +102,12 @@ class Profile extends CI_Controller {
 
     public function showThisProfile($id="") {
         $data = array();
-        $data['page_title'] = 'Profile';
-        $data['tabActive'] = 'profile';
+        $data['page_title'] = 'Profile Search Details';
+        $data['tabActive'] = 'Profile Search Details';
         $data['error'] = '';
-        $data['user_info'] = $this->global_model->get_data('users', array('id' => $id));
+        $loginId = $this->session->userdata('login_id');
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['user_data'] = $this->global_model->get_data('users', array('id' => $id));
         $this->load->view('header', $data);
         $this->load->view('profile/searchProfileView', $data);
         $this->load->view('footer');

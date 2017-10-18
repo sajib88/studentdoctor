@@ -2,6 +2,9 @@
     .list-group{
         margin-bottom: 10px;
     }
+    .no-border{
+        border-top:none;
+    }
 </style>
 
 <div class="content-wrapper">
@@ -89,7 +92,7 @@
         </div>
         <hr/>
         <div class="row">
-            <div class=" table-responsive no-padding">
+            <div class=" table-responsive no-padding" style="border: none;">
 
                 <?php if(isset($result)) {
                     if (empty($result)) {
@@ -132,7 +135,7 @@
                                                         </div>
                                                         </br>
                                                     </div>
-                                                    <div class="box-footer ">
+                                                    <div class="box-footer no-border">
                                                         <ul class=" list-group list-group-unbordered">
                                                             <li class="list-group-item">Classified Name <span class="pull-right  "><?php echo (!empty($row->title))?substr($row->title, 0, 20):''?></span></li>
                                                             <li class="list-group-item">Category <span class="pull-right  "><?php echo (!empty($row->main_cat))?classifiedcatName($row->main_cat):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>

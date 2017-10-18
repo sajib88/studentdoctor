@@ -98,10 +98,13 @@ class Classifieds extends CI_Controller {
                     $save['fax'] = $postData['fax'];
                     $save['price'] = $postData['price'];
                     $save['user_id'] = $loginId;
-                    $sata = array();
-                    $sata ['profession_view'] = $this->input->post('profession_view');
-                    $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
-
+                    if(!empty($this->input->post('profession_view'))){
+                        $sata = array();
+                        $sata ['profession_view'] = $this->input->post('profession_view');
+                        $save['profession_view'] = (!empty($sata['profession_view']))?implode(',', $sata['profession_view']):'';
+                    }else{
+                        $save['profession_view'] = 0;
+                    }
 
                     if (isset($_FILES["photo_primary"]["name"]) && $_FILES["photo_primary"]["name"] != '') {
                         $this->PATH = './assets/file/classifieds/';

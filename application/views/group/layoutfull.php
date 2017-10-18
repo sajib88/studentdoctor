@@ -19,19 +19,15 @@
 
     <section class="content">
         <div class="row">
-
+            <?php if($this->session->flashdata('message')){ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong> Your Group Comments Successfully Posted </strong>
+                    </div>
+                </div>
+            <?php } $this->session->unset_userdata('message') ?>
             <div class="col-md-7">
-
-
-
-
-
-
-
-
-
-
-
 
 
                 <div class="tab-pane" id="timeline">
@@ -209,7 +205,7 @@
 
             <div class="modal-body">
                 <form role="form" method="post" id="post" enctype="multipart/form-data"
-                      action="<?php echo base_url('Group/group/layoutfull/' . $getid); ?>">
+                      action="<?php echo base_url('group/layoutfull/' . $getid); ?>">
                     <input name="postid" value="<?php  echo $getid; ?>" type="hidden" class="form-control">
 
                     <div class="col-lg-12">

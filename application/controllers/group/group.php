@@ -304,7 +304,7 @@ class group extends CI_Controller {
                 if ($ref_id = $this->global_model->insert('group_comments', $save)) {
 
                     $this->session->set_flashdata('message', 'New Forum Post Create Successfully');
-                    $redirect_link = base_url() . 'Group/group/layoutfull/'. $postData['postid'];
+                    $redirect_link = base_url() . 'group/layoutfull/'. $postData['postid'];
                     redirect($redirect_link);
 
                 }

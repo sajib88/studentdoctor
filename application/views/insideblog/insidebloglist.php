@@ -22,17 +22,20 @@
             All Blog
         </h1>
     </section>
-    
+
 <section class="content">
     
       <div class="row">
+
+
+
           <?php
           if(!empty($allblog)){
           foreach ($allblog as $row){
           ?>
 
             <a href="<?php echo base_url('insideblog/Insideblog/insideblogsinglepost/' . $row['id']); ?>">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
 
                 <div class="box box-widget">
 
@@ -55,15 +58,30 @@
                   <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
+
+                    <div class="widget-user-header ">
+                        <div class="widget-user-image text-center">
+                            </br>
+                            <img src="<?php echo base_url() . 'assets/file/insideblog/' .$row['primary_image']; ?>" alt="" width="170" height="170" class="img-circle " />
+
+                            </br>
+                        </div>
+                        </br>
+                    </div>
                 <div class="box-body" style="display: block;">
-                  <img class="" height="340px" width="100%" src="<?php echo base_url() . 'assets/file/insideblog/' .$row['primary_image']; ?>" alt="Photo">
 
                   <div class="blog-list-article">
                       <?php echo substr($row['description'],0, 150);?>
-                          <a class="btn bg-blue btn-md pull-right" href="<?php echo base_url('insideblog/details/' . $row['id']); ?>"> Read More</a>
+
                       </div>
 
                 </div>
+
+                    <div class="box-footer">
+
+
+                        <a href="<?php echo base_url('insideblog/details/' . $row['id']); ?>" class="btn btn-block btn-dropbox"> Read More</a>
+                    </div>
                 <!-- /.box-body -->
 
              </div>
@@ -90,26 +108,4 @@
  
     </div>
 
-    <style type="text/css">
-    .singl
-    {
-        height: 780px;
-    }
-    @media only screen and (max-width: 500px), screen and (max-height:400px) {
-        .singl
-        {
-            height: 0px;
-        }
 
-    }
-    @media only screen and (max-width: 500px) {
-        .blog-list-article
-        {
-            height: 100%;
-        }
-        .box-body img{
-            height: 280px;
-        }
-
-    }
-    </style>

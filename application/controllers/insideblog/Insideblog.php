@@ -259,8 +259,41 @@ class Insideblog extends CI_Controller
          
         $id = $this->uri->segment('3');
 
-        $data['single_post'] = $this->global_model->get_data('insideblog', array('id' => $id)); 
-        //$data['singlepost'] = $this->global_model->get('blog_front');
+        $data['single_post'] = $this->global_model->get_data('insideblog', array('id' => $id));
+
+        $data['getid']  = $this->uri->segment('3');
+        $data['comments'] = $this->global_model->get('blog_comments', array('blog_id' => $data['getid']));
+
+                ///// comments
+          if ($this->input->post()) {
+              $postData = $this->input->post();
+              $this->form_validation->set_rules('comments_title', 'comments_title', 'trim');
+              $this->form_validation->set_rules('comments_details', 'comments_details', 'trim');
+
+
+
+              if ($this->form_validation->run() == true) {
+
+                  $save['blog_id'] = $postData['postid'];
+                  $save['user_id'] = $loginId;
+                  $save['comments_title'] = $postData['comments_title'];
+                  $save['comments_details'] = $postData['comments_details'];
+                  $save['status'] = '1';
+
+
+
+
+                  if ($ref_id = $this->global_model->insert('blog_comments', $save)) {
+
+                      $this->session->set_flashdata('message', 'New Blog Comments Successfully');
+                      $redirect_link = base_url() . 'insideblog/details/'. $postData['postid'];
+                      redirect($redirect_link);
+
+                  }
+              }
+          }
+
+          ////
 
         $this->load->view('header', $data);
         $this->load->view('insideblog/insideblogsingle', $data);

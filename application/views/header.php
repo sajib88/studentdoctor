@@ -293,6 +293,12 @@
                             <a href="<?php echo base_url('classifieds/all'); ?>"><i
                                         class="fa fa-circle-o"></i>Show All List Classified</a>
                         </li>
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                        echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('classifieds/search'); ?>"><i
+                                        class="fa fa-circle-o"></i>Classified Search</a>
+                        </li>
 
 
                     </ul>

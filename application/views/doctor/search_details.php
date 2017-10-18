@@ -12,14 +12,6 @@
                     ?>
 	<section class="section-xs content-wrapper">
 		<div class="container">
-            <?php if($this->session->flashdata('message')){ ?>
-                <div class="col-lg-12">
-                    <div class="alert alert-success alert-dismissible">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong><?php echo $this->session->flashdata('message');?></strong>
-                    </div>
-                </div>
-            <?php } $this->session->unset_userdata('message'); ?>
 			<div class="row v-center-items first-col-title  first-col-title">
 
 
@@ -568,7 +560,6 @@
                 function(result){
                     if(result=='success'){
                         console.log('test'+result);
-                        alert(result);
                     }
 
                 },

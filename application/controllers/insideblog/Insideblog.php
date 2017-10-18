@@ -167,7 +167,7 @@ class Insideblog extends CI_Controller
     {
         $data = array();
         $data['page_title'] = 'Add New Category';
-        $data['tabActive'] = 'Event Category';
+        $data['tabActive'] = 'Blog Category';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
         $user_type = $this->session->userdata('user_type');
@@ -185,14 +185,15 @@ class Insideblog extends CI_Controller
 
                 if ($ref_id = $this->global_model->insert('insideblog_cat', $save)) {
 
-                    $this->session->set_flashdata('message2');
+                    $this->session->set_flashdata('message2', 'New Category Create successfully.');
+                    redirect(base_url('insideblog/create'));
 
                 }
             }
         }
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['login_id'] = $loginId;
-        redirect(base_url('insideblog/create'));
+
     }
 
 

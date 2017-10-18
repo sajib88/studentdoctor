@@ -102,6 +102,7 @@ $route['personal/edit/(:any)'] = 'personal/Personal/edit/$1';
 $route['classifieds/add'] = 'classifieds/classifieds/add';
 $route['classifieds/viewmyclassfied'] = 'classifieds/classifieds/viewmyclassfied';
 $route['classifieds/all'] = 'classifieds/classifieds/viewall';
+$route['classifieds/search'] = 'classifieds/classifieds/search';
 $route['classifieds/layoutfull/(:any)'] = 'classifieds/classifieds/layoutfull/$1';
 $route['classifieds/edit/(:any)'] = 'classifieds/classifieds/edit/$1';
 

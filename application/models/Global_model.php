@@ -718,6 +718,48 @@ class Global_model extends CI_Model {
         //return $query;
     }
 
+    public function get_product_search_data($table, $data, $limit = FALSE, $order_by = FALSE) {
+        $this->db->select('*')->from($table);
+
+        if (!empty($data['type'])) {
+
+            $this->db->where('type', $data['type']);
+        }
+        if (!empty($data['name'])) {
+
+            $this->db->like('name', $data['name']);
+        }
+
+        if (!empty($data['price'])) {
+
+            $this->db->like('price', $data['price']);
+        }
+        if (!empty($data['description'])) {
+
+            $this->db->like('description', $data['description']);
+        }
+
+        if (!empty($limit)) {
+
+            $this->db->limit($limit['limit'], $limit['start']);
+        }
+
+        if (!empty($order_by)) {
+            $this->db->order_by($order_by['filed'], $order_by['order']);
+        }
+
+        $query = $this->db->get();
+
+        //echo $this->db->last_query();exit();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+        //return $query;
+    }
+
     public function getProductByProfession($table,$profession){
 
         $productList = array();

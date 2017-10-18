@@ -21,6 +21,38 @@ class Products extends CI_Controller{
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger form-error">', '</div>');
     }
 
+    public function addCat()
+    {
+        $data = array();
+        $data['page_title'] = 'Add New Category';
+        $data['tabActive'] = 'Product Category';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $user_type = $this->session->userdata('user_type');
+
+        if ($this->input->post()) {
+            $postData = $this->input->post();
+            $this->form_validation->set_rules('cat_name', 'cat_name', 'trim');
+
+
+            if ($this->form_validation->run() == true) {
+
+                $save['cat_name'] = $postData['cat_name'];
+                $save['created_by'] = $loginId;
+                $save['status'] = '1';
+
+                if ($ref_id = $this->global_model->insert('product_main_cat', $save)) {
+
+                    $this->session->set_flashdata('message2', 'New Category Create successfully.');
+                    redirect(base_url('product/add'));
+                }
+            }
+        }
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['login_id'] = $loginId;
+
+    }
+
     public function add(){
         $data = array();
         $data['page_title'] = 'Add Product';
@@ -160,7 +192,7 @@ class Products extends CI_Controller{
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
-        //$data['main_cat'] = $this->global_model->get('classified_main_cat');
+        $data['main_cat'] = $this->global_model->get('product_main_cat');
         $data['login_id'] = $loginId;
         $this->load->view('header', $data);
         $this->load->view('products/add', $data);
@@ -405,6 +437,47 @@ class Products extends CI_Controller{
         $data['states'] = $states;
         echo $this->load->view('state', $data, TRUE);
         exit;
+    }
+
+    public function search(){
+        $this->load->helper('global_helper');
+        $data = array();
+        $data['page_title'] = 'Search';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+
+
+        $this->form_validation->set_rules('name');
+        $this->form_validation->set_rules('type');
+        $this->form_validation->set_rules('price');
+        $this->form_validation->set_rules('description');
+
+
+        if($this->input->post()){
+            $postData = $this->input->post();
+            $value = array();
+            $value['name'] = (!empty($postData['name']))?$postData['name']:'';
+            $value['type'] = (!empty($postData['type']))?$postData['type']:'';
+            $value['price'] = (!empty($postData['price']))?$postData['price']:'';
+            $value['description'] = (!empty($postData['description']))?$postData['description']:'';
+
+            $data['result'] = $this->global_model->get_product_search_data('product',$value,FALSE,FALSE);
+
+
+        }
+
+        $data['page_title'] = 'Product search';
+        $data['tabActive'] = 'Product';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['countries'] = $this->global_model->get('countries');
+        $data['profession'] = $this->global_model->get('profession');
+        $data['main_cat'] = $this->global_model->get('product_main_cat');
+        $this->load->view('header', $data);
+        $this->load->view('products/product_search', $data);
+        $this->load->view('footer');
+
     }
 
 

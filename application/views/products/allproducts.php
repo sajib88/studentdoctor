@@ -58,7 +58,8 @@
                             <tr>
                                 <td><?php echo $i;?></td>
                                 <td><?php echo $row->name;?></td>
-                                <td><span class=""><?php echo $row->type;?></span></td>
+                                <td><span class=""><?php $data = get_data('product_main_cat', array('id' => $row->type));
+                                                    echo $data['cat_name']; ?></span></td>
                                 <td><span class="">$<?php echo $row->price;?></span></td>
                                 <td><span class="">$<?php echo $row->special_price;?></span></td>
                                 <td><a href="<?php echo base_url('product/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>

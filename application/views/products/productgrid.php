@@ -121,7 +121,12 @@
                                         <li class="active"><a href="#"> Special Price<span class=" pull-right">$<?php echo $row['special_price'];?></span></a></li>
                                         <li><a href="#"> Old Price<span class=" pull-right">$<?php echo $row['price'];?></span></a></li>
 
-                                        <li><a href="#"> Type <span class=" pull-right"><?php echo $row['type'];?></span></a>
+                                        <li><a href="#"> Type <span class=" pull-right">
+                                                    <?php
+                                                    $data = get_data('product_main_cat', array('id' => $row['type']));
+                                                    echo $data['cat_name'];
+                                                    ?>
+                                                </span></a>
                                         </li>
                                         <li><a href="#"> Seller Name<span class=" pull-right"><?php echo (!empty( $row['seller_name']))? $row['seller_name']:'<span class="badge bg-red">Not Given</span>';?></span></a></li>
                                         <li><a href="#"> Seller Email <span class=" pull-right"><?php echo (!empty( $row['seller_email']))? $row['seller_email']:'<span class="badge bg-red">Not Given</span>';?></span></a></li>

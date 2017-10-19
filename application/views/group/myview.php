@@ -50,7 +50,7 @@
                                 <a href="<?php echo base_url('group/edit/' . $row->id); ?>" class="btn btn-block btn-success"> Edit</a>
                                 <a href="<?php echo base_url('group/group/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a>
 
-                                p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoO8L647bJH9/IUIC2TwyjrwEVClOyqb3tYVgW4qCbgpS/kWHQTkkndG/D6i4vRnPyj+iW8JR4UkYYYohgbeBi4NcZ70I1vfUDx46szSMVGci5f1CQEnfkWHoaImHyRNmiFvrM0H91nZ90+tVscIC6Wt83exguascvMZR+ZA9XnIVT+RWVD97fPCpjiodvSHqo" VGMkMTMqpGvAYaH+XDDMEgEzBJScCOaD1c1ZEjeUdwTUMGFEK44QCvk6dbG8XnlNeRLGr9EW1LEqAkIEmkQufRiTe9KyjMwyez4zpzq0ic7+2WGSFU/Sz2cmiZrgxa2ncmUGpZkHX3k7JYq4TLgqQIDAQAB\;
+
                             </div>
                         </div>
                     </div>

@@ -106,7 +106,14 @@
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Product Type </b> <span class="pull-right"><?php echo $layoutfull['type']; ?></span>
+
+                                <b>Product Type </b>
+                                <span class="pull-right">
+                                    <?php
+                                    $data = get_data('product_main_cat', array('id' => $layoutfull['type']));
+                                    echo $data['cat_name'];
+                                    ?>
+                                </span>
                             </li>
                             <li class="list-group-item">
                                 <b>Price</b> <span class="pull-right"> <?php echo $layoutfull['special_price']; ?></span>

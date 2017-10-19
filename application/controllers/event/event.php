@@ -357,7 +357,7 @@ class event extends CI_Controller {
 
         if ($this->input->post()) {
             $postData = $this->input->post();
-            $this->form_validation->set_rules('cat_name', 'cat_name', 'trim');
+            $this->form_validation->set_rules('cat_name', 'cat_name', 'trim|is_unique[event_main_cat.cat_name]');
 
 
             if ($this->form_validation->run() == true) {
@@ -368,16 +368,18 @@ class event extends CI_Controller {
 
                 if ($ref_id = $this->global_model->insert('event_main_cat', $save)) {
 
-                    $this->session->set_flashdata('message2');
+                    $this->session->set_flashdata('message2', 'New Category Create successfully.');
+                    redirect(base_url('event/add'));
 
                 }
+            }
+            else{
+                $this->session->set_flashdata('message3', 'Category name must be unique.');
+                redirect(base_url('event/add'));
             }
         }
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['login_id'] = $loginId;
-        $this->load->view('header', $data);
-        $this->load->view('event/add', $data);
-        $this->load->view('footer');
     }
 
 

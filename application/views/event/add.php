@@ -43,10 +43,19 @@
             <div class="col-lg-12">
                 <div class="alert alert-success alert-dismissible">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong> New Category  Create successfully.</strong>
+                    <strong> New category create successfully.</strong>
                 </div>
             </div>
         <?php } ?>
+
+        <?php if($this->session->flashdata('message3')){ ?>
+            <div class="col-lg-12">
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong> <?php echo $this->session->flashdata('message3'); ?></strong>
+                </div>
+            </div>
+        <?php } $this->session->unset_userdata('message3');?>
 
         <form  method="post" id="event" name="event" enctype="multipart/form-data" action="<?php echo base_url('event/add'); ?>">
             <input type="hidden" name="login_id" value="<?php echo $login_id; ?>">
@@ -191,19 +200,22 @@
                                     <input class="btn btn-default btn-cust" name="photo_2" type="file">
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Event Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
                                     <input class="btn btn-default btn-cust" name="photo_3" type="file">
                                 </div>
                             </div>
-
-                                <div class="col-lg-6">
-                                    <div class="form-group" id="file_id">
-                                        <label>Event Document One</label><span id='file1-error' class='error' for='file1'></span>
-                                        <input class="btn btn-default btn-cust" name="file1" type="file">
-                                    </div>
+                            <div class="col-lg-6">
+                                <div class="form-group" id="file_id">
+                                    <label>Event Document One</label><span id='file1-error' class='error' for='file1'></span>
+                                    <input class="btn btn-default btn-cust" name="file1" type="file">
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Event Document Two</label><span id='audio-error' class='error' for='file'></span>
@@ -318,10 +330,16 @@
 jQuery(document).ready(function() {
     //Date picker
     $('#datepicker2').datepicker({
-        autoclose: true
+        autoclose: true,
+        startDate: new Date(),
+        todayHighlight: true,
+        defaultDate: new Date(),
     });
     $('#datepicker').datepicker({
-        autoclose: true
+        autoclose: true,
+        startDate: new Date(),
+        todayHighlight: true,
+        defaultDate: new Date(),
     });
 
 

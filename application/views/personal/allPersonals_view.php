@@ -75,15 +75,15 @@ print_r($allpersonals);die;*/
                                         <tr>
                                             <td><?php echo $i; ?></td>
                                             <td data-title="<?php echo 'title'; ?>"
-                                                class="numeric"><?php echo $row->title; ?></td>
+                                                class="numeric"><?php echo (!empty($row->title))?$row->title:'<span class="badge bg-red">Not Given</span>'; ?></td>
                                             <td data-title="<?php echo 'body'; ?>"
-                                                class="numeric"><span class=""><?php echo $row->iam; ?></span></td>
+                                                class="numeric"><span class=""><?php echo (!empty($row->iam))?$row->iam:'<span class="badge bg-red">Not Given</span>'; ?></span></td>
                                             <td data-title="<?php echo 'ethnicity'; ?>"
-                                                class="numeric"><span class=""><?php echo $row->interestedin; ?></span></td>
+                                                class="numeric"><span class=""><?php echo (!empty($row->interestedin))?$row->interestedin:'<span class="badge bg-red">Not Given</span>'; ?></span></td>
                                             <td data-title="<?php echo 'maritalstatus'; ?>"
-                                                class="numeric"><span class=""><?php echo $row->maritalstatus; ?></span></td>
+                                                class="numeric"><span class=""><?php echo (!empty($row->maritalstatus))?$row->maritalstatus:'<span class="badge bg-red">Not Given</span>'; ?></span></td>
                                             <td data-title="<?php echo 'age'; ?>"
-                                                class="numeric"><span class=""><?php echo $row->age; ?></span></td>
+                                                class="numeric"><span class=""><?php echo (!empty($row->age))?$row->age:'<span class="badge bg-red">Not Given</span>'; ?></span></td>
 
                                             <td data-title="<?php echo 'Edit'; ?>" class="numeric"><a href="<?php echo base_url('personal/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>
                                             <td data-title="<?php echo 'Detail'; ?>" class="numeric"><a href="<?php echo base_url('personal/detail/' . $row->id); ?>" class="btn btn-block btn-success"> View</a></td>

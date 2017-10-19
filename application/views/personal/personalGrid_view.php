@@ -48,22 +48,22 @@ $this->load->helper('global_helper');
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>I M A</b> <span class="pull-right"><?php echo (!empty($row['iam']))?$row['iam']:''?></span>
+                                    <b>I M A</b> <span class="pull-right"><?php echo (!empty($row['iam']))?$row['iam']:'<span class="badge bg-red">Not Given</span>'?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Intested</b> <span class="pull-right "><?php echo (!empty($row['interestedin']))?$row['interestedin']:''?></span>
+                                    <b>Intested</b> <span class="pull-right "><?php echo (!empty($row['interestedin']))?$row['interestedin']:'<span class="badge bg-red">Not Given</span>'?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Body</b> <span class="pull-right "><?php echo (!empty( $row['body']))? $row['body']:''?></span>
+                                    <b>Body</b> <span class="pull-right "><?php echo (!empty( $row['body']))? $row['body']:'<span class="badge bg-red">Not Given</span>'?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Height</b> <span class="pull-right "><?php echo (!empty( $row['height']))? $row['height']:''?></span>
+                                    <b>Height</b> <span class="pull-right "><?php echo (!empty( $row['height']))? $row['height']:'<span class="badge bg-red">Not Given</span>'?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Marital Status</b> <span class="pull-right "><?php echo (!empty( $row['maritalstatus']))? $row['maritalstatus']:''?></span>
+                                    <b>Marital Status</b> <span class="pull-right "><?php echo (!empty( $row['maritalstatus']))? $row['maritalstatus']:'<span class="badge bg-red">Not Given</span>'?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Age</b> <span class="pull-right "><?php echo (!empty( $row['age']))? $row['age']:''?></span>
+                                    <b>Age</b> <span class="pull-right "><?php echo (!empty( $row['age']))? $row['age']:'<span class="badge bg-red">Not Given</span>'?></span>
                                 </li>
                             </ul>
 

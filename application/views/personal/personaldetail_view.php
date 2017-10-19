@@ -32,22 +32,22 @@
                             <img  src="<?php echo base_url() . 'assets/file/personals/' .$layoutfull['primary_photo']; ?>" alt="User profile picture"  class="circular">
                         </div>
 
-                        <h3 class="profile-username text-center"><?php echo (!empty($layoutfull['title']))?$layoutfull['title']:''?></h3>
+                        <h3 class="profile-username text-center"><?php echo (!empty($layoutfull['title']))?$layoutfull['title']:'<span class="badge bg-red">Not Given</span>'?></h3>
 
-                        <p class="text-muted text-center"><?php echo (!empty( $layoutfull['ethnicity']))? $layoutfull['ethnicity']:''?></p>
+                        <p class="text-muted text-center"><?php echo (!empty( $layoutfull['ethnicity']))? $layoutfull['ethnicity']:'<span class="badge bg-red">Not Given</span>'?></p>
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Body</b> <span class="pull-right"><?php echo (!empty( $layoutfull['body']))? $layoutfull['body']:''?></span>
+                                <b>Body</b> <span class="pull-right"><?php echo (!empty( $layoutfull['body']))? $layoutfull['body']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Height</b> <span class="pull-right "><?php echo (!empty( $layoutfull['height']))? $layoutfull['height']:''?></span>
+                                <b>Height</b> <span class="pull-right "><?php echo (!empty( $layoutfull['height']))? $layoutfull['height']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Marital Status</b> <span class="pull-right "><?php echo (!empty( $layoutfull['maritalstatus']))? $layoutfull['maritalstatus']:''?></span>
+                                <b>Marital Status</b> <span class="pull-right "><?php echo (!empty( $layoutfull['maritalstatus']))? $layoutfull['maritalstatus']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Age</b> <span class="pull-right "><?php echo (!empty( $layoutfull['age']))? $layoutfull['age']:''?></span>
+                                <b>Age</b> <span class="pull-right "><?php echo (!empty( $layoutfull['age']))? $layoutfull['age']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                         </ul>
 
@@ -67,7 +67,7 @@
                         <strong><i class="fa fa-book margin-r-5"></i> Description</strong>
 
                         <p class="text-muted">
-                            <?php echo (!empty( $layoutfull['description']))? $layoutfull['description']:''?>
+                            <?php echo (!empty( $layoutfull['description']))? $layoutfull['description']:'<span class="badge bg-red">Not Given</span>'?>
                         </p>
 
                         <hr>
@@ -83,22 +83,22 @@
                         <strong><i class="fa fa-pencil margin-r-5"></i> Other Information </strong>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Child</b> <span class="pull-right "><?php echo (!empty( $layoutfull['child']))? $layoutfull['child']:''?></span>
+                                <b>Child</b> <span class="pull-right "><?php echo (!empty( $layoutfull['child']))? $layoutfull['child']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Language</b> <span class="pull-right "><?php echo (!empty( $layoutfull['language']))? $layoutfull['language']:'Not selected'?></span>
+                                <b>Language</b> <span class="pull-right "><?php echo (!empty( $layoutfull['language']))? $layoutfull['language']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Religion</b> <span class="pull-right "><?php echo (!empty( $layoutfull['religion']))? $layoutfull['religion']:'Not selected'?></span>
+                                <b>Religion</b> <span class="pull-right "><?php echo (!empty( $layoutfull['religion']))? $layoutfull['religion']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Smoker</b> <span class="pull-right "><?php echo (!empty( $layoutfull['smoker']))? $layoutfull['smoker']:'Not selected'?></span>
+                                <b>Smoker</b> <span class="pull-right "><?php echo (!empty( $layoutfull['smoker']))? $layoutfull['smoker']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Drinker</b> <span class="pull-right "><?php echo (!empty( $layoutfull['drinker']))? $layoutfull['drinker']:'Not selected'?></span>
+                                <b>Drinker</b> <span class="pull-right "><?php echo (!empty( $layoutfull['drinker']))? $layoutfull['drinker']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Entimicy</b> <span class="pull-right "><?php echo (!empty( $layoutfull['entimicyorpreference']))? $layoutfull['entimicyorpreference']:'Not selected'?></span>
+                                <b>Entimicy</b> <span class="pull-right "><?php echo (!empty( $layoutfull['entimicyorpreference']))? $layoutfull['entimicyorpreference']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                         </ul>
 

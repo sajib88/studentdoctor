@@ -180,7 +180,7 @@
                                                                 </td>
                                                                 <td data-title="<?php echo 'location'; ?>"
                                                                     class="numeric"><span
-                                                                        class=""><?php echo $row->location; ?></span>
+                                                                        class=""><?php echo (!empty($row->location))?$row->location:'<span class="badge bg-red">Not Given</span>'; ?></span>
                                                                 </td>
 
                                                                 <td data-title="<?php echo 'View'; ?>" class="numeric">

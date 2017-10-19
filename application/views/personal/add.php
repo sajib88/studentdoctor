@@ -176,7 +176,7 @@ print_r($user_info);die;*/
                         </div>
                         <div class="padd">
                             <div class="form-group">
-                                <label>I AM A</label>
+                                <label>I AM A<span class="error">*</span></label>
                                 <?php $iam= array('MAN','WOMAN');?>
                                 <select name="iam" class="form-control chosen-select">
                                     <option value="">Select</option>
@@ -186,7 +186,7 @@ print_r($user_info);die;*/
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>LOOKING FOR A </label>
+                                <label>LOOKING FOR A<span class="error">*</span></label>
                                 <?php $iam= array('MAN','WOMAN');?>
                                 <select name="interestedin" class="form-control chosen-select">
                                     <option value="">Select</option>
@@ -461,7 +461,7 @@ print_r($user_info);die;*/
                 required: "This is Required",
             },
             country: {
-                required: "Description is Required",
+                required: "Country is Required",
             },
             'primary_photo':{
                 required : "Please upload atleast 1 photo",

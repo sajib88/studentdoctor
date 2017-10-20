@@ -85,7 +85,7 @@
                                 }
                                 ?>
                             </select>
-                            <a data-toggle="modal" href="#myModal" >Create New Blog Category</a>
+                            <a data-toggle="modal" href="#myModal" >Create New Classified Category</a>
                         </div>
                         <div class="form-group">
                             <label>Description<span class="error">*</span></label><span id='description-error' class='error' for='description'></span>

@@ -81,7 +81,7 @@
                                 }
                                 ?>
                             </select>
-                            <a data-toggle="modal" href="#myModal" >Create New Blog Category</a>
+                            <a data-toggle="modal" href="#myModal" >Create New Product Category</a>
                         </div>
                         <div class="form-group">
                             <?php $v = (set_value('description')!='')?set_value('description'):'';?>

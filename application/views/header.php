@@ -83,13 +83,53 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <!-- User Account: style can be found in dropdown.less -->
-                    <li class="dropdown notifications-menu">
+                    <li class="dropdown messages-menu">
+                        <!-- Menu toggle button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning"><?php echo (!empty($doctor_appointment))?count($doctor_appointment):""?></span>
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="label label-success"><?php echo (!empty($notification))?count($notification):""?></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have <?php echo (!empty($doctor_appointment))?count($doctor_appointment):""?> appointment</li>
+                            <li class="header">You have <?php echo (!empty($notification))?count($notification):"0"?> messages</li>
+                            <li>
+                                <!-- inner menu: contains the messages -->
+                                <ul class="menu">
+                                    <?php if(!empty($notification)){
+                                    foreach ($notification as $row){
+                                    ?>
+                                    <a href="<?php echo base_url('message/read/'.$row->id.'/1');?>">
+                                    <li><!-- start message -->
+
+
+                                            <div class="pull-left">
+                                                <!-- User Image -->
+                                                <img height="30px" width="30px" src="<?php echo base_url('assets/file/'.$row->profilepicture);?>" class="img-circle" alt="User Image">
+                                            </div>
+                                            <!-- Message title and timestamp -->
+                                            <h4>
+                                                <?php echo $row->subject;?>
+                                                <small><i class="fa fa-clock-o"></i><?php echo date('d-m-y', strtotime($row->subject));?></small>
+                                            </h4>
+                                            <!-- The message -->
+                                            <p><?php echo substr($row->message, 0, 20);?></p>
+
+                                    </li>
+                                    </a>
+                                    <?php } }?>
+                                    <!-- end message -->
+                                </ul>
+                                <!-- /.menu -->
+                            </li>
+                            <li class="footer"><a href="<?php echo base_url('message');?>">See All Messages</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a href="#" id="appointment_notification" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="label label-warning" id="reload_appointment"><?php echo (!empty($appointment_notify))?count($appointment_notify):""?></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have <?php echo (!empty($appointment_notify))?count($appointment_notify):"0"?> new appointment</li>
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu">
@@ -555,6 +595,14 @@
 
                     </ul>
                 </li>
+                <li class="treeview <?php if ($this->uri->segment(1)=="message"){
+                echo "active";
+                } ?>">
+                    <a href="<?php echo base_url('message');?>">
+                        <i class="fa fa-envelope"></i>
+                        <span>Message</span>
+                    </a>
+                </li>
 
                 <!--
                 <li class="treeview <?php if ($this->uri->segment(1)=="ces"){
@@ -779,3 +827,21 @@
         </section>
         <!-- /.sidebar -->
     </aside>
+
+    <script>
+        $('#appointment_notification').click(function() {
+
+            var id = '1';
+            var base_url = '<?php echo base_url() ?>';
+            $.ajax({
+                type: 'POST',
+                url: base_url + "doctor/docController/updateAppointment/"+id,
+                success: function(resultData) {
+                    //$("#result").html(resultData);
+                    console.log(resultData);
+                    $('#reload_appointment').ajax.reload();
+                }
+            });
+
+        });
+    </script>

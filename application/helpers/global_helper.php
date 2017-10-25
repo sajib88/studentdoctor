@@ -173,6 +173,21 @@ if (!function_exists('uploadInsideBlog')) {
 
 }
 
+if (!function_exists('uploadMessage')) {
+    function uploadMessage() {
+        $CI = &get_instance();
+        $CI->load->library('upload');
+        $config['upload_path'] = './assets/file/message/';
+
+        $config['allowed_types'] = '*';
+        $config['overwrite'] = FALSE;
+        $config['remove_spaces'] = TRUE;
+        $config['file_name'] =time();
+        $CI->upload->initialize($config);
+    }
+
+}
+
 if (!function_exists('uploadGroup')) {
     function uploadGroup() {
         $CI = &get_instance();

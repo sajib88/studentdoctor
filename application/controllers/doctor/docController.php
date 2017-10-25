@@ -201,6 +201,14 @@ class DocController extends CI_Controller
         exit;
     }
 
+    public function updateAppointment($update_status){
+        if($update_status != ''){
+            $status['status'] = $update_status;
+            $ref = $this->global_model->update('appointment', $status, array('status'=>'0'));
+        }
+        echo json_encode($ref);
+    }
+
 
 }
 ?>

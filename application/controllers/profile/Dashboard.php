@@ -34,8 +34,9 @@ class Dashboard extends CI_Controller {
 
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
-        $data['doctor_appointment'] = $this->global_model->get('appointment', array('doctor_id' => $loginId, 'date' => date("Y-m-d")));
-
+       // $data['doctor_appointment'] = $this->global_model->get('appointment', array('doctor_id' => $loginId, 'date' => date("Y-m-d")));
+       // $data['message'] = $this->global_model->get_message($loginId);
+        //print_r($data['message']);die;
         /// Appointment check
         $data['check_appointment'] = $this->global_model->get_data('public_website', array('user_id' => $loginId, 'appointment' => '1'));
         //// Product Add

@@ -68,9 +68,14 @@ class Insideblog extends CI_Controller
             $save['title'] = $this->input->post('title');
             $save['description'] = $this->input->post('description');
             $save['cat_type'] = $this->input->post('cat_type');
+            $date = date('m/d/Y', time());
+            if($date == $this->input->post('date')){
+                $save['status'] = 1;
+            }else{
+                $save['status'] = 0;
+            }
             $save['date'] = $this->input->post('date');
             $save['time'] = $this->input->post('time');
-            $save['status'] = 1;
             $save['tag'] = $this->input->post('tag');
             $save['keyword'] = $this->input->post('keyword');
             if(!empty($this->input->post('profession_view'))){
@@ -198,6 +203,9 @@ class Insideblog extends CI_Controller
 
 
     public function insidebloglist($msg='') {
+
+//        $date = date('m/d/Y', time());
+//        echo $date; die;
         
         $data = array();
         $data['page_title'] = 'Blog';
@@ -228,7 +236,7 @@ class Insideblog extends CI_Controller
         //$data_id = 'id';
         //$data_order = 'DESC';
         $profession = $this->session->userdata('user_type');
-        $data['allblog'] = $this->global_model->getViewByProfession('insideblog', $profession);
+        $data['allblog'] = $this->global_model->getBlogByProfession('insideblog', $profession);
 
         //$data['allblog'] = $this->global_model->get('insideblog');
 

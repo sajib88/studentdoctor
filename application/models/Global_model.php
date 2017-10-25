@@ -788,14 +788,7 @@ class Global_model extends CI_Model {
         $sql = $this->db->select('*')
             ->from($table)
             ->get();
-
-
-
-
         $array=$sql->result_array();
-
-
-
         foreach ($array as $row){
             if($row['profession_view'] != null){
                 $professions = $row['profession_view'];
@@ -812,6 +805,47 @@ class Global_model extends CI_Model {
 
         return $productList;
     }
+
+    public function getBlogByProfession($table, $profession){
+        $productList = array();
+        $this->db->order_by("$table" ."."."id", "DESC");
+        $sql = $this->db->select('*')
+            ->from($table)
+            ->where('status=', 1)
+            ->get();
+        $array=$sql->result_array();
+        foreach ($array as $row){
+            if($row['profession_view'] != null){
+                $professions = $row['profession_view'];
+                $testPro = explode(',',$professions);
+                $pro = 0;
+                if (in_array($profession, $testPro) || $row['profession_view'] == 0) {
+                    $productList[] = $row;
+                }
+            }
+        }
+
+        ///echo $this->db->last_query();exit();
+
+
+        return $productList;
+    }
+
+    public function get_message($id){
+        $this->db->select('u.profilepicture, m.id, m.subject, m.message, m.timestamp');
+        $this->db->from('users as u');
+        $this->db->join('messages as m', 'u.id = m.receiver_id' );
+        $this->db->where('u.id', $id);
+        $this->db->where('m.status', '0');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+
 
 
 

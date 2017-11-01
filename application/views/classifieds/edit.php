@@ -51,7 +51,7 @@
                             </div>
                             <div class="padd">
                                 <div class="form-group">
-                                    <label>Title<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
+                                    <label>Classified Title<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
                                     <input name="title" value="<?php echo $editclassified['title']; ?>"  class="form-control">
                                 </div>
                                 <div class="form-group">

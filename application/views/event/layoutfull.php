@@ -205,7 +205,7 @@
                         <span class="info-box-icon"><i class="ion ion-ios-people-outline"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text"><b>Total Seats No</b></span>
+                            <span class="info-box-text"><b>Total Seats</b></span>
                             <span class="info-box-number"><?php echo $layoutfull['seats_no']; ?></span>
 
                             <div class="progress">

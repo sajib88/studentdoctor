@@ -2,7 +2,7 @@
     
     <section class="content-header">
       <h1><i class="fa fa-user-md"></i>
-       Public Website Details
+       My Website Details
       </h1>
     </section>
     
@@ -54,7 +54,7 @@
                 </li>
               </ul>
 
-              <a href="#" class="btn btn-primary btn-block"><b>inquiry</b></a>
+
             </div>
             <!-- /.box-body -->
           </div>
@@ -108,7 +108,7 @@
 
               <hr>
 
-              <strong><i class="fa fa-fighter-jet"></i> Special Interest</strong>
+              <strong><i class="glyphicon glyphicon-play"></i> Special Interest</strong>
                 
               <p>
                 <span class="label label-info"><?php echo $website_info['special_interest']; ?></span>
@@ -136,7 +136,9 @@
                                     foreach ($photos as $row) {
                                         {
                                             ?>
-                                            <img src="<?php echo base_url() . '/assets/file/publicweb/' . $row->name ?>" width="160px;" height="160px">
+                                            <div class="col-md-6">
+                                            <img class="box-header with-border" src="<?php echo base_url() . '/assets/file/publicweb/' . $row->name ?>" width="220px;" height="180px">
+                                            </div>
                                             <?php
                                         }
                                     }

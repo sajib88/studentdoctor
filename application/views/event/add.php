@@ -142,7 +142,7 @@
                             </div>
                             <div class="col-lg-6 bootstrap-timepicker">
                                 <div class="form-group">
-                                    <label>Event Start Time :</label>
+                                    <label>Event Start Time : (EST)</label>
 
                                     <div class="input-group">
                                         <input name="start_time" type="text" class="form-control timepicker">
@@ -165,7 +165,7 @@
                             </div>
                             <div class="col-lg-6 bootstrap-timepicker">
                                 <div class="form-group">
-                                    <label>Event End Time:</label>
+                                    <label>Event End Time: (EST)</label>
                                     <div class="input-group">
                                         <input name="end_time" type="text" class="form-control timepickerend">
 

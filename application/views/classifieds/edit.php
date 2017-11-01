@@ -74,7 +74,7 @@
                                     <textarea  name="description" class="form-control"><?php echo $editclassified['description']; ?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Price<span class="error">*</span></label><span id='price-error' class='error' for='price'></span>
+                                    <label>Price<span class="error">*</span> (US Dollars)</label><span id='price-error' class='error' for='price'></span>
                                     <input type="number" value="<?php echo $editclassified['price']; ?>" name="price"  class="form-control" required>
                                 </div>
                             </div>

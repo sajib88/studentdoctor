@@ -121,6 +121,7 @@ class Message extends CI_Controller
         $this->load->view('footer', $data);
     }
 
+
     public function getProfessionByAjax() {
         $data = array();
         $id = $this->input->post('state');

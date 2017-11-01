@@ -11,7 +11,7 @@
 
     <section class="content-header">
         <h1><i class="fa fa-search"></i>
-            Search Classified
+            Search All Posted
         </h1>
     </section>
     <section class="content">
@@ -116,21 +116,12 @@
                                                     <div class="widget-user-header ">
                                                         <div class="widget-user-image text-center">
                                                             <?php
-                                                            if($row->photo_primary == 0) {?>
-                                                                </br>
-                                                                <div class="text-center">
-                                                                    <img src="<?php echo base_url() . '/assets/upload_prfl.png'?>" alt="" class="img-rounded " width="150" height="150" />
-                                                                </div>
-                                                                </br>
+                                                            if($row->photo_primary != 0) {?>
+                                                                <br />
+                                                                <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="310px" height="280px" class="" />
 
-                                                            <?php }
-                                                            else {?>
-                                                                </br>
+                                                            <?php }?>
 
-                                                                <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="170" height="170" class="img-rounded" />
-                                                                </br>
-                                                            <?php }
-                                                            ?>
                                                             <h4><?php //echo getProfessionById($row->profession); ?></h4>
                                                         </div>
                                                         </br>
@@ -139,7 +130,7 @@
                                                         <ul class=" list-group list-group-unbordered">
                                                             <li class="list-group-item">Classified Name <span class="pull-right  "><?php echo (!empty($row->title))?substr($row->title, 0, 20):''?></span></li>
                                                             <li class="list-group-item">Category <span class="pull-right  "><?php echo (!empty($row->main_cat))?classifiedcatName($row->main_cat):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
-                                                            <li class="list-group-item">Price <span class="pull-right  ">$<?php echo (!empty($row->price))?$row->price:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+
                                                             <li class="list-group-item">Description <span class="pull-right "><?php echo (!empty($row->description))?substr($row->description, 0, 20):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                         </ul>
                                                         <span class="show_button">

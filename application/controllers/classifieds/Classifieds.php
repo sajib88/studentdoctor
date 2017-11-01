@@ -69,7 +69,6 @@ class Classifieds extends CI_Controller {
                 $this->form_validation->set_rules('state', 'state', 'trim');
                 $this->form_validation->set_rules('city', 'city', 'trim');
                 $this->form_validation->set_rules('address_1', 'address_1', 'trim');
-                $this->form_validation->set_rules('address_2', 'address_2', 'trim');
                 $this->form_validation->set_rules('postal', 'postal', 'trim');
                 $this->form_validation->set_rules('website', 'website', 'trim');
                 $this->form_validation->set_rules('email', 'email', 'trim');
@@ -90,7 +89,6 @@ class Classifieds extends CI_Controller {
                     $save['state'] = $postData['state'];
                     $save['postal'] = $postData['postal'];
                     $save['address_1'] = $postData['address_1'];
-                    $save['address_2'] = $postData['address_2'];
                     $save['website'] = $postData['website'];
                     $save['name'] = $postData['name'];
                     $save['email'] = $postData['email'];
@@ -112,7 +110,7 @@ class Classifieds extends CI_Controller {
                         if (!file_exists($this->PATH)) {
                             mkdir($this->PATH, 0777, true);
                         }
-                        $save['photo_primary'] = $this->resizeimg->image_upload('photo_primary', $this->PATH, 'size[318,210]', '', $photo_name);
+                        $save['photo_primary'] = $this->resizeimg->image_upload('photo_primary', $this->PATH, 'size[500,500]', '', $photo_name);
                     }
                     else {
 
@@ -124,7 +122,7 @@ class Classifieds extends CI_Controller {
                         if (!file_exists($this->PATH)) {
                             mkdir($this->PATH, 0777, true);
                         }
-                        $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[318,210]', '', $photo_name);
+                        $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[500,500]', '', $photo_name);
                     }
                     else {
 
@@ -136,7 +134,7 @@ class Classifieds extends CI_Controller {
                         if (!file_exists($this->PATH)) {
                             mkdir($this->PATH, 0777, true);
                         }
-                        $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[318,210]', '', $photo_name);
+                        $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[500,500]', '', $photo_name);
                     }
                     else {
 
@@ -148,7 +146,7 @@ class Classifieds extends CI_Controller {
                         if (!file_exists($this->PATH)) {
                             mkdir($this->PATH, 0777, true);
                         }
-                        $save['photo_4'] = $this->resizeimg->image_upload('photo_4', $this->PATH, 'size[318,210]', '', $photo_name);
+                        $save['photo_4'] = $this->resizeimg->image_upload('photo_4', $this->PATH, 'size[500,500]', '', $photo_name);
                     }
                     else {
 
@@ -212,7 +210,6 @@ class Classifieds extends CI_Controller {
             $this->form_validation->set_rules('state', 'state', 'trim');
             $this->form_validation->set_rules('city', 'city', 'trim');
             $this->form_validation->set_rules('address_1', 'address_1', 'trim');
-            $this->form_validation->set_rules('address_2', 'address_2', 'trim');
             $this->form_validation->set_rules('postal', 'postal', 'trim');
             $this->form_validation->set_rules('website', 'website', 'trim');
             $this->form_validation->set_rules('email', 'email', 'trim');
@@ -233,7 +230,6 @@ class Classifieds extends CI_Controller {
                 $save['state'] = $postData['state'];
                 $save['postal'] = $postData['postal'];
                 $save['address_1'] = $postData['address_1'];
-                $save['address_2'] = $postData['address_2'];
                 $save['website'] = $postData['website'];
                 $save['name'] = $postData['name'];
                 $save['email'] = $postData['email'];
@@ -255,7 +251,7 @@ class Classifieds extends CI_Controller {
                     if (!file_exists($this->PATH)) {
                         mkdir($this->PATH, 0777, true);
                     }
-                    $save['photo_primary'] = $this->resizeimg->image_upload('photo_primary', $this->PATH, 'size[318,210]', '', $photo_name);
+                    $save['photo_primary'] = $this->resizeimg->image_upload('photo_primary', $this->PATH, 'size[500,500]', '', $photo_name);
                 }
                 else {
 
@@ -267,7 +263,7 @@ class Classifieds extends CI_Controller {
                     if (!file_exists($this->PATH)) {
                         mkdir($this->PATH, 0777, true);
                     }
-                    $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[318,210]', '', $photo_name);
+                    $save['photo_2'] = $this->resizeimg->image_upload('photo_2', $this->PATH, 'size[500,500]', '', $photo_name);
                 }
                 else {
 
@@ -279,7 +275,7 @@ class Classifieds extends CI_Controller {
                     if (!file_exists($this->PATH)) {
                         mkdir($this->PATH, 0777, true);
                     }
-                    $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[318,210]', '', $photo_name);
+                    $save['photo_3'] = $this->resizeimg->image_upload('photo_3', $this->PATH, 'size[500,500]', '', $photo_name);
                 }
                 else {
 
@@ -291,7 +287,7 @@ class Classifieds extends CI_Controller {
                     if (!file_exists($this->PATH)) {
                         mkdir($this->PATH, 0777, true);
                     }
-                    $save['photo_4'] = $this->resizeimg->image_upload('photo_4', $this->PATH, 'size[318,210]', '', $photo_name);
+                    $save['photo_4'] = $this->resizeimg->image_upload('photo_4', $this->PATH, 'size[500,500]', '', $photo_name);
                 }
                 else {
 

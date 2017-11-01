@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1><i class="fa fa-fw fa-list-alt "></i>
-            Classifieds List
+            Edit My Listed
         </h1>
     </section>
 
@@ -27,7 +27,7 @@
                 <div class="widget-user-image text-center">
 
                         </br>
-                    <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="170" height="170" class="img-circle " />
+                    <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="310px" height="280px" class="" />
 
                     </br>
 

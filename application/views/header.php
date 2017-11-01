@@ -90,16 +90,16 @@
                             <span class="label label-success"><?php echo (!empty($notification))?count($notification):""?></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have <?php echo (!empty($notification))?count($notification):"0"?> messages</li>
+                            <li class="header">You have <?php echo (!empty($notification))?count($notification):"0"?> new message</li>
                             <li>
                                 <!-- inner menu: contains the messages -->
                                 <ul class="menu">
                                     <?php if(!empty($notification)){
                                     foreach ($notification as $row){
                                     ?>
-                                    <a href="<?php echo base_url('message/read/'.$row->id.'/1');?>">
-                                    <li><!-- start message -->
 
+                                    <li><!-- start message -->
+                                        <a href="<?php echo base_url('message/read/'.$row->id.'/1');?>">
 
                                             <div class="pull-left">
                                                 <!-- User Image -->
@@ -108,13 +108,13 @@
                                             <!-- Message title and timestamp -->
                                             <h4>
                                                 <?php echo $row->subject;?>
-                                                <small><i class="fa fa-clock-o"></i><?php echo date('d-m-y', strtotime($row->subject));?></small>
+                                                <small><i class="fa fa-clock-o"></i><?php echo date('d-m-y', strtotime($row->timestamp));?></small>
                                             </h4>
                                             <!-- The message -->
                                             <p><?php echo substr($row->message, 0, 20);?></p>
-
+                                        </a>
                                     </li>
-                                    </a>
+
                                     <?php } }?>
                                     <!-- end message -->
                                 </ul>
@@ -319,25 +319,25 @@
                         echo "active";
                         } ?>">
                             <a href="<?php echo base_url('classifieds/add'); ?>"><i
-                                        class="fa fa-circle-o"></i>Add New Classified</a>
+                                        class="fa fa-circle-o"></i>Add New Listing</a>
                         </li>
                         <li class="<?php if ($this->uri->segment(2)=="viewmyclassfied"){
                         echo "active";
                         } ?>">
                             <a href="<?php echo base_url('classifieds/viewmyclassfied'); ?>"><i
-                                        class="fa fa-circle-o"></i>Manage All My Classified</a>
+                                        class="fa fa-circle-o"></i>Edit My Listed</a>
                         </li>
                         <li class="<?php if ($this->uri->segment(2)=="all"){
                         echo "active";
                         } ?>">
                             <a href="<?php echo base_url('classifieds/all'); ?>"><i
-                                        class="fa fa-circle-o"></i>Show All List Classified</a>
+                                        class="fa fa-circle-o"></i>Show All Posted</a>
                         </li>
                         <li class="<?php if ($this->uri->segment(2)=="search"){
                         echo "active";
                         } ?>">
                             <a href="<?php echo base_url('classifieds/search'); ?>"><i
-                                        class="fa fa-circle-o"></i>Classified Search</a>
+                                        class="fa fa-circle-o"></i>Search All Posted</a>
                         </li>
 
 

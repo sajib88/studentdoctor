@@ -3,9 +3,6 @@
         margin-left: 20px;
         margin-right: -12px;
     }
-    .btn-cust{
-        width: 95%;
-    }
     .clear-fix{
         clear: both;
     }
@@ -33,7 +30,7 @@
 
     <section class="content-header">
         <h1><i class="fa fa-fw fa-list-alt "></i>
-            New Classified
+            Add New Listing
         </h1>
     </section>
     <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('classifieds/add'); ?>">
@@ -68,7 +65,7 @@
                     </div>
                     <div class="padd">
                         <div class="form-group">
-                            <label>Title<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
+                            <label>Classified Title<span class="error">*</span></label><span id='title-error' class='error' for='title'></span>
                             <input name="title" value="<?php echo ''; ?>"  class="form-control" required>
                         </div>
                         <div class="form-group">
@@ -92,7 +89,7 @@
                             <textarea  name="description" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Price<span class="error">*</span></label><span id='price-error' class='error' for='price'></span>
+                            <label>Price<span class="error">*</span> (US Dollars)</label><span id='price-error' class='error' for='price'></span>
                             <input type="number" name="price"  class="form-control" required>
                         </div>
                     </div>
@@ -122,7 +119,7 @@
                             <input name="fax" value="<?php echo ''; ?>" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Web site </label>
+                            <label>Website </label>
                             <input name="website" value="<?php echo ''; ?>" class="form-control">
                         </div>
                     </div>
@@ -140,19 +137,15 @@
                     </div>
                     <div class="padd">
                         <div class="form-group">
-                            <label>Address 1</label>
+                            <label>Address</label>
                             <input name="address_1" value="<?php echo ''; ?>"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Address 2</label>
-                            <input name="address_2" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label>City<span class="error">*</span></label>
                             <input name="city" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Postal</label>
+                            <label>Postal Code</label>
                             <input name="postal" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                         <div class="form-group">
@@ -191,50 +184,37 @@
                                     <input class="btn btn-default btn-cust" id='primary_photo' name="photo_primary" onchange="validateImage()" type="file">
                                     <small class="label bg-green"> JPG, GIF, PNG Format allow</small>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
                                     <input class="btn btn-default btn-cust" name="photo_2" onchange="validateImage()" type="file">
                                     <small class="label bg-green"> JPG, GIF, PNG Format allow</small>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
                                     <input class="btn btn-default btn-cust" name="photo_3" onchange="validateImage()" type="file">
                                     <small class="label bg-green"> JPG, GIF, PNG Format allow</small>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
                                 <div class="form-group">
                                     <label>Picture Four</label><span id='picture4-error' class='error' for='picture3'></span>
                                     <input class="btn btn-default btn-cust" name="photo_4" type="file">
                                     <small class="label bg-green"> JPG, GIF, PNG Format allow</small>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group" id="file_id">
-                                    <label>File One<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
+                                    <label>File One</label><span id='file1-error' class='error' for='file1'></span>
                                     <input class="btn btn-default btn-cust" name="primary_file" type="file">
+                                    <small class="label bg-green"> PDF, txt, doc Format allow</small>
                                 </div>
-                            </div>
-                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
+                                    <label>Audio</label><span id='audio-error' class='error' for='audio'></span>
                                     <input class="btn btn-default btn-cust" name="primary_sound" type="file">
+                                    <small class="label bg-green"> mp3 Format allow</small>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label>Videos</label><span id='videos-error' class='error' for='videos'></span>
+                                    <label>Video</label><span id='videos-error' class='error' for='videos'></span>
                                     <input class="btn btn-default btn-cust" name="primary_video" type="file">
+                                    <small class="label bg-green"> mp4 Format allow</small>
                                 </div>
                             </div>
                         </div>

@@ -125,14 +125,6 @@
                                     <input name="address_1" value="<?php echo $editclassified['address_1']; ?>"  class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>City</label>
-                                    <input name="city" value="<?php echo $editclassified['city']; ?>"  class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Postal</label>
-                                    <input name="postal" value="<?php echo $editclassified['postal']; ?>"  class="form-control">
-                                </div>
-                                <div class="form-group">
                                     <label>Country</label>
                                     <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
                                         <option value="">Select</option>
@@ -169,6 +161,16 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <input name="city" value="<?php echo $editclassified['city']; ?>"  class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Postal Code</label>
+                                    <input name="postal" value="<?php echo $editclassified['postal']; ?>"  class="form-control">
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

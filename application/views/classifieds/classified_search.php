@@ -118,7 +118,7 @@
                                                             <?php
                                                             if($row->photo_primary != 0) {?>
                                                                 <br />
-                                                                <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="310px" height="280px" class="" />
+                                                                <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="310px" height="280px" class="img-size" />
 
                                                             <?php }?>
 

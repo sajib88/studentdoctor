@@ -485,4 +485,16 @@ label {
 .main-footer {border-top: none;}
 .skin-black-light .content-wrapper, .skin-black-light .main-footer {border-left: none;}
 
+.btn-cust{
+    width: 100%;
+    text-align: left;
+}
+
+@media only screen and (max-width: 320px) {
+    .img-size{
+       width: 250px;
+        height: 260px;
+    }
+}
+
 

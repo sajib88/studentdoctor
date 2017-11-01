@@ -141,14 +141,6 @@
                             <input name="address_1" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>City<span class="error">*</span></label>
-                            <input name="city" value="<?php echo ''; ?>"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Postal Code</label>
-                            <input name="postal" value="<?php echo ''; ?>"  class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label>Country<span class="error">*</span></label>
                             <select onchange="getComboA(this)" name="country" class="form-control">
                                 <option value="">Select</option>
@@ -166,6 +158,14 @@
                         <div class="form-group">
                             <div id="result">
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label>City<span class="error">*</span></label>
+                            <input name="city" value="<?php echo ''; ?>"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Postal Code</label>
+                            <input name="postal" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                     </div>
                 </div>

@@ -27,7 +27,7 @@
                 <div class="widget-user-image text-center">
 
                         </br>
-                    <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="310px" height="280px" class="" />
+                    <img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="310px" height="280px" class="img-size" />
 
                     </br>
 
@@ -37,7 +37,7 @@
             </div>
             <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
-                    <li><a href="#">Title <span class="pull-right"><?php echo (!empty($row->title))?substr($row->title, 0, 40):'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                    <li><a href="#">Title <span class="pull-right"><?php echo (!empty($row->title))?substr($row->title, 0, 30):'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                     <li><a href="#">Price <span class="pull-right">$<?php echo (!empty($row->price))?$row->price:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                     <li><a href="#">Phone <span class="pull-right"><?php echo (!empty($row->phone))?$row->phone:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                 </ul>

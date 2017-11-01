@@ -68,7 +68,7 @@
                         <div class="padd">
                             <div class="form-group">
                                 <?php $v = (set_value('title')!='')?set_value('title'):'';?>
-                                <label>Title<span class="error">*</span></label>
+                                <label>Blog Title<span class="error">*</span></label>
                                 <input name="title" type="text" placeholder="Title" value="<?php echo $v?>"  class="form-control">
                                 <?php echo form_error('title');?>
                             </div>
@@ -148,6 +148,7 @@
                                         <label>Picture One <span class="error">*</span></label>
                                         <?php $v = (set_value('primary_image') != '')?set_value('primary_image'):'';?>
                                         <input class="btn btn-default btn-cust" name="primary_image" type="file" value="<?php echo $v;?>">
+                                        <small class="label bg-green"> JPG, GIF, PNG Format Allow</small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -155,6 +156,7 @@
                                         <label>Picture Two</label>
                                         <?php $v = (set_value('image1') != '')?set_value('image1'):'';?>
                                         <input class="btn btn-default btn-cust" name="image1" type="file" value="<?php echo $v;?>">
+                                        <small class="label bg-green"> JPG, GIF, PNG Format Allow</small>
                                     </div>
                                 </div>
                             </div>
@@ -164,6 +166,7 @@
                                         <label>Picture Three</label>
                                         <?php $v = (set_value('image2') != '')?set_value('image2'):'';?>
                                         <input class="btn btn-default btn-cust" name="image2" type="file" value="<?php echo $v;?>">
+                                        <small class="label bg-green"> JPG, GIF, PNG Format Allow</small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -171,6 +174,7 @@
                                         <label>Picture Four</label>
                                         <?php $v = (set_value('image3') != '')?set_value('image3'):'';?>
                                         <input class="btn btn-default btn-cust" name="image3" type="file" value="<?php echo $v;?>">
+                                        <small class="label bg-green"> JPG, GIF, PNG Format Allow</small>
                                     </div>
                                 </div>
                             </div>
@@ -179,12 +183,14 @@
                                     <div class="form-group">
                                         <label>File One</label>
                                         <input class="btn btn-default btn-cust" name="file1" type="file">
+                                        <small class="label bg-purple"> Document Format Allow</small>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>File Two</label>
                                         <input class="btn btn-default btn-cust" name="file2" type="file">
+                                        <small class="label bg-purple"> Document Format Allow</small>
                                     </div>
                                 </div>
                             </div>
@@ -296,6 +302,7 @@ jQuery(document).ready(function() {
         todayHighlight: true,
         defaultDate: new Date(),
         autoclose: true,
+        minDate: 0,
         format: "mm/dd/yyyy"
     });
 

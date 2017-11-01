@@ -237,17 +237,10 @@
                                         <tbody>
                                             <?php if(!empty($layoutfull['address_1'])){?>
                                             <tr>
-                                                <td>Address1</td>
+                                                <td>Address</td>
                                                 <td><?php echo $layoutfull['address_1']; ?></td>
                                             </tr>
-                                            <?php }
-                                            if(!empty($layoutfull['address_2'])){
-                                            ?>
-                                            <tr>
-                                                <td>Address2</td>
-                                                <td><?php echo $layoutfull['address_2']; ?></td>
-                                            </tr>
-                                            <?php }?>
+                                            <?php } ?>
                                             <tr>
                                                 <td>City</td>
                                                 <td><?php echo $layoutfull['city']; ?></td>

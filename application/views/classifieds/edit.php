@@ -3,9 +3,6 @@
         margin-left: 20px;
         margin-right: -12px;
     }
-    .btn-cust{
-        width: 95%;
-    }
     .professionView{
         margin: 15px 0px -7px 0px;
     }
@@ -107,7 +104,7 @@
                                     <input name="fax" value="<?php echo $editclassified['fax']; ?>" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Web site </label>
+                                    <label>Website </label>
                                     <input name="website" value="<?php echo $editclassified['website']; ?>" class="form-control">
                                 </div>
                             </div>
@@ -124,12 +121,8 @@
                             </div>
                             <div class="padd">
                                 <div class="form-group">
-                                    <label>Address 1</label>
+                                    <label>Address</label>
                                     <input name="address_1" value="<?php echo $editclassified['address_1']; ?>"  class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Address 2</label>
-                                    <input name="address_2" value="<?php echo $editclassified['address_2']; ?>" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>City</label>
@@ -192,53 +185,67 @@
                                     <div class="form-group" id="photo_id">
                                         <label>Picture One<span class="error">*</span></label><span id='Picture-error' class='error' for='Picture'></span>
                                         <input class="btn btn-default btn-cust" id='primary_photo' name="photo_primary" onchange="validateImage()" type="file">
+                                        <?php if(!empty($editclassified['photo_primary'])){?>
                                         <a href="<?php echo base_url() . '/assets/file/classifieds/' .$editclassified['photo_primary']; ?>" data-fancybox="images">
                                             View Picture One
                                         </a>
+                                        <?php }?>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
                                         <input class="btn btn-default btn-cust" name="photo_2" onchange="validateImage()" type="file">
+                                        <?php if(!empty($editclassified['photo_2'])){?>
                                         <a href="<?php echo base_url() . '/assets/file/classifieds/' .$editclassified['photo_2']; ?>" data-fancybox="images">
                                             View Picture Two
                                         </a>
+                                        <?php }?>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
                                         <input class="btn btn-default btn-cust" name="photo_3" onchange="validateImage()" type="file">
+                                        <?php if(!empty($editclassified['photo_3'])){?>
                                         <a href="<?php echo base_url() . '/assets/file/classifieds/' .$editclassified['photo_3']; ?>" data-fancybox="images">
                                             View Picture Three
                                         </a>
+                                        <?php }?>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Picture Four</label><span id='picture4-error' class='error' for='picture3'></span>
                                         <input class="btn btn-default btn-cust" name="photo_4" type="file">
+                                        <?php if(!empty($editclassified['photo_4'])){?>
                                         <a href="<?php echo base_url() . '/assets/file/classifieds/' .$editclassified['photo_4']; ?>" data-fancybox="images">
                                             View Picture Four
                                         </a>
+                                        <?php }?>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group" id="file_id">
-                                        <label>File One<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
+                                        <label>File One</label><span id='file1-error' class='error' for='file1'></span>
                                         <input class="btn btn-default btn-cust" name="primary_file" type="file">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
+                                        <label>Audio</label><span id='audio-error' class='error' for='audio'></span>
                                         <input class="btn btn-default btn-cust" name="primary_sound" type="file">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>Videos</label><span id='videos-error' class='error' for='videos'></span>
+                                        <label>Video</label><span id='videos-error' class='error' for='videos'></span>
                                         <input class="btn btn-default btn-cust" name="primary_video" type="file">
                                     </div>
                                 </div>

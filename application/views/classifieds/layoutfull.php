@@ -337,14 +337,19 @@
                 </div>
                 <hr>
                 <div class="price-tag">
-                    <p><i class="glyphicon glyphicon-user text-clr"></i>&nbsp Contact</p><br>
+                    <p><i class="glyphicon glyphicon-envelope text-clr"></i>&nbsp Contact</p><br>
                     <p class="pdl"><?php echo $layoutfull['phone']; ?></p>
                     <a target="_blank" class="ol-color pdl" href="<?php echo $layoutfull['website']; ?>" > <?php echo $layoutfull['website']; ?> </a>
                 </div>
                 <hr>
                 <div class="price-tag">
                     <p><i class="glyphicon glyphicon-calendar text-clr"></i>&nbsp Added</p><br>
-                    <p class="pdl"><?php echo $layoutfull['added']; ?></p>
+                    <p class="pdl"><?php echo date('m-d-Y', strtotime($layoutfull['added'])); ?></p>
+                </div>
+                <hr>
+                <div class="price-tag">
+                    <p><i class="glyphicon glyphicon-user text-clr"></i>&nbsp Added By</p><br>
+                    <p class="pdl"><a style="color: #777;" href="<?php echo base_url('profile/profile/showThisProfile/'.$layoutfull['user_id']);?>"><?php echo getNameById($layoutfull['user_id']); ?></a></p>
                 </div>
                 <hr>
             </div>

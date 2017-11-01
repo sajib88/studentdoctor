@@ -236,7 +236,6 @@ class Classifieds extends CI_Controller {
                 $save['phone'] = $postData['phone'];
                 $save['fax'] = $postData['fax'];
                 $save['price'] = $postData['price'];
-                $save['user_id'] = $loginId;
                 if(!empty($this->input->post('profession_view'))){
                     $sata = array();
                     $sata ['profession_view'] = $this->input->post('profession_view');

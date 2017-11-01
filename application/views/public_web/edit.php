@@ -8,7 +8,7 @@
 
 <section class="content-header">
     <h1><i class="fa fa-user-md"></i>
-       Edit Public Website
+       Edit My Website
     </h1>
 </section>
 
@@ -174,15 +174,7 @@
                              <h3 class="box-title">Address</h3></i>
                          </div>
                          <div class="padd">
-                             <div class="form-group">
-                                 <label>Address 1</label>
-                                 <input name="address_1" value="<?php echo!empty($website_info['address_1']) ? $website_info['address_1'] : ''; ?>"  class="form-control">
-                             </div>
 
-                             <div class="form-group">
-                                 <label>Address 2</label>
-                                 <input name="address_2" value="<?php echo!empty($website_info['address_2']) ? $website_info['address_2'] : ''; ?>"  class="form-control">
-                             </div>
                              <div class="form-group">
                                  <label>Country<span class="error">*</span></label>
                                  <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
@@ -224,10 +216,15 @@
                                  <input name="city" type="text" placeholder="City" value="<?php echo!empty($website_info['city']) ? $website_info['city'] : ''; ?>" class="form-control">
                              </div>
                              <div class="form-group">
-                                 <label>Zip/postal</label>
+                                 <label>Postal Code</label>
                                  <input name="postal" value="<?php
                                  echo!empty($website_info['postal']) ? $website_info['postal'] : '';
                                  ?>"  class="form-control">
+                             </div>
+
+                             <div class="form-group">
+                                 <label>Address </label>
+                                 <input name="address_1" value="<?php echo!empty($website_info['address_1']) ? $website_info['address_1'] : ''; ?>"  class="form-control">
                              </div>
                          </div>
                      </div>

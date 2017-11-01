@@ -259,21 +259,21 @@
                 } ?>">
                     <a href="#">
                         <i class="fa fa-fw fa-user-md"></i>
-                        <span>Public Web Site</span>
+                        <span>My Website</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li class="<?php if ($this->uri->segment(2)=="add"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('pub/add'); ?>"><i class="fa fa-circle-o"></i> Create Public
+                            <a href="<?php echo base_url('pub/add'); ?>"><i class="fa fa-circle-o"></i> Create My
                                 webiste</a>
                         </li>
 
                         <li class="<?php if ($this->uri->segment(2)=="viewedit"){
                         echo "active";
                         } ?>">
-                            <a href="<?php echo base_url('pub/viewedit'); ?>"><i class="fa fa-circle-o"></i> Edit Public
+                            <a href="<?php echo base_url('pub/viewedit'); ?>"><i class="fa fa-circle-o"></i> Edit My
                                 webiste</a>
                         </li>
 
@@ -293,7 +293,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li class="">
-                                    <a href="<?php echo base_url('store/Store/'); ?>"><i class="fa fa-circle-o"></i>Add New
+                                    <a href="<?php // echo base_url('store/Store/'); ?>"><i class="fa fa-circle-o"></i>Add New
                                         Store</a>
                                 </li>
                             </ul>

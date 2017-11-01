@@ -16,7 +16,7 @@ class Publicweb extends CI_Controller {
     public function index() {
 
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'My Web';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         
@@ -42,7 +42,7 @@ class Publicweb extends CI_Controller {
             $this->form_validation->set_rules('state', 'state', 'trim');
             $this->form_validation->set_rules('city', 'city', 'trim');
             $this->form_validation->set_rules('address_1', 'address_1', 'trim');
-            $this->form_validation->set_rules('address_2', 'address_2', 'trim');
+            //$this->form_validation->set_rules('address_2', 'address_2', 'trim');
             $this->form_validation->set_rules('postal', 'postal', 'trim');
             $this->form_validation->set_rules('first_name', 'first name', 'trim');
             $this->form_validation->set_rules('last_name', 'last name', 'trim');
@@ -72,7 +72,7 @@ class Publicweb extends CI_Controller {
                 $save['state'] = $postData['state'];
                 $save['city'] = $postData['city'];
                 $save['address_1'] = $postData['address_1'];
-                $save['address_2'] = $postData['address_2'];
+                //$save['address_2'] = $postData['address_2'];
                 $save['postal'] = $postData['postal'];
                 $save['first_name'] = $postData['first_name'];
                 $save['last_name'] = $postData['last_name'];
@@ -83,8 +83,8 @@ class Publicweb extends CI_Controller {
                 $save['business_fax'] = $postData['business_fax'];
                 $save['specialty'] = $postData['specialty'];
                 $save['special_interest'] = $postData['special_interest'];
-                $save['online_store'] = $postData['store'];
-                $save['store_id'] = $postData['store_id'];
+                //$save['online_store'] = $postData['store'];
+                //$save['store_id'] = $postData['store_id'];
 
 
                 if ($insertedId = $this->global_model->insert('public_website', $save)) {
@@ -97,7 +97,7 @@ class Publicweb extends CI_Controller {
                         if (!file_exists($this->PATH)) {
                             mkdir($this->PATH, 0777, true);
                         }
-                        $save['photo1'] = $this->resizeimg->image_upload('photo1', $this->PATH, 'size[318,210]', '', $photo_name);
+                        $save['photo1'] = $this->resizeimg->image_upload('photo1', $this->PATH, 'size[480,320]', '', $photo_name);
                         $photo_data['ref_id'] = $loginId;
                         $photo_data['ref_name'] = 'public_web';
                         $photo_data['name'] = $save['photo1'];
@@ -113,7 +113,7 @@ class Publicweb extends CI_Controller {
                         if (!file_exists($this->PATH)) {
                             mkdir($this->PATH, 0777, true);
                         }
-                        $save['photo2'] = $this->resizeimg->image_upload('photo2', $this->PATH, 'size[318,210]', '', $photo_name);
+                        $save['photo2'] = $this->resizeimg->image_upload('photo2', $this->PATH, 'size[480,320]', '', $photo_name);
                         $photo1_data['ref_id'] = $loginId;
                         $photo1_data['ref_name'] = 'public_web';
                         $photo1_data['name'] = $save['photo2'];
@@ -161,7 +161,7 @@ class Publicweb extends CI_Controller {
                         $this->global_model->insert('video', $vedio_data);
                     }
 
-                    $this->session->set_flashdata('message', 'Save Success');
+                    $this->session->set_flashdata('message', 'Save Successful');
                     redirect('public_web/publicweb/viewForEdit');
                 }
             } else {
@@ -174,7 +174,7 @@ class Publicweb extends CI_Controller {
         if ($this->global_model->get_data('public_website', array('user_id' => $loginId, 'profile_status' => 'public')))
         {
 
-            $data['message'] = "You have Alredy Posted a public Website";
+            $data['message'] = "You have alredy posted a public Website";
             $this->load->view('header', $data);
             $this->load->view('message', $data);
             $this->load->view('footer');
@@ -292,7 +292,7 @@ class Publicweb extends CI_Controller {
             $this->form_validation->set_rules('state', 'state', 'trim');
             $this->form_validation->set_rules('city', 'city', 'trim');
             $this->form_validation->set_rules('address_1', 'address_1', 'trim');
-            $this->form_validation->set_rules('address_2', 'address_2', 'trim');
+           // $this->form_validation->set_rules('address_2', 'address_2', 'trim');
             $this->form_validation->set_rules('postal', 'postal', 'trim');
             $this->form_validation->set_rules('business_name', 'business name', 'trim');
             $this->form_validation->set_rules('business_website', 'business website', 'trim');
@@ -330,7 +330,7 @@ class Publicweb extends CI_Controller {
                 $save['state'] = $postData['state'];
                 $save['city'] = $postData['city'];
                 $save['address_1'] = $postData['address_1'];
-                $save['address_2'] = $postData['address_2'];
+                //$save['address_2'] = $postData['address_2'];
                 $save['postal'] = $postData['postal'];
                 $save['business_name'] = $postData['business_name'];
                 $save['business_website'] = $postData['business_website'];
@@ -427,7 +427,7 @@ class Publicweb extends CI_Controller {
                         }
                     }
 
-                    $this->session->set_flashdata('message', 'Save Success');
+                    $this->session->set_flashdata('message', 'Update Successful');
                     redirect(base_url('pub/viewedit'));
                 }
             } else {

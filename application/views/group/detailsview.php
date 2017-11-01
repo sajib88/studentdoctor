@@ -17,7 +17,7 @@
                             <div class="widget-user-header ">
                                 <div class="widget-user-image text-center">
                                     </br>
-                                    <img src="<?php echo base_url() . '/assets/file/group/' .$row['primary_image']; ?>" alt="" width="170" height="170" class="img-circle " />
+                                    <img src="<?php echo base_url() . '/assets/file/group/' .$row['primary_image']; ?>" alt=""  />
 
                                     </br>
                                 </div>

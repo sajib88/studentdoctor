@@ -1,14 +1,12 @@
 <style>
-    .btn-cust{
-        width: 95%;
-    }
+
 </style>
 
 <div class="content-wrapper">
     
     <section class="content-header">
       <h1><i class="fa fa-user-md"></i>
-        New Public Website
+        New My Website
       </h1>
     </section>
     
@@ -22,11 +20,11 @@
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <i class="fa fa-th"></i>
-                        <h3 class="box-title">Public Website Info</h3></i>
+                        <h3 class="box-title">My Website Info</h3></i>
                     </div>
                     <div class="padd">
                         <div class="form-group">
-                            <label>Appointment</label>
+                            <label>Offering Appointments Via Online?</label>
                             <select name="appointment" class="form-control" id="appointment" >
                                 <option value="">Please Select Appointment</option>
                                 <option value="1">Yes</option>
@@ -188,14 +186,8 @@
                         <h3 class="box-title">Address</h3></i>
                     </div>
                     <div class="padd">
-                        <div class="form-group">
-                            <label>Address 1</label>
-                            <input name="address_1" value="<?php echo set_value('address_1'); ?>"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Address 2</label>
-                            <input name="address_2" value="<?php echo set_value('address_2'); ?>"  class="form-control">
-                        </div>
+
+
                         <div class="form-group">
                             <label>Country<span class="error">*</span></label>
                             <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
@@ -220,9 +212,15 @@
                             <input   name="city" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Zip/postal</label>
+                            <label>Postal Code</label>
                             <input name="postal" value="<?php echo set_value('postal'); ?>"  class="form-control">
                         </div>
+
+                        <div class="form-group">
+                            <label>Address </label>
+                            <input name="address_1" value="<?php echo set_value('address_1'); ?>"  class="form-control">
+                        </div>
+
                     </div>
                 </div>
             </div>

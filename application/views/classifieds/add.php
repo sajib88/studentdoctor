@@ -69,7 +69,7 @@
                             <input name="title" value="<?php echo ''; ?>"  class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Main Category <span class="error">*</span></label><span id='main_category-error' class='error' for='main_category'></span>
+                            <label>Classified Category <span class="error">*</span></label><span id='main_category-error' class='error' for='main_category'></span>
                             <select onchange="getSubCat(this)" name="main_category" class="form-control">
                                 <option value="">Select</option>
                                 <?php
@@ -89,7 +89,7 @@
                             <textarea  name="description" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Price<span class="error">*</span> (US Dollars)</label><span id='price-error' class='error' for='price'></span>
+                            <label>Price<span class="error">*</span> (USD)</label><span id='price-error' class='error' for='price'></span>
                             <input type="number" name="price"  class="form-control" required>
                         </div>
                     </div>
@@ -232,7 +232,7 @@
                             <div class="row">
                                 <div class="col-lg-12 professionView">
                                     <div class="col-lg-6">
-                                        <label><h4>Select profession(s) permitted to see your classified.</h4></label>
+                                        <label><h4>Select profession(s) permitted to see your classifieds.</h4></label>
                                     </div>
                                     <div class="col-lg-6 ">
                                         <div class="form-group">

@@ -21,49 +21,35 @@
                     <div class="panel-body">
                         <div class="row">
                             <form role="form" method="post"  action="<?php echo base_url('classifieds/search'); ?>">
-
-                                <div class="col-lg-6">
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Classified Name</label>
-                                            <input type="text" name="title"  placeholder="Classified Name" class="form-control">
-                                        </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Classified Name</label>
+                                        <input type="text" name="title"  placeholder="Classified Name" class="form-control">
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Category</label>
-                                            <select onchange="getSubCat(this)" name="main_cat" class="form-control">
-                                                <option value="">Select</option>
-                                                <?php
-                                                if (is_array($main_cat)) {
-                                                    foreach ($main_cat as $cat) {
-                                                        ?>
-                                                        <option value="<?php echo $cat->id; ?>"><?php echo $cat->name; ?></option>
-                                                        <?php
-                                                    }
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select onchange="getSubCat(this)" name="main_cat" class="form-control">
+                                            <option value="">Select</option>
+                                            <?php
+                                            if (is_array($main_cat)) {
+                                                foreach ($main_cat as $cat) {
+                                                    ?>
+                                                    <option value="<?php echo $cat->id; ?>"><?php echo $cat->name; ?></option>
+                                                    <?php
                                                 }
-                                                ?>
-                                            </select>
-                                        </div>
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
-
-                                <div class="col-lg-6">
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Price</label>
-                                            <input name="price" type="text" placeholder="Price" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Description</label>
-                                            <input name="description" type="text" placeholder="Description" class="form-control">
-                                        </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <input name="description" type="text" placeholder="Description" class="form-control">
                                     </div>
                                 </div>
-
                         </div>
                     </div>
                 </div>
@@ -97,11 +83,11 @@
                 <?php if(isset($result)) {
                     if (empty($result)) {
                         ?>
-                        <div class="col-md-12">
-                            <div class="alert alert-danger text-center">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <i class="fa fa-info"></i> No Classified Found</div>
-                        </div>
+<!--                        <div class="col-md-12">-->
+<!--                            <div class="alert alert-danger text-center">-->
+<!--                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+<!--                                <i class="fa fa-info"></i> No Classified Found</div>-->
+<!--                        </div>-->
                     <?php } else {
                         if (!empty($result)) { ?>
 
@@ -130,7 +116,7 @@
                                                         <ul class=" list-group list-group-unbordered">
                                                             <li class="list-group-item">Classified Name <span class="pull-right  "><?php echo (!empty($row->title))?substr($row->title, 0, 20):''?></span></li>
                                                             <li class="list-group-item">Category <span class="pull-right  "><?php echo (!empty($row->main_cat))?classifiedcatName($row->main_cat):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
-
+                                                            <li class="list-group-item">Price <span class="pull-right  ">$<?php echo (!empty($row->price))?$row->price:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                             <li class="list-group-item">Description <span class="pull-right "><?php echo (!empty($row->description))?substr($row->description, 0, 20):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                         </ul>
                                                         <span class="show_button">

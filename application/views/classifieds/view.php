@@ -53,12 +53,12 @@
 
                 <?php endforeach;?>
             <?php }else{ ?>
-                <div class="col-md-12">
-                <div class="alert alert-warning alert-dismissible text-center">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    No classified found <i class="fa fa-info"></i>
-                </div>
-                </div>
+<!--                <div class="col-md-12">-->
+<!--                <div class="alert alert-warning alert-dismissible text-center">-->
+<!--                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>-->
+<!--                    No classified found <i class="fa fa-info"></i>-->
+<!--                </div>-->
+<!--                </div>-->
             <?php } ?>
 
 

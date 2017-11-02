@@ -144,10 +144,10 @@
             <div class="col-lg-12 page-header">
                 <h1><?php echo (!empty($layoutfull['title']))?$layoutfull['title']:''?>
                    <br>
-                <small>Category:
+                <small>Classified Category:
                     <?php
                     $data = get_data('classified_main_cat', array('id' => $layoutfull['main_cat']));
-                    echo $data['name'];
+                    echo '<span class="text-clr">'.$data['name'].'</span>';
                     ?>
                 </small>
                 </h1>

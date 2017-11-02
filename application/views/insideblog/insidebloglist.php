@@ -45,7 +45,7 @@
                   <div class="user-block">
 
                     <span class="Title"><a href="#"><?php echo substr($row['title'],0,20); ?></a></span><br>
-                    <span class="Publish Date">Shared publicly <?php echo date("d-m-Y", strtotime($row['date'])); ?></span>
+                    <span class="Publish Date">Shared publicly <?php echo date("m-d-Y", strtotime($row['date'])); ?></span>
                   </div>
                   <!-- /.user-block -->
                   <div class="box-tools">
@@ -62,9 +62,7 @@
                     <div class="widget-user-header ">
                         <div class="widget-user-image text-center">
                             </br>
-                            <img src="<?php echo base_url() . 'assets/file/insideblog/' .$row['primary_image']; ?>" alt="" width="170" height="170" class="img-circle " />
-
-                            </br>
+                            <img src="<?php echo base_url() . 'assets/file/insideblog/' .$row['primary_image']; ?>" alt="" width="170" height="170" class="blog-image" />
                         </div>
                         </br>
                     </div>

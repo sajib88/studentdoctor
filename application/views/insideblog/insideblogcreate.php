@@ -206,7 +206,7 @@
                             <div class="row">
                                 <div class="col-lg-12 professionView">
                                     <div class="col-lg-6">
-                                        <label class="cust-level">Select profession(s) permitted to see your blog.</h4></label>
+                                        <label class="cust-level"><h4>Select profession(s) permitted to see your blog.</h4></label>
                                     </div>
                                     <div class="col-lg-6 ">
                                         <div class="form-group">

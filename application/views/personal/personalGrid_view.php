@@ -48,10 +48,10 @@ $this->load->helper('global_helper');
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>I M A</b> <span class="pull-right"><?php echo (!empty($row['iam']))?$row['iam']:'<span class="badge bg-red">Not Given</span>'?></span>
+                                    <b>I am a</b> <span class="pull-right"><?php echo (!empty($row['iam']))?$row['iam']:'<span class="badge bg-red">Not Given</span>'?></span>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Intested</b> <span class="pull-right "><?php echo (!empty($row['interestedin']))?$row['interestedin']:'<span class="badge bg-red">Not Given</span>'?></span>
+                                    <b>Intested in</b> <span class="pull-right "><?php echo (!empty($row['interestedin']))?$row['interestedin']:'<span class="badge bg-red">Not Given</span>'?></span>
                                 </li>
                                 <li class="list-group-item">
                                     <b>Body</b> <span class="pull-right "><?php echo (!empty( $row['body']))? $row['body']:'<span class="badge bg-red">Not Given</span>'?></span>
@@ -80,7 +80,7 @@ $this->load->helper('global_helper');
                     <b class="">No Personal </b>
                 </div>
             <?php } ?>
-           
+
         </div>
 
        </section>

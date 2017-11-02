@@ -34,11 +34,11 @@
                         <li class="time-label">
                         <span class="bg-red">
                           <?php echo date('m-d-Y', strtotime($layoutfull['create_date'])); ?>
-                        </span>&nbsp;&nbsp;&nbsp;
+                        </span>
                             <span style="margin-right: 20px" class="pull-right">
                             <b>Added By: </b>
-                            <span class="bg-blue">
-                                <a style="color: #fff; padding: 10px;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"> <?php echo getNameById($layoutfull['user_id']);?></a>
+                            <span style="height: 25px; float: right; border-radius: 5px;" class="bg-blue">
+                                <a style="color: #fff; padding: 20px;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"> <?php echo getNameById($layoutfull['user_id']);?></a>
                             </span>
                             </span>
                         </li>

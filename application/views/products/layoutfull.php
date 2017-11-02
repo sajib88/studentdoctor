@@ -126,7 +126,7 @@
                                 <b>	State</b> <span class="pull-right"><?php echo $layoutfull['state']; ?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>	City</b> <span class="pull-right"><?php echo $layoutfull['city']; ?></span>
+                                <b>	city</b> <span class="pull-right"><?php echo $layoutfull['city']; ?></span>
                             </li>
                         </ul>
                     </div>
@@ -212,15 +212,15 @@
                             </div>
                             <div class="col-md-6">
                                 <?php if($layoutfull['photo_2'] != 0){?>
-                                <img class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_2'] ?>" width="220px;" height="180px">
+                                <img  class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_2'] ?>" width="220px;" height="180px">
                                 <?php }?>
                             </div>
                         </div>
-                        <div class="visible-lg" style="margin-top: 10px"></div>
+                        <div class="visible-lg" style="margin-top: 20px"></div>
                         <div class="row">
                             <div class="col-md-6">
                                 <?php if($layoutfull['photo_3'] != 0){?>
-                                <img class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_3'] ?>" width="220px;" height="180px">
+                                <img  class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_3'] ?>" width="220px;" height="180px">
                                 <?php }?>
                             </div>
                             <div class="col-md-6">

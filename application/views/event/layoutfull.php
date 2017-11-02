@@ -2,6 +2,26 @@
     .box-body img{
         padding: 5px;
     }
+    .added-by{
+        margin-right: 25px;
+        background: #fff;
+        height: 40px;
+        padding: 10px;
+    }
+    .added-user{
+        padding: 5px;
+        border-radius: 3px;
+    }
+    .added-user1{
+        padding: 6px;
+        border-radius: 3px;
+        margin-top: 6px;
+        height: 35px;
+    }
+    .added-user1 a{
+        color: #fff;
+    }
+
 </style>
 
 <div class="content-wrapper">
@@ -15,11 +35,19 @@
         <div class="row">
 
             <div class="col-md-7">
+                <div class="visible-xs">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <i class="fa fa-user"></i>
+                            <span class="added-by"><b>Added By: </b><span class="added-user1 bg-blue pull-right"><a href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"><?php echo getNameById($layoutfull['user_id']);?></a></span></span>
+                        </div>
+                    </div>
+                </div>
                 <div class="box box-warning">
                     <div class="box-header with-border">
                         <i class="fa fa-paragraph"></i>
                         <h3 class="box-title">Event Summary</h3>
-
+                        <span class="added-by pull-right hidden-xs"><b>Added By: </b><span class="added-user bg-blue"><a style="color: #fff;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"><?php echo getNameById($layoutfull['user_id']);?></a></span></span>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
@@ -64,16 +92,24 @@
                     <!-- form start -->
 
                     <div class="box-body">
-
-                        <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['primary_photo'] ?>" width="150" height="138"">
-
-
-                        <?php if($layoutfull['photo_2'] != 0){?>
-                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_2'] ?>" width="150" height="138">
-                        <?php }?>
-                        <?php if($layoutfull['photo_3'] != 0){?>
-                            <img src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_3'] ?>" width="150" height="138"">
-                        <?php }?>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['primary_photo'] ?>" width="220px;" height="180px">
+                            </div>
+                            <div class="col-md-6">
+                                <?php if($layoutfull['photo_2'] != 0){?>
+                                <img class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_2'] ?>" width="220px;" height="180px">
+                            <?php }?>
+                            </div>
+                        </div>
+                        <div class="visible-lg" style="margin-top: 20px"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?php if($layoutfull['photo_3'] != 0){?>
+                                    <img class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/event/' . $layoutfull['photo_3'] ?>" width="220px;" height="180px">
+                                <?php }?>
+                            </div>
+                        </div>
                     </div>
 
 

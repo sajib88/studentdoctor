@@ -21,9 +21,16 @@
                 <div class="box box-primary">
                     <div class="panel-body">
                             <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('event/search'); ?>">
-                                    <div class="col-lg-12">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Event Title</label>
+
+                                        <input name="title" type="text" placeholder="Category Title" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Category Select</label>
+                                            <label>Event Category</label>
                                             <select  name="category" class="form-control">
                                                 <option value="">Select</option>
                                                 <?php
@@ -37,19 +44,9 @@
                                                 }
                                                 ?>
                                             </select>
-                                            <?php echo form_error('country');?>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div id="result">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Category Summary</label>
-                                            <input name="summary" type="text" placeholder="Category Summary" class="form-control">
-                                        </div>
-                                    </div>
+
                                     <div class="col-lg-12">
                                         <div class="form-group">
 
@@ -65,27 +62,18 @@
             <div class="col-lg-6">
                     <div class="box box-primary">
                         <div class="panel-body">
-
-
-                                    <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>Category Title</label>
-
-                                        <input name="title" type="text" placeholder="Category Title" class="form-control">
-                                    </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Event Summary</label>
+                                    <input name="summary" type="text" placeholder="Category Summary" class="form-control">
                                 </div>
-
-
-
-
-
-
+                            </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
 
                                             <div class="form-group">
-                                                <label>Category Description</label>
+                                                <label>Event Description</label>
                                                 <input name="description" type="text" placeholder="Category Description" class="form-control">
                                             </div>
                                         </div>

@@ -181,6 +181,12 @@ class Forum extends CI_Controller{
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
         $user_type = $this->session->userdata('user_type');
+       $new['profession'] = $this->global_model->get_data('profession', array('id' => $user_type));
+
+        $currentproffesion =$new['profession']['name'];
+
+
+
 
         if ($this->input->post()) {
             $postData = $this->input->post();
@@ -189,8 +195,12 @@ class Forum extends CI_Controller{
 
             if ($this->form_validation->run() == true) {
 
+                $proffestion = $currentproffesion;
+                $savedata = $proffestion . " - ".$postData['cat_title']; // now $b contains "Hello World!"
+
+
                 $save['sec_id'] = '3';
-                $save['cat_title'] = $postData['cat_title'];
+                $save['cat_title'] = $savedata;
                 $save['added_by'] = $loginId;
                 $save['group_id'] = $user_type;
                 $save['total_post'] = '0';

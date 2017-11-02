@@ -411,6 +411,7 @@ class Home extends CI_Controller {
                     $this->session->set_userdata('login_id',$row['id']);
                     $this->session->set_userdata('user_name',$row['user_name']);
                     $this->session->set_userdata('user_type','3');
+                    $this->session->set_userdata('profession',$row->profession);
                     //$redirect_link = base_url() . 'profile/dashboard';
 
                     redirect(base_url('profile/dashboard'));

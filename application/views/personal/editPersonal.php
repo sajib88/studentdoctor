@@ -1,7 +1,5 @@
 <style>
-    .btn-cust{
-        width: 95%;
-    }
+
     .professionView{
         margin: 15px 0px -7px 0px;
     }
@@ -212,11 +210,6 @@
                             </div>
                             <div class="padd">
                                 <div class="form-group">
-                                    <label>City</label>
-                                    <?php $v = (set_value('city')!='')?set_value('city'):$personaldata['city'];?>
-                                    <input name="city" type="text" placeholder="City" value="<?php echo $v?>" class="form-control">
-                                </div>
-                                <div class="form-group">
                                     <label>Country<span class="error">*</span></label>
                                     <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
                                         <option value="">Select</option>
@@ -253,10 +246,17 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label>Zip/label</label>
+                                    <label>City</label>
+                                    <?php $v = (set_value('city')!='')?set_value('city'):$personaldata['city'];?>
+                                    <input name="city" type="text" placeholder="City" value="<?php echo $v?>" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Postal Code</label>
                                     <?php $v = (set_value('zip')!='')?set_value('zip'):$personaldata['zip'];?>
-                                    <input name="zip" type="text" placeholder="Zip" value="<?php echo $v?>" class="form-control">
+                                    <input name="zip" type="text" placeholder="Postal Code" value="<?php echo $v?>" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -323,76 +323,100 @@
                                         <div class="form-group" id="photo_id">
                                             <label>Picture One</label><span class="error">*</span>
                                             <input class="btn btn-default btn-cust" name="primary_photo" value="<?= $personaldata['primary_photo']; ?>" type="file">
+                                            <small class="label bg-green"> JPG, GIF, PNG Format Allow</small>
+                                            <div class="clearfix"></div>
                                             <?php if(!empty($personaldata['primary_photo'])){ ?>
                                                 <a href="<?php echo base_url() . '/assets/file/personals/' .$personaldata['primary_photo']; ?>" data-fancybox="images">
                                                     View Picture One
                                                 </a>
                                             <?php }?>
+
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="primary_file_id">
+                                            <label>Document One</label><span id='file1-error' class='error' for='file1'></span>
+                                            <input class="btn btn-default btn-cust" name="primary_files" type="file">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Picture Two</label>
                                             <input class="btn btn-default btn-cust" name="photo1" type="file">
+
+                                            <small class="label bg-green"> JPG, GIF, PNG Format Allow</small>
+                                            <div class="clearfix"></div>
                                             <?php if(!empty($personaldata['photo1'])){ ?>
                                                 <a href="<?php echo base_url() . '/assets/file/personals/' .$personaldata['photo1']; ?>" data-fancybox="images">
                                                     View Picture Two
                                                 </a>
                                             <?php }?>
+
                                         </div>
                                     </div>
+
+
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="file_2">
+                                            <label>Document Two</label>
+                                            <input class="btn btn-default btn-cust" name="files2" type="file">
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
                                             <input class="btn btn-default btn-cust" name="photo2" type="file">
+                                            <small class="label bg-green"> JPG, GIF, PNG Format Allow</small>
                                             <?php if(!empty($personaldata['photo2'])){ ?>
                                                 <a href="<?php echo base_url() . '/assets/file/personals/' .$personaldata['photo2']; ?>" data-fancybox="images">
                                                     View Picture Three
                                                 </a>
                                             <?php }?>
+
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group" id="primary_file_id">
-                                            <label>File One</label><span id='file1-error' class='error' for='file1'></span>
-                                            <input class="btn btn-default btn-cust" name="primary_files" type="file">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group" id="file_2">
-                                            <label>File Two</label>
-                                            <input class="btn btn-default btn-cust" name="files2" type="file">
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Primary Sound</label><span id='primary_audio-error' class='error' for='audio'></span>
+                                            <label>Audio 1</label><span id='primary_audio-error' class='error' for='audio'></span>
                                             <input class="btn btn-default btn-cust" name="primary_sounds" type="file">
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
-                                            <input class="btn btn-default btn-cust" name="sounds1" type="file">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Primary Videos</label><span id='primary_video-error' class='error' for='primary_video'></span>
+                                            <label>Video 1</label><span id='primary_video-error' class='error' for='primary_video'></span>
                                             <input class="btn btn-default btn-cust" name="primary_videos" type="file">
                                         </div>
                                     </div>
+
+
+                                </div>
+                                <div class="row">
+
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Videos1</label><span id='video1-error' class='error' for='video1_video'></span>
+                                            <label>Audio 2</label><span id='audio-error' class='error' for='audio'></span>
+                                            <input class="btn btn-default btn-cust" name="sounds1" type="file">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Video 2</label><span id='video1-error' class='error' for='video1_video'></span>
                                             <input class="btn btn-default btn-cust" name="videos1" type="file">
                                         </div>
                                     </div>

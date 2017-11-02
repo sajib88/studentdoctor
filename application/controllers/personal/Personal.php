@@ -149,7 +149,7 @@ class Personal extends CI_Controller{
                 $ref_id = $this->global_model->insert('personals', $save);
 
                 if ($ref_id > 0) {
-                    $this->session->set_flashdata('message', '<strong>Success! Personal Information Create successfully.</strong>');
+                    $this->session->set_flashdata('message', '<strong>Personal Information Create Successfully.</strong>');
                 }
             }
             else{
@@ -359,7 +359,7 @@ class Personal extends CI_Controller{
             $result = $this->global_model->update('personals',$data,array('id'=>$id));
             if($result > 0)
             {
-                $this->session->set_flashdata('msg', '<div class="alert alert-success" id="success-alert">'.'Data Update Successfully'.'</div>');
+                $this->session->set_flashdata('msg', '<div class="alert alert-success" id="success-alert">'.'Your Personals Update Successfully'.'</div>');
             }
             redirect(base_url('personal/edit/'.$id));
 

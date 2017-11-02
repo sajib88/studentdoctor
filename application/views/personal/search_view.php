@@ -15,12 +15,13 @@
 
         </h1>
     </section>
+    <form role="form" method="post" id="personalsearch" name="personalsearch" enctype="multipart/form-data" action="<?php echo base_url('personal/search'); ?>">
     <section class="content">
         <div class="row">
             <div class="col-lg-6">
                 <div class="box box-primary">
                     <div class="panel-body">
-                            <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('personal/search'); ?>">
+
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Country</label>
@@ -50,23 +51,6 @@
                                             <input name="city" type="text" placeholder="City" class="form-control">
                                         </div>
                                     </div>
-<!--                                    <div class="col-lg-12">-->
-<!--                                        <div class="form-group">-->
-<!--                                            <label>Profession</label><span id='profession_view-error' class='error' for='profession_view'></span>-->
-<!--                                            <select name="profession" class="selectpicker form-control">-->
-<!--                                                <option value="">All Profession</option>-->
-<!--                                                --><?php
-//                                                if (is_array($profession)) {
-//                                                    foreach ($profession as $row) {
-//                                                        ?>
-<!--                                                        <option  value="--><?php //echo $row->id; ?><!--">--><?php //echo $row->name; ?><!--</option>-->
-<!--                                                        --><?php
-//                                                    }
-//                                                }
-//                                                ?>
-<!--                                            </select>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label>Language</label>
@@ -111,7 +95,7 @@
                                         <div class="form-group">
                                             <label>Interest in:</label>
                                             <?php $interestedin = array('MAN'=>'MAN','WOMAN'=>'WOMEN');?>
-                                            <select name="interestedin" class="form-control chosen-select">
+                                            <select  name="interestedin"  class="form-control chosen-select">
                                                 <option value="">Select</option>
                                                 <?php foreach ($interestedin as $key=>$value) {?>
                                                     <option value="<?php echo $key;?>"><?php echo $value?></option>
@@ -188,9 +172,9 @@
 
                                                         <th class="numeric"><?php echo 'Title'; ?></th>
 
-                                                        <th class="numeric"><?php echo 'Body'; ?></th>
+                                                        <th class="numeric"><?php echo 'He/She is'; ?></th>
 
-                                                        <th class="numeric"><?php echo 'Ethnicity'; ?></th>
+                                                        <th class="numeric"><?php echo 'Looking for'; ?></th>
 
                                                         <th class="numeric"><?php echo 'Maritalstatus'; ?></th>
 
@@ -208,13 +192,13 @@
                                                                 <td><?php echo $i; ?></td>
                                                                 <td data-title="<?php echo 'title'; ?>"
                                                                     class="numeric"><?php echo (!empty($row->title))?$row->title:'<span class="badge bg-red">Not Given</span>'; ?></td>
-                                                                <td data-title="<?php echo 'body'; ?>"
+                                                                <td data-title="<?php echo 'iam'; ?>"
                                                                     class="numeric"><span
-                                                                        class=""><?php echo (!empty($row->body))?$row->body:'<span class="badge bg-red">Not Given</span>'; ?></span>
+                                                                        class=""><?php echo (!empty($row->iam))?$row->iam:'<span class="badge bg-red">Not Given</span>'; ?></span>
                                                                 </td>
                                                                 <td data-title="<?php echo 'ethnicity'; ?>"
                                                                     class="numeric"><span
-                                                                        class=""><?php echo (!empty($row->ethnicity))?$row->ethnicity:'<span class="badge bg-red">Not Given</span>'; ?></span>
+                                                                        class=""><?php echo (!empty($row->interestedin))?$row->interestedin:'<span class="badge bg-red">Not Given</span>'; ?></span>
                                                                 </td>
                                                                 <td data-title="<?php echo 'maritalstatus'; ?>"
                                                                     class="numeric"><span
@@ -257,6 +241,38 @@
          </div>
     </section>
 </div>
+
+
+
+
+
+
+
+<script type="application/javascript">
+    $('#personalsearch').validate({
+        rules: {
+
+            iam:{
+                required:true
+            },
+            interestedin:{
+                required:true
+            }
+
+
+        },
+        messages:{
+            iam: {
+                required: "i am a filed is required",
+            },
+            interestedin: {
+                required: "Interest filed  is required",
+            }
+
+        }
+    });
+</script>
+
 
 <script>
 

@@ -529,3 +529,15 @@ label {
     }
 }
 
+.group-image{
+    width: 310px;
+    height: 215px;
+}
+
+@media only screen and (max-width: 320px) {
+    .group-image{
+        width: 275px;
+        height: 215px;
+    }
+}
+

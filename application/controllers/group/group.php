@@ -41,7 +41,11 @@ class group extends CI_Controller {
                     $save['description'] = $postData['description'];
                     $save['category'] = $postData['category'];
                     $save['discussion'] = $postData['discussion'];
-                    $save['create_date'] = $postData['create_date'];
+                    if(!empty($postData['create_date'])) {
+                        $save['create_date'] = $postData['create_date'];
+                    }else{
+                        $save['create_date'] = date('m-d-Y', time());
+                    }
                     $save['user_id'] = $loginId;
                     $save['status'] = '1';
                     if(!empty($postData['profession_view'])){
@@ -110,7 +114,11 @@ class group extends CI_Controller {
                 $save['description'] = $postData['description'];
                 $save['category'] = $postData['category'];
                 $save['discussion'] = $postData['discussion'];
-                $save['create_date'] = $postData['create_date'];
+                if(!empty($postData['create_date'])) {
+                    $save['create_date'] = $postData['create_date'];
+                }else{
+                    $save['create_date'] = date('m-d-Y', time());
+                }
                 $save['user_id'] = $loginId;
                 $save['status'] = '1';
                 $save['profession_view'] = (!empty($this->input->post('profession_view')))?implode(',', $this->input->post('profession_view')):'';
@@ -327,22 +335,16 @@ class group extends CI_Controller {
         $data['page_title'] = 'Search';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
-
-
-
         if($this->input->post()){
             $postData = $this->input->post();
             /*print '<pre>';
             print_r($this->input->post());
             die;*/
             $value = array();
-
             $value['group_name'] = (!empty($postData['group_name']))?$postData['group_name']:'';
             $value['discussion'] = (!empty($postData['discussion']))?$postData['discussion']:'';
             $value['description'] = (!empty($postData['description']))?$postData['description']:'';
             $value['category'] = (!empty($postData['category']))?$postData['category']:'';
-
-
 
             $data['result'] = $this->global_model->get_group_search_data('gorupfad',$value,FALSE,FALSE);
 

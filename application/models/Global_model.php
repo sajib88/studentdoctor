@@ -443,11 +443,11 @@ class Global_model extends CI_Model {
     public function get_group_search_data($table, $data, $limit = FALSE, $order_by = FALSE) {
         $this->db->select('*')->from($table);
 
-        $value['title'] = (!empty($postData['title']))?$postData['title']:'';
-        $value['summary'] = (!empty($postData['summary']))?$postData['summary']:'';
-        $value['description'] = (!empty($postData['description']))?$postData['description']:'';
-        $value['category'] = (!empty($postData['category']))?$postData['category']:'';
-        $value['location'] = (!empty($postData['location']))?$postData['location']:'';
+//        $value['title'] = (!empty($postData['title']))?$postData['title']:'';
+//        $value['summary'] = (!empty($postData['summary']))?$postData['summary']:'';
+//        $value['description'] = (!empty($postData['description']))?$postData['description']:'';
+//        $value['category'] = (!empty($postData['category']))?$postData['category']:'';
+//        $value['location'] = (!empty($postData['location']))?$postData['location']:'';
 
 
         if (!empty($data['category'])) {
@@ -456,25 +456,18 @@ class Global_model extends CI_Model {
         }
 
 
-        if (!empty($data['title'])) {
+        if (!empty($data['group_name'])) {
 
-            $this->db->like('title', $data['title']);
+            $this->db->like('group_name', $data['group_name']);
         }
-        if (!empty($data['summary'])) {
+        if (!empty($data['discussion'])) {
 
-            $this->db->like('summary', $data['summary']);
+            $this->db->like('discussion', $data['discussion']);
         }
         if (!empty($data['description'])) {
 
             $this->db->like('description', $data['description']);
         }
-        if (!empty($data['location'])) {
-
-            $this->db->like('location', $data['location']);
-        }
-
-
-
 
         if (!empty($limit)) {
 

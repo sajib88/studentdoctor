@@ -8,7 +8,6 @@
     <section class="content-header">
         <h1><i class="fa fa-calendar"></i>
             Group Details
-
         </h1>
 
 
@@ -28,29 +27,27 @@
                 </div>
             <?php } $this->session->unset_userdata('message') ?>
             <div class="col-md-7">
-
-
                 <div class="tab-pane" id="timeline">
-
-
                     <!-- The timeline -->
                     <ul class="timeline timeline-inverse">
                         <!-- timeline time label -->
                         <li class="time-label">
                         <span class="bg-red">
-                          <?php echo $layoutfull['create_date']; ?>
-                        </span>
+                          <?php echo date('m-d-Y', strtotime($layoutfull['create_date'])); ?>
+                        </span>&nbsp;&nbsp;&nbsp;
+                            <span style="margin-right: 20px" class="pull-right">
+                            <b>Added By: </b>
+                            <span class="bg-blue">
+                                <a style="color: #fff; padding: 10px;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"> <?php echo getNameById($layoutfull['user_id']);?></a>
+                            </span>
+                            </span>
                         </li>
                         <!-- /.timeline-label -->
                         <!-- timeline item -->
                         <li>
                             <i class="fa fa-user bg-aqua"></i>
-
                             <div class="timeline-item">
-
-
                                 <h3 class="timeline-header"><a href="#">  <?php echo $layoutfull['group_name']; ?></a> Discussion</h3>
-
                                 <div class="timeline-body">
                                     <?php echo $layoutfull['description']; ?>
                                 </div>
@@ -59,57 +56,45 @@
                                 </div>
                             </div>
                         </li>
-
                         <?php if (is_array($comments)) {
-
                         //print_r($comments);
                         foreach ($comments as $row) {
-                        ?>
+                            ?>
 
-                        <li>
-                            <i class="fa fa-comments bg-yellow"></i>
+                            <li>
+                                <i class="fa fa-comments bg-yellow"></i>
 
-                            <div class="timeline-item">
-                                <span class="time"><i class="fa fa-clock-o"></i><?php echo date('d-m-y', strtotime($row->added_date_time)); ?> </span>
+                                <div class="timeline-item">
+                                    <span class="time">
+                                        <i class="fa fa-user"></i> <a style="padding-right: 10px" href="<?php echo base_url('showProfile/'.$row->user_id);?>"><?php echo getNameById($row->user_id);?></a>
+                                        <i class="fa fa-clock-o"></i><?php echo date('d-m-y', strtotime($row->added_date_time)); ?> </span>
 
-                                <h3 class="timeline-header"><a href="#"><?php echo $row->comments_title; ?></a></h3>
+                                    <h3 class="timeline-header"><a href="#"><?php echo $row->comments_title; ?></a></h3>
+                                    <div class="timeline-body">
+                                        <?php echo $row->comments_details; ?>
+                                    </div>
 
 
-                                <div class="timeline-body">
-                                    <?php echo $row->comments_details; ?>
                                 </div>
-                                <div class="timeline-footer">
-                                    <a data-toggle="modal" href="#myModal"  class="btn btn-warning btn-flat btn-xs">Add Your Comments</a>
-                                </div>
-
-                            </div>
-                        </li>
+                            </li>
                             <?php
-                        } }
+                        }
+                            if (count($comments) >= 5) {
+                                ?>
+                                    <div class="col-md-12" style="padding-right: 25px; margin-bottom: 50px;">
+                                    <a data-toggle="modal" href="#myModal" class="btn btn-warning btn-flat btn-md pull-right">Add
+                                        Your Comments</a>
+                                    </div>
+
+                                <?php
+                            }
+
+                        }
                         ?>
 
                     </ul>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-                <!-- /.END LEFT PANEL-DIV -->
             </div>
-
-            <div class="col-md-5 col-xs-12">
-
-                <!-- /.info-box -->
-            </div>
-
-
 
             <div class="col-md-5">
 
@@ -155,25 +140,13 @@
                     <!-- form start -->
 
                     <div class="box-body">
-
                         <img src="<?php echo base_url() . '/assets/file/group/' . $layoutfull['primary_image'] ?>" width="150" height="138"">
-
-
                         <?php if($layoutfull['image_2'] != 0){?>
                             <img src="<?php echo base_url() . '/assets/file/group/' . $layoutfull['image_2'] ?>" width="150" height="138">
                         <?php }?>
 
                     </div>
-
-
                 </div>
-
-
-
-
-
-
-
             </div>
 
             <div class="clear"></div>
@@ -188,7 +161,7 @@
             </div>
 
         </div>
-</div>
+
 </section>
 
 </div>

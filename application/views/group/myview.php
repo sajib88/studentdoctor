@@ -26,7 +26,7 @@
                             <div class="widget-user-header ">
                                 <div class="widget-user-image text-center">
                                     </br>
-                                    <img src="<?php echo base_url() . '/assets/file/group/' .$row->primary_image; ?>" alt="" width="170" height="170" class="img-circle " />
+                                    <img src="<?php echo base_url() . '/assets/file/group/' .$row->primary_image; ?>" alt="" width="170" height="170" class="group-image" />
 
                                     </br>
                                 </div>
@@ -34,12 +34,12 @@
                             </div>
                             <div class="box-footer no-padding">
                                 <ul class="nav nav-stacked">
-                                    <li><a href="#">Group Name <span class="pull-right"><?php echo (!empty($row->group_name))?$row->group_name:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#">Group Name <span class="pull-right"><?php echo (!empty($row->group_name))?substr($row->group_name, 0, 20):'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#">Group Category <span class="pull-right">  <?php
                                                 $data = get_data('group_main_cat', array('id' => $row->category));
                                                 echo $data['cat_name'];
                                                 ?></span></a></li>
-                                    <li><a href="#">Group  Date<span class="pull-right"><?php echo (!empty($row->create_date))?$row->create_date:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#">Group  Date<span class="pull-right"><?php echo (!empty($row->create_date))?date('m-d-Y', strtotime($row->create_date)):'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#"><?php echo substr($row->description,0,60).'.....'; ?></a></li>
 
                                 </ul>

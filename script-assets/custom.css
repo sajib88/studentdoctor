@@ -324,9 +324,9 @@ time.blue_green { background-color: #148aa5 }
     font-weight: 300;
 }
 
-.content {
-    padding-left: 25px;
-}
+/*.content {*/
+    /*padding-left: 25px;*/
+/*}*/
 
 .box {
     border-radius: 4px;
@@ -497,4 +497,22 @@ label {
     }
 }
 
+@media only screen and (max-width: 320px) {
+    .img-size-product{
+        width: 270px;
+        height: 250px;
+    }
+}
+
+.professionView label h4{
+    text-transform: capitalize;
+}
+
+@media only screen and (max-width: 600px) {
+    .img-product-layout{
+        width: 100%;
+        height: 200px;
+        margin-bottom: 15px;
+    }
+}
 

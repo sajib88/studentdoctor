@@ -349,7 +349,7 @@
                 <hr>
                 <div class="price-tag">
                     <p><i class="glyphicon glyphicon-user text-clr"></i>&nbsp Added By</p><br>
-                    <p class="pdl"><a style="color: #777;" href="<?php echo base_url('profile/profile/showThisProfile/'.$layoutfull['user_id']);?>"><?php echo getNameById($layoutfull['user_id']); ?></a></p>
+                    <p class="pdl"><a style="color: #777;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"><?php echo getNameById($layoutfull['user_id']); ?></a></p>
                 </div>
                 <hr>
             </div>

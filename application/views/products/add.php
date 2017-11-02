@@ -67,7 +67,7 @@
                             <?php echo form_error('name');?>
                         </div>
                         <div class="form-group">
-                            <label>Type<span class="error">*</span></label><span id='type-error' class='error' for='type'></span>
+                            <label>Product Type<span class="error">*</span></label><span id='type-error' class='error' for='type'></span>
 
                             <select onchange="getSubCat(this)" name="type" class="form-control">
                                 <option value="">Select</option>
@@ -90,11 +90,11 @@
                             <?php echo form_error('description');?>
                         </div>
                         <div class="form-group">
-                            <label>Price<span class="error">*</span></label><span id='price-error' class='error' for='price'></span>
+                            <label>Price<span class="error">*</span> (USD)</label><span id='price-error' class='error' for='price'></span>
                             <input type="number" name="price"  class="form-control" id="price">
                         </div>
                         <div class="form-group">
-                            <label>Special Price<span class="error">*</span></label><span id='special-price-error' class='error' for='special_price'></span>
+                            <label>Special Price<span class="error">*</span> (USD)</label><span id='special-price-error' class='error' for='special_price'></span>
                             <input type="number" name="special_price"  class="form-control"  id="special_price">
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                             <input name="city" value="<?php echo '';?>" id="city" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>zip</label>
+                            <label>Postal Code</label>
                             <input name="zip" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                     </div>
@@ -180,12 +180,8 @@
                     </div>
                     <div class="padd">
                         <div class="form-group">
-                            <label>Seller Address 1</label>
+                            <label>Seller Address</label>
                             <input name="seller_address1" value="<?php echo '';?>"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Seller Address 2</label>
-                            <input name="seller_address2" value="<?php echo ''; ?>"  class="form-control">
                         </div>
                     </div>
                 </div>
@@ -204,46 +200,34 @@
                                     <label>Picture One<span class="error">*</span></label><span id='picture1-error' class='error' for='picture1'></span>
                                     <input class="btn btn-default btn-cust" name="photo_primary" type="file">
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
                                     <input class="btn btn-default btn-cust" name="photo_2" type="file">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
                                     <input class="btn btn-default btn-cust" name="photo_3" type="file">
                                 </div>
+                                <div class="form-group">
+                                    <label>Primary Video</label><span id='primary_video-error' class='error' for='primary_video'></span>
+                                    <input class="btn btn-default btn-cust" name="primary_video" type="file">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group" id="primary_file_id">
-                                    <label>File One<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
+                                    <label>File One</label><span id='file1-error' class='error' for='file1'></span>
                                     <input class="btn btn-default btn-cust" name="primary_file" type="file">
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="form-group" id="file_2">
-                                    <label>File Two<span class="error">*</span></label><span id='file1-error' class='error' for='file1'></span>
+                                    <label>File Two</label><span id='file1-error' class='error' for='file1'></span>
                                     <input class="btn btn-default btn-cust" name="file_2" type="file">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Primary Sound</label><span id='primary_audio-error' class='error' for='audio'></span>
+                                    <label>Primary Audio</label><span id='primary_audio-error' class='error' for='audio'></span>
                                     <input class="btn btn-default btn-cust" name="primary_sound" type="file">
                                 </div>
-                            </div>
-                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Sound</label><span id='audio-error' class='error' for='audio'></span>
+                                    <label>Audio</label><span id='audio-error' class='error' for='audio'></span>
                                     <input class="btn btn-default btn-cust" name="sound1" type="file">
                                 </div>
                             </div>
@@ -251,13 +235,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Primary Videos</label><span id='primary_video-error' class='error' for='primary_video'></span>
-                                    <input class="btn btn-default btn-cust" name="primary_video" type="file">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Videos1</label><span id='video1-error' class='error' for='video1_video'></span>
+                                    <label>Video</label><span id='video1-error' class='error' for='video1_video'></span>
                                     <input class="btn btn-default btn-cust" name="video1" type="file">
                                 </div>
                             </div>
@@ -274,7 +252,7 @@
                         <div class="row">
                             <div class="col-lg-12 professionView">
                                 <div class="col-lg-6">
-                                    <label><h4>Select profession(s) permitted to see your product. </h4></label>
+                                    <label><h4>Select profession(s) permitted to see your products. </h4></label>
                                 </div>
                                 <div class="col-lg-6 ">
                                     <div class="form-group">

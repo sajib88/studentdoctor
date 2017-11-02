@@ -93,7 +93,6 @@ class Products extends CI_Controller{
                 $save['city'] = $postData['city'];
                 $save['zip'] = $postData['zip'];
                 $save['seller_address1'] = $postData['seller_address1'];
-                $save['seller_address2'] = $postData['seller_address2'];
                 $save['seller_name'] = $postData['seller_name'];
                 $save['seller_email'] = $postData['seller_email'];
                 $save['seller_website'] = $postData['seller_website'];
@@ -242,7 +241,6 @@ class Products extends CI_Controller{
                 $save['city'] = $postData['city'];
                 $save['zip'] = $postData['zip'];
                 $save['seller_address1'] = $postData['seller_address1'];
-                $save['seller_address2'] = $postData['seller_address2'];
                 $save['seller_name'] = $postData['seller_name'];
                 $save['seller_email'] = $postData['seller_email'];
                 $save['seller_website'] = $postData['seller_website'];
@@ -341,7 +339,7 @@ class Products extends CI_Controller{
         $tablename = 'product';
         $data['states'] = getStatesByCountry($tablename,$id);
         $data['states'] = $this->global_model->get('states');
-
+        $data['main_cat'] = $this->global_model->get('product_main_cat');
 
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));

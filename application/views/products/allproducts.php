@@ -46,7 +46,7 @@
                             <tbody><tr>
                                 <th>ID</th>
                                 <th>Product Name</th>
-                                <th>Type</th>
+                                <th>Product Type</th>
                                 <th>Price</th>
                                 <th>Special Price</th>
                                 <th>Edit</th>

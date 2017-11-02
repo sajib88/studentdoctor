@@ -70,8 +70,8 @@
         margin: 0 0 11px;
     }
     .img-product{
-        height: 150px;
-        width: 150px;
+        height: 200px;
+        width: 308px;
     }
 
 </style>
@@ -111,7 +111,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="">
-                                        <img class="img-circle img-responsive img-product" src="<?php echo base_url().'assets/file/product/'.$row['photo_primary'];?>" alt="" />
+                                        <img class="img-responsive img-product" src="<?php echo base_url().'assets/file/product/'.$row['photo_primary'];?>" alt="" />
                                     </div>
                                     <!-- ./chart-responsive -->
                                 </div>
@@ -121,7 +121,7 @@
                                         <li class="active"><a href="#"> Special Price<span class=" pull-right">$<?php echo $row['special_price'];?></span></a></li>
                                         <li><a href="#"> Old Price<span class=" pull-right">$<?php echo $row['price'];?></span></a></li>
 
-                                        <li><a href="#"> Type <span class=" pull-right">
+                                        <li><a href="#"> Product Type <span class=" pull-right">
                                                     <?php
                                                     $data = get_data('product_main_cat', array('id' => $row['type']));
                                                     echo $data['cat_name'];

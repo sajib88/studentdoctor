@@ -5,6 +5,9 @@
     .no-border{
         border-top: none;
     }
+    .content{
+        padding-left: 0p;
+    }
 </style>
 
 <div class="content-wrapper">
@@ -22,51 +25,33 @@
                         <div class="row">
                             <form role="form" method="post"  action="<?php echo base_url('product/search'); ?>">
 
-                                <div class="col-lg-6">
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Product Name</label>
-                                            <input type="text" name="name" placeholder="Product Name" class="form-control">
-                                        </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Product Name</label>
+                                        <input type="text" name="name" placeholder="Product Name" class="form-control">
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Category</label>
-                                            <select onchange="getSubCat(this)" name="type" class="form-control">
-                                                <option value="">Select</option>
-                                                <?php
-                                                if (is_array($main_cat)) {
-                                                    foreach ($main_cat as $cat) {
-                                                        ?>
-                                                        <option value="<?php echo $cat->id; ?>"><?php echo $cat->cat_name; ?></option>
-                                                        <?php
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
                                 </div>
-
-                                <div class="col-lg-6">
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Price</label>
-                                            <input name="price" type="text" placeholder="Price" class="form-control">
-                                        </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select onchange="getSubCat(this)" name="type" class="form-control">
+                                            <option value="">Select</option>
+                                            <?php
+                                            if (is_array($main_cat)) {
+                                                foreach ($main_cat as $cat) {
+                                                    ?>
+                                                    <option value="<?php echo $cat->id; ?>"><?php echo $cat->cat_name; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div id="result">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Description</label>
-                                            <input name="description" type="text" placeholder="Description" class="form-control">
-                                        </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <input name="description" type="text" placeholder="Description" class="form-control">
                                     </div>
                                 </div>
 
@@ -98,21 +83,16 @@
         </div>
         <hr/>
         <div class="row">
-            <div class=" table-responsive no-padding">
-
                 <?php if(isset($result)) {
                     if (empty($result)) {
                         ?>
                         <div class="col-md-12">
                             <div class="alert alert-danger text-center">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <i class="fa fa-info"></i> No Profile Found</div>
+                                <i class="fa fa-info"></i> No Product Found</div>
                         </div>
                     <?php } else {
                         if (!empty($result)) { ?>
-
-                            <section class="content">
-                                <div class="row">
                                     <?php if(is_array($result)): ?>
 
                                         <?php foreach($result as $row):?>
@@ -133,18 +113,17 @@
                                                             else {?>
                                                                 </br>
 
-                                                                <img src="<?php echo base_url() . '/assets/file/product/' .$row->photo_primary; ?>" alt="" width="170" height="170" class="img-rounded" />
+                                                                <img src="<?php echo base_url() . '/assets/file/product/' .$row->photo_primary; ?>" alt="" width="308" height="200" class="img-size-product" />
                                                                 </br>
                                                             <?php }
                                                             ?>
                                                             <h4><?php //echo getProfessionById($row->profession); ?></h4>
                                                         </div>
-                                                        </br>
                                                     </div>
                                                     <div class="box-footer no-border">
                                                         <ul class=" list-group list-group-unbordered">
                                                             <li class="list-group-item">Product Name <span class="pull-right  "><?php echo (!empty($row->name))?substr($row->name, 0, 20):''?></span></li>
-                                                            <li class="list-group-item">Category <span class="pull-right  "><?php echo (!empty($row->type))?productCatName($row->type):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                            <li class="list-group-item">Product Type <span class="pull-right  "><?php echo (!empty($row->type))?productCatName($row->type):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                             <li class="list-group-item">Price <span class="pull-right  ">$<?php echo (!empty($row->price))?$row->price:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                             <li class="list-group-item">Speacial Price <span class="pull-right  ">$<?php echo (!empty($row->special_price))?$row->special_price:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                             <li class="list-group-item">Description <span class="pull-right "><?php echo (!empty($row->description))?substr($row->description, 0 ,20):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
@@ -158,18 +137,13 @@
 
                                         <?php endforeach;?>
                                     <?php endif; ?>
-                                </div>
-                            </section>
+
+
                         <?php }
                     }
                 }?>
-            </div>
+
         </div>
-</div>
-</div>
-</div>
-
-
 
 </section>
 </div>

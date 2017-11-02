@@ -94,16 +94,9 @@
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-
-
-                            <img src="<?php echo base_url() . '/assets/file/product/' .$layoutfull['photo_primary']; ?>" alt="" width="150" height="150" class="img-circle center-block" />
-
-
-
+                        <img src="<?php echo base_url() . '/assets/file/product/' .$layoutfull['photo_primary']; ?>" alt="" width="300" height="200" class="center-block img-size" />
                         <h3 class="profile-username text-center"> <?php echo $layoutfull['name']; ?></h3>
-
-
-
+                        <p class="text-center"><b>Added By: </b> <span><a href="<?php echo base_url('showProfile/'.$layoutfull['uid']);?>"><?php echo getNameById($layoutfull['uid']);?></a></span></p>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
 
@@ -135,12 +128,7 @@
                             <li class="list-group-item">
                                 <b>	city</b> <span class="pull-right"><?php echo $layoutfull['city']; ?></span>
                             </li>
-
-
-
                         </ul>
-
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -218,19 +206,29 @@
                     <!-- form start -->
 
                     <div class="box-body">
-
-                            <img src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_primary'] ?>" width="130" height="130"">
-
-
-                        <?php if($layoutfull['photo_2'] != 0){?>
-                        <img src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_2'] ?>" width="130" height="130">
-                        <?php }?>
-                        <?php if($layoutfull['photo_3'] != 0){?>
-                        <img src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_3'] ?>" width="130" height="130"">
-                        <?php }?>
-                        <?php if($layoutfull['photo_4'] != 0){?>
-                            <img src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_4'] ?>" width="130" height="130"">
-                        <?php }?>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_primary'] ?>" width="220px;" height="180px">
+                            </div>
+                            <div class="col-md-6">
+                                <?php if($layoutfull['photo_2'] != 0){?>
+                                <img class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_2'] ?>" width="220px;" height="180px">
+                                <?php }?>
+                            </div>
+                        </div>
+                        <div class="visible-lg" style="margin-top: 10px"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?php if($layoutfull['photo_3'] != 0){?>
+                                <img class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_3'] ?>" width="220px;" height="180px">
+                                <?php }?>
+                            </div>
+                            <div class="col-md-6">
+                                <?php if($layoutfull['photo_4'] != 0){?>
+                                    <img class="box-header with-border img-product-layout" src="<?php echo base_url() . '/assets/file/product/' . $layoutfull['photo_4'] ?>" width="220px;" height="180px">
+                                <?php }?>
+                            </div>
+                        </div>
 
                     </div>
 
@@ -320,7 +318,7 @@
 
 
         </div>
-        </div>
+
     </section>
 
 </div>

@@ -514,5 +514,18 @@ label {
         height: 200px;
         margin-bottom: 15px;
     }
+
+}
+
+.blog-image{
+    width: 310px;
+    height: 200px;
+}
+
+@media only screen and (max-width: 320px) {
+    .blog-image{
+        width: 270px;
+        height: 200px;
+    }
 }
 

@@ -92,7 +92,7 @@ class Insideblog extends CI_Controller
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
-                $save['primary_image'] = $this->resizeimg->image_upload('primary_image', $this->PATH, 'size[300,300]', '', $photo_name);
+                $save['primary_image'] = $this->resizeimg->image_upload('primary_image', $this->PATH, 'size[500,500]', '', $photo_name);
             }
             else {
 
@@ -104,7 +104,7 @@ class Insideblog extends CI_Controller
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
-                $save['image1'] = $this->resizeimg->image_upload('image1', $this->PATH, 'size[300,300]', '', $photo_name);
+                $save['image1'] = $this->resizeimg->image_upload('image1', $this->PATH, 'size[500,500]', '', $photo_name);
             }
             else {
 
@@ -116,7 +116,7 @@ class Insideblog extends CI_Controller
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
-                $save['image2'] = $this->resizeimg->image_upload('image2', $this->PATH, 'size[300,300]', '', $photo_name);
+                $save['image2'] = $this->resizeimg->image_upload('image2', $this->PATH, 'size[500,500]', '', $photo_name);
             }
             else {
 
@@ -128,7 +128,7 @@ class Insideblog extends CI_Controller
                 if (!file_exists($this->PATH)) {
                     mkdir($this->PATH, 0777, true);
                 }
-                $save['image3'] = $this->resizeimg->image_upload('image3', $this->PATH, 'size[300,300]', '', $photo_name);
+                $save['image3'] = $this->resizeimg->image_upload('image3', $this->PATH, 'size[500,500]', '', $photo_name);
             }
             else {
 

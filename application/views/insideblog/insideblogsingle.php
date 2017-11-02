@@ -28,18 +28,10 @@
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-
-
-                        <img src="<?php echo base_url() . 'assets/file/insideblog/' .$single_post['primary_image'] ?>" alt="" width="150" height="150" class="img-circle center-block" />
-
-                        <br>
-
+                        <img src="<?php echo base_url() . 'assets/file/insideblog/' .$single_post['primary_image'] ?>" alt="" width="150" height="150" class="blog-image center-block" />
                         <h4 class="profile-username text-center"> <?php echo $single_post['title']; ?></h4>
-
+                        <p class="text-center"><b>Added By : </b> <span><a href="<?php echo base_url('showProfile/'.$single_post['user_id']);?>"><?php echo getNameById($single_post['user_id']);?></a></span></p>
                         <br>
-
-
-
                         <a data-toggle="modal" href="#myModal" href="#" class="btn btn-primary btn-block"><b>Dicsuss</b></a>
                     </div>
                     <!-- /.box-body -->
@@ -65,11 +57,11 @@
                             </li>
 
                             <li class="list-group-item">
-                                <b>Blog keyword </b> <span class="pull-right"><?php echo $single_post['keyword']; ?></span>
+                                <b>Blog keyword </b> <span class="pull-right"><?php echo (!empty($single_post['keyword']))?$single_post['keyword']:"<span class='badge bg-red'>Not Given</span>" ?></span>
                             </li>
 
                             <li class="list-group-item">
-                                <b>Blog tag </b> <span class="pull-right"><?php echo $single_post['tag']; ?></span>
+                                <b>Blog tag </b> <span class="pull-right"><?php echo (!empty($single_post['tag']))?$single_post['tag']:"<span class='badge bg-red'>Not Given</span>"; ?></span>
                             </li>
 
                         </ul>
@@ -208,42 +200,46 @@
                                 <!-- timeline time label -->
                                 <li class="time-label">
                         <span class="bg-red">
-                        Blog Posted Date <?php echo date("d-m-Y", strtotime($single_post['date'])); ?>
+                        Blog Posted Date <?php echo date("m-d-Y", strtotime($single_post['date'])); ?>
 
                         </span>
+                                    <div class="visible-xs" style="margin-top: 10px;"></div>
 
-                                    <a data-toggle="modal" href="#myModal"  class="btn btn-warning btn-flat btn-xs pull-right">Add Your Comments</a>
+                                    <a data-toggle="modal" href="#myModal"  class="btn btn-warning btn-flat btn-md pull-right">Add Your Comments</a>
                                 </li>
                                 <!-- /.timeline-label -->
                                 <!-- timeline item -->
 
 
                                 <?php if (is_array($comments)) {
-
                                     //print_r($comments);
                                     foreach ($comments as $row) {
                                         ?>
-
                                         <li>
                                             <i class="fa fa-comments bg-yellow"></i>
-
                                             <div class="timeline-item">
-                                                <span class="time"><i class="fa fa-clock-o"></i><?php echo date('d-m-y', strtotime($row->added_date_time)); ?> </span>
-
-                                                <h3 class="timeline-header"><a href="#"><?php echo $row->comments_title; ?></a></h3>
-
-
+                                                <span class="time">
+                                                    <i class="fa fa-user"></i> <a style="padding-right: 10px" href="<?php echo base_url('showProfile/'.$row->user_id);?>"><?php echo getNameById($row->user_id);?></a>
+                                                    <i class="fa fa-clock-o"></i> <?php echo date('m-d-y', strtotime($row->added_date_time)); ?>
+                                                </span>
+                                                <h3 class="timeline-header"><a
+                                                            href="#"><?php echo $row->comments_title; ?></a></h3>
                                                 <div class="timeline-body">
                                                     <?php echo $row->comments_details; ?>
                                                 </div>
-                                                <div class="timeline-footer">
-                                                    <a data-toggle="modal" href="#myModal"  class="btn btn-warning btn-flat btn-xs">Add Your Comments</a>
-                                                </div>
-
                                             </div>
                                         </li>
                                         <?php
-                                    } }
+                                    }
+                                    if (count($comments) >= 5) {
+                                    ?>
+                                    <div class="timeline-footer pull-right">
+                                        <a data-toggle="modal" href="#myModal" class="btn btn-warning btn-flat btn-md">Add
+                                            Your Comments</a>
+                                    </div>
+                                    <?php
+                                    }
+                                }
                                 ?>
 
                             </ul>

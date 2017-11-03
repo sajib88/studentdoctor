@@ -6,7 +6,14 @@
  * Time: 5:05 PM
  */
 ?>
-
+<style type="text/css">
+    .list-group{
+        margin-bottom: 10px;
+    }
+    .no-border{
+        border-top:none;
+    }
+</style>
 <div class="content-wrapper">
 
     <section class="content-header">
@@ -164,59 +171,53 @@
                                         </div>
                                         <div class="panel-body">
                                             <div class="box-body table-responsive no-padding">
-                                                <table class="table table-hover">
-                                                    <thead>
-                                                    <tr>
 
-                                                        <th class="numeric">#</th>
-
-                                                        <th class="numeric"><?php echo 'Title'; ?></th>
-
-                                                        <th class="numeric"><?php echo 'He/She is'; ?></th>
-
-                                                        <th class="numeric"><?php echo 'Looking for'; ?></th>
-
-                                                        <th class="numeric"><?php echo 'Maritalstatus'; ?></th>
-
-                                                        <th class="numeric"><?php echo 'Age'; ?></th>
-                                                        <th class="numeric"><?php echo 'View'; ?></th>
-
-
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
                                                     <?php if (!empty($result)) {
-                                                        $i = 1;
-                                                        foreach ($result as $row) { ?>
-                                                            <tr>
-                                                                <td><?php echo $i; ?></td>
-                                                                <td data-title="<?php echo 'title'; ?>"
-                                                                    class="numeric"><?php echo (!empty($row->title))?$row->title:'<span class="badge bg-red">Not Given</span>'; ?></td>
-                                                                <td data-title="<?php echo 'iam'; ?>"
-                                                                    class="numeric"><span
-                                                                        class=""><?php echo (!empty($row->iam))?$row->iam:'<span class="badge bg-red">Not Given</span>'; ?></span>
-                                                                </td>
-                                                                <td data-title="<?php echo 'ethnicity'; ?>"
-                                                                    class="numeric"><span
-                                                                        class=""><?php echo (!empty($row->interestedin))?$row->interestedin:'<span class="badge bg-red">Not Given</span>'; ?></span>
-                                                                </td>
-                                                                <td data-title="<?php echo 'maritalstatus'; ?>"
-                                                                    class="numeric"><span
-                                                                        class=""><?php echo (!empty($row->maritalstatus))?$row->maritalstatus:'<span class="badge bg-red">Not Given</span>'; ?></span>
-                                                                </td>
-                                                                <td data-title="<?php echo 'age'; ?>"
-                                                                    class="numeric"><span
-                                                                        class=""><?php echo (!empty($row->age))?$row->age:'<span class="badge bg-red">Not Given</span>'; ?></span>
-                                                                </td>
-                                                                <td data-title="<?php echo 'View'; ?>" class="numeric">
-                                                                    <a href="<?php echo base_url('personal/detail/' . $row->id); ?>" class="btn btn-block btn-dropbox"> View</a></td>
 
-                                                            </tr>
-                                                            <?php $i++;
+                                                        foreach ($result as $row) { ?>
+
+
+                                                            <div class="col-lg-4 col-xs-12">
+                                                                <div class="box box-widget widget-user-1">
+                                                                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                                                                    <div class="widget-user-header ">
+                                                                        <div class="widget-user-image text-center">
+                                                                            <?php
+                                                                            if($row->primary_photo != 0) {?>
+                                                                                <br />
+                                                                                <img src="<?php echo base_url() . '/assets/file/personals/' .$row->primary_photo; ?>" alt="" width="220" height="200px" class="img-size" />
+
+                                                                            <?php }?>
+
+
+                                                                        </div>
+                                                                        </br>
+                                                                    </div>
+                                                                    <div class="box-footer no-border">
+                                                                        <ul class=" list-group list-group-unbordered">
+                                                                            <li class="list-group-item">Personals Title <span class="pull-right  "><?php echo (!empty($row->title))?substr($row->title, 0, 20):''?></span></li>
+
+                                                                            <li class="list-group-item">Country <span class="pull-right  "><?php echo (!empty($row->country))?countryNameByID($row->country):'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                            <li class="list-group-item">State <span class="pull-right  "><?php echo (!empty($row->state))?$row->state:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                            <li class="list-group-item">City <span class="pull-right  "><?php echo (!empty($row->city))?$row->city:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                            <li class="list-group-item">Language <span class="pull-right  "><?php echo (!empty($row->lang))?$row->lang:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                            <li class="list-group-item">Marital status <span class="pull-right  "><?php echo (!empty($row->maritalstatus))?$row->maritalstatus:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                            <li class="list-group-item">I AM A <span class="pull-right  "><?php echo (!empty($row->iam))?$row->iam:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                            <li class="list-group-item">Interest in a <span class="pull-right  "><?php echo (!empty($row->interestedin))?$row->interestedin:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                        </ul>
+                                                                        <span class="show_button">
+                                                                        <a href="<?php echo base_url() .'personal/detail/' .$row->id; ?>" class=" btn btn-block btn-success">See Details</a>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                            <?php
                                                         }
                                                     } ?>
-                                                    </tbody>
-                                                </table>
+
                                                 <?php }else{?>
                                                         <div class="col-lg-12">
                                                             <div class="box-body table-responsive no-padding">

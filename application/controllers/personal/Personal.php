@@ -149,7 +149,7 @@ class Personal extends CI_Controller{
                 $ref_id = $this->global_model->insert('personals', $save);
 
                 if ($ref_id > 0) {
-                    $this->session->set_flashdata('message', '<strong>Personal Information Create Successfully.</strong>');
+                    $this->session->set_flashdata('message', '<strong>Personals Posted Successfully.</strong>');
                 }
             }
             else{
@@ -176,7 +176,9 @@ class Personal extends CI_Controller{
         $data = array();
         $data['page_title'] = 'All Personals';
         $loginId = $this->session->userdata('login_id');
-        $data['allpersonals']  	 = $this->global_model->get($table);
+       // $data['allpersonals']  	 = $this->global_model->get($table);
+
+        $data['allpersonals'] = $this->global_model->get('personals', array('uid' => $loginId));
         /*print '<pre>';
         print_r($data['allpersonals']);die;*/
 
@@ -446,7 +448,7 @@ class Personal extends CI_Controller{
     {
         $id = $this->uri->segment('4');
         if ($this->global_model->delete('personals', array('id' => $id))) {
-            $this->session->set_flashdata('success', 'Delete successfully!');
+            $this->session->set_flashdata('success', 'Successfully Deleted!');
             redirect('personal/list');
         }
 

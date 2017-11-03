@@ -8,7 +8,7 @@
 
 $this->load->helper('global_helper');
 ?>
-<link href="http://[::1]/doctorsapp/script-assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+
 <style>
 
     .circular {
@@ -31,57 +31,56 @@ $this->load->helper('global_helper');
         </h1>
     </section>
     <section class="content">
+
         <div class="row">
-            <?php if(!empty($allpersonals)){
-                foreach ($allpersonals as $row){?>
-            <div class="col-md-4">
-                    <div class="box box-danger">
-                        <div class="box-body box-profile">
-                            <div style="text-align: center;">
-                                <!--<img class="profile-user-img img-responsive img-circle" src="<?php /*echo base_url().'assets/file/'*/?>" alt="User profile picture">-->
-                                <img src="<?php echo base_url() . 'assets/file/personals/' .$row['primary_photo']; ?>" alt="" class="circular" />
+
+
+            <?php if(is_array($allpersonals) ):?>
+
+                <?php foreach($allpersonals as $row):?>
+
+
+
+                    <div class="col-lg-4 col-xs-12">
+                        <div class="box box-widget widget-user-2">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header ">
+                                <div class="widget-user-image text-center">
+                                    </br>
+                                    <img src="<?php echo base_url() . 'assets/file/personals/' .$row['primary_photo']; ?>" alt="" width="310px" height="280px" class="img-size" />
+
+                                    </br>
+                                </div>
+                                </br>
+                            </div>
+                            <div class="box-footer no-padding">
+                                <ul class="nav nav-stacked">
+                                    <li><a href="#">I am a <span class="pull-right"><?php echo (!empty($row['iam']))?substr($row['iam'], 0, 30):'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#">Intested in a <span class="pull-right"><?php echo (!empty($row['interestedin']))?$row['interestedin']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#">Country   <span class="pull-right"><?php echo (!empty( $row['country']))? countryNameByID($row['country']).'':''?></span></a></li>
+                                    <li><a href="#">Body Type <span class="pull-right"><?php echo (!empty($row['state']))?$row['state']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#">Language <span class="pull-right"><?php echo (!empty($row['lang']))?$row['lang']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a class="pull-right" style="color: goldenrod;" href="<?php echo base_url('showProfile/'.$row['uid']);?>"> &nbsp Added By <?php echo getNameById($row['uid']); ?></a></li>
+
+                                </ul>
                             </div>
 
-                            <h3 class="profile-username text-center"><?php echo (!empty($row['title']))?$row['title']:''?></h3>
+                            <div class="box-footer">
 
+                                <a href="<?php echo base_url() . 'personal/detail/' .$row['id']; ?>" class="btn btn-block btn-success"> Details View</a>
 
-
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item">
-                                    <b>I am a</b> <span class="pull-right"><?php echo (!empty($row['iam']))?$row['iam']:'<span class="badge bg-red">Not Given</span>'?></span>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Intested in</b> <span class="pull-right "><?php echo (!empty($row['interestedin']))?$row['interestedin']:'<span class="badge bg-red">Not Given</span>'?></span>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Body</b> <span class="pull-right "><?php echo (!empty( $row['body']))? $row['body']:'<span class="badge bg-red">Not Given</span>'?></span>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Height</b> <span class="pull-right "><?php echo (!empty( $row['height']))? $row['height']:'<span class="badge bg-red">Not Given</span>'?></span>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Marital Status</b> <span class="pull-right "><?php echo (!empty( $row['maritalstatus']))? $row['maritalstatus']:'<span class="badge bg-red">Not Given</span>'?></span>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Age</b> <span class="pull-right "><?php echo (!empty( $row['age']))? $row['age']:'<span class="badge bg-red">Not Given</span>'?></span>
-                                </li>
-                            </ul>
-
-                            <a href="<?php echo base_url() . 'personal/detail/' .$row['id']; ?>" class="btn btn-primary btn-block"><b>View Detail</b></a>
+                            </div>
                         </div>
-                        <!-- /.box-body -->
                     </div>
-             </div>
 
-            <?php }
-            }else{ ?>
-                <div class="alert alert-warning alert-dismissible text-center">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <b class="">No Personal </b>
-                </div>
-            <?php } ?>
-
+                <?php endforeach;?>
+            <?php endif; ?>
         </div>
+
+
+
+
+
 
        </section>
 </div>

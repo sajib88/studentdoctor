@@ -34,62 +34,149 @@
 
                         <h3 class="profile-username text-center"><?php echo (!empty($layoutfull['title']))?$layoutfull['title']:'<span class="badge bg-red">Not Given</span>'?></h3>
 
-                        <p class="text-muted text-center"><?php echo (!empty( $layoutfull['ethnicity']))? $layoutfull['ethnicity']:'<span class="badge bg-red">Not Given</span>'?></p>
+                        <p class="text-muted text-center"><a  style="color: goldenrod;" href="<?php echo base_url('showProfile/'.$layoutfull['uid']);?>"> &nbsp Added By <?php echo getNameById($layoutfull['uid']); ?></a></p>
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Body</b> <span class="pull-right"><?php echo (!empty( $layoutfull['body']))? $layoutfull['body']:'<span class="badge bg-red">Not Given</span>'?></span>
+                                <b>Title</b> <span class="pull-right"><?php echo (!empty( $layoutfull['title']))? $layoutfull['title']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
-                            <li class="list-group-item">
-                                <b>Height</b> <span class="pull-right "><?php echo (!empty( $layoutfull['height']))? $layoutfull['height']:'<span class="badge bg-red">Not Given</span>'?></span>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Marital Status</b> <span class="pull-right "><?php echo (!empty( $layoutfull['maritalstatus']))? $layoutfull['maritalstatus']:'<span class="badge bg-red">Not Given</span>'?></span>
-                            </li>
-                            <li class="list-group-item">
-                                <b>Age</b> <span class="pull-right "><?php echo (!empty( $layoutfull['age']))? $layoutfull['age']:'<span class="badge bg-red">Not Given</span>'?></span>
-                            </li>
-                        </ul>
 
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+
+                        </ul>
+                        <p class="text-muted text-left"><?php echo (!empty( $layoutfull['description']))? $layoutfull['description']:'<span class="badge bg-red">Not Given</span>'?></p>
+
+
                     </div>
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
 
                 <!-- About Me Box -->
-                <div class="box box-primary">
+                <div class="box box-success">
                     <div class="box-header with-border">
-                        <h3 class="box-title">About Me</h3>
+                        <i class="fa fa-th"></i>
+                        <h3 class="box-title">Personal Info</h3>
                     </div>
                     <!-- /.box-header -->
+                    <!-- form start -->
+
                     <div class="box-body">
-                        <strong><i class="fa fa-book margin-r-5"></i> Description</strong>
 
-                        <p class="text-muted">
-                            <?php echo (!empty( $layoutfull['description']))? $layoutfull['description']:'<span class="badge bg-red">Not Given</span>'?>
-                        </p>
-
-                        <hr>
-
-                        <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-
-                        <p class="text-muted">
-                            <?php echo (!empty( $layoutfull['country']))? countryNameByID($layoutfull['country']).',':''?>
-                            <?php echo (!empty( $layoutfull['state']))? $layoutfull['state'].',':''?>
-                            <?php echo (!empty( $layoutfull['city']))? $layoutfull['city']:''?>
-                        </p>
-                        <hr>
-                        <strong><i class="fa fa-pencil margin-r-5"></i> Other Information </strong>
                         <ul class="list-group list-group-unbordered">
+
                             <li class="list-group-item">
-                                <b>Child</b> <span class="pull-right "><?php echo (!empty( $layoutfull['child']))? $layoutfull['child']:'<span class="badge bg-red">Not Given</span>'?></span>
+                                <b>Age</b> <span class="pull-right "><?php echo (!empty( $layoutfull['age']))? $layoutfull['age']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Language</b> <span class="pull-right "><?php echo (!empty( $layoutfull['language']))? $layoutfull['language']:'<span class="badge bg-red">Not Given</span>'?></span>
+                                <b>Ethnicity</b> <span class="pull-right "><?php echo (!empty( $layoutfull['ethnicity']))? $layoutfull['ethnicity']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
                                 <b>Religion</b> <span class="pull-right "><?php echo (!empty( $layoutfull['religion']))? $layoutfull['religion']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Marital status </b> <span class="pull-right "><?php echo (!empty( $layoutfull['maritalstatus']))? $layoutfull['maritalstatus']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Language</b> <span class="pull-right "><?php echo (!empty( $layoutfull['lang']))? $layoutfull['lang']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+                        </ul>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <i class="fa fa-map-marker"></i>
+                        <h3 class="box-title">Address</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+
+                    <div class="box-body">
+
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>Country</b> <span class="pull-right "><?php echo (!empty($layoutfull['country']))?countryNameByID($layoutfull['country']):'<span class="badge bg-red">Not Given</span>' ; ?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <b>State</b> <span class="pull-right "><?php echo (!empty( $layoutfull['state']))? $layoutfull['state']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <b>City</b> <span class="pull-right "><?php echo (!empty( $layoutfull['city']))? $layoutfull['city']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Postal Code</b> <span class="pull-right "><?php echo (!empty( $layoutfull['zip']))? $layoutfull['zip']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- /.box -->
+            </div>
+
+
+
+
+            <div class="col-md-4">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <i class="fa fa-male"></i>
+                        <h3 class="box-title">Body Description</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+
+                    <div class="box-body">
+
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>Body</b> <span class="pull-right "><?php echo (!empty( $layoutfull['body']))? $layoutfull['body']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Height</b> <span class="pull-right "><?php echo (!empty( $layoutfull['height']))? $layoutfull['height']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Eye Color</b> <span class="pull-right "><?php echo (!empty( $layoutfull['eyecolor']))? $layoutfull['eyecolor']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Hair Color</b> <span class="pull-right "><?php echo (!empty( $layoutfull['haircolor']))? $layoutfull['haircolor']:'<span class="badge bg-red">Not Given</span>'?></span>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <i class="glyphicon glyphicon-chevron-down"></i>
+                        <h3 class="box-title">Other Info</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+
+                    <div class="box-body">
+
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>Child</b> <span class="pull-right "><?php echo (!empty( $layoutfull['child']))? $layoutfull['child']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
                                 <b>Smoker</b> <span class="pull-right "><?php echo (!empty( $layoutfull['smoker']))? $layoutfull['smoker']:'<span class="badge bg-red">Not Given</span>'?></span>
@@ -98,24 +185,35 @@
                                 <b>Drinker</b> <span class="pull-right "><?php echo (!empty( $layoutfull['drinker']))? $layoutfull['drinker']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Entimicy</b> <span class="pull-right "><?php echo (!empty( $layoutfull['entimicyorpreference']))? $layoutfull['entimicyorpreference']:'<span class="badge bg-red">Not Given</span>'?></span>
+                                <b>Intimacy/Preference</b> <span class="pull-right "><?php echo (!empty( $layoutfull['entimicyorpreference']))? $layoutfull['entimicyorpreference']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
-                        </ul>
 
-                        <hr>
+                        </ul>
 
 
                     </div>
-                    <!-- /.box-body -->
+
+
                 </div>
-                <!-- /.box -->
             </div>
+
+
             <!-- /.col -->
             <div class="col-lg-8">
+
+
+
+
+
+
+
+
+
+
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <i class="fa fa-file-picture-o"></i>
-                        <h3 class="box-title">Product Photos</h3>
+                        <h3 class="box-title">Personals Photos</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -144,7 +242,7 @@
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <i class="fa fa-file-video-o"></i>
-                            <h3 class="box-title">Product Video</h3>
+                            <h3 class="box-title">Personals Videos</h3>
                         </div>
                         <div class="box-body">
 
@@ -176,7 +274,7 @@
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <i class="fa fa-file-sound-o"></i>
-                            <h3 class="box-title">Product Sound/audio</h3>
+                            <h3 class="box-title">Personals Sound/audio</h3>
                         </div>
                         <div class="box-body">
 
@@ -197,7 +295,7 @@
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <i class="fa fa-file-word-o"></i>
-                            <h3 class="box-title">Product Attachment</h3>
+                            <h3 class="box-title">Personals Attachment</h3>
                         </div>
                         <div class="box-body">
 

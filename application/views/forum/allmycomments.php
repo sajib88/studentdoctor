@@ -62,15 +62,17 @@
 
 
                                         <div class="col-md-3 text-center">
-                                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
+                                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Posts</a>
 
                                         </div>
 
 
                                         <div class="col-md-3 text-center">
-                                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
+                                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Posted Comments</a>
 
                                         </div>
+
+
 
                                     </div>
                                     <!-- /.box-body -->

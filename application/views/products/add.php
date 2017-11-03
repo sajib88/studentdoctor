@@ -35,7 +35,7 @@
         <div class="col-lg-12">
             <div class="alert alert-success alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Success! New product  Add successfully.</strong>
+                <strong>Success! New Product Added Successfully.</strong>
             </div>
         </div>
     <?php } ?>
@@ -374,6 +374,22 @@
 
             },
 
+            seller_name:{
+                required:true
+
+            },
+
+            seller_email:{
+                required:true
+
+            },
+
+            seller_phone:{
+                required:true
+
+            },
+
+
 
             'photo_primary': {
                 required: true,
@@ -420,17 +436,21 @@
             country: {
                 required: "Product Country is Required",
             },
-            price: {
-                required: "Price is Required, 0-9 Number digit only allow",
-            },
+
             city: {
                 required: "City is Required",
             },
-
+            price: {
+                required: "Price is Required, 0-9 Number digit only allow",
+            },
 
             special_price: {
                 required: "Special Price is Required, 0-9 Number digit only allow",
             },
+
+
+
+
             'photo_primary':{
                 required : "<p class='text-danger'>Please upload atleast 1 photo</p>",
                 extension:"Only Image Format  file is allowed!"

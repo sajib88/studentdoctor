@@ -14,13 +14,12 @@
 
 
 
-
         <div class="row">
             <?php if($this->session->flashdata('message')){ ?>
                 <div class="col-lg-12">
                     <div class="alert alert-success alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong> Comment reply now Successfully</strong>
+                        <strong> Comment Reply Successful</strong>
                     </div>
                 </div>
             <?php } ?>
@@ -60,16 +59,15 @@
 
 
                         <div class="col-md-3 text-center">
-                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
+                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Posts</a>
 
                         </div>
 
 
                         <div class="col-md-3 text-center">
-                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
+                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Posted Comments</a>
 
                         </div>
-
 
 
 
@@ -98,9 +96,13 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <?php  echo $postdeatils['title']; ?>
-                <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default bg-blue btn-md pull-right"><i class="fa fa-share"></i> Reply This Topic</button>
-            </div>
+                <div class="pull-left">
+                <h4><?php  echo $postdeatils['title']; ?></h4>
+                </div>
+                <div class="pull-right">
+                <a data-toggle="modal" href="#myModal" type="button" class="btn  btn-warning btn-md pull-right"><i class="fa fa-share"></i> Reply To This Topic</a>
+                </div>
+                </div>
 
             <!-- /.box-body -->
           </div>
@@ -118,9 +120,8 @@
             <div class="box-header with-border">
               <div class="user-block">
 
-                <span class="username"><a href="#"><?php echo getNameById($postdeatils['author_id']);?></a></span>
-                <span class="description">Shared Disccforum - <?php echo date('m-d-Y h:m:i A', strtotime($postdeatils['datetime']));?></span>
-              </div>
+                  <h3 class="box-title"> Post Detils</h3>
+                 </div>
               <!-- /.user-block -->
               <div class="box-tools">
 
@@ -163,9 +164,12 @@
                                     <div class="icon">
                                         <i class="glyphicon glyphicon-bullhorn"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">
-                                        More info <i class="fa fa-arrow-circle-right"></i>
+                                    <a href="<?php echo base_url('showProfile/'.$postdeatils['author_id']);?>" class="small-box-footer">
+                                        Author info <i class="fa fa-arrow-circle-right"></i>
                                     </a>
+
+
+
                                 </div>
                             </div>
 
@@ -188,7 +192,8 @@
 
                 <div class="box-footer box-comments">
                     <div class="box-comment">
-                <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default btn-dropbox"><i class="fa fa-share"></i> Reply This Topic</button>
+                <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default btn-dropbox"><i class="fa fa-share"></i> Reply To This Topic
+                </button>
 
                 <span class="pull-right text-muted">Total - <?php if(!empty($totalComments)){echo $totalComments.' comments';}else{echo '0 comment';} ;?> </span>
                         </div>
@@ -219,7 +224,7 @@
 
                           <th style="width: 260px">Comments Profile</th>
                           <th><?php echo $row->comments_title; ?></th>
-                          <th >Comments Date</th>
+                          <th >Comments Date Time</th>
                       </tr>
 
                       <tr>
@@ -245,8 +250,8 @@
                                       <div class="icon">
                                           <i class="glyphicon glyphicon-comment sm"></i>
                                       </div>
-                                      <a href="#" class="small-box-footer">
-                                          More info <i class="fa fa-arrow-circle-right"></i>
+                                      <a href="<?php echo base_url('showProfile/'.$row->user_id);?>" class="small-box-footer">
+                                          Profile info <i class="fa fa-arrow-circle-right"></i>
                                       </a>
                                   </div>
                               </div>
@@ -261,7 +266,7 @@
                               </div>
                               <?php }?>
                           </td>
-                          <td><?php echo $row->added_date_time; ?></td>
+                          <td><?php echo date('h:i a m-d-Y', strtotime($row->added_date_time));?></td>
 
                       </tr>
 
@@ -275,6 +280,13 @@
                 <!-- /.comment-text -->
               </div>
               <!-- /.box-comment -->
+
+                  <?php if($totalComments > 3){
+                      ?>
+
+                  <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default btn-dropbox"><i class="fa fa-share"></i> Reply To This Topic
+                  </button>
+                  <?php }?>
 
             </div>
 
@@ -306,6 +318,8 @@
 
             <form role="form" method="post" id="post" enctype="multipart/form-data"
                   action="<?php echo base_url('forum/discuss/' . $getid); ?>">
+                <input type="hidden" name="totalcomments" value="<?php echo $totalComments; ?>" >
+
 
                 <div class="modal-body">
                     <input name="postid" value="<?php  echo $getid; ?>" type="hidden" class="form-control">

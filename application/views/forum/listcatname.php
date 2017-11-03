@@ -10,12 +10,12 @@
         </h1>
     </section>
     <section class="content">
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         <div class="row">
             <?php if($this->session->flashdata('message')){ ?>
                 <div class="col-lg-12">
@@ -42,10 +42,17 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+
+
+
                         <div class="col-md-3 text-center">
                             <a  href="<?php echo base_url('forum/board'); ?>" class="btn "><i class="fa fa-home"></i> Forum Home</a>
 
                         </div>
+
+
+
+
                         <div class="col-md-3 text-center">
                             <a data-toggle="modal" href="<?php echo base_url('forum/addCategory'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
 
@@ -53,15 +60,17 @@
 
 
                         <div class="col-md-3 text-center">
-                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
+                            <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Posts</a>
 
                         </div>
 
 
                         <div class="col-md-3 text-center">
-                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
+                            <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Posted Comments</a>
 
                         </div>
+
+
 
                     </div>
                     <!-- /.box-body -->
@@ -90,12 +99,13 @@
                     <thead>
                         <tr>
                           <th class="numeric" >#</th>
-                          <th class="numeric">Topic</th>
-                          <th class="numeric" > Author</th>
-                          <th class="numeric" > Replies</th>
-                          <th class="numeric" > Views </th>
-                          <th class="numeric" > Last post  </th>
-                          <th class="numeric" > Reply  </th>
+                          <th class="numeric"> Topic</th>
+                          <th class="numeric"> Author</th>
+                          <th class="numeric"> Total Replies</th>
+                          <th class="numeric"> Total Views </th>
+                          <th class="numeric"> Topic Date Time  </th>
+                          <th class="numeric"> Reply  </th>
+                            <th class="numeric"> View Post  </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,7 +115,7 @@
                     ?>
                     <tr>
                         <td data-title="#" class="numeric"><?php echo $i;?></td>
-                        <td data-title="Topic" class="numeric" >     <?php echo $row->title; ?></td>
+                        <td data-title="Topic" class="numeric" > <a class="" href="<?php echo base_url('forum/discuss/' . $row->post_id); ?>">  <?php echo $row->title; ?> </a>    </td>
                         <td data-title="Author" class="numeric">
                             <?php echo getNameById($row->author_id); ?>
                         </td>
@@ -114,16 +124,20 @@
                             <?php echo $row->views; ?>
                         </td>
 
-                        <td data-title="Last post" class="numeric" ><?php echo $row->datetime; ?></td>
+                        <td data-title="Last post" class="numeric" ><?php echo date('h:i a m-d-Y', strtotime($row->datetime));?></td>
                         <td data-title="Reply" class="numeric" >
                             <a class="btn  btn-primary" href="<?php echo base_url('forum/discuss/' . $row->post_id); ?>">  Reply</a>
+
+                        </td>
+                        <td data-title="Reply" class="numeric" >
+                            <a class="btn  btn-warning" href="<?php echo base_url('forum/discuss/' . $row->post_id); ?>">  Click To View</a>
 
                         </td>
                     </tr>
                 <?php $i++;
                 } }
                 ?>
-                
+
                 </tbody></table></div>
                 <?php }else{?>
                 <div class="col-lg-12">
@@ -134,18 +148,18 @@
                 </div>
                 <?php }?>
 
-                
+
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-        </div>    
+        </div>
              <!-- /.Orage BOX SAJIB -->
-            
-             
-            
-            
-    
+
+
+
+
+
         </div>
     </section>
 </div>

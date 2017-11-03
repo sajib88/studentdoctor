@@ -56,7 +56,7 @@ print_r($allpersonals);die;*/
 
                                     <th class="numeric"><?php echo 'I am';?></th>
 
-                                    <th class="numeric"><?php echo 'Interested In';?></th>
+                                    <th class="numeric"><?php echo 'Interested In A';?></th>
 
                                     <th class="numeric"><?php echo 'Maritalstatus';?></th>
 

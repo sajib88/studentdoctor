@@ -77,7 +77,7 @@
                             <div class="progress-bar" style="width: 100%"></div>
                         </div>
                   <span class="progress-description">
-                    Location This Product
+                   Location Of This Product
                   </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -162,11 +162,8 @@
                         <strong> Seller Email</strong>
                         <p> <?php echo (!empty($layoutfull['seller_email']))?$layoutfull['seller_email']:'<span class="badge bg-red">Not Given</span>'; ?></p>
 
-                        <strong> Seller Address 1</strong>
+                        <strong> Seller Address </strong>
                         <p> <?php echo (!empty($layoutfull['seller_address1']))?$layoutfull['seller_address1']:'<span class="badge bg-red">Not Given</span>'; ?></p>
-
-                        <strong> Seller Address 2</strong>
-                        <p> <?php echo (!empty($layoutfull['seller_address2']))?$layoutfull['seller_address2']:'<span class="badge bg-red">Not Given</span>';  ?></p>
 
                         <strong> Seller Website</strong>
                         <p> <?php echo (!empty($layoutfull['seller_website']))?$layoutfull['seller_website']:'<span class="badge bg-red">Not Given</span>';  ?></p>

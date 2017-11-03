@@ -109,7 +109,10 @@ class Forum extends CI_Controller{
 
     public function discuss(){
         $data = array();
-        $data['page_title'] = 'Add Product';
+        $data['page_title'] = 'discuss';
+
+
+
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
@@ -126,6 +129,19 @@ class Forum extends CI_Controller{
         $data['getcommentsid'] = $this->global_model->get_data('forum_comments', array('post_id' => $data['getid']));
         $data['user_comments_info'] = $this->global_model->get_data('users', array('id' => $data['getcommentsid']['user_id']));
 
+        //////// PAGE VIEW ++++
+        $getid = $this->uri->segment('3');
+        if($getid == true){
+            //echo "+ 1";
+            $data['postdeatils'] = $this->global_model->get_data('forum_post', array('post_id' => $data['getid']));
+            $totalpostview =  $data['postdeatils']['views'];
+            $updatetotal = $totalpostview + 1;
+            $viewdata['views'] = $updatetotal;
+
+
+            $this->global_model->update('forum_post', $viewdata, array('post_id' => $getid));
+        }
+        //////// PAGE VIEW ++++
 
 
         if ($this->input->post()) {
@@ -156,7 +172,16 @@ class Forum extends CI_Controller{
 
                 if ($ref_id = $this->global_model->insert('forum_comments', $save)) {
 
-                    $this->session->set_flashdata('message', 'New Forum Post Create Successfully');
+                    //////// Comment VIEW ++++
+                    $gettotalcomments =$postData['totalcomments'];
+                    $updatecomment = $gettotalcomments + 1;
+                    $bata['reply'] = $updatecomment;
+                    $this->global_model->update('forum_post', $bata, array('post_id' => $postData['postid']));
+                    //////// Comment VIEW ++++
+
+
+
+                    $this->session->set_flashdata('message', 'New Forum Post Created Successfully');
                     $redirect_link = base_url() . 'forum/discuss/'. $postData['postid'];
                     redirect($redirect_link);
 

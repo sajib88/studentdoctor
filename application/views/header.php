@@ -539,7 +539,7 @@
                         } ?>">
                             <a href="<?php echo base_url('product/all'); ?>"><i
                                         class="fa fa-circle-o"></i>
-                                View All Product</a>
+                                View All Products</a>
                         </li>
 
                         <li class="<?php if ($this->uri->segment(2)=="list"){

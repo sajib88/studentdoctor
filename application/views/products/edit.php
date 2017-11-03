@@ -38,7 +38,7 @@
                 <div class="col-lg-12">
                     <div class="alert alert-success alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Product Update successfully.</strong>
+                        <strong>Product Updated Successfully.</strong>
                     </div>
                 </div>
             <?php } ?>
@@ -61,13 +61,24 @@
                             </div>
                             <div class="form-group">
                                 <label>Product Type<span class="error">*</span></label><span id='type-error' class='error' for='type'></span>
-                                <?php $types = array('For Sales','Exchange','Free','Urgent');?>
-                                <select name="type" class="form-control chosen-select">
-                                    <option value="">Select Type</option>
-                                    <?php foreach ($main_cat as $row) {?>
-                                        <option <?php if ($row == $editProduct['type']) echo 'selected'; ?> value="<?php echo $row->id;?>"><?php echo $row->cat_name;?></option>
-                                    <?php }?>
+
+
+                                <select  name="type" class="form-control">
+                                    <option value="">Select</option>
+                                    <?php
+                                    if (is_array($main_cat)) {
+
+                                        foreach ($main_cat as $eventcat) {
+
+                                            ?>
+                                            <option <?php if ($eventcat->id == $editProduct['type']) echo 'selected'; ?> value="<?php echo $eventcat->id; ?>"><?php echo $eventcat->cat_name; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </select>
+
+
                             </div>
                             <div class="form-group">
                                 <label>Description<span class="error">*</span></label>

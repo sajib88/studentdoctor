@@ -51,13 +51,13 @@
 
 
                     <div class="col-md-3 text-center">
-                        <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Post</a>
+                        <a  href="<?php echo base_url('forum/posts'); ?>" class="btn "><i class="fa fa-list"></i> All My Posts</a>
 
                     </div>
 
 
                     <div class="col-md-3 text-center">
-                        <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Comments Post</a>
+                        <a  href="<?php echo base_url('forum/comments'); ?>" class="btn"><i class="fa fa-user"></i> My Posted Comments</a>
 
                     </div>
 
@@ -91,9 +91,9 @@
                 <table class="table table-striped">
                 <tbody><tr>
                   <th style="width: 100px">ICON</th>
-                  <th>TOPIC</th>
-                  <th style="width: 100px">Posts Total</th>
-                  <th style="width: 140px">Last post Date </th>
+                  <th>Forum Category</th>
+                  <th style="width: 100px">Total Posts</th>
+                  <th style="width: 140px">Latest Post Date </th>
                 </tr>
 
                 <?php
@@ -106,7 +106,7 @@
                         <td>
                             <?php echo $row->total_post; ?>
                         </td>
-                        <td><?php echo date('d-m-Y', strtotime($row->added_date_time)); ?></td>
+                        <td><?php echo date('m-d-Y', strtotime($row->added_date_time)); ?></td>
                     </tr>
                 <?php
                 }
@@ -146,10 +146,10 @@
                 
                 <table class="table table-striped">
                 <tbody><tr>
-                  <th style="width: 100px">ICON</th>
-                  <th>TOPIC</th>
-                  <th style="width: 100px">Posts Total</th>
-                  <th style="width: 140px">Last post Date </th>
+                    <th style="width: 100px">ICON</th>
+                    <th>Forum Category</th>
+                    <th style="width: 100px">Total Posts</th>
+                    <th style="width: 140px">Latest Post Date </th>
                 </tr>
                 <?php
                 foreach ($allprof as $row) {
@@ -185,6 +185,8 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">  Professions Related Forums</h3>
 
+                        <a data-toggle="modal" href="<?php echo base_url('forum/addCategory'); ?>" class="btn "><i class="fa fa-plus"></i> Add New Category</a>
+
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
@@ -199,9 +201,9 @@
                         <table class="table table-striped">
                             <tbody><tr>
                                 <th style="width: 100px">ICON</th>
-                                <th>TOPIC</th>
-                                <th style="width: 100px">Posts Total</th>
-                                <th style="width: 140px">Last post Date </th>
+                                <th>Forum Category</th>
+                                <th style="width: 100px">Total Posts</th>
+                                <th style="width: 140px">Latest Post Date </th>
                             </tr>
                             <?php
                             foreach ($dynamicprofession as $row) {

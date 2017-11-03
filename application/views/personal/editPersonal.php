@@ -112,7 +112,7 @@
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <i class="fa fa-male"></i>
-                                <h3 class="box-title">Body Magerment</h3></i>
+                                <h3 class="box-title">Body Description</h3></i>
                             </div>
                             <div class="padd">
                                 <div class="form-group">
@@ -265,7 +265,7 @@
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <i class="glyphicon glyphicon-chevron-down"></i>
-                                <h3 class="box-title">Others Info</h3></i>
+                                <h3 class="box-title">Other Info</h3></i>
                             </div>
                             <div class="padd">
                                 <div class="form-group">
@@ -298,7 +298,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Intimacy/Preference</label>
-                                    <?php $intimacy = array('Like to experiment','Don\'t like to experiment','Soul mate','Lifemate but no marriage','Lifemate and marriage','Casual affair only' );?>
+                                    <?php $intimacy = array('Like to experiment','Don\'t like to experiment','Soulmate','Lifemate but no marriage','Lifemate and marriage','Casual affair only' );?>
                                     <select name="entimicyorpreference" class="form-control chosen-select">
                                         <option value="0">N/A</option>
                                         <?php foreach ($intimacy as $row) {

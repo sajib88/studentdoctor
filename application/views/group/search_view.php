@@ -21,9 +21,15 @@
                 <div class="box box-primary">
                     <div class="panel-body">
                             <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('group/search'); ?>">
-                                    <div class="col-lg-12">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Group Title</label>
+                                        <input name="group_name" type="text" placeholder="Group Title" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Category Select</label>
+                                            <label>Group Category</label>
                                             <select  name="category" class="form-control">
                                                 <option value="">Select</option>
                                                 <?php
@@ -37,20 +43,8 @@
                                                 }
                                                 ?>
                                             </select>
-                                            <?php echo form_error('country');?>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div id="result">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Group Title</label>
-                                            <input name="group_name" type="text" placeholder="Group Title" class="form-control">
-                                        </div>
-                                    </div>
-
                     </div>
                 </div>
             </div>

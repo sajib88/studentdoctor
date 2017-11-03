@@ -17,7 +17,7 @@
                             <div class="widget-user-header ">
                                 <div class="widget-user-image text-center">
                                     </br>
-                                    <img src="<?php echo base_url() . '/assets/file/group/' .$row['primary_image']; ?>" alt=""  />
+                                    <img src="<?php echo base_url() . '/assets/file/group/' .$row['primary_image']; ?>" alt="" class="group-image"  />
 
                                     </br>
                                 </div>
@@ -30,7 +30,7 @@
                                                 $data = get_data('group_main_cat', array('id' => $row['category']));
                                                 echo $data['cat_name'];
                                                 ?></span></a></li>
-                                    <li><a href="#"><b>Group  Date </b><span class="pull-right"><?php echo date('d-m-y', strtotime($row['create_date'])); ?></span></a></li>
+                                    <li><a href="#"><b>Group  Date </b><span class="pull-right"><?php echo date('m-d-Y', strtotime($row['create_date'])); ?></span></a></li>
                                     <li><a><?php echo substr( $row['description'],0,90).'.....'; ?></a></li>
 
                                 </ul>

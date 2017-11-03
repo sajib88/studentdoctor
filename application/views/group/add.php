@@ -227,9 +227,13 @@
         jQuery(document).ready(function() {
             //Date picker
             $('#datepicker2').datepicker({
+                startDate: new Date(),
+                todayHighlight: true,
                 autoclose: true
             });
             $('#datepicker').datepicker({
+                startDate: new Date(),
+                todayHighlight: true,
                 autoclose: true
             });
 

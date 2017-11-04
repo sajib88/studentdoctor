@@ -30,8 +30,8 @@
                     <div class="box-body no-padding">
                         <ul class="nav nav-pills nav-stacked">
                             <li class="active"><a href="<?php echo base_url('message');?>"><i class="fa fa-inbox"></i> Inbox
-                                    <span class="label label-primary pull-right">12</span></a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                                    <span class="label label-primary pull-right"></span></a></li>
+                            <li><a href="<?php echo base_url('message/sentMessages');?>"><i class="fa fa-envelope-o"></i> Sent</a></li>
                             <!--                            <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>-->
                             <!--                            <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>-->
                             <!--                            </li>-->
@@ -46,7 +46,7 @@
             <div class="col-md-9">
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Read Mail</h3>
+                        <h3 class="box-title">Read Message</h3>
 
                         <div class="box-tools pull-right">
                             <a href="#" class="btn btn-box-tool" data-toggle="tooltip" title="Previous"><i class="fa fa-chevron-left"></i></a>
@@ -65,10 +65,6 @@
                             <div class="btn-group">
                                 <a href="<?php echo base_url('message/delete/'.$read_message['id']);?>" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
                                     <i class="fa fa-trash-o"></i></a>
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
-                                    <i class="fa fa-reply"></i></button>
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
-                                    <i class="fa fa-share"></i></button>
                             </div>
                             <!-- /.btn-group -->
                             <button onclick="PrintDiv();" type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print">
@@ -98,10 +94,6 @@
                     <?php } ?>
 
                     <div class="box-footer">
-                        <div class="pull-right">
-                            <button type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
-                            <button type="button" class="btn btn-default"><i class="fa fa-share"></i> Forward</button>
-                        </div>
                         <a href="<?php echo base_url('message/delete/'.$read_message['id']);?>" type="button" class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</a>
                         <button onclick="PrintDiv();" type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
 

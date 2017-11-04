@@ -30,10 +30,6 @@
                             <li class="<?php if($this->uri->segment(1)=='message'){echo 'active';}?>"><a href="<?php echo base_url('message');?>"><i class="fa fa-inbox"></i> Inbox
                                     <span class="label label-primary pull-right"></span></a></li>
                             <li class="<?php if($this->uri->segment(1)=='message' && $this->uri->segment(2)=='sentMessages'){echo 'active';}?>"><a href="<?php echo base_url('message/sentMessages');?>"><i class="fa fa-envelope-o"></i> Sent</a></li>
-<!--                            <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>-->
-<!--                            <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>-->
-<!--                            </li>-->
-<!--                            <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>-->
                         </ul>
                     </div>
                     <!-- /.box-body -->
@@ -47,12 +43,12 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Inbox</h3>
 
-                        <div class="box-tools pull-right">
-                            <div class="has-feedback">
-                                <input type="text" class="form-control input-sm" placeholder="Search Mail">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                            </div>
-                        </div>
+<!--                        <div class="box-tools pull-right">-->
+<!--                            <div class="has-feedback">-->
+<!--                                <input type="text" class="form-control input-sm" placeholder="Search Mail">-->
+<!--                                <span class="glyphicon glyphicon-search form-control-feedback"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <!-- /.box-tools -->
                     </div>
                     <!-- /.box-header -->
@@ -67,7 +63,6 @@
                             <!-- /.btn-group -->
                             <button type="button" id="refresh" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
                             <div class="pull-right">
-                                1-50/200
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
                                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
@@ -114,7 +109,6 @@
                     <div class="box-footer no-padding">
                         <div class="mailbox-controls">
                             <div class="pull-right">
-                                1-50/200
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
                                     <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>

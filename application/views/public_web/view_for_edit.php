@@ -3,19 +3,19 @@
 print_r($website_info);die;*/?>
 
 <div class="content-wrapper">
-    
-    
+
+
     <section class="content-header">
       <h1><i class="fa fa-user-md"></i>
         My Website
       </h1>
     </section>
-    
-    
-    
-    
-     <section class="content">  
-    
+
+
+
+
+     <section class="content">
+
     <div class="row">
         <?php if($this->session->flashdata('message')){ ?>
             <div class="col-lg-12">
@@ -80,13 +80,13 @@ print_r($website_info);die;*/?>
 
             <div class="small-box bg-red-active">
                 <div class="inner">
-                    <h3>  No  Public Website Found</h3>
+                    <h3>  No   Website Created</h3>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
 
                 </div>
-                <a href="<?php echo base_url('pub/add'); ?>" class="small-box-footer">You Do not Create  Public Website <i class="fa fa-hand-o-up"></i></a>
+                <a href="<?php echo base_url('pub/add'); ?>" class="small-box-footer">You Did Not Create   Website <i class="fa fa-hand-o-up"></i></a>
             </div>
 
 
@@ -97,9 +97,9 @@ print_r($website_info);die;*/?>
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-             
-                
-                 <h3> <?php echo $user_info['user_name']; ?></h3> 
+
+
+                 <h3> <?php echo $user_info['user_name']; ?></h3>
                 <b>  Full Name </b>  : <?php echo $user_info['first_name'] . ' ' . $user_info['last_name']; ?><br/>
                 <b>  First Name </b>  : <?php echo $user_info['first_name']; ?><br/>
                 <b>  Last Name </b>  : <?php echo $user_info['last_name']; ?><br/>
@@ -112,23 +112,22 @@ print_r($website_info);die;*/?>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
-                
+
             </div>
             <a href="<?php echo base_url('profile/profile/index'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        
+
 </div>
-         
-        
-         
-         
-    </section>          
-         
-    
-   
+
+
+
+
+    </section>
+
+
+
 
 </div>
 <!-- /.row -->
 <!-- /.container-fluid -->
-</div>

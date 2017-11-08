@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1><i class="fa fa-user-md"></i>
-            Public Website
+            My Website
         </h1>
     </section>
 
@@ -24,7 +24,7 @@
                     <div class="col-lg-12 alert alert-warning alert-dismissible text-center">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <h3><?php echo $message; ?> <i class="fa fa-info"></i></h3>
-                        <p>Plese visit your public website edit menu to any farther modification ! Thanks.</p>
+                        <p>Plese visit your My website edit menu to any farther modification ! Thanks.</p>
                     </div>
                 </div>
                 <!-- /.col-lg-12 -->

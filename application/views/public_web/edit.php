@@ -112,7 +112,7 @@
                              <input name="title" value="<?php echo!empty($website_info['title']) ? $website_info['title'] : ''; ?>"  class="form-control">
                          </div>
                          <div class="form-group">
-                             <label>Your Public Website URL</label>
+                             <label>My Website URL</label>
                              <input  disabled value="<?php echo!empty($user_info['user_name']) ? $user_info['user_name'] : ''; ?>"  class="form-control">
                          </div>
                          <div class="form-group">
@@ -120,7 +120,7 @@
                              <textarea  name="description" value="" class="form-control"><?php echo!empty($website_info['description']) ? $website_info['description'] : ''; ?></textarea>
                          </div>
                          <div class="form-group">
-                             <label>Specialty</label>
+                             <label>Speciality</label>
                              <input name="specialty" value="<?php echo!empty($website_info['specialty']) ? $website_info['specialty'] : ''; ?>" class="form-control">
                          </div>
                          <div class="form-group">
@@ -143,7 +143,7 @@
                                  ?>" class="form-control">
                              </div>
                              <div class="form-group">
-                                 <label> Business Web site </label>
+                                 <label> Business Website </label>
                                  <input name="business_website" value="<?php echo!empty($website_info['business_website']) ? $website_info['business_website'] : ''; ?>" class="form-control">
                              </div>
                              <div class="form-group">

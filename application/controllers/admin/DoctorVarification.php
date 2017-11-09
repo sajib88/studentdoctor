@@ -36,13 +36,22 @@ class DoctorVarification extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
-    public function varify($id='', $is_valid="", $user_id=''){
+    public function varify($id='', $is_valid="", $user_id='', $email=""){
         if(!empty($id) && $is_valid == '0'){
             $update['is_valid'] = '1';
             $user_update['is_varified'] = '1';
             $this->global_model->update('doctor_varification', $update, array('id'=>$id));
             $this->global_model->update('users', $user_update, array('id'=>$user_id));
-            redirect(base_url('admin/DoctorVarification'));
+            $this->load->library('email');
+            $this->email->from('info@advertbd.com', 'Admin');
+            $this->email->to($email);
+            $this->email->subject('Varification Email');
+            $this->email->message(
+                'This '.$email.' is varified. Thanks !!'
+            );
+            if($this->email->send()) {
+                redirect(base_url('admin/DoctorVarification'));
+            }
 
         }else{
             $update['is_valid'] = '0';

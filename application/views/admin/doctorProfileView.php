@@ -45,7 +45,7 @@
                             </li>
                             <li class="list-group-item text-center">
                                 <?php if($doctorProfile['university'] != 1){?>
-                                    <a class="btn btn-lg btn-success" href="<?php echo base_url('admin/DoctorVarification/varify') . '/' . $doctorProfile['id'] . '/' . $doctorProfile['is_valid'] . '/' .$doctorProfile['user_id'];?>">Varify</a>
+                                    <a class="btn btn-lg btn-success" href="<?php echo base_url('admin/DoctorVarification/varify') . '/' . $doctorProfile['id'] . '/' . $doctorProfile['is_valid'] . '/' .$doctorProfile['user_id']. '/' .$doctorProfile['email'];?>">Varify</a>
                                 <?php }?>
                             </li>
                         </ul>

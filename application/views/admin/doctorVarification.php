@@ -73,7 +73,7 @@
 
 
 
-                                                    <td data-title="<?php echo 'action'; ?>" class="numeric"> <a href="<?php echo base_url('admin/DoctorVarification/varify') . '/' . $row->id . '/' . $row->is_valid . '/'. $row->user_id;?>">
+                                                    <td data-title="<?php echo 'action'; ?>" class="numeric"> <a href="<?php echo base_url('admin/DoctorVarification/varify') . '/' . $row->id . '/' . $row->is_valid . '/'. $row->user_id . '/' .$row->email;?>">
                                                             <?php
                                                             if ($row->is_valid != 1) {
                                                                 echo '<button class="btn btn-success">Varify</button>';

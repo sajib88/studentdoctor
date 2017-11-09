@@ -236,7 +236,7 @@ class Publicweb extends CI_Controller {
         {
 
 
-            $data['message'] = "You did not create public website yet, Please create your public website";
+            $data['message'] = "You did not create  website yet, Please create your  website";
             $this->load->view('header', $data);
             $this->load->view('message', $data);
             $this->load->view('footer');

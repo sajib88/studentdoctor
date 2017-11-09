@@ -118,11 +118,11 @@
 <!--                            </div>-->
 <!--                        </div>-->
                         <div class="form-group">
-                            <label>Public Website Title</label>
+                            <label>My Website Title</label>
                             <input name="title" value="<?php echo set_value('title'); ?>"  class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Choose Public Website URL</label>
+                            <label>Choose My Website URL</label>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <input disabled name="url" value="<?php echo base_url(); ?>"  class="form-control">
@@ -137,7 +137,7 @@
                             <textarea  name="description" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Specialty</label>
+                            <label>Speciality</label>
                             <input name="specialty" value="<?php echo set_value('specialty'); ?>" class="form-control">
                         </div>
                         <div class="form-group">
@@ -159,7 +159,7 @@
                             <input name="business_name" value="<?php echo set_value('business_name'); ?>" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label> Business Web site </label>
+                            <label> Business Website </label>
                             <input name="business_website" value="<?php echo set_value('business_website'); ?>" class="form-control">
                         </div>
                         <div class="form-group">
@@ -255,14 +255,14 @@
                                     <label>Photo</label>
                                     <small class=""><i class="fa fa-star-o"></i> Must be Upload 1 Image </small>
                                     <input name="photo1" class="btn btn-default btn-cust" type="file" required>
-                                    <small class="badge bg-green"> JPG, GIF, PNG Format allow</small>
+                                    <small class="badge bg-green"> JPG, GIF, PNG Format Allow</small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group" id="photo_id">
                                     <label>Photo 2</label>
                                     <input name="photo2" class="btn btn-default btn-cust" type="file">
-                                    <small class="badge bg-green"> JPG, GIF, PNG Format allow</small>
+                                    <small class="badge bg-green"> JPG, GIF, PNG Format Allow</small>
                                 </div>
                             </div>
                         </div>
@@ -271,14 +271,14 @@
                                 <div class="form-group" id="file_id">
                                     <label>Files</label>
                                     <input name="file1" class="btn btn-default btn-cust" type="file" >
-                                    <small class="badge bg-green"> DOCX,XLS,PDF, TXT, EXCEL Format allow</small>
+                                    <small class="badge bg-green"> DOCX,XLS,PDF, TXT, EXCEL Format Allow</small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group" id="file_id">
                                     <label>Files</label>
                                     <input name="file2" class="btn btn-default btn-cust" type="file">
-                                    <small class="badge bg-green"> DOCX,XLS,PDF, TXT, EXCEL Format allow</small>
+                                    <small class="badge bg-green"> DOCX,XLS,PDF, TXT, EXCEL Format Allow</small>
                                 </div>
                             </div>
                         </div>
@@ -287,14 +287,14 @@
                                 <div class="form-group">
                                     <label>Audio</label>
                                     <input name="audio" class="btn btn-default btn-cust" type="file">
-                                    <small class="badge bg-green btn-cust"> MP3, OGG Format allow</small>
+                                    <small class="badge bg-green btn-cust"> MP3, OGG Format Allow</small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Video</label>
                                     <input name="video" class="btn btn-default btn-cust"  type="file">
-                                    <small class="badge bg-green btn-cust"> MP4, WMV Format allow</small>
+                                    <small class="badge bg-green btn-cust"> MP4, WMV Format Allow</small>
                                 </div>
                             </div>
                         </div>

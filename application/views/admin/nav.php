@@ -333,6 +333,10 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="<?php echo base_url('admin/DoctorVarification'); ?>">
+                        <i class="fa fa-fw fa-user-md"></i> Doctor Varification</a>
+                </li>
                 
 
 

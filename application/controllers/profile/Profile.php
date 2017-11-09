@@ -167,6 +167,75 @@ class Profile extends CI_Controller {
 
     }
 
+    public function varify() {
+        $data = array();
+        $data['page_title'] = 'Profile Varification';
+        $data['tabActive'] = 'profile Varification';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['countries'] = $this->global_model->get('countries');
+
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('full_name', 'full_name', 'trim|required');
+            $this->form_validation->set_rules('npi', 'npi', 'trim');
+            $this->form_validation->set_rules('university', 'university', 'trim');
+
+            if ($this->form_validation->run() == true) {
+                $save['user_id'] = $loginId;
+                $save['profession'] = $this->input->post('profession');
+                $save['email'] = $this->input->post('email');
+                $save['full_name'] = $this->input->post('full_name');
+                $save['npi'] = $this->input->post('npi');
+                $save['country'] = $this->input->post('country');
+                $save['state'] = $this->input->post('state');
+                $save['city'] = $this->input->post('city');
+                $save['university'] = $this->input->post('university');
+
+                uploadVarification();
+                //// File UPLOAD
+                if ($this->upload->do_upload('doc_1')) {
+                    $fileInfo = $this->upload->data();
+                    $file1['name'] = $fileInfo['file_name'];
+                    $save['doc_1'] = $file1['name'];
+                }
+                if ($this->upload->do_upload('doc_2')) {
+                    $fileInfo = $this->upload->data();
+                    $file1['name'] = $fileInfo['file_name'];
+                    $save['doc_2'] = $file1['name'];
+                }
+                if ($this->upload->do_upload('doc_3')) {
+                    $fileInfo = $this->upload->data();
+                    $file1['name'] = $fileInfo['file_name'];
+                    $save['doc_3'] = $file1['name'];
+                }
+
+                if ($ref_id = $this->global_model->insert('doctor_varification', $save)) {
+
+                    $this->load->library('email');
+                    $this->email->from($save['email'], $save['full_name']);
+                    $this->email->to('info@advertbd.com');
+                    $this->email->subject('Email Test');
+                    $this->email->message(
+                        'My name is'.$save['full_name'].'. My email is '.$save['email']. '. My NPI number is '.$save['npi'].
+                        ' This is my University '.$save['university']. ' Thanks!!'
+                    );
+                    if($this->email->send()) {
+                        $this->session->set_flashdata('message', 'Your request has been submitted. Within a sort time we will notify you.');
+                    }else{
+                        $this->session->set_flashdata('message', 'Something went wrong! Please try again later.');
+                    }
+
+                }
+
+            }
+        }
+
+        $this->load->view('header', $data);
+        $this->load->view('profile/varification', $data);
+        $this->load->view('footer');
+    }
+
 }
 
 ?>

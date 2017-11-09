@@ -639,7 +639,20 @@ if (!function_exists('set_recovery_key')) {
     }
 }
 
+if (!function_exists('uploadVarification')) {
+    function uploadVarification() {
+        $CI = &get_instance();
+        $CI->load->library('upload');
+        $config['upload_path'] = './assets/file/varification/';
 
+        $config['allowed_types'] = '*';
+        $config['overwrite'] = FALSE;
+        $config['remove_spaces'] = TRUE;
+        $config['file_name'] =time();
+        $CI->upload->initialize($config);
+    }
+
+}
 
 
 ?>

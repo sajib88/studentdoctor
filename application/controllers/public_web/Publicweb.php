@@ -168,16 +168,35 @@ class Publicweb extends CI_Controller {
                 $data['error'] = validation_errors();
             }
         }
-
+        $varification = $this->global_model->get_data('doctor_varification', array('user_id' => $loginId, 'is_valid' => '0'));
+        $is_exist = $this->global_model->get_data('doctor_varification', array('user_id' => $loginId));
+        //print_r($varification);die;
+        //print_r($data['user_info']);die;
         //$data['profession'] = $this->global_model->get('profession');
 
         if ($this->global_model->get_data('public_website', array('user_id' => $loginId, 'profile_status' => 'public')))
         {
 
             $data['message'] = "You have alredy posted a public Website";
+            $data['message_2'] = "Plese visit your public website edit menu to any farther modification ! Thanks.";
             $this->load->view('header', $data);
             $this->load->view('message', $data);
             $this->load->view('footer');
+        }elseif($data['user_info']['is_varified'] != '1'){
+            if(!empty($varification['user_id'] != $loginId)) {
+                $data['message'] = "Your profile is not varified.";
+                $data['message_2'] = "To varify your profile please click the button bellow.";
+                $data['message_3'] = "Varify your profile.";
+                $this->load->view('header', $data);
+                $this->load->view('message', $data);
+                $this->load->view('footer');
+            }else{
+                $data['message'] = "Your varification process still on going.";
+                $data['message_2'] = "Please wait, until we varified your profile.";
+                $this->load->view('header', $data);
+                $this->load->view('message', $data);
+                $this->load->view('footer');
+            }
         }
         else
         {

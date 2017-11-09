@@ -60,6 +60,7 @@ $route['dashboard'] = 'profile/dashboard';
 $route['profile/myprofile'] = 'profile/profile/viewProfile';
 $route['profile/update'] = 'profile/profile/index';
 $route['profile/search'] = 'profile/profile/search';
+$route['varify'] = 'profile/profile/varify';
 
 ///ces Route set
 $route['pub/add'] = 'public_web/publicweb/index';

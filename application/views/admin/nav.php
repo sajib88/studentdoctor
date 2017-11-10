@@ -251,41 +251,41 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url('admin/events/Events/myevent'); ?>">
+                    <a href="<?php echo base_url('admin/Events/Events/myevent'); ?>">
                     <i class="fa fa-fw fa-calendar"></i> Events</a>
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url('admin/ces/Admin_Ces_controller/allces'); ?>">
+                    <a href="<?php echo base_url('admin/Ces/Admin_Ces_controller/allces'); ?>">
                     <i class="fa fa-fw fa-book"></i> CES</a>
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url('admin/product/Products/myproduct'); ?>">
+                    <a href="<?php echo base_url('admin/Product/Products/myproduct'); ?>">
                     <i class="fa fa-fw fa-tags"></i> Products</a>
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url('admin/personal/Personal/all'); ?>">
+                    <a href="<?php echo base_url('admin/Personal/Personal/all'); ?>">
                     <i class="fa fa-fw fa-user"></i> Personals</a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('admin/forum/Forum/all'); ?>">
+                    <a href="<?php echo base_url('admin/Forum/Forum/all'); ?>">
                         <i class="fa fa-fw fa-bullhorn"></i> Forum</a>
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url('admin/group/Group/viewall'); ?>">
+                    <a href="<?php echo base_url('admin/Group/Group/viewall'); ?>">
                     <i class="fa fa-fw fa-group"></i> Groups</a>
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url('admin/video/Video/viewall'); ?>">
+                    <a href="<?php echo base_url('admin/Video/Video/viewall'); ?>">
                     <i class="fa fa-fw fa-file-video-o"></i> Videos</a>
                 </li>
 
                  <li>
-                    <a href="<?php echo base_url('admin/file/File/listallfiles'); ?>">
+                    <a href="<?php echo base_url('admin/File/File/listallfiles'); ?>">
                     <i class="fa fa-fw fa-file-video-o"></i> Files</a>
                 </li>
 
@@ -295,15 +295,15 @@
 
                     <ul class="treeview-menu">
                         <li class="<?php if($this->uri->segment(4)=="index"){echo "active";}?>">
-                            <a href="<?php echo base_url('admin/blog/Blog_controller/create'); ?>"><i class="fa fa-square-o"></i> Create New Blog</a>
+                            <a href="<?php echo base_url('admin/Blog/Blog_controller/create'); ?>"><i class="fa fa-square-o"></i> Create New Blog</a>
                         </li>
                         <li class="<?php if($this->uri->segment(4)=="viewall"){echo "active";}?>">
-                         <a href="<?php echo base_url('admin/blog/Blog_controller/blog');?>"><i class="fa fa-square-o"></i>
+                         <a href="<?php echo base_url('admin/Blog/Blog_controller/blog');?>"><i class="fa fa-square-o"></i>
                              View All Blog</a>
                          </li>
 
                         <li class="<?php if($this->uri->segment(4)=="mygroup"){echo "active";}?>">
-                            <a href="<?php echo base_url('admin/blog/Blog_controller/blog'); ?>"><i class="fa fa-square-o"></i>My Blog List</a>
+                            <a href="<?php echo base_url('admin/Blog/Blog_controller/blog'); ?>"><i class="fa fa-square-o"></i>My Blog List</a>
                         </li>
                          
 

@@ -3,19 +3,11 @@
 <div id="page-wrapper">
 <div class="row">
 
-    <?php if($this->session->flashdata('message')){ ?>
-        <div class="col-lg-12">
-            <div class="alert alert-success alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong> UPDATE This Classified   successfully.</strong>
-            </div>
-        </div>
-    <?php } ?>
         <div class="col-lg-7">
             <div class="box box-primary">
                 <div class="panel-body">
 
-                                <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('admin/classifieds/Classifieds/edit/'. $editclassified['id']); ?>">
+                                <form role="form" method="post" id="classifiedform" enctype="multipart/form-data" action="<?php echo base_url('admin/Classifieds/Classifieds/edit/'. $editclassified['id']); ?>">
 
 
                                     <div class="col-lg-12">

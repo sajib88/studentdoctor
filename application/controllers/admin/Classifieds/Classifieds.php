@@ -40,7 +40,7 @@ class Classifieds extends CI_Controller {
         $id = $this->uri->segment('5');
         if ($this->global_model->delete('classified', array('id' => $id))) {
             $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('admin/classifieds/Classifieds/viewmyclassfied');
+            redirect('admin/Classifieds/Classifieds/viewmyclassfied');
         }
 
     }
@@ -75,7 +75,7 @@ class Classifieds extends CI_Controller {
             if ($this->form_validation->run() == true) {
 
                 //$save['classifieds_ids'] = implode(',', $postData['classified']);
-                $save['classifieds_ids'] = '0';
+                //$save['classifieds_ids'] = '0';
                 $save['title'] = $postData['title'];
                 $save['description'] = $postData['description'];
                 $save['main_cat'] = $postData['main_category'];
@@ -144,8 +144,8 @@ class Classifieds extends CI_Controller {
                 }
                 $id = $this->uri->segment('5');
                 if ($this->global_model->update('classified', $save, array('id' => $id))){
-                    $this->session->set_flashdata('message', 'Save Success');
-                    redirect('admin/classifieds/Classifieds/viewmyclassfied');
+                    $this->session->set_flashdata('message', 'Classified updated successfully');
+                    redirect('admin/Classifieds/Classifieds/viewmyclassfied');
 
                     //redirect('profile/profile');
                 }

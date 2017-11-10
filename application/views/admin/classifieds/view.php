@@ -3,14 +3,21 @@
 <div id="page-wrapper">
 <div class="row">
 
-
-
-
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">List All  classified Info</h3>
                 </div>
+
+                <?php if($this->session->flashdata('message')){ ?>
+                    <div class="col-lg-12">
+                        <div class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong> <?php echo $this->session->flashdata('message'); ?></strong>
+                        </div>
+                    </div>
+                <?php } $this->session->unset_userdata('message'); ?>
+
                 <div class="box-body no-padding">
                     <?php if(count($myclassified)<=0){?>
                         <div class="alert alert-info">No classified</div>
@@ -60,9 +67,9 @@
                                             <td data-title="<?php echo 'Phone'; ?>"
                                                 class="numeric"><span class="label bg-purple"><img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
 
-                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/classifieds/Classifieds/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
+                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/Classifieds/Classifieds/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
 
-                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/classifieds/Classifieds/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
+                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/Classifieds/Classifieds/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
                                         </tr>
                                         <?php $i++;
                                     }

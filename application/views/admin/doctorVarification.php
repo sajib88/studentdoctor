@@ -108,7 +108,7 @@
 
                                 <div id="no-more-tables">
 
-                                    <table class="table table-hover" id="js_personal_table">
+                                    <table class="table table-hover" id="js_personal_table2">
                                         <thead>
                                         <tr>
 
@@ -198,6 +198,13 @@
 <script type="text/javascript">
     $(document).ready(function(){
         var personaltable = document.getElementById("js_personal_table");
+        $(personaltable).dataTable();
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var personaltable = document.getElementById("js_personal_table2");
         $(personaltable).dataTable();
     });
 </script>

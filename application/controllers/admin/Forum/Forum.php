@@ -22,7 +22,9 @@ class Forum extends CI_Controller {
         $table = 'forum_category';
         $data = array();
         $data['page_title'] = 'Forum List';
-        $data['allforum']  	 = $this->global_model->get($table);
+        $data['allforum']  	 = $this->global_model->get($table, array('status' => 1));
+        $data['allforumPending']  	 = $this->global_model->get($table, array('status' => 0));
+        //print_r($data['allforumPending']);die;
 
 
         $this->load->view('admin/header', $data);
@@ -36,7 +38,7 @@ class Forum extends CI_Controller {
         if(!empty($id)){
             $this->global_model->update('forum_category', $status, array('cat_id' => $id));
             $this->session->set_flashdata('success', 'Status update successfully!');
-            redirect('admin/forum/Forum/all');
+            redirect('admin/Forum/Forum/all');
         }
         echo $id;die;
     }
@@ -45,7 +47,7 @@ class Forum extends CI_Controller {
 
         if ($this->global_model->delete('forum_category', array('cat_id' => $id))) {
             $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('admin/forum/Forum/all');
+            redirect('admin/Forum/Forum/all');
         }
 
     }

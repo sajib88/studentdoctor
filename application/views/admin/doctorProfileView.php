@@ -1,7 +1,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header">Doctor Profile Details</h3>
+            <h3 class="page-header text-center">Doctor Profile Details</h3>
         </div>
     </div>
 
@@ -45,7 +45,7 @@
                             </li>
                             <li class="list-group-item text-center">
                                 <?php if($doctorProfile['university'] != 1){?>
-                                    <a class="btn btn-lg btn-success" href="<?php echo base_url('admin/DoctorVarification/varify') . '/' . $doctorProfile['id'] . '/' . $doctorProfile['is_valid'] . '/' .$doctorProfile['user_id']. '/' .$doctorProfile['email'];?>">Varify</a>
+                                    <a class="btn btn-lg btn-success" href="<?php echo base_url('admin/DoctorVarification/varify') . '/' . $doctorProfile['id'] . '/' . $doctorProfile['is_valid'] . '/' .$doctorProfile['user_id']. '/' .$doctorProfile['email'] . '/' .$doctorProfile['full_name'] . '/' . $doctorProfile['npi'];?>">Varify</a>
                                 <?php }?>
                             </li>
                         </ul>

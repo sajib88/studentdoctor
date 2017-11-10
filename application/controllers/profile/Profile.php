@@ -212,13 +212,17 @@ class Profile extends CI_Controller {
 
                 if ($ref_id = $this->global_model->insert('doctor_varification', $save)) {
 
+                    $config['charset'] = 'utf-8';
+                    $config['mailtype'] = 'text';
+                    $config['newline'] = '\r\n';
                     $this->load->library('email');
+                    $this->email->initialize($config);
                     $this->email->from($save['email'], $save['full_name']);
                     $this->email->to('info@advertbd.com');
-                    $this->email->subject('Email Test');
+                    $this->email->subject('Varification Email');
                     $this->email->message(
-                        'My name is'.$save['full_name'].'. My email is '.$save['email']. '. My NPI number is '.$save['npi'].
-                        ' This is my University '.$save['university']. ' Thanks!!'
+                        "Hello Admin \r\n My name is " . $save['full_name']."\r\n My email address is ".$save['email']. ".\r\n My NPI number is ".$save['npi'].
+                        "\r\n This is my University ".$save['university']. "\r\n Please visit the admin panel to varify this profile."
                     );
                     if($this->email->send()) {
                         $this->session->set_flashdata('message', 'Your request has been submitted. Within a sort time we will notify you.');

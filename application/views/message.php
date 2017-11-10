@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1><i class="fa fa-user-md"></i>
-            Public Website
+            My Website
         </h1>
     </section>
 

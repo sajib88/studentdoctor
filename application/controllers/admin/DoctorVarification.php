@@ -36,20 +36,27 @@ class DoctorVarification extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
-    public function varify($id='', $is_valid="", $user_id='', $email=""){
+    public function varify($id='', $is_valid="", $user_id='', $email="", $full_name="", $npi){
         if(!empty($id) && $is_valid == '0'){
             $update['is_valid'] = '1';
             $user_update['is_varified'] = '1';
-            $this->global_model->update('doctor_varification', $update, array('id'=>$id));
-            $this->global_model->update('users', $user_update, array('id'=>$user_id));
+            $config['charset'] = 'utf-8';
+            $config['mailtype'] = 'text';
+            $config['newline'] = '\r\n';
             $this->load->library('email');
-            $this->email->from('info@advertbd.com', 'Admin');
+            $this->email->initialize($config);
+            $this->email->from('info@advertbd.com', 'AllStudeneDoctors.com');
             $this->email->to($email);
             $this->email->subject('Varification Email');
             $this->email->message(
-                'This '.$email.' is varified. Thanks !!'
+                "Hello ".urldecode($full_name)."\r\n\n"."Your email address is ". $email."\r\n\nThe NPI number you provided is " . $npi ."\r\n\n" .
+                "We examined your information to varify your profile. And your profile varified successfully. Now you can publish your site." . "\n\n Thank you \n AllStudeneDoctors.com"
+
             );
             if($this->email->send()) {
+                $this->global_model->update('doctor_varification', $update, array('id'=>$id));
+                $this->global_model->update('users', $user_update, array('id'=>$user_id));
+                $this->session->set_flashdata('message', 'Profile Varification successfully done');
                 redirect(base_url('admin/DoctorVarification'));
             }
 
@@ -58,6 +65,7 @@ class DoctorVarification extends CI_Controller {
             $user_update['is_varified'] = '0';
             $this->global_model->update('doctor_varification', $update, array('id'=>$id));
             $this->global_model->update('users', $user_update, array('id'=>$user_id));
+            $this->session->set_flashdata('message', 'Profile Unvarified successfully');
             redirect(base_url('admin/DoctorVarification'));
         }
     }

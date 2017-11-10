@@ -40,6 +40,8 @@ class DoctorVarification extends CI_Controller {
         if(!empty($id) && $is_valid == '0'){
             $update['is_valid'] = '1';
             $user_update['is_varified'] = '1';
+            $this->global_model->update('doctor_varification', $update, array('id'=>$id));
+            $this->global_model->update('users', $user_update, array('id'=>$user_id));
             $config['charset'] = 'utf-8';
             $config['mailtype'] = 'text';
             $config['newline'] = '\r\n';
@@ -54,8 +56,6 @@ class DoctorVarification extends CI_Controller {
 
             );
             if($this->email->send()) {
-                $this->global_model->update('doctor_varification', $update, array('id'=>$id));
-                $this->global_model->update('users', $user_update, array('id'=>$user_id));
                 $this->session->set_flashdata('message', 'Profile Varification successfully done');
                 redirect(base_url('admin/DoctorVarification'));
             }

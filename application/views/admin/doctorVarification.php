@@ -15,6 +15,15 @@
             </div>
         <?php } $this->session->unset_userdata('message'); ?>
 
+        <?php if($this->session->flashdata('message1')){ ?>
+            <div class="col-lg-12">
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong> <?php echo $this->session->flashdata('message1'); ?></strong>
+                </div>
+            </div>
+        <?php } $this->session->unset_userdata('message1'); ?>
+
         <div class="col-md-12">
             <div class="panel with-nav-tabs panel-default">
                 <div class="panel-heading">

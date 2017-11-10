@@ -43,11 +43,19 @@
                             <li class="list-group-item">
                                 <b>College/University</b> <span class="pull-right"><?php echo (!empty($doctorProfile['university']))?$doctorProfile['university']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
+
+                                <?php if($doctorProfile['is_valid'] != '1'){?>
                             <li class="list-group-item text-center">
-                                <?php if($doctorProfile['university'] != 1){?>
                                     <a class="btn btn-lg btn-success" href="<?php echo base_url('admin/DoctorVarification/varify') . '/' . $doctorProfile['id'] . '/' . $doctorProfile['is_valid'] . '/' .$doctorProfile['user_id']. '/' .$doctorProfile['email'] . '/' .$doctorProfile['full_name'] . '/' . $doctorProfile['npi'];?>">Varify</a>
-                                <?php }?>
                             </li>
+                                <?php }else{?>
+                            <li class="list-group-item text-center">
+                                    <a class="btn btn-lg btn-danger" href="<?php echo base_url('admin/DoctorVarification/varify') .'/'. $doctorProfile['id'] . '/' . $doctorProfile['is_valid'] . '/' . $doctorProfile['user_id']; ?>">
+                                    Unvarify
+                                    </a>
+                            </li>
+                            <?php }?>
+
                         </ul>
                     </div>
                 </div>

@@ -247,7 +247,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo base_url('admin/classifieds/Classifieds/viewmyclassfied'); ?>"><i class="fa fa-fw fa-list-alt"></i> Classifieds</a>
+                    <a href="<?php echo base_url('admin/Classifieds/Classifieds/viewmyclassfied'); ?>"><i class="fa fa-fw fa-list-alt"></i> Classifieds</a>
                 </li>
 
                 <li>

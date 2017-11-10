@@ -255,10 +255,10 @@
                     <i class="fa fa-fw fa-calendar"></i> Events</a>
                 </li>
 
-                <li>
-                    <a href="<?php echo base_url('admin/Ces/Admin_Ces_controller/allces'); ?>">
-                    <i class="fa fa-fw fa-book"></i> CES</a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="--><?php //echo base_url('admin/Ces/Admin_Ces_controller/allces'); ?><!--">-->
+<!--                    <i class="fa fa-fw fa-book"></i> CES</a>-->
+<!--                </li>-->
 
                 <li>
                     <a href="<?php echo base_url('admin/Product/Products/myproduct'); ?>">
@@ -279,15 +279,15 @@
                     <i class="fa fa-fw fa-group"></i> Groups</a>
                 </li>
 
-                <li>
-                    <a href="<?php echo base_url('admin/Video/Video/viewall'); ?>">
-                    <i class="fa fa-fw fa-file-video-o"></i> Videos</a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="--><?php //echo base_url('admin/Video/Video/viewall'); ?><!--">-->
+<!--                    <i class="fa fa-fw fa-file-video-o"></i> Videos</a>-->
+<!--                </li>-->
 
-                 <li>
-                    <a href="<?php echo base_url('admin/File/File/listallfiles'); ?>">
-                    <i class="fa fa-fw fa-file-video-o"></i> Files</a>
-                </li>
+<!--                 <li>-->
+<!--                    <a href="--><?php //echo base_url('admin/File/File/listallfiles'); ?><!--">-->
+<!--                    <i class="fa fa-fw fa-file-video-o"></i> Files</a>-->
+<!--                </li>-->
 
                  <li class="treeview">
                     <a href="#">

@@ -16,7 +16,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('admin/events/Events/edit/'. $editevent['id']); ?>">
+                            <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('admin/Events/Events/edit/'. $editevent['id']); ?>">
                                 
                                 <div class="col-lg-12">
                                     <div class="form-group">
@@ -157,18 +157,36 @@
                             <input class="btn btn-default" name="primary_photo" type="file">
 
                         </div>
+                        <?php if (!empty($editevent['primary_photo'])) { ?>
+                            <div class="col-lg-6 pull-right">
+                                <img src="<?php echo base_url() . '/assets/file/event/' .$editevent['primary_photo']; ?>" alt="" width="100" class="img-circle img-responsive" />
+                            </div>
+                        <?php }
+                        ?>
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>Picture Two</label><span id='picture2-error' class='error' for='picture2'></span>
                             <input class="btn btn-default" name="photo_2" type="file">
                         </div>
+                        <?php if (!empty($editevent['photo_2'])) { ?>
+                            <div class="col-lg-6 pull-right">
+                                <img src="<?php echo base_url() . '/assets/file/event/' .$editevent['photo_2']; ?>" alt="" width="100" class="img-circle img-responsive" />
+                            </div>
+                        <?php }
+                        ?>
                     </div>
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label>Picture Three</label><span id='picture3-error' class='error' for='picture3'></span>
                             <input class="btn btn-default" name="photo_3" type="file">
                         </div>
+                        <?php if (!empty($editevent['photo_3'])) { ?>
+                            <div class="col-lg-6 pull-right">
+                                <img style="margin-bottom: 20px" src="<?php echo base_url() . '/assets/file/event/' .$editevent['photo_3']; ?>" alt="" width="100" class="img-circle img-responsive" />
+                            </div>
+                        <?php }
+                        ?>
                     </div>
                     <div class="col-lg-12">
                         <input type="submit" name="submit" class="btn btn-block btn-success" value="Save">

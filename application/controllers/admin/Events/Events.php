@@ -39,8 +39,8 @@ class Events extends CI_Controller {
     public function delete(){
         $id = $this->uri->segment('5');
         if ($this->global_model->delete('event', array('id' => $id))) {
-            $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('admin/events/Events/myevent');
+            $this->session->set_flashdata('success', 'Evnet Deleted successfully!');
+            redirect('admin/Events/Events/myevent');
         }
 
     }

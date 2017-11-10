@@ -6,6 +6,16 @@
                 <div class="box-header">
                     <h3 class="box-title">List All  event Info</h3>
                 </div>
+
+                <?php if($this->session->flashdata('success')){ ?>
+                    <div class="col-lg-12">
+                        <div class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong><?php echo $this->session->flashdata('success'); ?></strong>
+                        </div>
+                    </div>
+                <?php } ?>
+
                 <div class="box-body no-padding">
                     <?php if(count($myevent)<=0){?>
                         <div class="alert alert-info">No evnets</div>
@@ -48,9 +58,9 @@
                                         <tr>
                                             <td><?php echo $i; ?></td>
                                             <td data-title="<?php echo 'title'; ?>"
-                                                class="numeric"><?php echo $row->title; ?></td>
+                                                class="numeric"><?php echo substr($row->title, 0,30); ?></td>
                                             <td data-title="<?php echo 'body'; ?>"
-                                                class="numeric"><span class="label label-success"><?php echo substr ($row->summary, 30); ?></span></td>
+                                                class="numeric"><span class="label label-success"><?php echo substr ($row->summary, 0,30); ?></span></td>
                                             
                                             <td data-title="<?php echo 'body'; ?>"
                                                 class="numeric"><span class="label label-success"><?php echo $row->seats_no; ?></span></td> 
@@ -64,9 +74,9 @@
                                             <td data-title="<?php echo 'Image'; ?>"
                                                 class="numeric"><span class="label bg-purple"><img src="<?php echo base_url() . '/assets/file/event/' .$row->primary_photo; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
 
-                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/events/Events/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
+                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/Events/Events/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
 
-                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/events/Events/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
+                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/Events/Events/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
                                         </tr>
                                         <?php $i++;
                                     }

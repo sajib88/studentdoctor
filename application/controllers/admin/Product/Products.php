@@ -161,7 +161,7 @@ class Products extends CI_Controller{
      public function myproduct(){
         $table = 'product';
         $data = array();
-        $data['page_title'] = 'Edit Product';
+        $data['page_title'] = 'Products';
         $data['allproducts']     = $this->global_model->get($table);
 
         $this->load->view('admin/header', $data);
@@ -177,8 +177,8 @@ class Products extends CI_Controller{
     public function edit()
     {
         $data = array();
-        $data['page_title'] = 'Products';
-        $data['tabActive'] = 'Products';
+        $data['page_title'] = 'Edit Product';
+        $data['tabActive'] = 'Edit Product';
         $data['error'] = '';
 
         if ($this->input->post()) {

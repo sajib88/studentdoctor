@@ -291,9 +291,9 @@ class Products extends CI_Controller{
                  print '<pre>';
                  print_r($save);die;*/
                 if ($this->global_model->update('product', $save, array('id' => $id))){
-                    $this->session->set_flashdata('message', 'Edit Success');
+                    $this->session->set_flashdata('message', 'Product updated succufully');
                     //redirect('profile/profile');
-                    redirect('admin/product/Products/myproduct');
+                    redirect('admin/Product/Products/myproduct');
 
                 }
             }
@@ -302,6 +302,7 @@ class Products extends CI_Controller{
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
         $data['states'] = $this->global_model->get('states');
+        $data['product_type'] = $this->global_model->get('product_main_cat');
 
 
         $data['editProduct'] = $this->global_model->get_data('product', array('id' => $id));
@@ -319,7 +320,7 @@ class Products extends CI_Controller{
         $id = $this->uri->segment('5');
         if ($this->global_model->delete('product', array('id' => $id))) {
             $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('admin/product/Products/myproduct');
+            redirect('admin/Product/Products/myproduct');
         }
 
     }

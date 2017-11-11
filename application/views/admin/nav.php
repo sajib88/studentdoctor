@@ -315,7 +315,7 @@
                         <i class="fa fa-fw fa-square-o"></i> Manage Category</a>
 
                     <ul class="treeview-menu">
-                        <li class="<?php if($this->uri->segment(4)=="index"){echo "active";}?>">
+                        <li class="<?php if($this->uri->segment(3)=="event_main_cat"){echo "active";}?>">
                             <a href="<?php echo base_url('admin/category/event_main_cat'); ?>"><i class="fa fa-square-o"></i> Event</a>
                         </li>
                         <li class="<?php if($this->uri->segment(3)=="classified_main_cat"){echo "active";}?>">

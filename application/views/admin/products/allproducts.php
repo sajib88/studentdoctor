@@ -5,56 +5,67 @@
 <div class="row">
 
 
-    
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="box-title">List All My Product</h3>
+        </div>
+    </div>
 
 
         <div class="row">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">List All My Product</h3>
-
-                      
+            <?php if($this->session->flashdata('message')){ ?>
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong> <?php echo $this->session->flashdata('message'); ?></strong>
                     </div>
-                    <!-- /.box-header -->
-                    <div class="box-body table-responsive no-padding">
+                </div>
+            <?php } $this->session->unset_userdata('message'); ?>
+            <div class="col-md-12">
+
+
                         <?php if(is_array($allproducts)): ?>
                         <?php if(count($allproducts)<=0){?>
                             <div class="alert alert-info">No Product</div>
                         <?php }else{?>
-                        <table class="table table-hover">
-                            <tbody><tr>
-                                <th>#</th>
-                                <th>Product Name</th>
-                                <th>Type</th>
-                                <th>Price</th>
-                                <th>Special Price</th>
-                                <th>Action</th>
-                                <th>Delete</th>
+                        <div id="no-more-tables">
+                        <table class="table table-hover" id="js_personal_table">
+
+                            <thead>
+                            <tr>
+                                <th class="numeric">#</th>
+                                <th class="numeric">Product Name</th>
+                                <th class="numeric">Type</th>
+                                <th class="numeric">Price</th>
+                                <th class="numeric">Special Price</th>
+                                <th class="numeric">Action</th>
+                                <th class="numeric">Delete</th>
 
                             </tr>
+                            </thead>
+                            <tbody>
                             <?php $i=1;foreach($allproducts as $row):?>
                             <tr>
-                                <td><?php echo $i;?></td>
-                                <td><?php echo $row->name;?></td>
-                                <td><span class="label bg-purple"><?php echo $row->type;?></span></td>
-                                <td><span class="label label-warning"><?php echo $row->price;?></span></td>
-                                <td><span class="label label-info"><?php echo $row->special_price;?></span></td>
-                                <td><a href="<?php echo base_url('admin/product/Products/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
+                                <td data-title="#" class="numeric"><?php echo $i;?></td>
+                                <td data-title="Product Name" class="numeric"><?php echo $row->name;?></td>
+                                <td data-title="Type" class="numeric"><span class="">
+                                        <?php $data = $this->global_model->get_data('product_main_cat', array('id'=>$row->type));?>
+                                        <?php echo $data['cat_name']?>
+                                    </span>
+                                </td>
+                                <td data-title="Price" class="numeric"><span class="">$<?php echo $row->price;?></span></td>
+                                <td data-title="Special Price" class="numeric"><span class="">$<?php echo $row->special_price;?></span></td>
+                                <td data-title="Action" class="numeric"><a href="<?php echo base_url('admin/Product/Products/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
                                 
-                                <td><a href="<?php echo base_url('admin/product/Products/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
+                                <td data-title="Delete" class="numeric"><a href="<?php echo base_url('admin/Product/Products/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
                             </tr>
                                 <?php $i++;endforeach;?>
                             </tbody>
                         </table>
+                        </div>
                         <?php }?>
                         <?php endif; ?>
-                    </div>
 
-
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
             </div>
         </div>
  

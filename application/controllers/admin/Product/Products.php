@@ -293,7 +293,7 @@ class Products extends CI_Controller{
                 if ($this->global_model->update('product', $save, array('id' => $id))){
                     $this->session->set_flashdata('message', 'Product updated succufully');
                     //redirect('profile/profile');
-                    redirect('admin/Product/Products/myproduct');
+                    redirect(base_url('admin/Product/Products/myproduct'));
 
                 }
             }
@@ -320,7 +320,7 @@ class Products extends CI_Controller{
         $id = $this->uri->segment('5');
         if ($this->global_model->delete('product', array('id' => $id))) {
             $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('admin/Product/Products/myproduct');
+            redirect(base_url('admin/Product/Products/myproduct'));
         }
 
     }

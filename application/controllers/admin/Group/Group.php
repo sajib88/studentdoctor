@@ -65,8 +65,8 @@ class Group extends CI_Controller {
 
                 $id = $this->uri->segment('5');
                 if ($this->global_model->update('gorupfad', $save, array('id' => $id))){
-                    $this->session->set_flashdata('message', 'Save Success');
-                    redirect('admin/group/Group/viewall');
+                    $this->session->set_flashdata('message', 'Group Updated Successfully');
+                    redirect('admin/Group/Group/viewall');
                 }
             }
         }
@@ -76,6 +76,7 @@ class Group extends CI_Controller {
 
         $id = $this->uri->segment('5');
         $data['editgroup'] = $this->global_model->get_data('gorupfad', array('id' => $id));
+        $data['main_cat'] = $this->global_model->get('group_main_cat');
 
         $this->load->view('admin/header', $data);
         $this->load->view('admin/group/edit', $data);
@@ -128,8 +129,8 @@ class Group extends CI_Controller {
     {
         $id = $this->uri->segment('5');
         if ($this->global_model->delete('gorupfad', array('id' => $id))) {
-            $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('admin/group/Group/viewall');
+            $this->session->set_flashdata('message', 'Group Deleted successfully!');
+            redirect('admin/Group/Group/viewall');
         }
 
     }

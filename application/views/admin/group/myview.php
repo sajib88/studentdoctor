@@ -1,14 +1,7 @@
 <div id="page-wrapper">
 <div class="row">
 
-<?php if($this->session->flashdata('message')){ ?>
-        <div class="col-lg-12">
-            <div class="alert alert-success alert-dismissible">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong> UPDATE This Group successfully.</strong>
-            </div>
-        </div>
-    <?php } ?>
+
 
      <div class="col-md-12">
      
@@ -16,6 +9,14 @@
                 <div class="box-header">
                     <h3 class="box-title">List All  Groups Info</h3>
                 </div>
+                <?php if($this->session->flashdata('message')){ ?>
+                    <div class="col-lg-12">
+                        <div class="alert alert-success alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong> <?php echo $this->session->flashdata('message');?></strong>
+                        </div>
+                    </div>
+                <?php } $this->session->unset_userdata('message');?>
                 <div class="box-body no-padding">
                     <?php if(count($mygroup)<=0){?>
                         <div class="alert alert-info">No Groups</div>
@@ -61,7 +62,11 @@
                                                 class="numeric"><span class="label label-success"><?php echo substr($row->description, 0, 20);; ?></span></td>
                                             
                                             <td data-title="<?php echo 'category'; ?>"
-                                                class="numeric"><span class="label label-success"><?php echo $row->category; ?></span></td> 
+                                                class="numeric"><span class="label label-success">
+                                                    <?php $data=$this->global_model->get_data('group_main_cat', array('id'=> $row->category));
+                                                    echo $data['cat_name']; ?>
+                                                </span>
+                                            </td>
 
                                             <td data-title="<?php echo 'discussion'; ?>"
                                                 class="numeric"><span class="label label-success"><?php echo substr($row->discussion, 0, 20); ?></span></td>
@@ -69,9 +74,9 @@
                                             <td data-title="<?php echo 'Image'; ?>"
                                                 class="numeric"><span class="label bg-purple"><img src="<?php echo base_url() . '/assets/file/group/' .$row->primary_image; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
 
-                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/group/Group/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
+                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/Group/Group/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
 
-                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/group/Group/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
+                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/Group/Group/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
                                         </tr>
                                         <?php $i++;
                                     }

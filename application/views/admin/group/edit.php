@@ -1,5 +1,10 @@
 
 <div id="page-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="page-header">Edit Group</h3>
+        </div>
+    </div>
 <div class="row">
 
  <?php if($this->session->flashdata('message')){ ?>
@@ -13,12 +18,12 @@
 
     <section class="content">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="">
             <div class="box box-primary">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('admin/group/Group/edit/'. $editgroup['id']); ?>">
+                        <div class="col-lg-6">
+                            <form role="form" method="post" id="event" enctype="multipart/form-data" action="<?php echo base_url('admin/Group/Group/edit/'. $editgroup['id']); ?>">
 
                                 <div class="col-lg-12">
                                     <div class="form-group">
@@ -39,17 +44,18 @@
                                     <div class="form-group">
                                         <label>Group Category <span class="error">*</span></label><span id='category' class='error' for='main_category'></span>
                                         <select onchange="getSubCat(this)" name="category" class="form-control">
-                                            <option value="<?php echo $editgroup['category']; ?>"><?php echo $editgroup['category']; ?></option>
 
-                                            <option value="Chiropractor">Chiropractor</option>
-                                            <option value="Dentist">Dentist</option>
-                                            <option value="General">General</option>
-                                            <option value="Optometrist">Optometrist</option>
-                                            <option value="Ph.D">Ph.D</option>
-                                            <option value="Pharmacist">Pharmacist</option>
-                                            <option value="Physician">Physician</option>
-                                            <option value="Podiatrist">Podiatrist</option>
-                                            <option value="Professional">Professional</option>
+
+                                            <?php
+                                            if (is_array($main_cat)) {
+
+                                                foreach ($main_cat as $eventcat) {
+                                                    ?>
+                                                    <option <?php if ($eventcat->id == $editgroup['category']) echo 'selected'; ?> value="<?php echo $eventcat->id; ?>"><?php echo $eventcat->cat_name; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
 
                                         </select>
                                     </div>

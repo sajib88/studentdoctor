@@ -131,35 +131,6 @@ class Blog_controller extends CI_Controller
 
 
 
-   // public function edit($blogID=''){
-   //      $this->load->helper('global_helper');
-   //      $data = array();
-   //      $data['page_title'] = 'Edit Blog';
-   //      $data['error'] = '';
-
-   //      $id = $this->uri->segment('5');
-   //      // $data['countries'] = $this->global_model->get('countries');
-   //      // $data['profession'] = $this->global_model->get('profession');
-   //      //$data['states'] = $this->global_model->get('states');
-   //      // $data['login_id'] = $loginId;
-
-
-
-
-   //      $data['editblog'] = $this->global_model->get_data('blog_front', array('id' => $blogID));
-   //      // $tablename = 'ces';
-   //      // $data['states'] = getStatesByCountry($tablename,$id);
-
-   //      /*print '<pre>';
-   //      print_r($data['personaldata']);exit();*/
-
-   //      $this->load->view('admin/header', $data);
-   //      $this->load->view('admin/blog/edit_blog', $data);
-   //      $this->load->view('admin/footer');
-
-   //  }
-
-
     public function edit()
     {
         $data1 = array();
@@ -169,8 +140,6 @@ class Blog_controller extends CI_Controller
 
         $this->form_validation->set_rules('title', 'title', 'required');
         $this->form_validation->set_rules('description', 'description', 'required');
-        $this->form_validation->set_rules('tag', 'tag', 'required');
-        $this->form_validation->set_rules('keyword', 'keyword', 'required');
 
         if ($this->input->post()) {
             $postData = $this->input->post();
@@ -225,7 +194,7 @@ class Blog_controller extends CI_Controller
                 $id = $this->uri->segment('5');
                 if ($this->global_model->update('blog_front', $data, array('id' => $id))){
                     $this->session->set_flashdata('message', 'Blog Updated Successfully');
-                    redirect('admin/Blog/Blog_controller/blog');
+                    redirect(base_url('admin/Blog/Blog_controller/blog'));
 
                     //redirect('profile/profile');
                 }

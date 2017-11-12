@@ -100,7 +100,7 @@ class Personal extends CI_Controller{
             $data['zip'] = $this->input->post('zip');
             $data['iam'] = $this->input->post('iam');
             $data['interestedin'] = $this->input->post('interestedin');
-            $data['profession'] = (!empty($this->input->post('profession')))?implode(',', $this->input->post('profession')):'';
+            $data['profession_view'] = (!empty($this->input->post('profession')))?implode(',', $this->input->post('profession')):'';
 
             //// (image upload funtion)
             uploadPersonals();
@@ -167,14 +167,12 @@ class Personal extends CI_Controller{
 
             
 
-            $result = $this->global_model->update('personals',$data,array('id'=>$id));
-            if($result > 0)
+            //$result = $this->global_model->update('personals',$data,array('id'=>$id));
+            if($this->global_model->update('personals',$data,array('id'=>$id)))
             {
-                $this->session->set_flashdata('msg', '<div class="alert alert-success" id="success-alert">'.'Data Update Successfully'.'</div>');
+                $this->session->set_flashdata('msg', 'Personal Updated Successfully');
             }
-            redirect(base_url('admin/personal/Personal/edit/'.$id));
-
-
+            redirect(base_url('admin/Personal/Personal/all'));
         }
         
     }
@@ -187,8 +185,8 @@ class Personal extends CI_Controller{
     {
         $id = $this->uri->segment('5');
         if ($this->global_model->delete('personals', array('id' => $id))) {
-            $this->session->set_flashdata('success', 'Delete successfully!');
-            redirect('admin/personal/Personal/all');
+            $this->session->set_flashdata('msg', 'Personal Deleted successfully!');
+            redirect('admin/Personal/Personal/all');
         }
 
     }

@@ -14,18 +14,30 @@ die;*/
 
 <div id="page-wrapper">
 <div class="row">
+<div class="row">
+    <div class="col-lg-12">
+    <h3 class="page-header">Edit Personal</h3>
+    </div>
+</div>
 
-  
+
 
     <section class="content">
-        <?php echo $this->session->flashdata('msg');?>
+        <?php if($this->session->flashdata('msg')){ ?>
+            <div class="col-lg-12">
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong> <?php echo $this->session->flashdata('msg'); ?></strong>
+                </div>
+            </div>
+        <?php } $this->session->unset_userdata('msg'); ?>
         <div class="row">
             <div class="col-lg-12">
                 <div class="box box-primary">
                     <div class="panel-body">
                         <div class="row">
 
-                            <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('admin/personal/Personal/edit/' . $personaldata['id']); ?>">
+                            <form role="form" method="post" id="personalform" enctype="multipart/form-data" action="<?php echo base_url('admin/Personal/Personal/updatePersonal/' . $personaldata['id']); ?>">
                                 <div class="col-lg-6">
                                     <input type="hidden" name="uid" value="<?php echo $personaldata['uid']; ?>">
                                     <input type="hidden" name="id" value="<?php echo $personaldata['id']; ?>">
@@ -134,14 +146,19 @@ die;*/
                                         <div class="form-group">
                                             <label>Profession<span class="error">*</span></label><span id='profession_view-error' class='error' for='profession_view'></span>
                                             <select multiple name="profession[]" class="selectpicker form-control">
-                                                <option value="">All Profession</option>
+
                                                 <?php
+
                                                 if (is_array($profession)) {
                                                     foreach ($profession as $row) {
-                                                        $v = (set_value('profession')!='')?set_value('profession'):$personaldata['profession'];
-                                                        $sel = ($v == $row)?'selected="selected"':'';
+                                                        $selectedProfessions = explode(',',$personaldata['profession_view']);
+                                                        $ifExist = in_array($row->id,$selectedProfessions);
+                                                        if($ifExist){
+                                                            $selected = 'Selected';
+                                                        }else
+                                                            $selected = '';
                                                         ?>
-                                                        <option  value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
+                                                        <option value="<?php echo $row->id; ?>" <?=$selected?>><?php echo $row->name; ?></option>
                                                         <?php
                                                     }
                                                 }
@@ -192,7 +209,7 @@ die;*/
                                         </div>
                                         <div class="col-lg-6">
                                             <?php if (!empty($personaldata['primary_photo'])) { ?>
-                                                <img src="<?php echo base_url() . 'assets/file/' .$personaldata['primary_photo']; ?>" alt="" width="100" class="img-circle img-responsive" />
+                                                <img src="<?php echo base_url() . 'assets/file/personals/' .$personaldata['primary_photo']; ?>" alt="" width="100" class="img-rounded img-responsive" />
                                             <?php }?>
                                         </div>
 
@@ -207,7 +224,7 @@ die;*/
                                         </div>
                                         <div class="col-lg-6">
                                             <?php if (!empty($personaldata['photo1'])) { ?>
-                                                <img src="<?php echo base_url() . 'assets/file/' .$personaldata['photo1']; ?>" alt="" width="100" class="img-circle img-responsive" />
+                                                <img src="<?php echo base_url() . 'assets/file/personals/' .$personaldata['photo1']; ?>" alt="" width="100" class="img-circle img-responsive" />
                                             <?php }?>
                                         </div>
                                     </div>
@@ -221,7 +238,7 @@ die;*/
                                         </div>
                                         <div class="col-lg-6">
                                             <?php if (!empty($personaldata['photo2'])) { ?>
-                                                <img src="<?php echo base_url() . 'assets/file/' .$personaldata['photo2']; ?>" alt="" width="100" class="img-circle img-responsive" />
+                                                <img src="<?php echo base_url() . 'assets/file/personals/' .$personaldata['photo2']; ?>" alt="" width="100" class="img-circle img-responsive" />
                                             <?php }?>
                                         </div>
                                     </div>

@@ -27,6 +27,14 @@ print_r($allpersonals);die;*/
                     <div class="box-header">
                         <h3 class="box-title">List All My Personal Info</h3>
                     </div>
+                    <?php if($this->session->flashdata('msg')){ ?>
+                        <div class="col-lg-12">
+                            <div class="alert alert-success alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong> <?php echo $this->session->flashdata('msg'); ?></strong>
+                            </div>
+                        </div>
+                    <?php } $this->session->unset_userdata('msg'); ?>
                     <div class="box-body no-padding">
                         <?php if(count($allpersonals)<=0){?>
                             <div class="alert alert-info">No Personal</div>
@@ -41,7 +49,7 @@ print_r($allpersonals);die;*/
 
                                     <th class="numeric"><?php echo 'title';?></th>
 
-                                    <th class="numeric"><?php echo 'Status';?></th>
+                                    <th class="numeric"><?php echo 'I am';?></th>
 
                                     <th class="numeric"><?php echo 'Interested';?></th>
 
@@ -70,11 +78,11 @@ print_r($allpersonals);die;*/
                                             <td data-title="<?php echo 'maritalstatus'; ?>"
                                                 class="numeric"><span class="label label-warning"><?php echo $row->maritalstatus; ?></span></td>
                                             <td data-title="<?php echo 'age'; ?>"
-                                                class="numeric"><span class="label bg-purple"><?php echo $row->age; ?></span></td>
+                                                class="numeric"><span class="label label-danger"><?php echo $row->age; ?></span></td>
 
-                                            <td data-title="<?php echo 'Edit'; ?>" class="numeric"><a href="<?php echo base_url('admin/personal/Personal/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>
+                                            <td data-title="<?php echo 'Edit'; ?>" class="numeric"><a href="<?php echo base_url('admin/Personal/Personal/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit</a></td>
                                             
-                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/personal/Personal/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
+                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/Personal/Personal/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
                                         </tr>
                                         <?php $i++;
                                     }

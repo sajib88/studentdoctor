@@ -24,7 +24,7 @@ class Dashboard extends CI_Controller {
         $data['leadBlog'] = $this->global_model->get('blog_front', false, array('limit' => '5', 'start' => '0'), array('filed' => 'date', 'order' => 'DESC') );
         $data['leadPub'] = $this->global_model->get('private_website', false, array('limit' => '5', 'start' => '0'), array('filed' => 'added', 'order' => 'DESC') );
 
-        $data['newComments'] = $this->global_model->get('blog_comments', array('added_date_time'=> date("Y-m-d")));
+        $data['newComments'] = $this->global_model->get('blog_comments');
 //        foreach ($data['leadClassified'] as $row){
 //        print_r($row->id);}die;
 

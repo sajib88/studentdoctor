@@ -107,8 +107,8 @@ class Group extends CI_Controller {
     public function viewall(){
 
         $data = array();
-        $data['page_title'] = 'Private Web';
-        $data['tabActive'] = 'private';
+        $data['page_title'] = 'Group';
+        $data['tabActive'] = 'Group List';
         $data['error'] = '';
 
 

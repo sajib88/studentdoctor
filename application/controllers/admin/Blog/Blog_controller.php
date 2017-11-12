@@ -131,7 +131,7 @@ class Blog_controller extends CI_Controller
 
 
 
-    public function edit()
+    public function edit($id="")
     {
         $data1 = array();
         $data1['page_title'] = 'Update Blog';
@@ -191,7 +191,7 @@ class Blog_controller extends CI_Controller
 
 
 
-                $id = $this->uri->segment('5');
+                //$id = $this->uri->segment('5');
                 if ($this->global_model->update('blog_front', $data, array('id' => $id))){
                     $this->session->set_flashdata('message', 'Blog Updated Successfully');
                     redirect(base_url('admin/Blog/Blog_controller/blog'));
@@ -200,7 +200,7 @@ class Blog_controller extends CI_Controller
                 }
             }
         }
-        $id = $this->uri->segment('5');
+        //$id = $this->uri->segment('5');
 
         $data['editblog'] = $this->global_model->get_data('blog_front', array('id' => $id));
 

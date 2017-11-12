@@ -16,6 +16,7 @@
         <script src="<?php echo base_url() ?>/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
         <!-- Custom CSS -->
         <link href="<?php echo base_url() ?>/dist/css/sb-admin-2.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>/dist/css/AdminLTE.min.css" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="<?php echo base_url() ?>/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 

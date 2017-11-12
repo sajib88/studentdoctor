@@ -18,6 +18,7 @@
 
         <!-- Custom CSS -->
         <link href="<?php echo base_url() ?>/dist/css/sb-admin-2.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>/dist/css/AdminLTE.min.css" rel="stylesheet">
 
         <!-- Morris Charts CSS -->
         <link href="<?php echo base_url() ?>/bower_components/morrisjs/morris.css" rel="stylesheet">

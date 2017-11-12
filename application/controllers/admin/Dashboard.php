@@ -16,9 +16,21 @@ class Dashboard extends CI_Controller {
         $data['page_title'] = 'Dashboard';
         $data['tabActive'] = 'dashboard';
         $data['error'] = '';
-        $this->load->view('admin/dashboard_header', $data);
+
+        $data['leadClassified'] = $this->global_model->get('classified', false, array('limit' => '5', 'start' => '0'), array('filed' => 'added', 'order' => 'DESC') );
+        $data['leadPersonals'] = $this->global_model->get('personals', false, array('limit' => '5', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC') );
+        $data['leadProduct'] = $this->global_model->get('product', false, array('limit' => '5', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC') );
+        $data['leadEvent'] = $this->global_model->get('event', false, array('limit' => '5', 'start' => '0'), array('filed' => 'start_date', 'order' => 'DESC') );
+        $data['leadBlog'] = $this->global_model->get('blog_front', false, array('limit' => '5', 'start' => '0'), array('filed' => 'date', 'order' => 'DESC') );
+        $data['leadPub'] = $this->global_model->get('private_website', false, array('limit' => '5', 'start' => '0'), array('filed' => 'added', 'order' => 'DESC') );
+
+        $data['newComments'] = $this->global_model->get('blog_comments', array('added_date_time'=> date("Y-m-d")));
+//        foreach ($data['leadClassified'] as $row){
+//        print_r($row->id);}die;
+
+        $this->load->view('admin/header', $data);
         $this->load->view('admin/dashboard', $data);
-        $this->load->view('admin/dashboard_footer');
+        $this->load->view('admin/footer');
     }
 }
 

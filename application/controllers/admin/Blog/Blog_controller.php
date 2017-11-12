@@ -46,8 +46,6 @@ class Blog_controller extends CI_Controller
 
         $this->form_validation->set_rules('title', 'title', 'required');
         $this->form_validation->set_rules('description', 'description', 'required');
-        $this->form_validation->set_rules('tag', 'tag', 'required');
-        $this->form_validation->set_rules('keyword', 'keyword', 'required');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -114,8 +112,8 @@ class Blog_controller extends CI_Controller
 
            
             if ($post_id = $this->global_model->insert('blog_front', $data)) {
-                        $this->session->set_flashdata('message', 'Save Success');
-                        redirect('admin/blog/Blog_controller/create');
+                        $this->session->set_flashdata('message', 'New Blog Ceated Successfully');
+                        redirect('admin/Blog/Blog_controller/create');
                        //redirect('profile/profile');
                     }
 
@@ -226,8 +224,8 @@ class Blog_controller extends CI_Controller
 
                 $id = $this->uri->segment('5');
                 if ($this->global_model->update('blog_front', $data, array('id' => $id))){
-                    $this->session->set_flashdata('message', 'Save Success');
-                    redirect('admin/blog/Blog_controller/blog');
+                    $this->session->set_flashdata('message', 'Blog Updated Successfully');
+                    redirect('admin/Blog/Blog_controller/blog');
 
                     //redirect('profile/profile');
                 }
@@ -251,8 +249,8 @@ class Blog_controller extends CI_Controller
     {
         $id = $this->uri->segment('5');
         if ($this->global_model->delete('blog_front', array('id' => $id))) {
-            $this->session->set_flashdata('message', 'Delete successfully!');
-            redirect('admin/blog/Blog_controller/blog', $data);
+            $this->session->set_flashdata('message', 'Blog Deleted successfully!');
+            redirect('admin/Blog/Blog_controller/blog');
         }
 
     }

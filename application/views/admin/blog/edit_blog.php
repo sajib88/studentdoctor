@@ -39,7 +39,7 @@
                 <div class="box box-primary">
                     <div class="panel-body">
                         <div class="row">
-                            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url('admin/blog/Blog_controller/edit/'. $editblog['id']); ?>">
+                            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url('admin/Blog/Blog_controller/edit/'. $editblog['id']); ?>">
                                 <div class="col-lg-6">
                                     <input type="hidden" name="id" value="<?php echo $editblog['id']; ?>">
 

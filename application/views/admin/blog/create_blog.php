@@ -44,7 +44,7 @@
                 <div class="box box-primary">
                     <div class="panel-body">
                         <div class="row">
-                            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url().'admin/blog/Blog_controller/create'; ?>">
+                            <form role="form" method="post" id="blogform" enctype="multipart/form-data" action="<?php echo base_url().'admin/Blog/Blog_controller/create'; ?>">
                                 <div class="col-lg-6">
                                     <div class="col-lg-12">
                                         <div class="form-group">
@@ -123,10 +123,10 @@
 
                                    <div class="col-lg-12">
                                         <div class="form-group" id="photo_id">
-                                            <label>Picture One</label>
+                                            <label>Picture One<span class="error">*</span></label>
                                             <?php $v = (set_value('primary_image') != '')?set_value('primary_image'):'';?>
                                             <input class="btn btn-default" name="primary_image" type="file" value="<?php echo $v;?>">
-
+                                            <?php echo form_error('primary_image');?>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -249,7 +249,7 @@ jQuery(document).ready(function() {
 </script>
 
 <script type="application/javascript">
-    $('#cesform').validate({
+    $('#blogform').validate({
         rules: {
             title: {
                 required:true
@@ -314,13 +314,10 @@ jQuery(document).ready(function() {
         },
         messages:{
             title: {
-                required: "Classified Title is Required",},
+                required: "Blog Title is Required",},
 
             description: {
                 required: "Description is Required",},
-
-            ce_type: {
-                required: "CES Type is Required",},
 
             country: {
                 required: "Product Country is Required",

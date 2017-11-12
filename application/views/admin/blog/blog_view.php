@@ -4,20 +4,21 @@
 <div class="row">
 
 
-     <?php if($data = $this->session->flashdata('message')){ ?>
-            <div class="col-lg-12">
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="Close">&times;</a>
-                    <strong><?php echo $data;?></strong>
-                </div>
-            </div>
-        <?php } ?>
+
 
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">List All Blogs Info</h3>
                 </div>
+                <?php if($data = $this->session->flashdata('message')){ ?>
+                    <div class="col-lg-12">
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="Close">&times;</a>
+                            <strong><?php echo $data;?></strong>
+                        </div>
+                    </div>
+                <?php } ?>
                 <div class="box-body no-padding">
                     <?php if(count($allblog)<=0){?>
                         <div class="alert alert-info">No Blogs</div>
@@ -74,9 +75,9 @@
                                             <td data-title="<?php echo 'Image'; ?>"
                                                 class="numeric"><span class="label bg-purple"><img src="<?php echo base_url() . '/assets/file/blog/' .$row->primary_image; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
 
-                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/blog/Blog_controller/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
+                                            <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/Blog/Blog_controller/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
 
-                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/blog/Blog_controller/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
+                                            <td data-title="<?php echo 'Remove'; ?>" class="numeric"><a href="<?php echo base_url('admin/Blog/Blog_controller/delete/' . $row->id); ?>" class="btn btn-block btn-danger">Remove</a></td>
                                         </tr>
                                         <?php $i++;
                                     }

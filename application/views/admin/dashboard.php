@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"><?php echo (!empty($newComments))?count($newComments):"0";?></div>
-                            <div>New Comments!</div>
+                            <div>Total Comments</div>
                         </div>
                     </div>
                 </div>
@@ -51,11 +51,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
+                            <i class="fa fa-bullhorn fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
-                            <div>New Tasks!</div>
+                            <div class="huge"><?php echo (!empty($newForm))?count($newForm):"0";?></div>
+                            <div>Total Forum Post</div>
                         </div>
                     </div>
                 </div>
@@ -73,11 +73,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-5x"></i>
+                            <i class="fa fa-group fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
-                            <div>New Orders!</div>
+                            <div class="huge"><?php echo (!empty($newGroup))?count($newGroup):"0";?></div>
+                            <div>Total Groups</div>
                         </div>
                     </div>
                 </div>
@@ -95,11 +95,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-support fa-5x"></i>
+                            <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
-                            <div>Support Tickets!</div>
+                            <div class="huge"><?php echo (!empty($newAppointment))?count($newAppointment):"0";?></div>
+                            <div>Total Appointment</div>
                         </div>
                     </div>
                 </div>

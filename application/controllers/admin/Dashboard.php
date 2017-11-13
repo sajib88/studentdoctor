@@ -25,6 +25,9 @@ class Dashboard extends CI_Controller {
         $data['leadPub'] = $this->global_model->get('private_website', false, array('limit' => '5', 'start' => '0'), array('filed' => 'added', 'order' => 'DESC') );
 
         $data['newComments'] = $this->global_model->get('blog_comments');
+        $data['newForm'] = $this->global_model->get('forum_post', array('is_view'=>0));
+        $data['newGroup'] = $this->global_model->get('gorupfad');
+        $data['newAppointment'] = $this->global_model->get('appointment');
 //        foreach ($data['leadClassified'] as $row){
 //        print_r($row->id);}die;
 

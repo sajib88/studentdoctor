@@ -1,16 +1,16 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Student Doctor : all Doctors and Student Network</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <title>AllStudentDoctors | All Doctors & All Student Website  In The World</title>
+    <meta name="description" content="All Student Doctors And Doctors In The World. Doctor's And Student Can Join free. Enjoy Loads Of Free Features
+Where You Network, Learn and Exhibit Your Accomplishments With Other Doctors and Student Doctors. Free student Forum, blog, Personals, classified, Profile ">
+    <meta name="author" content="allstudentDoctors">
+    <meta name="Robots" content="index, follow">
+    <meta name="keywords" content="All Student doctors, Specialist doctors, Find a physician, Ask doctor, List of doctors, Student Free forum,doctors website,Online doctor,Doctor sites,Online medical doctor,Doctors web,Ask a doctor,Medical answers,Medical help online,Doctor answers,Medical doctor website,Doctor on line,Medical sites for doctors,Health doctor online,See a doctor online,Health doctor website,Doctor visit online,Talk to a doctor,Doctors information website,Online doctor consultation,Doctor questions,ask Medical doctor,Ask doctors questions,Talk to a doctor online,Health advice online,Medical info online,Online medical care,Medical questions online,Medical questions answered,Doctor diagnosis online,Doctor question hotline,Health advice websites,Online medical treatment,speak with a doctor online,Web medical doctor,Doctors in USA,">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>/front/img/favicon.png">
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>comp/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>comp/css/bootstrap-theme.min.css">
@@ -102,7 +102,7 @@
                                     <?php }?>
 
                                     <li class="dropdown hidden-lg hidden-md">
-                                        <a href="<?php echo base_url();?>home/getPurpose" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <i class="fa fa-angle-down"></i></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <i class="fa fa-angle-down"></i></a>
                                         <div class="dropdown-menu mega-menu">
                                             <div class="row">
 

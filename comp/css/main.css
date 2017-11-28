@@ -975,6 +975,9 @@ select.form-control {
   color: #233f63;
 }
 
-
+.border-box {
+  padding: 10px;
+  border: 1px solid #efefef;
+}
 
 

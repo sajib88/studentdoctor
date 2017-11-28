@@ -19,7 +19,7 @@ class Home extends CI_Controller {
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
 
-
+        $data['allblog'] = $this->global_model->get('blog_front', False, array('limit' => '3', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
         //for rss
         $data['hello'] = $this->rssparser->set_feed_url('http://rss.medicalnewstoday.com/featurednews.xml')->set_cache_life(30)->getFeed(12);
 

@@ -27,10 +27,13 @@
                             <div class="card">
                                 <div class="card-block">
                                     <h3 class="card-title text-left mobiletext">Free Registration</h3>
-                                    <p class="card-text text-left mobiletext">
-                                        All Doctors and Student Can</br>
-                                        join free Just submit the</br>
-                                        Form.</p>
+                                    <p class="card-text text-left mobiletext free_registration">
+                                        <a href="<?php echo base_url('home/registration');?>">
+                                        All Doctors and Students Can</br>
+                                        Join For Free. Simply Submit This</br>
+                                        Short Form. (Click Here)
+                                        </a>
+                                    </p>
 
                                 </div>
                             </div>
@@ -41,9 +44,11 @@
                             <div class="card">
                                 <div class="card-block">
                                     <h3 class="card-title text-right mobiletext">Free Features</h3>
-                                    <p class="card-text text-right mobiletext">Enjoy Free Features just join</br>
-                                        All Doctors and Student Network</br>
-                                        Don't miss, Join Now.</p>
+                                    <p class="card-text text-right mobiletext">
+                                        Enjoy Loads Of Free Features<br>
+                                        Where You Network, Learn and Exhibit<br>
+                                        Your Accomplishments With Other<br>
+                                         Doctors and Student Doctors.</p>
 
                                 </div>
                             </div>
@@ -62,9 +67,12 @@
                                 <div class="card-block">
 
                                     <h3 class="card-title text-left mobiletext">Easy to Use </h3>
-                                    <p class="card-text text-left mobiletext">With supporting text below as</br>
-                                        a natural lead-in to additional</br>
-                                        content.</p>
+                                    <p class="card-text text-left mobiletext">
+                                        We Have Made It Easy To Use <br>
+                                        Our Site - No Frustrations, <br>
+                                        No Learning Curve. <br>
+                                        It Is Easy & Free For Your Enjoyment.
+                                        </p>
 
                                 </div>
                             </div>
@@ -75,9 +83,12 @@
                             <div class="card">
                                 <div class="card-block">
                                     <h3 class="card-title text-right mobiletext">Mobile Friendly</h3>
-                                    <p class="card-text text-right mobiletext">With supporting text below as</br>
-                                        a natural lead-in to additional</br>
-                                        content.</p>
+                                    <p class="card-text text-right mobiletext">
+                                        We've Done The Hard Work,<br>
+                                        So You Can Easily Use <br>
+                                        Our Awesome Site <br>
+                                        On Just About Any Device.
+                                        </p>
 
                                 </div>
                             </div>
@@ -243,6 +254,32 @@
 
     </div>
 
+</section>
+
+<section class="content" style="background: #fff;">
+    <div class="ptop-20"></div>
+    <h2 class="text-center"><span class="text-primary">Our </span> Latest <span class="text-primary"> Articles</span></h2>
+    <div class="ptop-20"></div>
+    <div class="container">
+        <div class="row">
+            <?php if(!empty($allblog)){
+                foreach ($allblog as $row){
+            ?>
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card">
+                    <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>"><img class="card-img-top" src="<?php echo base_url('assets/file/blog/'.$row->primary_image);?>" height="300px" width="100%" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>"><?php echo substr($row->title, 0, 30);?></a>
+                        </h4>
+                        <p class="card-text"><?php echo substr($row->description, 0, 100);?></p>
+                    </div>
+                </div>
+            </div>
+            <?php } }?>
+        </div>
+    </div>
+    <div class="ptop-40"></div>
 </section>
 
 <section id="news">

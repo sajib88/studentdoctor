@@ -970,6 +970,11 @@ select.form-control {
     }
 }
 
+.free_registration a{
+  text-decoration: none;
+  color: #233f63;
+}
+
 
 
 

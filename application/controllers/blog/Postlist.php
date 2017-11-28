@@ -48,7 +48,7 @@ class Postlist extends CI_Controller
         //$data_id = 'id';
         //$data_order = 'DESC';
         $data['recent_post'] = $this->global_model->get('blog_front', False, array('limit' => '5', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
-       $data['allblog'] = $this->global_model->get('blog_front', False, array('limit' => '2', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
+       $data['allblog'] = $this->global_model->get('blog_front', False, array('limit' => '5', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
         $data['blog_category'] = $this->global_model->get('blog_front');
         //$data['join'] = $this->global_model->get_with_join('users', 'appointment', 'id', 'users.id = appointment.doctor_id');
 

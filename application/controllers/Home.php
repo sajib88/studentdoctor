@@ -116,7 +116,7 @@ class Home extends CI_Controller {
     public function get_admin_email_and_name()
     {
 
-        $data['admin_email'] = 'info@advertbd.com';
+        $data['admin_email'] = 'join@allstudentdoctors.com';
         $data['admin_name']  = 'AllStudentDoctors.com';
 
         return $data;
@@ -169,6 +169,9 @@ class Home extends CI_Controller {
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[128]|is_unique[users.email]');
             $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
             $this->form_validation->set_rules('conf', 'Confirm Password', 'trim|required|matches[password]');
+            $this->form_validation->set_rules('g-recaptcha-response', 'recaptcha validation', 'required|callback_validate_captcha');
+            $this->form_validation->set_message('validate_captcha', 'Please check the the captcha form');
+
 
             if ($this->form_validation->run() == true) {
 
@@ -265,7 +268,7 @@ class Home extends CI_Controller {
                 $is_ok = $this->login_model->forgot_password($user_email, $encrpassword);
 
                 if (!empty($is_ok)) {
-                    $this->email->from('sajib@osourcebd.com', 'All Doctors');
+                    $this->email->from('join@allstudentdoctors.com', 'All Doctors');
                     $this->email->to($user_email);
                     $this->email->subject('Password Reset Confirmation');
 
@@ -641,7 +644,7 @@ class Home extends CI_Controller {
             $this->load->library('email');
 
             $this->email->from(set_value('email'), set_value('name'));
-            $this->email->to('info@advertbd.com');
+            $this->email->to('join@allstudentdoctors.com');
             $this->email->subject('Contact Email');
             $this->email->message(set_value('message'));
 
@@ -657,6 +660,41 @@ class Home extends CI_Controller {
         }
 
 
+    }
+
+//    function validate_captcha() {
+//        $captcha = $this->input->post('g-recaptcha-response');
+//        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LciozgUAAAAANXGPy9NMuEVry_VbuuX7K6RpO2n&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
+//        if ($response . 'success' == false) {
+//            return FALSE;
+//        } else {
+//            return TRUE;
+//        }
+//    }
+
+    function validate_captcha() {
+        $recaptcha = trim($this->input->post('g-recaptcha-response'));
+        $userIp= $this->input->ip_address();
+        $secret='6LciozgUAAAAANXGPy9NMuEVry_VbuuX7K6RpO2n';
+        $data = array(
+            'secret' => "$secret",
+            'response' => "$recaptcha",
+            'remoteip' =>"$userIp"
+        );
+
+        $verify = curl_init();
+        curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+        curl_setopt($verify, CURLOPT_POST, true);
+        curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($verify);
+        $status= json_decode($response, true);
+        if(empty($status['success'])){
+            return FALSE;
+        }else{
+            return TRUE;
+        }
     }
 
 

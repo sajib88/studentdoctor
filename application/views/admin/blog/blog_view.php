@@ -73,7 +73,7 @@
                                             </td>
                                         
                                             <td data-title="<?php echo 'Image'; ?>"
-                                                class="numeric"><span class="label bg-purple"><img src="<?php echo base_url() . '/assets/file/blog/' .$row->primary_image; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
+                                                class="numeric"><span class=""><img src="<?php echo base_url() . '/assets/file/blog/' .$row->primary_image; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
 
                                             <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/Blog/Blog_controller/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
 

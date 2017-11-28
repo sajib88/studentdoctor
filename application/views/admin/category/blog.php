@@ -63,7 +63,7 @@
 
                                         <?php
                                         $data = get_data('users', array('id' => $row->created_by));
-                                        echo $data['user_name'];
+                                        echo (!empty($data['user_name']))?$data['user_name']:'Admin';
                                         ?>
                                     </span></td>
 
@@ -127,7 +127,7 @@
 
                                         <?php
                                         $data = get_data('users', array('id' => $row->created_by));
-                                        echo $data['user_name'];
+                                        echo (!empty($data['user_name']))?$data['user_name']:"Admin";
                                         ?>
                                     </span></td>
 

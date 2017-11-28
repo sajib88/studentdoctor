@@ -58,21 +58,21 @@
                                         <tr>
                                             <td><?php echo $i; ?></td>
                                             <td data-title="<?php echo 'title'; ?>"
-                                                class="numeric"><?php echo substr($row->title, 0,30); ?></td>
+                                                class="numeric"><?php echo (!empty($row->title))?substr($row->title, 0,30):'Not Given'; ?></td>
                                             <td data-title="<?php echo 'body'; ?>"
-                                                class="numeric"><span class="label label-success"><?php echo substr ($row->summary, 0,30); ?></span></td>
+                                                class="numeric"><span class="label label-success"><?php echo (!empty($row->summary))?substr ($row->summary, 0,30):'Not Given'; ?></span></td>
                                             
                                             <td data-title="<?php echo 'body'; ?>"
-                                                class="numeric"><span class="label label-success"><?php echo $row->seats_no; ?></span></td> 
+                                                class="numeric"><span class="label label-success"><?php echo (!empty($row->seats_no))?$row->seats_no:'Not Given'; ?></span></td>
 
                                             <td data-title="<?php echo 'body'; ?>"
-                                                class="numeric"><span class="label label-success"><?php echo $row->start_time; ?></span></td>
+                                                class="numeric"><span class="label label-success"><?php echo (!empty($row->start_time))?$row->start_time:'Not Given'; ?></span></td>
                                             <td data-title="<?php echo 'body'; ?>"
-                                                class="numeric"><span class="label label-success"><?php echo $row->end_time; ?></span></td>
+                                                class="numeric"><span class="label label-success"><?php echo (!empty($row->end_time))?$row->end_time:'Not Given'; ?></span></td>
 
                                             
                                             <td data-title="<?php echo 'Image'; ?>"
-                                                class="numeric"><span class="label bg-purple"><img src="<?php echo base_url() . '/assets/file/event/' .$row->primary_photo; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
+                                                class="numeric"><span><img src="<?php echo base_url() . '/assets/file/event/' .$row->primary_photo; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
 
                                             <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/Events/Events/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
 

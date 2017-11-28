@@ -84,6 +84,11 @@
                                         </div>
 
                                         <div class="form-group mb-10">
+                                        <div required="" class="g-recaptcha" data-sitekey="6LciozgUAAAAABs4Yxkpqgqq7JGayumkDLG10LBV" autofocus=""></div>
+                                        </div>
+
+
+                                        <div class="form-group mb-10">
 
                                             <input required="" type="checkbox" value="agree this condition"> I agree to the <a href="<?php echo base_url('home/terms');?>">Terms & Conditions </a> and
                                             <a href="<?php echo base_url('home/privacy');?>">Privacy Policy </a>
@@ -115,6 +120,7 @@
     </section>
 
 </main>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 
 

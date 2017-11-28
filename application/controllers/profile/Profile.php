@@ -128,16 +128,12 @@ class Profile extends CI_Controller {
         $data['page_title'] = 'Search';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
-
-
         $this->form_validation->set_rules('first_name');
         $this->form_validation->set_rules('last_name');
         $this->form_validation->set_rules('profession');
         $this->form_validation->set_rules('country');
         $this->form_validation->set_rules('state');
         $this->form_validation->set_rules('city');
-
-
         if($this->input->post()){
             $postData = $this->input->post();
             $value = array();
@@ -147,13 +143,8 @@ class Profile extends CI_Controller {
             $value['country'] = (!empty($postData['country']))?$postData['country']:'';
             $value['state'] = (!empty($postData['state']))?$postData['state']:'';
             $value['city'] = (!empty($postData['city']))?$postData['city']:'';
-
-
             $data['result'] = $this->global_model->get_profile_search_data('users',$value,FALSE,FALSE);
-
-
         }
-
         $data['page_title'] = 'Profile search';
         $data['tabActive'] = 'Profile';
         $data['error'] = '';

@@ -57,15 +57,15 @@
                                         <tr>
                                             <td><?php echo $i; ?></td>
                                             <td data-title="<?php echo 'title'; ?>"
-                                                class="numeric"><?php echo $row->title; ?></td>
+                                                class="numeric"><?php echo (!empty($row->title))?$row->title:'<span>Not Given</span>'; ?></td>
                                             <td data-title="<?php echo 'body'; ?>"
-                                                class="numeric"><span class="label label-success"><?php echo $row->price; ?></span></td>
+                                                class="numeric"><span class="label label-success">$<?php echo (!empty($row->price))?$row->price:'<span>Not Given</span>'; ?></span></td>
                                             <td data-title="<?php echo 'Price'; ?>"
-                                                class="numeric"><span class="label label-info"><?php echo $row->email; ?></span></td>
+                                                class="numeric"><span class="label label-info"><?php echo (!empty($row->email))?$row->email:'<span>Not Given</span>'; ?></span></td>
                                             <td data-title="<?php echo 'Email'; ?>"
-                                                class="numeric"><span class="label label-warning"><?php echo $row->phone; ?></span></td>
+                                                class="numeric"><span class="label label-warning"><?php echo (!empty($row->phone))?$row->phone:'<span>Not Given</span>'; ?></span></td>
                                             <td data-title="<?php echo 'Phone'; ?>"
-                                                class="numeric"><span class="label bg-purple"><img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
+                                                class="numeric"><span class=""><img src="<?php echo base_url() . '/assets/file/classifieds/' .$row->photo_primary; ?>" alt="" width="50" height="50" class="img-circle " /></span></td>
 
                                             <td data-title="<?php echo 'Edit/View'; ?>" class="numeric"><a href="<?php echo base_url('admin/Classifieds/Classifieds/edit/' . $row->id); ?>" class="btn btn-block btn-primary"> Edit & View</a></td>
 

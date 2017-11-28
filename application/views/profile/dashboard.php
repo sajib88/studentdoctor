@@ -30,20 +30,20 @@
             <div class="small-box bg-purple">
                 <div class="inner">
                     <h3><?php
-                        if (!empty($appointment)) {
-                            echo $appointment;
+                        if (!empty($gorup)) {
+                            echo $gorup;
                         } else {
                             echo '0';
                         }
 
                         ?></h3>
 
-                    <p>Appointment</p>
+                    <p>Group</p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-calendar"></i>
+                    <i class="fa fa-group"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url('group/viewall');?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -67,7 +67,7 @@
                 <div class="icon">
                     <i class="fa fa-calendar-o"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url('event/viewall');?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -76,20 +76,20 @@
             <div class="small-box bg-purple">
                 <div class="inner">
                     <h3><?php
-                        if (!empty($users)) {
-                            echo $users;
+                        if (!empty($product)) {
+                            echo $product;
                         } else {
                             echo '0';
                         }
 
                         ?></h3>
 
-                    <p>Doctor Registered</p>
+                    <p>Product</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-person-add"></i>
+                    <i class="fa fa-tags"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url('product/all');?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -98,23 +98,24 @@
             <div class="small-box bg-purple">
                 <div class="inner">
                     <h3><?php
-                        if (!empty($public_website)) {
-                            echo $public_website;
+                        if (!empty($blog)) {
+                            echo $blog;
                         } else {
                             echo '0';
                         }
 
                         ?></h3>
 
-                    <p>Public Website</p>
+                    <p>Blog</p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-fw fa-user-md"></i>
+                    <i class="fa fa-square-o"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url('insideblog/all');?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-md-3 col-sm-6 col-xs-12 on-hover">
+            <a href="<?php echo base_url('classifieds/all');?>">
             <div class="info-box bg-purple">
                 <span class="info-box-icon"><i class="fa fa-fw fa-list-alt"></i></span>
 
@@ -140,10 +141,13 @@
                 </div>
                 <!-- /.info-box-content -->
             </div>
+
+            </a>
             <!-- /.info-box -->
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
+            <a href="<?php echo base_url('personal/all');?>">
             <div class="info-box bg-purple">
                 <span class="info-box-icon"><i class="fa fa-heart-o"></i></span>
 
@@ -167,20 +171,22 @@
                 </div>
                 <!-- /.info-box-content -->
             </div>
+            </a>
             <!-- /.info-box -->
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
+            <a href="<?php echo base_url('forum/posts');?>">
             <div class="info-box bg-purple">
-                <span class="info-box-icon"><i class="glyphicon glyphicon-tags"></i></span>
+                <span class="info-box-icon"><i class="glyphicon glyphicon-bullhorn"></i></span>
 
                 <div class="info-box-content">
                     <span class="info-box-text">Total</span>
                     <span class="info-box-number">
 
                         <?php
-                        if (!empty($product)) {
-                            echo $product;
+                        if (!empty($forumPost)) {
+                            echo $forumPost;
                         } else {
                             echo '0';
                         }
@@ -193,15 +199,17 @@
                         <div class="progress-bar" style="width: 100%"></div>
                     </div>
                   <span class="progress-description">
-                    Products
+                    Forum Post
                   </span>
                 </div>
                 <!-- /.info-box-content -->
             </div>
+            </a>
             <!-- /.info-box -->
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-12">
+            <a href="<?php echo base_url('forum/board');?>">
             <div class="info-box bg-purple">
                 <span class="info-box-icon"><i class="fa fa-book"></i></span>
 
@@ -228,6 +236,7 @@
                 </div>
                 <!-- /.info-box-content -->
             </div>
+            </a>
             <!-- /.info-box -->
         </div>
         <!-- /.col -->

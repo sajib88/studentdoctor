@@ -635,7 +635,7 @@ class Global_model extends CI_Model {
         }
         if (!empty($data['profession'])) {
 
-            $this->db->like('profession', $data['profession']);
+            $this->db->where('profession', $data['profession']);
         }
 
         if (!empty($data['first_name'])) {

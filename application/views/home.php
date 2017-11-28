@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12  text-center">
-                <h1 class="ptop-50">Doctor's And Student Can Join Now </h1>
+                <h2 class="ptop-50">Doctor's And Student Can Join Now </h2>
                 <div class="ptop-50"></div>
                 <!--start box here -->
                 <div class="box-design">

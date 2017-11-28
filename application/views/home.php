@@ -258,7 +258,7 @@
 
 <section class="content" style="background: #fff;">
     <div class="ptop-20"></div>
-    <h2 class="text-center"><span class="text-primary">Our </span> Latest <span class="text-primary"> Articles</span></h2>
+    <h2 class="text-center"><span class="text-primary">Our </span> Latest <span class="text-primary"> Blog</span></h2>
     <div class="ptop-20"></div>
     <div class="container">
         <div class="row">
@@ -266,8 +266,8 @@
                 foreach ($allblog as $row){
             ?>
             <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card">
-                    <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>"><img class="card-img-top" src="<?php echo base_url('assets/file/blog/'.$row->primary_image);?>" height="300px" width="100%" alt=""></a>
+                <div class="card border-box">
+                    <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>"><img class="card-img-top" src="<?php echo base_url('assets/file/blog/'.$row->primary_image);?>" height="250px" width="100%" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">
                             <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>"><?php echo substr($row->title, 0, 30);?></a>
@@ -277,6 +277,9 @@
                 </div>
             </div>
             <?php } }?>
+        </div>
+        <div class="col-md-4 ptop-50 col-md-offset-4 mtop-30">
+            <a href="<?php echo base_url('blog')?>" class="btn   btn-yellow btn-block mtop-10"><span>Read More Blogs</span></a>
         </div>
     </div>
     <div class="ptop-40"></div>

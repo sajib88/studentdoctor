@@ -36,7 +36,7 @@ class DoctorVarification extends CI_Controller {
         $this->load->view('admin/footer');
     }
 
-    public function varify($id='', $is_valid="", $user_id='', $email="", $full_name="", $npi){
+    public function varify($id='', $is_valid="", $user_id='', $email="", $full_name="", $npi=""){
         if(!empty($id) && $is_valid == '0'){
             $update['is_valid'] = '1';
             $user_update['is_varified'] = '1';
@@ -47,7 +47,7 @@ class DoctorVarification extends CI_Controller {
             $config['newline'] = '\r\n';
             $this->load->library('email');
             $this->email->initialize($config);
-            $this->email->from('info@advertbd.com', 'AllStudeneDoctors.com');
+            $this->email->from('join@allstudentdoctors.com', 'AllStudeneDoctors.com');
             $this->email->to($email);
             $this->email->subject('Varification Email');
             $this->email->message(

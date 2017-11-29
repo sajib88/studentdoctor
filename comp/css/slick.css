@@ -139,8 +139,8 @@
 
     .ptop-300 {padding-top:50px !important;}
     .top-header h1{font-size: 20px !important;
-        color:#000000  !important;}
-    .top-header p {color:#000000  !important; font-size: 14px !important;}
+        color:#337dff   !important;}
+    .top-header p {color: #ff333f   !important; font-size: 14px !important;}
     .mobiletext {text-align: center !important;}
     .mobile-200{padding-top: 200px !important;}
     .newsletter-widget input[type="text"]{
@@ -235,11 +235,11 @@
 .bottom-banner h3 {font-size: 20px; color: #113058; font-weight: normal; text-transform: capitalize; }
 
 
-.top-header h1 {font-size: 42px; color:#000000; font-weight: normal;
+.top-header h1 {font-size: 42px; color:#337dff; font-weight: normal;
 
 
 }
-.top-header p { color:#000000; font-weight: normal; font-size: 20px;}
+.top-header p { color:#ff333f; font-weight: normal; font-size: 20px;}
 
 
 

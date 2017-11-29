@@ -272,7 +272,7 @@
                         <h4 class="card-title">
                             <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>"><?php echo substr($row->title, 0, 30);?></a>
                         </h4>
-                        <p class="card-text"><?php echo substr($row->description, 0, 100);?></p>
+                        <p class="card-text"><?php echo strip_tags(substr($row->description, 0, 100));?></p>
                     </div>
                 </div>
             </div>

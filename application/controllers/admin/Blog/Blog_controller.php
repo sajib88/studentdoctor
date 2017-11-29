@@ -153,7 +153,6 @@ class Blog_controller extends CI_Controller
             $data['cat_type'] = $postData['cat_type'];
             $data['date'] = $postData['date'];
             $data['time'] = $postData['time'];
-            $data['status'] = $postData['status'];
             $data['tag'] = $postData['tag'];
             $data['keyword'] = $postData['keyword'];
 

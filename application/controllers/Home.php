@@ -132,7 +132,7 @@ class Home extends CI_Controller {
         $link = base_url('home/confirm'.'/'.$data['confirmation_key']);
 
         //$this->load->model('admin/system_model');
-        $tmpl = get_email_tmpl_by_email_name('confirmation_email');
+        $tmpl = get_email_tmpl_by_email_name('registration');
         $subject = $tmpl->subject;
         $subject = str_replace("#username",$data['user_name'],$subject);
         $subject = str_replace("#activationlink",$link,$subject);

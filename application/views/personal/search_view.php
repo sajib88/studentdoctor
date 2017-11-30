@@ -100,7 +100,7 @@
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Interest in:</label>
+                                            <label>Interested in</label>
                                             <?php $interestedin = array('MAN'=>'MAN','WOMAN'=>'WOMEN');?>
                                             <select  name="interestedin"  class="form-control chosen-select">
                                                 <option value="">Select</option>
@@ -202,7 +202,7 @@
                                                                             <li class="list-group-item">City <span class="pull-right  "><?php echo (!empty($row->city))?$row->city:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                                             <li class="list-group-item">Language <span class="pull-right  "><?php echo (!empty($row->lang))?$row->lang:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                                             <li class="list-group-item">Marital status <span class="pull-right  "><?php echo (!empty($row->maritalstatus))?$row->maritalstatus:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
-                                                                            <li class="list-group-item">I AM A <span class="pull-right  "><?php echo (!empty($row->iam))?$row->iam:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
+                                                                            <li class="list-group-item">I am a <span class="pull-right  "><?php echo (!empty($row->iam))?$row->iam:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                                             <li class="list-group-item">Interest in a <span class="pull-right  "><?php echo (!empty($row->interestedin))?$row->interestedin:'<span class="badge bg-red">Not Given</span>' ; ?></span></li>
                                                                         </ul>
                                                                         <span class="show_button">

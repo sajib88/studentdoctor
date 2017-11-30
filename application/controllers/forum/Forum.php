@@ -92,7 +92,7 @@ class Forum extends CI_Controller{
                     $id = $this->uri->segment('3');
                     if($ref_id = $this->global_model->update('forum_category', $bata, array('cat_id' => $id)))
 
-                    $this->session->set_flashdata('message', 'New Forum Post Create Successfully');
+                    $this->session->set_flashdata('message', 'New Forum Post Created Successfully');
                     $redirect_link = base_url() . 'forum/listcat/'. $postData['hiddencat'];
                     redirect($redirect_link);
 
@@ -233,7 +233,7 @@ class Forum extends CI_Controller{
 
                if ($ref_id = $this->global_model->insert('forum_category', $save)) {
 
-                    $this->session->set_flashdata('message', 'New Forum category Create Successfully, Admin Will Approve');
+                    $this->session->set_flashdata('message', 'New Forum Category Created Successfully, Admin Approval In Progess ');
 
                 }
             }
@@ -337,7 +337,7 @@ class Forum extends CI_Controller{
             }
 
             if ($this->global_model->update('forum_post', $save, array('post_id' => $id))){
-                $this->session->set_flashdata('message', 'Post update successfully.');
+                $this->session->set_flashdata('message', 'Post updated successfully.');
                 //redirect('profile/profile');
             }
         }
@@ -358,7 +358,7 @@ class Forum extends CI_Controller{
 
         if ($this->global_model->delete('forum_post', array('post_id' => $id))) {
             if($this->global_model->update('forum_category', $bata, array('cat_id' => $cat_id)))
-            $this->session->set_flashdata('success', 'Post delete successfully!');
+            $this->session->set_flashdata('success', 'Post deleted successfully!');
             redirect(base_url('forum/posts'));
         }
     }
@@ -390,7 +390,7 @@ class Forum extends CI_Controller{
             }
 
             if ($this->global_model->update('forum_comments', $save, array('comment_id' => $id))){
-                $this->session->set_flashdata('message', 'Comment update successfully.');
+                $this->session->set_flashdata('message', 'Comment updated successfully.');
                 //redirect('profile/profile');
             }
         }
@@ -405,7 +405,7 @@ class Forum extends CI_Controller{
 
     public function deleteComment($id){
         if ($this->global_model->delete('forum_comments', array('comment_id' => $id))) {
-            $this->session->set_flashdata('success', 'Comment delete successfully!');
+            $this->session->set_flashdata('success', 'Comment deleted successfully!');
             redirect(base_url('forum/comments'));
         }
     }

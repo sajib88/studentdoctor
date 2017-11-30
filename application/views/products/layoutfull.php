@@ -126,7 +126,7 @@
                                 <b>	State</b> <span class="pull-right"><?php echo $layoutfull['state']; ?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>	city</b> <span class="pull-right"><?php echo $layoutfull['city']; ?></span>
+                                <b>	City</b> <span class="pull-right"><?php echo $layoutfull['city']; ?></span>
                             </li>
                         </ul>
                     </div>

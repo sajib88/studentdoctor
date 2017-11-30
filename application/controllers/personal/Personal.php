@@ -105,29 +105,7 @@ class Personal extends CI_Controller{
                 //// (image upload funtion)
                 uploadPersonals();
                 //// File UPLOAD
-                if ($this->upload->do_upload('primary_files')) {
-                    $fileInfo = $this->upload->data();
-                    $file1['name'] = $fileInfo['file_name'];
-                    $save['primary_files'] = $file1['name'];
-                }
-                if ($this->upload->do_upload('file_2')) {
-                    $fileInfo = $this->upload->data();
-                    $file1['name'] = $fileInfo['file_name'];
-                    $save['file_2'] = $file1['name'];
-                }
 
-                //sound upload
-                if ($this->upload->do_upload('primary_sounds')) {
-                    $fileInfo = $this->upload->data();
-                    $sound['name'] = $fileInfo['file_name'];
-                    $save['primary_sounds'] = $sound['name'];
-                }
-                //sound upload
-                if ($this->upload->do_upload('sound1')) {
-                    $fileInfo = $this->upload->data();
-                    $sound['name'] = $fileInfo['file_name'];
-                    $save['sound1'] = $sound['name'];
-                }
                 //video upload
                 if ($this->upload->do_upload('primary_videos')) {
                     $fileInfo = $this->upload->data();
@@ -327,32 +305,6 @@ class Personal extends CI_Controller{
                 $fileInfo = $this->upload->data();
                 $video['name'] = $fileInfo['file_name'];
                 $data['videos1'] = $video['name'];
-            }
-
-            //sound upload
-            if ($this->upload->do_upload('primary_sounds')) {
-                $fileInfo = $this->upload->data();
-                $sound['name'] = $fileInfo['file_name'];
-                $data['primary_sounds'] = $sound['name'];
-            }
-            //sound upload
-            if ($this->upload->do_upload('sounds1')) {
-                $fileInfo = $this->upload->data();
-                $sound['name'] = $fileInfo['file_name'];
-                $data['sounds1'] = $sound['name'];
-            }
-
-
-            //// File UPLOAD
-            if ($this->upload->do_upload('primary_files')) {
-                $fileInfo = $this->upload->data();
-                $file1['name'] = $fileInfo['file_name'];
-                $data['primary_files'] = $file1['name'];
-            }
-            if ($this->upload->do_upload('files1')) {
-                $fileInfo = $this->upload->data();
-                $file1['name'] = $fileInfo['file_name'];
-                $data['files1'] = $file1['name'];
             }
 
 

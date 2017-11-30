@@ -20,7 +20,13 @@
                             ?>
 
 
-
+                            <div class="advertise_div col-md-12">
+                                <div class="inner-item">
+                                    <a href="#">
+                                        <img class="center-block img-responsive"  src="<?php echo base_url().'comp/img/adcolor.jpg' ?>" alt="" >
+                                    </a>
+                                </div>
+                            </div>
                             <div class="login-bg">
                                 <div class="container col-md-4 col-md-offset-4">
                                     <?php if(!empty($this->session->flashdata('msg'))){

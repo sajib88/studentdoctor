@@ -1,3 +1,11 @@
+<div class="advertise_div col-md-12">
+    <div class="inner-item">
+        <a href="#">
+            <img class="center-block img-responsive"  src="<?php echo base_url().'comp/img/leaderboard.gif' ?>" alt="" >
+        </a>
+    </div>
+</div>
+
 
 <div id="footer" class="visible-xs">
     <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">

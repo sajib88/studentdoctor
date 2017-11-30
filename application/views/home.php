@@ -181,6 +181,16 @@
 <!--end Lending style-->
 
 
+    <div class="advertise_div col-md-12">
+        <div class="inner-item">
+            <a href="#">
+                <img class="center-block img-responsive"  src="<?php echo base_url().'comp/img/adcolor.jpg' ?>" alt="" >
+            </a>
+        </div>
+    </div>
+
+
+
 
 <div class="col-md-12 text-center styletext ptop-20">
     <h4>Browse Some Of Our Awesome Features.</h4>
@@ -255,6 +265,7 @@
     </div>
 
 </section>
+
 
 <section class="content" style="background: #fff;">
     <div class="ptop-20"></div>

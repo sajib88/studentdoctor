@@ -9,7 +9,17 @@
                     <div class="tab-wrapper row">
                         <!--container start-->
                         <div class="registration-bg">
-                            <div class="container col-md-4 col-md-offset-4">
+                            <div class="advertise_div col-md-4">
+                                <div class="inner-item">
+                                    <a href="#">
+                                        <img class="center-block img-responsive"  src="<?php echo base_url().'comp/img/300x250.gif' ?>" alt="" >
+                                    </a>
+                                </div>
+
+
+                            </div>
+
+                            <div class="container col-md-4">
                                 <?php
                                 if (!empty($error)) {
                                     showErrorMessage($error);
@@ -106,6 +116,16 @@
                                     </div>
                                 </form>
 
+                            </div>
+
+                            <div class="advertise_div col-md-4">
+
+
+                                <div class="inner-item">
+                                    <a href="#">
+                                        <img class="center-block img-responsive"  src="<?php echo base_url().'comp/img/300x250.png' ?>" alt="" >
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <!--container end-->

@@ -21,7 +21,7 @@ class Dashboard extends CI_Controller {
         $data['classified'] = $this->global_model->count_row('classified');
         $data['personals'] = $this->global_model->count_row('personals');
         $data['forum'] = $this->global_model->count_row('forum_category');
-        $data['forumPost'] = $this->global_model->count_row('forum_Post');
+        $data['forumPost'] = $this->global_model->count_row('forum_post');
         //$data['photos'] = $this->global_model->count_row_where('photos', array('ref_name' => 'image_album'));
         $data['product'] = $this->global_model->count_row('product');
         //$data['ces'] = $this->global_model->count_row('ces');

@@ -74,7 +74,7 @@
                                 <b>Religion</b> <span class="pull-right "><?php echo (!empty( $layoutfull['religion']))? $layoutfull['religion']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
-                                <b>Marital status </b> <span class="pull-right "><?php echo (!empty( $layoutfull['maritalstatus']))? $layoutfull['maritalstatus']:'<span class="badge bg-red">Not Given</span>'?></span>
+                                <b>Marital Status </b> <span class="pull-right "><?php echo (!empty( $layoutfull['maritalstatus']))? $layoutfull['maritalstatus']:'<span class="badge bg-red">Not Given</span>'?></span>
                             </li>
                             <li class="list-group-item">
                                 <b>Language</b> <span class="pull-right "><?php echo (!empty( $layoutfull['lang']))? $layoutfull['lang']:'<span class="badge bg-red">Not Given</span>'?></span>
@@ -270,46 +270,10 @@
 
 
 
-                <?php if($layoutfull['primary_sounds'] != 0){?>
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <i class="fa fa-file-sound-o"></i>
-                            <h3 class="box-title">Personals Sound/audio</h3>
-                        </div>
-                        <div class="box-body">
-
-                            <audio src="<?php echo base_url() . 'assets/file/personals/' . $layoutfull['primary_sounds']; ?>" preload="auto" />
 
 
 
-                        </div>
 
-
-                    </div>
-                <?php }
-                ?>
-
-
-
-                <?php if($layoutfull['primary_files'] != 0){?>
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <i class="fa fa-file-word-o"></i>
-                            <h3 class="box-title">Personals Attachment</h3>
-                        </div>
-                        <div class="box-body">
-
-
-                            <a href="<?php echo base_url() . '/assets/file/personals/' . $layoutfull['primary_files'];?>">Download File  </a><br/>
-
-
-
-                        </div>
-
-
-                    </div>
-                <?php }
-                ?>
 
 
 

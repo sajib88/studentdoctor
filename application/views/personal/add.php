@@ -95,7 +95,7 @@ print_r($user_info);die;*/
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Marital status</label>
+                                <label>Marital Status</label>
                                 <?php $maritalstatus= array('Single','Attached','Divorced','Married','Separated','Widow','It\'s Complicated');?>
                                 <select name="maritalstatus" class="form-control chosen-select">
                                     <?php foreach ($maritalstatus as $row) {?>
@@ -304,9 +304,9 @@ print_r($user_info);die;*/
 
 
                                 <div class="col-md-6">
-                                    <div class="form-group" id="primary_file_id">
-                                        <label>Document One</span>
-                                            <input class="btn btn-default btn-cust" name="primary_files" type="file">
+                                    <div class="form-group">
+                                        <label>Video 1</label><span id='primary_video-error' class='error' for='primary_video'></span>
+                                        <input class="btn btn-default btn-cust" name="primary_videos" type="file">
                                     </div>
                                 </div>
                             </div>
@@ -323,9 +323,9 @@ print_r($user_info);die;*/
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="form-group" id="file_2">
-                                        <label>Document Two</label>
-                                        <input class="btn btn-default btn-cust" name="files2" type="file">
+                                    <div class="form-group">
+                                        <label>Videos 2</label><span id='video1-error' class='error' for='video1_video'></span>
+                                        <input class="btn btn-default btn-cust" name="videos1" type="file">
                                     </div>
                                 </div>
                             </div>
@@ -341,37 +341,9 @@ print_r($user_info);die;*/
 
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Audio 1 </label><span id='primary_audio-error' class='error' for='audio'></span>
-                                        <input class="btn btn-default btn-cust" name="primary_sounds" type="file">
-                                    </div>
-                                </div>
 
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Video 1</label><span id='primary_video-error' class='error' for='primary_video'></span>
-                                        <input class="btn btn-default btn-cust" name="primary_videos" type="file">
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Audio 2</label><span id='audio-error' class='error' for='audio'></span>
-                                        <input class="btn btn-default btn-cust" name="sounds1" type="file">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Videos 2</label><span id='video1-error' class='error' for='video1_video'></span>
-                                        <input class="btn btn-default btn-cust" name="videos1" type="file">
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                     </div>

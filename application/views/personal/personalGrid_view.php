@@ -59,6 +59,7 @@ $this->load->helper('global_helper');
                                     <li><a href="#">Intested in a <span class="pull-right"><?php echo (!empty($row['interestedin']))?$row['interestedin']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#">Country   <span class="pull-right"><?php echo (!empty( $row['country']))? countryNameByID($row['country']).'':''?></span></a></li>
                                     <li><a href="#">State <span class="pull-right"><?php echo (!empty($row['state']))?$row['state']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
+                                    <li><a href="#">Age <span class="pull-right"><?php echo (!empty($row['age']))?$row['age']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#">Body Type <span class="pull-right"><?php echo (!empty($row['body']))?$row['body']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#">Language <span class="pull-right"><?php echo (!empty($row['lang']))?$row['lang']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a class="pull-right" style="color: goldenrod;" href="<?php echo base_url('showProfile/'.$row['uid']);?>"> &nbsp Added By <?php echo getNameById($row['uid']); ?></a></li>

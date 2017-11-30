@@ -335,9 +335,9 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <div class="form-group" id="primary_file_id">
-                                            <label>Document One</label><span id='file1-error' class='error' for='file1'></span>
-                                            <input class="btn btn-default btn-cust" name="primary_files" type="file">
+                                        <div class="form-group">
+                                            <label>Video 1</label><span id='primary_video-error' class='error' for='primary_video'></span>
+                                            <input class="btn btn-default btn-cust" name="primary_videos" type="file">
                                         </div>
                                     </div>
 
@@ -364,9 +364,9 @@
 
 
                                     <div class="col-md-6">
-                                        <div class="form-group" id="file_2">
-                                            <label>Document Two</label>
-                                            <input class="btn btn-default btn-cust" name="files2" type="file">
+                                        <div class="form-group">
+                                            <label>Video 2</label><span id='video1-error' class='error' for='video1_video'></span>
+                                            <input class="btn btn-default btn-cust" name="videos1" type="file">
                                         </div>
                                     </div>
 
@@ -387,40 +387,8 @@
                                     </div>
 
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Audio 1</label><span id='primary_audio-error' class='error' for='audio'></span>
-                                            <input class="btn btn-default btn-cust" name="primary_sounds" type="file">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Video 1</label><span id='primary_video-error' class='error' for='primary_video'></span>
-                                            <input class="btn btn-default btn-cust" name="primary_videos" type="file">
-                                        </div>
-                                    </div>
 
 
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Audio 2</label><span id='audio-error' class='error' for='audio'></span>
-                                            <input class="btn btn-default btn-cust" name="sounds1" type="file">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Video 2</label><span id='video1-error' class='error' for='video1_video'></span>
-                                            <input class="btn btn-default btn-cust" name="videos1" type="file">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -24,6 +24,9 @@
                          <h3 class="box-title">Public Website Info</h3></i>
                      </div>
                      <div class="padd">
+
+
+
                          <div class="form-group">
                              <label>Your Appointment</label>
                              <select  name="appointment" class="form-control" id="appointment">
@@ -120,7 +123,8 @@
                              <textarea  name="description" value="" class="form-control"><?php echo!empty($website_info['description']) ? $website_info['description'] : ''; ?></textarea>
                          </div>
                          <div class="form-group">
-                             <label>Speciality</label>
+
+                             <label>For serach terms<span class="error">*</span></label>
                              <input name="specialty" value="<?php echo!empty($website_info['specialty']) ? $website_info['specialty'] : ''; ?>" class="form-control">
                          </div>
                          <div class="form-group">
@@ -281,14 +285,14 @@
                                  </div>
                              </div>
                              <div class="row">
-                                 <div class="col-md-6">
+                                 <div class="col-md-12">
                                      <div class="form-group" id="file_id">
                                          <label>Files</label>
                                          <input name="file1" class="btn btn-default btn-cust" type="file" >
                                          <small class="badge bg-green"> DOCX,XLS,PDF, TXT, EXCEL Format allow</small>
                                      </div>
                                  </div>
-                                 <div class="col-md-6">
+                                 <div class="col-md-12">
                                      <div class="form-group" id="file_id">
                                          <label>Files</label>
                                          <input name="file2" class="btn btn-default btn-cust" type="file">
@@ -297,14 +301,14 @@
                                  </div>
                              </div>
                              <div class="row">
-                                 <div class="col-md-6">
+                                 <div class="col-md-12">
                                      <div class="form-group">
                                          <label>Audio</label>
                                          <input name="audio" class="btn btn-default btn-cust" type="file">
                                          <small class="badge bg-green btn-cust"> MP3, OGG Format allow</small>
                                      </div>
                                  </div>
-                                 <div class="col-md-6">
+                                 <div class="col-md-12">
                                      <div class="form-group">
                                          <label>Video</label>
                                          <input name="video" class="btn btn-default btn-cust"  type="file">
@@ -416,9 +420,13 @@
                  business_email:{
                      required:true
                  },
+                 specialty:{
+                     required:true
+                 },
                  country:{
                      required:true
                  },
+
                  prof:{
                      required:true
                  },
@@ -470,6 +478,9 @@
 
                  country: {
                      required: "Public Website Country is Required",
+                 },
+                 Speciality: {
+                     required: "Add Your Speciality cancer, skin, tooth etc",
                  },
                  prof: {
                      required: "prof is Required",

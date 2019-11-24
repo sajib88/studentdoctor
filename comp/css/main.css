@@ -1,6 +1,6 @@
 /*
    ===========================================
-    
+
     Main stylesheet for Heera theme
     Author: Abhishek bhandari;
     Author Uri: abhishekbhandari.com;
@@ -14,34 +14,11 @@
   Typography
 =========================================
 */
-@font-face {
-  font-family: 'gotham bold';
-  src: url("../fonts/Gotham-Bold.eot");
-  /* IE9 Compat Modes */
-  src: url("../fonts/Gotham-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Gotham-Bold.woff2") format("woff2"), url("../fonts/GothamBold.woff") format("woff"), url("../fonts/Gotham-Bold.ttf") format("truetype"); }
-@font-face {
-  font-family: 'gotham Medium';
-  src: url("../fonts/Gotham-Medium.eot");
-  /* IE9 Compat Modes */
-  src: url("../fonts/Gotham-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/Gotham-Medium.woff2") format("woff2"), url("../fonts/GothamMedium.woff") format("woff"), url("../fonts/Gotham-Medium.ttf") format("truetype"); }
-@font-face {
-  font-family: 'gotham book';
-  src: url("../fonts/gotham-book-regular.eot");
-  /* IE9 Compat Modes */
-  src: url("../fonts/gotham-book-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/gotham-book-regular.woff2") format("woff2"), url("../fonts/gotham-book-regular.woff") format("woff"), url("../fonts/gotham-book-regular.ttf") format("truetype"); }
-@font-face {
-  font-family: 'gotham Thin';
-  src: url("../fonts/GOTHAM-THIN.ttf") format("truetype"); }
-body {
-  font-family: 'gotham Medium';
-  background: #f2f7ff;
-  color: #113058; }
 
-h1, h2 {
-  font-family: 'gotham bold'; }
+
 
 .container {
-  max-width: 1100px; }
+  max-width: 100%; }
 
 a:hover {
   /*text-decoration: none;*/ }
@@ -954,16 +931,16 @@ select.form-control {
      .con-hieght{
         height: 200px;
     }
-    
+
     .con-center{
         text-align: center;
         margin: 60px auto;
     }
-    
+
     .topSpace{
         margin-top: 40px;
     }
-    
+
     .page-title{
         margin-left: 14px;
         margin-top: -30px;

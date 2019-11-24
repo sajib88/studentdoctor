@@ -10,11 +10,7 @@
                         <!--container start-->
                         <div class="registration-bg">
                             <div class="advertise_div col-md-4">
-                                <div class="inner-item">
-                                    <a href="#">
-                                        <img class="center-block img-responsive"  src="<?php echo base_url().'comp/img/300x250.gif' ?>" alt="" >
-                                    </a>
-                                </div>
+
 
 
                             </div>
@@ -39,14 +35,18 @@
 
                                     <div class="login-wrap">
 
-                                        <div class="form-group mb-10">
-                                            <a href="<?php echo base_url('home/newaccount/fb');?>" class="btn btn-small btn-block btn-fb"><i class="pull-cnter fa fa-facebook"></i>&nbsp &nbsp Facebook Login</a>
+                                        <!--<div class="form-group mb-10">
+                                            <a href="<?php /*echo base_url('home/newaccount/fb');*/?>" class="btn btn-small btn-block btn-fb"><i class="pull-cnter fa fa-facebook"></i>&nbsp &nbsp Facebook Login</a>
                                             <h5 class="text-center">or</h5>
-                                            <a href="<?php echo base_url('home/newaccount/google_plus');?>" class="btn btn-filled btn-danger btn-block"><i class="fa fa-google-plus"></i> &nbsp; Login with Google</a>
+                                            <a href="<?php /*echo base_url('home/newaccount/google_plus');*/?>" class="btn btn-filled btn-danger btn-block"><i class="fa fa-google-plus"></i> &nbsp; Login with Google</a>
                                             <h5 class="text-center">or</h5>
                                             <div class="hr-text">
                                                 <hr>
                                             </div>
+                                        </div>-->
+
+                                        <div class="form-group mb-10">
+                                            <h4>Registration</h4>
                                         </div>
 
                                         <div  class="form-group">
@@ -94,7 +94,7 @@
                                         </div>
 
                                         <div class="form-group mb-10">
-                                        <div required="" class="g-recaptcha" data-sitekey="6LciozgUAAAAABs4Yxkpqgqq7JGayumkDLG10LBV" autofocus=""></div>
+                                        <div required="" class="g-recaptcha" data-sitekey="6Ld7p3YUAAAAAOYW5_UnkSLqyUZAzAgSe0Z7A8x3" autofocus=""></div>
                                         </div>
 
 
@@ -121,11 +121,7 @@
                             <div class="advertise_div col-md-4">
 
 
-                                <div class="inner-item">
-                                    <a href="#">
-                                        <img class="center-block img-responsive"  src="<?php echo base_url().'comp/img/300x250.png' ?>" alt="" >
-                                    </a>
-                                </div>
+
                             </div>
                         </div>
                         <!--container end-->

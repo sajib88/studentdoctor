@@ -11,6 +11,7 @@
         color: red;
     }
 </style>
+<?php $user_type = $this->session->userdata('user_type');?>
 <div id="page-content">
     <div class="content-wrapper">
         <section class="content-header">
@@ -42,10 +43,7 @@
                             <!-- /.box-header -->
                             <div class="padd">
                                 <!-- form start -->
-                                <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input disabled  name="email" value="<?php echo $user_info['email']; ?>" class="form-control">
-                                </div>
+
                                 <div class="form-group">
                                     <label>First Name</label>
                                     <input name="first_name" value="<?php echo $user_info['first_name']; ?>" class="form-control">
@@ -66,6 +64,9 @@
                                     </select>
                                 </div>
 
+
+
+                                <?php if($user_type == 100 || $user_type == 12 || $user_type == 13){ }else{ ?>
                                 <div class="form-group">
                                     <label>Professional Licensing Country</label>
                                     <input name="plc" value="<?php echo!empty($user_info['plc']) ? $user_info['plc'] : ''; ?>"  class="form-control">
@@ -86,15 +87,13 @@
                                     <input name="pln" value="<?php echo!empty($user_info['pln']) ? $user_info['pln'] : ''; ?>" class="form-control">
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input name="phone" value="<?php echo $user_info['phone']; ?>"  class="form-control">
-                                </div>
+
 
                                 <div class="form-group">
                                     <label>University / College Name</label>
                                     <input name="university_clg" value="<?php echo $user_info['university_clg']; ?>"  class="form-control">
                                 </div>
+                                <?php } ?>
 
                             </div>
                         </div>
@@ -122,30 +121,42 @@
                                 <h3 class="box-title">Basic Information</h3><i class="fa fa-user title-icon"></i>
                             </div>
                             <div class="padd">
+
                                 <div class="form-group">
-                                    <label>User Name</label>
-                                    <input name="user_name" value="<?php echo $user_info['user_name']; ?>" disabled class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input disabled  name="email" value="<?php echo $user_info['email']; ?>" class="form-control">
+                                    <label>Phone</label>
+                                    <input name="phone" value="<?php echo $user_info['phone']; ?>"  class="form-control">
                                 </div>
 
                                 <div class="form-group">
+                                    <label>Zip code / Postal code</label>
+                                    <input name="postal_code" value="<?php echo $user_info['postal_code']; ?>"  class="form-control">
+                                </div>
+                                <?php if($user_type == 100 || $user_type == 12 || $user_type == 13){ }else{ ?>
+                                    <div class="form-group">
+                                        <label>User Name</label>
+                                        <input name="user_name" value="<?php echo $user_info['user_name']; ?>"  class="form-control">
+                                    </div>
+                                <div class="form-group">
                                     <label>Profession Type</label>
-                                    <select disabled name="profession" class="form-control">
+                                    <select disabled onchange="getpro(this)"  name="profession" class="form-control">
 
                                         <?php
                                         if (is_array($profession)) {
                                             foreach ($profession as $row) {
                                                 ?>
-                                                <option <?php if ($row->id == $user_info['profession']) echo 'selected'; ?>  value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
+                                                <option <?php if ($row->id == $user_info['parent_profession']) echo 'selected'; ?>  value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
                                                 <?php
                                             }
                                         }
                                         ?>
                                     </select>
                                 </div>
+
+
+
+
+
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -192,6 +203,8 @@
                                     <label>City</label>
                                     <input name="city" value="<?php echo!empty($user_info['city']) ? $user_info['city'] : ''; ?>"  class="form-control">
                                 </div>
+
+
                             </div>
                         </div>
                         <!-- /.box -->
@@ -292,7 +305,7 @@
         var da = {state: value};
         $.ajax({
             type: 'POST',
-            url: base_url + "public_web/publicweb/getStateByAjax",
+            url: base_url + "profile/Profile/getStateByAjax",
             data: da,
             dataType: "text",
             success: function(resultData) {
@@ -301,5 +314,38 @@
         });
 
     }
+
+</script>
+
+<script>
+
+    function getpro(sel) {
+        var value = sel.value;
+        var base_url = '<?php echo base_url() ?>';
+        var da = {pro: value};
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + "Search/getProByAjax",
+            data: da,
+            dataType: "text",
+            success: function(resultData) {
+                $("#pro").html(resultData);
+            }
+
+        });
+
+    }
+
+
+
+
+    document.getElementById('getsubpro').value = <?php echo $user_info['profession_sub']; ?>;
+
+
+
+
 
 </script>

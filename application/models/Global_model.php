@@ -503,8 +503,8 @@ class Global_model extends CI_Model {
     }
 
     public function getPublicSearchData($data, $limit = FALSE, $order_by = FALSE) {
-        $this->db->select('u.id, u.profession,u.first_name,u.last_name,u.user_name,u.email, u.profilepicture as photo,u.gender,u.phone,u.country,u.state,u.city,
-                            public_website.business_name,public_website.appointment');
+        $this->db->select('u.id, u.profession,u.parent_profession,u.first_name,u.last_name,u.user_name,u.email, u.profilepicture as photo,u.gender,u.phone,u.country,u.state,u.city,
+                            public_website.business_name,public_website.appointment,public_website.specialty,public_website.appointment,public_website.country');
         $this->db->from('users as u');
         $this->db->join('public_website', 'u.id = public_website.user_id' );
 
@@ -519,8 +519,28 @@ class Global_model extends CI_Model {
 
         if (!empty($data['profession'])) {
 
-            $this->db->where('u.profession', $data['profession']);
+            $this->db->where('u.parent_profession', $data['profession']);
         }
+
+        if (!empty($data['sub_pro'])) {
+
+            $this->db->where('u.profession', $data['sub_pro']);
+        }
+
+        if (!empty($data['postal'])) {
+
+            $this->db->where('postal', $data['postal']);
+        }
+
+        if (!empty($data['specialty'])) {
+
+            $this->db->like('specialty', $data['specialty']);
+        }
+
+
+
+
+
         if (!empty($limit)) {
 
             $this->db->limit($limit['limit'], $limit['start']);
@@ -638,15 +658,6 @@ class Global_model extends CI_Model {
             $this->db->where('profession', $data['profession']);
         }
 
-        if (!empty($data['first_name'])) {
-
-            $this->db->where('first_name', $data['first_name']);
-        }
-
-        if (!empty($data['last_name'])) {
-
-            $this->db->where('last_name', $data['last_name']);
-        }
 
         if (!empty($limit)) {
 
@@ -668,6 +679,56 @@ class Global_model extends CI_Model {
         }
         //return $query;
     }
+
+
+    public function flip_profile_search_data($table, $data, $limit = FALSE, $order_by = FALSE) {
+        $this->db->select('*')->from($table);
+
+        if (!empty($data['country'])) {
+
+            $this->db->where('country', $data['country']);
+        }
+        if (!empty($data['state'])) {
+
+            $this->db->like('state', $data['state']);
+        }
+
+        if (!empty($data['city'])) {
+
+            $this->db->like('city', $data['city']);
+        }
+        if (!empty($data['parent_profession'])) {
+
+            $this->db->where('parent_profession', $data['parent_profession']);
+        }
+
+        if (!empty($data['profession'])) {
+
+            $this->db->where('profession', $data['profession']);
+        }
+
+
+        if (!empty($limit)) {
+
+            $this->db->limit($limit['limit'], $limit['start']);
+        }
+
+        if (!empty($order_by)) {
+            $this->db->order_by($order_by['filed'], $order_by['order']);
+        }
+
+        $query = $this->db->get();
+
+        //echo $this->db->last_query();exit();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+        //return $query;
+    }
+
 
     public function get_classified_search_data($table, $data, $limit = FALSE, $order_by = FALSE) {
         $this->db->select('*')->from($table);
@@ -793,11 +854,39 @@ class Global_model extends CI_Model {
             }
         }
 
-        ///echo $this->db->last_query();exit();
+
 
 
         return $productList;
     }
+
+
+    public function getViewByProfessionpersonal($table, $profession,$iam, $interest){
+        $productList = array();
+        $this->db->order_by("$table" ."."."id", "DESC");
+        $sql = $this->db->select('*')
+            ->from($table)
+            ->where('iam=', $iam)
+            ->where('interestedin=', $interest)
+            ->get();
+        $array=$sql->result_array();
+        foreach ($array as $row){
+            if($row['profession_view'] != null){
+                $professions = $row['profession_view'];
+                $testPro = explode(',',$professions);
+                $pro = 0;
+                if (in_array($profession, $testPro) || $row['profession_view'] == 0) {
+                    $productList[] = $row;
+                }
+            }
+        }
+
+
+
+
+        return $productList;
+    }
+
 
     public function getBlogByProfession($table, $profession){
         $productList = array();
@@ -824,6 +913,11 @@ class Global_model extends CI_Model {
         return $productList;
     }
 
+
+
+
+
+
     public function get_message($id){
         $this->db->select('u.profilepicture, m.id, m.subject, m.message, m.timestamp');
         $this->db->from('users as u');
@@ -838,7 +932,190 @@ class Global_model extends CI_Model {
         }
     }
 
+    public function get_message_flip($id){
+        $this->db->select('u.profilepicture,u.uid, m.id, m.subject, m.message, m.timestamp');
+        $this->db->from('flip_users as u');
+        $this->db->join('flip_messages as m', 'u.uid = m.receiver_id' );
+        $this->db->where('u.uid', $id);
+        $this->db->where('m.status', '0');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
 
+
+    function is_email_available($email)
+    {
+        $this->db->where('email', $email);
+        $query = $this->db->get("users");
+        if($query->num_rows() > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public function get_search_profession(){
+        $this->db->select('*');
+        $this->db->from('profession as p');
+        $this->db->where_in('p.id', array('8','3','4','11','2','9','10','7','14'));
+        $this->db->order_by("CASE p.name
+                                    WHEN 'Doctors (Physician M.D.)' THEN 0
+                                    WHEN 'Dentist' THEN 1
+                                     WHEN 'Optometrist' THEN 2
+                                      WHEN 'Veterinarian' THEN 3
+                                       WHEN 'Dentist' THEN 4
+                                        WHEN 'Chiropractor' THEN 5
+                                         WHEN 'Podiatrist' THEN 6
+                                          WHEN 'Pharmacist' THEN 7
+                                            WHEN 'Hospitals' THEN 8
+                                           WHEN 'Lawyers (Attorney)' THEN 9
+                                    ELSE 9
+                                END, p.name asc",FALSE);
+
+
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    public function get_sub_all($id){
+        $this->db->select('*');
+        $this->db->from('profession as p');
+        $this->db->order_by('p.sub_prof_id', 'ASC');
+        $this->db->where('sub_prof_id',$id);
+        $this->db->order_by("CASE p.name
+                                    WHEN 'Family Medicine' THEN 1
+                                    WHEN 'Internal Medicine' THEN 2
+                                    WHEN 'Family Law & Marital' THEN 3
+                                    WHEN 'Life sciences/Agricultural sciences/natural resources' THEN 4
+                                    WHEN 'Life sciences/Biological/biomedical sciences' THEN 5
+                                    WHEN 'Life sciences/Health sciences' THEN 6
+                                    WHEN 'Engineering' THEN 7
+                                    WHEN 'Computer and information sciences' THEN 8
+                                    WHEN 'Mathematics' THEN 9
+                                    WHEN 'Physical sciences/Astronomy' THEN 10
+                                    WHEN 'Physical sciences/Atmospheric science and meteorology' THEN 11
+                                    WHEN 'Physical sciences/Chemistry' THEN 12
+                                    WHEN 'Physical sciences/Geological and Earth sciences' THEN 13
+                                    WHEN 'Physical sciences/Physics' THEN 14
+                                    WHEN 'Physical sciences/Ocean/marine sciences' THEN 15
+                                    WHEN 'Psychology' THEN 16
+                                    WHEN 'Social sciences' THEN 17
+                                    WHEN 'Humanities/History' THEN 18
+                                    WHEN 'Humanities/Letters' THEN 19
+                                    WHEN 'Humanities/Foreign languages and literature' THEN 20
+                                    WHEN 'Humanities/Other humanities' THEN 21
+                                    WHEN 'Education' THEN 22
+                                    WHEN 'Education/Teacher education' THEN 23
+                                    WHEN 'Education/Teaching fields' THEN 24
+                                    WHEN 'Other education' THEN 25
+                                    WHEN 'Business management/administration' THEN 26
+                                    WHEN 'Communication' THEN 27
+                                    
+                                
+                                    WHEN 'Fields Not Elsewhere Classified' THEN 234
+                                   
+                                    ELSE 28
+                                END, p.name asc",FALSE);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+
+    public function get_sub_phd($id){
+        $this->db->select('*');
+        $this->db->from('profession as p');
+        $this->db->order_by('p.sub_phd_id', 'ASC');
+        $this->db->where('sub_phd_id',$id);
+        $this->db->order_by('p.id', 'ASC');
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+
+    public function back_serch_profession(){
+        $this->db->select('*');
+        $this->db->from('profession as p');
+        $this->db->where_in('p.id', array('2','3','4','5','6','7','8','9','10','11','14'));
+        $this->db->order_by("CASE p.name
+                                    WHEN 'Doctors (Physician M.D.)' THEN 0
+                                    WHEN 'Dentist' THEN 1
+                                     WHEN 'Optometrist' THEN 2
+                                      WHEN 'Veterinarian' THEN 3
+                                       WHEN 'Dentist' THEN 4
+                                        WHEN 'Chiropractor' THEN 5
+                                         WHEN 'Podiatrist' THEN 6
+                                          WHEN 'Pharmacist' THEN 7
+                                           WHEN 'Hospitals' THEN 8
+                                           WHEN 'Lawyer (Attorney)' THEN 9
+                                    ELSE 9
+                                END, p.name asc",FALSE);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+
+    public function profession_by_profession(){
+        $this->db->select('*');
+        $this->db->from('profession as p');
+        $this->db->order_by('p.sub_prof_id', 'ASC');
+        $this->db->where_in('p.id', array('2','3','4','6','7','8','9','11','14'));
+        $this->db->where('sub_prof_id','0');
+        $this->db->where('sub_phd_id','0');
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            return false;
+        }
+    }
+
+    public function profession_get(){
+        $this->db->select('*');
+        $this->db->from('profession as p');
+        $this->db->order_by('p.sub_prof_id', 'ASC');
+        $this->db->where('sub_prof_id','0');
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+
+    function search_special($title){
+        $this->db->like('specialty', $title , 'both');
+        $this->db->order_by('specialty', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('public_website')->result();
+    }
 
 
 

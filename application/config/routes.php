@@ -67,7 +67,12 @@ $route['pub/add'] = 'public_web/publicweb/index';
 $route['pub/viewedit'] = 'public_web/publicweb/viewForEdit';
 $route['pub/details'] = 'public_web/publicweb/view';
 $route['pub/edit'] = 'public_web/publicweb/edit';
-
+///private_web Route set
+$route['pri/add'] = 'private_web/Privateweb/index';
+$route['pri/viewedit'] = 'private_web/Privateweb/viewForEdit';
+$route['pri/details/(:any)'] = 'private_web/Privateweb/view/$1';
+$route['pri/edit'] = 'private_web/Privateweb/edit';
+$route['pri/search'] = 'private_web/Privateweb/search';
 
 ///ces Route set
 $route['ces/add'] = 'ces/ces_controller/index';
@@ -82,13 +87,14 @@ $route['ces/detail/(:any)'] = 'ces/ces_controller/detail/$1';
 
 
 ///front blog route
-$route['blog'] = 'blog/Postlist';
-$route['blog/(:any)'] = 'blog/Postlist/singlepost/$1';
-$route['blog/(:any)/(:any)'] = 'blog/Postlist/singlepost1/$1/$2';
+$route['article'] = 'blog/Postlist';
+$route['article/(:any)'] = 'blog/Postlist/singlepost/$1';
+$route['article/(:any)/(:any)'] = 'blog/Postlist/singlepost1/$1/$2';
 
 //Public Search
 $route['publicsearch'] = 'doctor/DocController/publicSearch';
 $route['publicsearch/detail/(:any)'] = 'doctor/DocController/details_profile/$1';
+
 
 
 //personals
@@ -137,8 +143,8 @@ $route['forum/board'] = 'forum/forum/index';
 $route['forum/posts'] = 'forum/forum/allmypostlist';
 $route['forum/comments'] = 'forum/forum/allmycomments';
 $route['forum/addCategory'] = 'forum/forum/addcat';
-$route['forum/listcat/(:any)'] = 'Forum/forum/listcat/$1';
-$route['forum/discuss/(:any)'] = 'Forum/forum/discuss/$1';
+$route['forum/listcat/(:any)'] = 'forum/forum/listcat/$1';
+$route['forum/discuss/(:any)'] = 'forum/forum/discuss/$1';
 $route['forum/editPost/(:any)'] = 'forum/forum/editPost/$1';
 $route['forum/editComment/(:any)'] = 'forum/forum/editComment/$1';
 
@@ -150,13 +156,94 @@ $route['product/search'] = 'product/products/search';
 $route['product/details/(:any)'] = 'product/products/layoutfull/$1';
 $route['product/edit/(:any)'] = 'product/products/edit/$1';
 
+
+//Advertse
+$route['advertise/add'] = 'advertise/Advertise/add';
+$route['advertise/list'] = 'advertise/Advertise/myadd';
+$route['advertise/edit/(:any)'] = 'advertise/Advertise/edit/$1';
+
+
+
+
 ///search profile detail
-$route['showProfile/(:any)'] = 'profile/profile/showThisProfile/$1';
+$route['showProfile/(:any)'] = 'profile/Profile/showThisProfile/$1';
+
+
+///profile verifty stage 1
+$route['step1'] = 'profile/Profile/user_varify_1';
+
+
+///Flip profile
+$route['flip'] = 'flip/Flip/index';
+$route['FlipDashboard'] = 'flip/FlipDashboard';
+$route['profile/flipprofile'] = 'flip/Flip/viewProfile';
+$route['profile/flipupdate'] = 'flip/Flip/update';
+$route['flipshowProfile/(:any)'] = 'flip/Flip/showThisProfile/$1';
+$route['flipprofile/search'] = 'flip/Flip/search';
+
+
+//// flip blog
+$route['flipblog/add'] = 'flip/Flipblog/create';
+$route['flipblog/bloglist'] = 'flip/Flipblog/bloglist';
+$route['flipblog/mybloglist'] = 'flip/Flipblog/insideblogmylist';
+$route['flipblog/edit/(:any)'] = 'flip/Flipblog/edit/$1';
+$route['flipblog/details/(:any)'] = 'flip/Flipblog/insideblogsinglepost/$1';
 
 
 
 
+//classified
+$route['flipclassifieds/add'] = 'flip/Flipclassifieds/add';
+$route['flipclassifieds/viewmyclassfied'] = 'flip/flipclassifieds/viewmyclassfied';
+$route['flipclassifieds/all'] = 'flip/flipclassifieds/viewall';
+$route['flipclassifieds/search'] = 'flip/flipclassifieds/search';
+$route['flipclassifieds/layoutfull/(:any)'] = 'flip/flipclassifieds/layoutfull/$1';
+$route['flipclassifieds/edit/(:any)'] = 'flip/flipclassifieds/edit/$1';
 
 
+//personals
+$route['flippersonal/add'] = 'flip/FlipPersonal/add';
+$route['flippersonal/all'] = 'flip/FlipPersonal/grid';
+$route['flippersonal/list'] = 'flip/FlipPersonal/all';
+$route['flippersonal/search'] = 'flip/FlipPersonal/search';
+$route['flippersonal/detail/(:any)'] = 'flip/FlipPersonal/detail/$1';
+$route['flippersonal/edit/(:any)'] = 'flip/FlipPersonal/edit/$1';
 
 
+//events
+$route['flipevent/add'] = 'flip/FlipEvent/index';
+$route['flipevent/viewall'] = 'flip/FlipEvent/viewall';
+$route['flipevent/myevent'] = 'flip/FlipEvent/myevent';
+$route['flipevent/search'] = 'flip/FlipEvent/search';
+$route['flipevent/edit/(:any)'] = 'flip/FlipEvent/edit/$1';
+$route['flipevent/layoutfull/(:any)'] = 'flip/FlipEvent/layoutfull/$1';
+
+
+//group
+$route['FlipGroup/add'] = 'flip/FlipGroup/index';
+$route['FlipGroup/viewall'] = 'flip/FlipGroup/viewall';
+$route['FlipGroup/mygroup'] = 'flip/FlipGroup/mygroup';
+$route['FlipGroup/search'] = 'flip/FlipGroup/search';
+$route['FlipGroup/edit/(:any)'] = 'flip/FlipGroup/edit/$1';
+$route['FlipGroup/layoutfull/(:any)'] = 'flip/FlipGroup/layoutfull/$1';
+
+//forum
+$route['FlipForum/board'] = 'flip/FlipForum/index';
+$route['FlipForum/posts'] = 'flip/FlipForum/allmypostlist';
+$route['FlipForum/comments'] = 'flip/FlipForum/allmycomments';
+$route['FlipForum/addCategory'] = 'flip/FlipForum/addcat';
+$route['FlipForum/listcat/(:any)'] = 'flip/FlipForum/listcat/$1';
+$route['FlipForum/discuss/(:any)'] = 'flip/FlipForum/discuss/$1';
+$route['FlipForum/editPost/(:any)'] = 'flip/FlipForum/editPost/$1';
+$route['FlipForum/editComment/(:any)'] = 'flip/FlipForum/editComment/$1';
+
+////msg
+
+
+$route['FlipMessage'] = 'flip/FlipMessage';
+$route['FlipMessage/compose'] = 'flip/FlipMessage/compose';
+$route['FlipMessage/sentMessages'] = 'flip/FlipMessage/sentMessages';
+$route['FlipMessage/read/(:any)'] = 'flip/FlipMessage/read/$1';
+$route['FlipMessage/reply/(:any)'] = 'flip/FlipMessage/reply/$1';
+
+$route['Search_Appointment'] = 'Search/Search_Appointment';

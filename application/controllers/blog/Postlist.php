@@ -23,44 +23,29 @@ class Postlist extends CI_Controller
     public function index() {
         
         $data = array();
+        $data['page_title'] = 'Article';
+        $loginId = $this->session->userdata('login_id');
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
 
-
-       
-
-        // Get 6 items from arstechnica
-
-         // $data['hello'] = $this->rssparser->set_feed_url('http://www.espncricinfo.com/rss/content/story/feeds/0.xml')->set_cache_life(30)->getFeed(6);
-
-        // foreach ($rss as $item)
-        // {
-        //     echo '<h6>1'.$item['title'].'</h6>';
-        //     echo '<br />';
-        //     echo $item['description'];
-        //     echo '<br />';
-        //     echo $item['author'];
-        //     echo '<br />';
-        //     echo $item['pubDate'];
-        //      echo '<br />';
-        //     echo $item['link'];
-        //     echo '<br />';echo '<br />';echo '<br />';
-        // }
-        //$this->db->order_by("id", "DESC");
-        //$data_id = 'id';
-        //$data_order = 'DESC';
         $data['recent_post'] = $this->global_model->get('blog_front', False, array('limit' => '5', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
-       $data['allblog'] = $this->global_model->get('blog_front', False, array('limit' => '5', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
+        $data['allblog'] = $this->global_model->get('blog_front', False, array('limit' => '5', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
         $data['blog_category'] = $this->global_model->get('blog_front');
-        //$data['join'] = $this->global_model->get_with_join('users', 'appointment', 'id', 'users.id = appointment.doctor_id');
 
-        //$this->load->view('header', $data);
-       /// $this->load->view('home',$data);
-        //$this->load->view('footer');
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 14;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
 
-        //$this->get_ars();
-
-        $this->load->view('header_guest_home', $data);
+        $this->load->view('header', $data);
         $this->load->view('blog/bloglist', $data);
-        $this->load->view('foother_guest.php', $data);
+        $this->load->view('footer.php', $data);
 
 
     }
@@ -68,17 +53,21 @@ class Postlist extends CI_Controller
       public function singlepost1($str_slug = FALSE, $id = ''){
         $data = array();
         $data['page_title'] = 'Blogs';
-         
-        //$id = $this->uri->segment('4');
+          $loginId = $this->session->userdata('login_id');
+          $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+
+
+
+          //$id = $this->uri->segment('4');
           $data['blog_category'] = $this->global_model->get('blog_front');
 
         $data['single_post'] = $this->global_model->get_data('blog_front', array('id' => $id));
           $data['recent_post'] = $this->global_model->get('blog_front', False, array('limit' => '3', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
         //$data['singlepost'] = $this->global_model->get('blog_front');
 
-        $this->load->view('header_guest_home', $data);
+        $this->load->view('header', $data);
         $this->load->view('blog/blog', $data);
-        $this->load->view('foother_guest.php', $data);
+        $this->load->view('footer.php', $data);
     }
 
 
@@ -109,7 +98,7 @@ class Postlist extends CI_Controller
             $this->load->helper('url');
 
             $str_slug = url_title($row->title, 'dash', TRUE);
-            redirect(base_url("blog/{$str_slug}/{$int_id}"));
+            redirect(base_url("article/{$str_slug}/{$int_id}"));
 
         }
 

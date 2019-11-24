@@ -19,7 +19,7 @@
 
 <section class="content-header">
         <h1><i class="fa fa-square-o"></i>
-            All Blog
+            Blog List View
         </h1>
     </section>
 
@@ -62,7 +62,7 @@
                     <div class="widget-user-header ">
                         <div class="widget-user-image text-center">
                             </br>
-                            <img src="<?php echo base_url() . 'assets/file/insideblog/' .$row['primary_image']; ?>" alt="" width="170" height="170" class="blog-image" />
+                            <img src="<?php echo base_url() . 'assets/file/insideblog/' .$row['primary_image']; ?>" alt="" width="100px" height="100px" class="img-size blog-image" />
                         </div>
                         </br>
                     </div>

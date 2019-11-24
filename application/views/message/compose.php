@@ -23,11 +23,10 @@
             <?php } $this->session->unset_userdata('message'); ?>
 
             <div class="col-md-3">
-                <a href="<?php echo base_url('message');?>" class="btn btn-danger btn-block margin-bottom">Back to Inbox</a>
 
                 <div class="box box-solid">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Folders</h3>
+                        <h3 class="box-title">Message Panel</h3>
 
                         <div class="box-tools">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -36,13 +35,11 @@
                     </div>
                     <div class="box-body no-padding">
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="<?php echo base_url('message');?>"><i class="fa fa-inbox"></i> Inbox
+                            <li class="<?php if($this->uri->segment(2)=='compose'){echo 'active';}?>"><a href="<?php echo base_url('message/compose');?>"><i class="fa fa-paint-"></i> Compose
                                     <span class="label label-primary pull-right"></span></a></li>
-                            <li><a href="<?php echo base_url('message/sentMessages');?>"><i class="fa fa-envelope-o"></i> Sent</a></li>
-<!--                            <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>-->
-<!--                            <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>-->
-<!--                            </li>-->
-<!--                            <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>-->
+                            <li class="<?php if($this->uri->segment(2)=='message'){echo 'active';}?>"><a href="<?php echo base_url('message');?>"><i class="fa fa-inbox"></i> Inbox
+                                    <span class="label label-primary pull-right"></span></a></li>
+                            <li class="<?php if($this->uri->segment(1)=='message' && $this->uri->segment(2)=='sentMessages'){echo 'active';}?>"><a href="<?php echo base_url('message/sentMessages');?>"><i class="fa fa-envelope-o"></i> Sent</a></li>
                         </ul>
                     </div>
                     <!-- /.box-body -->
@@ -50,6 +47,20 @@
                 <!-- /. box -->
             </div>
             <!-- /.col -->
+
+
+            <?php
+
+            if($condition_check == 100 || $condition_check == 13 || $condition_check == 12 || $condition_check == 7)
+            { ?>
+            <div class="col-md-9">
+                <div class="alert alert-warning text-center">Not Permitted Sent The Message <i class="fa fa-info"></i></div>
+            </div>
+            <?php }
+            else
+                {
+
+                ?>
             <div class="col-md-9">
                 <form role="form" method="post" id="message_form" enctype="multipart/form-data" action="<?php echo base_url('message/compose'); ?>">
                 <div class="box box-primary">
@@ -106,6 +117,10 @@
                 </form>
                 <!-- /. box -->
             </div>
+
+
+            <?php } ?>
+
             <!-- /.col -->
         </div>
         <!-- /.row -->

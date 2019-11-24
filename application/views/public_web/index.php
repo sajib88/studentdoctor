@@ -2,16 +2,28 @@
 
 </style>
 
+
+<?php if(!empty($advertise)){ ?>
+    <?php foreach($advertise as $row):?>
+        <section class="panel">
+            <div class="panel-body">
+                <img  src="<?php echo base_url() . '/assets/file/advertise/' .$row['ad_image']; ?>" class="img-responsive"/>
+            </div>
+        </section>
+    <?php endforeach;?>
+<?php }else{?>
+<?php }?>
+
 <div class="content-wrapper">
-    
+
     <section class="content-header">
       <h1><i class="fa fa-user-md"></i>
         New My Website
       </h1>
     </section>
-    
+
     <section class="content">
-   
+
     <!-- /.row -->
     <div class="row">
         <form role="form" method="post" id="website" enctype="multipart/form-data" action="<?php echo base_url('public_web/Publicweb/index'); ?>">
@@ -23,6 +35,9 @@
                         <h3 class="box-title">My Website Info</h3></i>
                     </div>
                     <div class="padd">
+
+
+
                         <div class="form-group">
                             <label>Offering Appointments Via Online?</label>
                             <select name="appointment" class="form-control" id="appointment" >
@@ -137,7 +152,7 @@
                             <textarea  name="description" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Speciality</label>
+                            <label>For serach terms</label>
                             <input name="specialty" value="<?php echo set_value('specialty'); ?>" class="form-control">
                         </div>
                         <div class="form-group">
@@ -253,7 +268,7 @@
                             <div class="col-md-6">
                                 <div class="form-group" id="photo_id">
                                     <label>Photo</label>
-                                    <small class=""><i class="fa fa-star-o"></i> Must be Upload 1 Image </small>
+                                    <small class=""><i class="fa fa-star-o"></i>  </small>
                                     <input name="photo1" class="btn btn-default btn-cust" type="file" required>
                                     <small class="badge bg-green"> JPG, GIF, PNG Format Allow</small>
                                 </div>
@@ -267,30 +282,30 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group" id="file_id">
                                     <label>Files</label>
                                     <input name="file1" class="btn btn-default btn-cust" type="file" >
-                                    <small class="badge bg-green"> DOCX,XLS,PDF, TXT, EXCEL Format Allow</small>
+                                    <small class="badge bg-green"> DOCX, XLS, PDF, TXT, EXCEL Format Allow</small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group" id="file_id">
                                     <label>Files</label>
                                     <input name="file2" class="btn btn-default btn-cust" type="file">
-                                    <small class="badge bg-green"> DOCX,XLS,PDF, TXT, EXCEL Format Allow</small>
+                                    <small class="badge bg-green"> DOCX, XLS, PDF, TXT, EXCEL Format Allow</small>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Audio</label>
                                     <input name="audio" class="btn btn-default btn-cust" type="file">
                                     <small class="badge bg-green btn-cust"> MP3, OGG Format Allow</small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Video</label>
                                     <input name="video" class="btn btn-default btn-cust"  type="file">
@@ -392,6 +407,9 @@
             country:{
                 required:true
             },
+            specialty:{
+                required:true
+            },
             prof:{
                 required:true
             },
@@ -427,7 +445,7 @@
         messages:{
             appointment: {
                 required: "Set Appointment Yes / No ",},
-            
+
             title: {
                 required: "Title is Required",},
 
@@ -443,6 +461,9 @@
 
             country: {
                 required: "Public Website Country is Required",
+            },
+            specialty: {
+                required: "Add Your Speciality cancer, skin, tooth etc",
             },
             prof: {
                 required: "prof is Required",

@@ -11,11 +11,25 @@ class Publicweb extends CI_Controller {
         if (!check_login()) {
             redirect('home/login');
         }
+        if (!check_login()) {
+            redirect('home/login');
+        }
+
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        else{
+
+        }
+
     }
 
     public function index() {
 
         $data = array();
+        $data['page_title'] = 'Doctor Website';
         $data['page_title'] = 'My Web';
         $data['tabActive'] = 'public';
         $data['error'] = '';
@@ -31,6 +45,18 @@ class Publicweb extends CI_Controller {
         $data['countries'] = $this->global_model->get('countries');
         $data['onlinestore'] = $this->global_model->get('store', array('created_by' => $loginId));
 
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 3;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
+        ///
         if ($this->input->post()) {
             $postData = $this->input->post();
 
@@ -170,9 +196,14 @@ class Publicweb extends CI_Controller {
         }
         $varification = $this->global_model->get_data('doctor_varification', array('user_id' => $loginId, 'is_valid' => '0'));
         $is_exist = $this->global_model->get_data('doctor_varification', array('user_id' => $loginId));
+
         //print_r($varification);die;
         //print_r($data['user_info']);die;
         //$data['profession'] = $this->global_model->get('profession');
+
+
+
+
 
         if ($this->global_model->get_data('public_website', array('user_id' => $loginId, 'profile_status' => 'public')))
         {
@@ -209,7 +240,7 @@ class Publicweb extends CI_Controller {
     public function view() {
 
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Doctor Website Page';
         $data['tabActive'] = 'public';
         $data['error'] = '';
 
@@ -264,7 +295,7 @@ class Publicweb extends CI_Controller {
 
     public function viewForEdit() {
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Doctor Website View';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -284,7 +315,7 @@ class Publicweb extends CI_Controller {
     public function edit() {
 
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Doctor Website Edit';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -323,7 +354,7 @@ class Publicweb extends CI_Controller {
 
             if ($this->form_validation->run() == true) {
                 $save['appointment'] = $postData['appointment'];
-                $save['online_store'] = $postData['online_store'];
+                //$save['online_store'] = $postData['online_store'];
                 if($save['appointment'] == 0){
                     /*$save['start_date'] = 'null';
                     $save['end_date'] = 'null';*/

@@ -40,6 +40,7 @@ class DoctorVarification extends CI_Controller {
         if(!empty($id) && $is_valid == '0'){
             $update['is_valid'] = '1';
             $user_update['is_varified'] = '1';
+            $user_update['user_level'] = '3';
             $this->global_model->update('doctor_varification', $update, array('id'=>$id));
             $this->global_model->update('users', $user_update, array('id'=>$user_id));
             $config['charset'] = 'utf-8';
@@ -47,16 +48,16 @@ class DoctorVarification extends CI_Controller {
             $config['newline'] = '\r\n';
             $this->load->library('email');
             $this->email->initialize($config);
-            $this->email->from('join@allstudentdoctors.com', 'AllStudeneDoctors.com');
+            $this->email->from('info@cricpop.com', 'ForAllDoctors.com');
             $this->email->to($email);
-            $this->email->subject('Varification Email');
+            $this->email->subject('Level 3 Verification Email');
             $this->email->message(
                 "Hello ".urldecode($full_name)."\r\n\n"."Your email address is ". $email."\r\n\nThe NPI number you provided is " . $npi ."\r\n\n" .
-                "We examined your information to varify your profile. And your profile varified successfully. Now you can publish your site." . "\n\n Thank you \n AllStudeneDoctors.com"
+                "We examined your information to varify your profile. And your profile verified successfully. Now you have full Access our Website." . "\n\n Thank you \n ForAllDoctors.com"
 
             );
             if($this->email->send()) {
-                $this->session->set_flashdata('message', 'Profile Varification successfully done');
+                $this->session->set_flashdata('message', 'Profile Verification successfully done');
                 redirect(base_url('admin/DoctorVarification'));
             }
 

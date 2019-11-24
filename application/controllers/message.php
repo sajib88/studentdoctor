@@ -18,11 +18,24 @@ class Message extends CI_Controller
         $this->load->helper('global');
         $this->load->library('upload');
         $this->load->library('Resizeimg');
+        $this->load->library('encrypt');
+
         if (!check_login()) {
             redirect('home/login');
         }
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger form-error">', '</div>');
 
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        elseif($level ['user_level'] == '2'){
+            redirect('pub/add');
+        }
+        else{
+
+        }
 
     }
 
@@ -36,6 +49,19 @@ class Message extends CI_Controller
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
 
         $data['login_id'] = $loginId;
+
+
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 5;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
 
         $this->load->view('header', $data);
         $this->load->view('message/message', $data);
@@ -64,7 +90,7 @@ class Message extends CI_Controller
         $data = array();
         $data['page_title'] = 'Compose';
         $loginId = $this->session->userdata('login_id');
-        $data['profession'] = $this->global_model->get('profession');
+        $data['profession'] = $this->global_model->back_serch_profession();
 
         if ($this->input->post()) {
             $postData = $this->input->post();
@@ -76,7 +102,53 @@ class Message extends CI_Controller
                 $save['sender_id'] = $loginId;
                 $save['receiver_id'] = $postData['receiver_id'];
                 $save['subject'] = $postData['subject'];
-                $save['message'] = $postData['message'];
+                $save['message'] = $this->encrypt->encode($postData['message']);
+                $save['timestamp'] = date('Y-m-d H:i:s', time());
+
+                uploadMessage();
+                //// File UPLOAD
+                if ($this->upload->do_upload('attachment')) {
+                    $fileInfo = $this->upload->data();
+                    $file1['name'] = $fileInfo['file_name'];
+                    $save['attachment'] = $file1['name'];
+                }
+                if ($ref_id = $this->global_model->insert('messages', $save)) {
+                    $this->session->set_flashdata('message', 'Message sent successfully.');
+                }
+            }
+
+        }
+
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+
+        $data['login_id'] = $loginId;
+
+        $data['condition_check']= $data['user_info']['parent_profession'];
+
+        $this->load->view('header', $data);
+        $this->load->view('message/compose', $data);
+        $this->load->view('footer', $data);
+
+    }
+
+    public function reply($mid){
+        $data = array();
+        $data['page_title'] = 'Compose';
+        $loginId = $this->session->userdata('login_id');
+        $data['profession'] = $this->global_model->get('profession');
+        $data['read_message'] = $this->global_model->get_data('messages', array('id' => $mid));
+
+        if ($this->input->post()) {
+            $postData = $this->input->post();
+            $this->form_validation->set_rules('subject', 'subject', 'trim');
+            $this->form_validation->set_rules('message', 'message', 'trim');
+
+            if ($this->form_validation->run() == true) {
+                $save['profession'] = $postData['profession'];
+                $save['sender_id'] = $loginId;
+                $save['receiver_id'] = $postData['receiver_id'];
+                $save['subject'] = $postData['subject'];
+                $save['message'] = $this->encrypt->encode($postData['message']);
                 $save['timestamp'] = date('Y-m-d H:i:s', time());
 
                 uploadMessage();
@@ -98,10 +170,12 @@ class Message extends CI_Controller
         $data['login_id'] = $loginId;
 
         $this->load->view('header', $data);
-        $this->load->view('message/compose', $data);
+        $this->load->view('message/reply', $data);
         $this->load->view('footer', $data);
 
     }
+
+
 
     public function read($id="", $status=""){
         $data = array();
@@ -125,7 +199,7 @@ class Message extends CI_Controller
     public function getProfessionByAjax() {
         $data = array();
         $id = $this->input->post('state');
-        $user= $this->global_model->get('users', array('profession' => $id));
+        $user= $this->global_model->get('users', array('parent_profession' => $id));
         $data['get_users'] = $user;
         echo $this->load->view('users', $data, TRUE);
         exit;

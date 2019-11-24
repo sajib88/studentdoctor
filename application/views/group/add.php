@@ -123,6 +123,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-12">
                 <div class="box box-primary">
                     <!-- /.box-header -->
@@ -130,30 +131,49 @@
                         <div class="">
                             <div class="row">
                                 <div class="col-lg-12 professionView">
-                                    <div class="col-lg-6">
-                                        <label><h4>Select profession(s) permitted to see your group. </h4></label>
-                                    </div>
-                                    <div class="col-lg-6 ">
-                                        <div class="form-group">
-                                            <select multiple name="profession_view[]" class="selectpicker form-control">
-                                                <?php
-                                                if (is_array($profession)) {
-                                                    foreach ($profession as $row) {
+
+                                    <label><h4>Select profession(s) permitted to see your group. </h4></label>
+                                    <div class="form-group">
+                                        <select id="test-select-4" name="profession_view[]" multiple="multiple">
+                                            <?php
+                                            if (is_array($profession_by_profession)) {
+                                                foreach ($profession_by_profession as $row) {
+                                                    if($row['sub_prof_id'] == 0 && $row['sub_yes_no'] == 0 ) {
                                                         ?>
-                                                        <option  value="<?php echo $row->id; ?>"><?php echo $row->name ; ?></option>
+                                                        <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
+
                                                         <?php
+                                                    }else{
+                                                        if($row['sub_yes_no'] == 1 ){
+                                                            $subPrefession = getSubPrefessionByPreofession($row['id']);
+
+                                                            foreach ($subPrefession as $row2) {?>
+                                                                <option value="<?php echo $row2['id']; ?>" data-section="<?php echo $row['name'] ; ?>"   data-index="1"><?php echo $row2['name'] ; ?></option>
+                                                            <?php }
+                                                        }
                                                     }
+                                                    ?>
+
+                                                    <?php
+                                                    //}
+
                                                 }
-                                                ?>
-                                            </select>
-                                        </div>
+                                            }
+                                            ?>
+
+
+
+                                        </select>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
             <div class="col-md-12">
                 <div class="box box-primary">
                     <!-- /.box-header -->

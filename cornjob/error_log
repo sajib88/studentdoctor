@@ -1,0 +1,31 @@
+[24-Nov-2019 19:45:08 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:46:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:47:02 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:48:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:49:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:50:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:51:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:52:02 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:53:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:54:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:55:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:56:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:57:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:58:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 19:59:02 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:00:02 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:01:02 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:02:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:03:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:04:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:05:02 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:06:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:07:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:08:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:09:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:10:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:11:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:12:01 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home/foralldoctors/cornjob/schedule.php on line 11
+[24-Nov-2019 20:19:33 UTC] PHP Parse error:  syntax error, unexpected '$sql' (T_VARIABLE), expecting ',' or ';' in /home/foralldoctors/public_html/cornjob/schedule.php on line 42
+[24-Nov-2019 20:19:35 UTC] PHP Parse error:  syntax error, unexpected '$sql' (T_VARIABLE), expecting ',' or ';' in /home/foralldoctors/public_html/cornjob/schedule.php on line 42
+[24-Nov-2019 20:19:55 UTC] PHP Parse error:  syntax error, unexpected '$sql' (T_VARIABLE), expecting ',' or ';' in /home/foralldoctors/public_html/cornjob/schedule.php on line 42

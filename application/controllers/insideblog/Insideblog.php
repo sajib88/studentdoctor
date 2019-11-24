@@ -21,36 +21,32 @@ class Insideblog extends CI_Controller
         if (!check_login()) {
             redirect('home/login');
         }
+
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        else{
+
+        }
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger form-error">', '</div>');
 
 
     }
 
-    //  public function insidebloglist($msg=''){
-    //     $data = array();
-    //     $data['page_title'] = 'Blog';
-    //     $data['error'] = $msg;
-    //     $loginId = $this->session->userdata('login_id');
 
-    //     $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
-    //     $data['countries'] = $this->global_model->get('countries');
-    //     $data['profession'] = $this->global_model->get('profession');
-    //     //$data['main_cat'] = $this->global_model->get('classified_main_cat');
-    //     $data['login_id'] = $loginId;
-    //     $this->load->view('header', $data);
-    //     $this->load->view('insideblog/insidebloglist', $data);
-    //     $this->load->view('footer');
-
-    // }
 
 
     public function insideblogcreate($msg =''){
+
+
 
         $data = array();
         $data['page_title'] = 'Create Blogs';
         $data['error'] = $msg;
         $loginId = $this->session->userdata('login_id');
-         $data['profession'] = $this->global_model->get('profession');
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
 
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $this->form_validation->set_rules('title', 'title', 'required');
@@ -162,7 +158,21 @@ class Insideblog extends CI_Controller
 
         $data['login_id'] = $loginId;
         $data['main_cat'] = $this->global_model->get('insideblog_cat');
-         $this->load->view('header', $data);
+
+
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 9;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
+
+        $this->load->view('header', $data);
         $this->load->view('insideblog/insideblogcreate', $data);
         $this->load->view('footer', $data);
         
@@ -208,7 +218,7 @@ class Insideblog extends CI_Controller
 //        echo $date; die;
         
         $data = array();
-        $data['page_title'] = 'Blog';
+        $data['page_title'] = 'Blog List View';
         $data['error'] = $msg;
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
@@ -341,7 +351,7 @@ class Insideblog extends CI_Controller
         $data['page_title'] = 'Edit Blogs';
         $data['error'] = $msg;
         $loginId = $this->session->userdata('login_id');
-         $data['profession'] = $this->global_model->get('profession');
+
 
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $this->form_validation->set_rules('title', 'title', 'required');
@@ -448,7 +458,12 @@ class Insideblog extends CI_Controller
         $data['editblog'] = $this->global_model->get_data('insideblog', array('id' => $id));
 
         $data['main_cat'] = $this->global_model->get('insideblog_cat');
-         $this->load->view('header', $data);
+
+        //// proffesion edit ///
+        $data['profession'] = $this->global_model->get('profession');
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
+        //// proffesion edit ///
+        $this->load->view('header', $data);
         $this->load->view('insideblog/edit', $data);
         $this->load->view('footer', $data);
         

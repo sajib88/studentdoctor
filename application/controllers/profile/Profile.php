@@ -14,7 +14,7 @@ class Profile extends CI_Controller {
     public function index() {
 
         $data = array();
-        $data['page_title'] = 'Profile';
+        $data['page_title'] = 'Update Profile';
         $data['tabActive'] = 'profile';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -41,7 +41,9 @@ class Profile extends CI_Controller {
                 else {}
 
 
-
+                //$save['profession'] = $this->input->post('profession');
+                //$save['profession_sub'] = $this->input->post('sub_pro');
+                $save['user_name'] = $this->input->post('user_name');
                 $save['first_name'] = $this->input->post('first_name');
                 $save['last_name'] = $this->input->post('last_name');
                 $save['plc'] = $this->input->post('plc');
@@ -52,6 +54,7 @@ class Profile extends CI_Controller {
                 $save['country'] = $this->input->post('country');
                 $save['state'] = $this->input->post('state');
                 $save['city'] = $this->input->post('city');
+                $save['postal_code'] = $this->input->post('postal_code');
                 $save['phone'] = $this->input->post('phone');
                 $save['university_clg'] = $this->input->post('university_clg');
 
@@ -67,7 +70,8 @@ class Profile extends CI_Controller {
 
                 }
 
-                if ($this->global_model->update('users', $save, array('id' => $loginId))) {
+                if ($this->global_model->update('users', $save, array('id' => $loginId)))
+                {
                     $this->session->set_flashdata('message', 'Update Success');
                     redirect(base_url('profile/update'));
                 }
@@ -80,8 +84,12 @@ class Profile extends CI_Controller {
         $countryInfo = $this->global_model->get_data('countries', array('id' => $data['user_info']['country']));
         $data['states'] = $this->global_model->get('states', array('country_id' => $countryInfo['id']));
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+
         $data['countries'] = $this->global_model->get('countries');
-        $data['profession'] = $this->global_model->get('profession');
+
+
+        $data['profession'] = $this->global_model->profession_get();
+        $data['sub_profession'] = $this->global_model->get('profession_sub');
         $this->load->view('header', $data);
         $this->load->view('profile/index', $data);
         $this->load->view('footer');
@@ -90,7 +98,7 @@ class Profile extends CI_Controller {
     public function viewProfile() {
 
         $data = array();
-        $data['page_title'] = 'Profile';
+        $data['page_title'] = 'View Profile';
         $data['tabActive'] = 'profile';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -157,8 +165,89 @@ class Profile extends CI_Controller {
         $this->load->view('footer');
 
     }
-
+    /// Level 3
     public function varify() {
+        $data = array();
+        $data['page_title'] = 'Profile Verification';
+        $data['tabActive'] = 'profile Verification';
+        $data['error'] = '';
+        $loginId = $this->session->userdata('login_id');
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $data['countries'] = $this->global_model->get('countries');
+        $data['user_profile_verify'] = $this->global_model->get_data('users_varification', array('user_id' => $loginId));
+
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('full_name', 'full_name', 'trim|required');
+            $this->form_validation->set_rules('npi', 'npi', 'trim');
+            $this->form_validation->set_rules('university', 'university', 'trim');
+
+            if ($this->form_validation->run() == true) {
+                $save['user_id'] = $loginId;
+                $save['profession'] = $this->input->post('profession');
+                $save['email'] = $this->input->post('email');
+                $save['full_name'] = $this->input->post('full_name');
+                $save['npi'] = $this->input->post('npi');
+                $save['country'] = $this->input->post('country');
+                $save['state'] = $this->input->post('state');
+                $save['city'] = $this->input->post('city');
+                $save['university'] = $this->input->post('university');
+
+                uploadVarification();
+                //// File UPLOAD
+                if ($this->upload->do_upload('update_doc_1')) {
+                    $fileInfo = $this->upload->data();
+                    $file1['name'] = $fileInfo['file_name'];
+                    $save['update_doc_1'] = $file1['name'];
+                }
+                if ($this->upload->do_upload('update_doc_2')) {
+                    $fileInfo = $this->upload->data();
+                    $file1['name'] = $fileInfo['file_name'];
+                    $save['update_doc_2'] = $file1['name'];
+                }
+                if ($this->upload->do_upload('update_doc_3')) {
+                    $fileInfo = $this->upload->data();
+                    $file1['name'] = $fileInfo['file_name'];
+                    $save['update_doc_3'] = $file1['name'];
+                }
+                if ($this->upload->do_upload('update_doc_4')) {
+                    $fileInfo = $this->upload->data();
+                    $file1['name'] = $fileInfo['file_name'];
+                    $save['update_doc_4'] = $file1['name'];
+                }
+
+                if ($ref_id = $this->global_model->update('users_varification', $save, array('user_id' => $loginId))) {
+
+                    $config['charset'] = 'utf-8';
+                    $config['mailtype'] = 'text';
+                    $config['newline'] = '\r\n';
+                    $this->load->library('email');
+                    $this->email->initialize($config);
+                    $this->email->from($save['email'], $save['full_name']);
+                    $this->email->to('info@cricpop.com');
+                    $this->email->subject('Level 3 Verification Request');
+                    $this->email->message(
+                        "Hello Admin \r\n My name is " . $save['full_name']."\r\n My email address is ".$save['email']. ".\r\n My NPI number is ".$save['npi'].
+                        "\r\n This is my University ".$save['university']. "\r\n Please visit the admin panel to varify this profile."
+                    );
+                    if($this->email->send()) {
+                        $this->session->set_flashdata('message', 'Your request has been submitted. Within a sort time we will notify you.');
+                    }else{
+                        $this->session->set_flashdata('message', 'Something went wrong! Please try again later.');
+                    }
+
+                }
+
+            }
+        }
+
+        $this->load->view('header', $data);
+        $this->load->view('profile/varification', $data);
+        $this->load->view('footer');
+    }
+
+
+
+    public function user_varify_1() {
         $data = array();
         $data['page_title'] = 'Profile Varification';
         $data['tabActive'] = 'profile Varification';
@@ -182,6 +271,7 @@ class Profile extends CI_Controller {
                 $save['state'] = $this->input->post('state');
                 $save['city'] = $this->input->post('city');
                 $save['university'] = $this->input->post('university');
+                $save['user_level'] = $this->input->post('user_level');
 
                 uploadVarification();
                 //// File UPLOAD
@@ -201,7 +291,7 @@ class Profile extends CI_Controller {
                     $save['doc_3'] = $file1['name'];
                 }
 
-                if ($ref_id = $this->global_model->insert('doctor_varification', $save)) {
+                if ($ref_id = $this->global_model->insert('users_varification', $save)) {
 
                     $config['charset'] = 'utf-8';
                     $config['mailtype'] = 'text';
@@ -209,8 +299,8 @@ class Profile extends CI_Controller {
                     $this->load->library('email');
                     $this->email->initialize($config);
                     $this->email->from($save['email'], $save['full_name']);
-                    $this->email->to('info@advertbd.com');
-                    $this->email->subject('Varification Email');
+                    $this->email->to('info@cricpop.com');
+                    $this->email->subject('Level 2 Verification Request');
                     $this->email->message(
                         "Hello Admin \r\n My name is " . $save['full_name']."\r\n My email address is ".$save['email']. ".\r\n My NPI number is ".$save['npi'].
                         "\r\n This is my University ".$save['university']. "\r\n Please visit the admin panel to varify this profile."
@@ -226,10 +316,54 @@ class Profile extends CI_Controller {
             }
         }
 
-        $this->load->view('header', $data);
-        $this->load->view('profile/varification', $data);
-        $this->load->view('footer');
+
+         $varification = $this->global_model->get_data('users_varification', array('user_id' => $loginId, 'is_valid' => '0'));
+
+        /// print_r($varification);
+        //echo $varification['user_id'];
+        /// exit;
+
+        if ($this->global_model->get_data('users', array('id' => $loginId, 'user_level' => '2')))
+        {
+
+            $data['message'] = "Level 2 : You Are Now Leve 2  Verify user ";
+            $data['message_2'] = "You May Use  All Access except Messaging , Patient dealing & Personals ! Thanks.";
+            $this->load->view('header', $data);
+            $this->load->view('profile/profile_message', $data);
+            $this->load->view('footer');
+        }
+        elseif($data['user_info']['user_level'] == '1' && $varification != '')
+        {
+            if(!empty($varification['user_id'] != $loginId)) {
+                $data['message'] =   "Your profile is not varified.";
+                $data['message_2'] = "To varify your profile please click the button bellow.";
+                $data['message_3'] = "Varify your profile.";
+                $this->load->view('header', $data);
+                $this->load->view('profile/profile_message', $data);
+                $this->load->view('footer');
+            }else{
+                $data['message'] = "Your varification process still on going.";
+                $data['message_2'] = "Please wait, until we varified your profile.";
+                $this->load->view('header', $data);
+                $this->load->view('profile/profile_message', $data);
+                $this->load->view('footer');
+            }
+        }
+        else
+        {
+            $this->load->view('header', $data);
+            $this->load->view('profile/users_varification_step_1', $data);
+            $this->load->view('footer');
+        }
+
+
+
     }
+
+
+
+
+
 
 }
 

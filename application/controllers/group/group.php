@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class group extends CI_Controller {
+class Group extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -12,6 +12,14 @@ class group extends CI_Controller {
         if (!check_login()) {
             redirect('home/login');
         }
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        else{
+
+        }
 
     }
 
@@ -20,11 +28,11 @@ class group extends CI_Controller {
     public function index()
     {
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'New Group Create';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
-        $data['profession'] = $this->global_model->get('profession');
+
 
             if ($this->input->post()) {
                 $postData = $this->input->post();
@@ -82,6 +90,7 @@ class group extends CI_Controller {
                     }
                 }
             }
+            $data['profession_by_profession'] = $this->global_model->profession_by_profession();
             $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
             $data['main_cat'] = $this->global_model->get('group_main_cat');
             $data['login_id'] = $loginId;
@@ -94,11 +103,11 @@ class group extends CI_Controller {
     public function edit()
     {
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Edit Group';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
-        $data['profession'] = $this->global_model->get('profession');
+
 
         if ($this->input->post()) {
             $postData = $this->input->post();
@@ -164,6 +173,7 @@ class group extends CI_Controller {
         $id = $this->uri->segment('3');
         $data['editgroup'] = $this->global_model->get_data('gorupfad', array('id' => $id));
         $data['main_cat'] = $this->global_model->get('group_main_cat');
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
         $this->load->view('header', $data);
         $this->load->view('group/edit', $data);
         $this->load->view('footer');
@@ -177,7 +187,7 @@ class group extends CI_Controller {
     public function mygroup(){
 
         $data = array();
-        $data['page_title'] = 'Private Web';
+        $data['page_title'] = 'My Gorup list';
         $data['tabActive'] = 'private';
         $data['error'] = '';
 
@@ -196,7 +206,7 @@ class group extends CI_Controller {
     public function viewall(){
 
         $data = array();
-        $data['page_title'] = 'Private Web';
+        $data['page_title'] = 'All Group List';
         $data['tabActive'] = 'private';
         $data['error'] = '';
 

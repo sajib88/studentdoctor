@@ -1,4 +1,14 @@
 
+<?php if(!empty($advertise)){ ?>
+    <?php foreach($advertise as $row):?>
+        <section class="panel">
+            <div class="panel-body">
+                <img  src="<?php echo base_url() . '/assets/file/advertise/' .$row['ad_image']; ?>" class="img-responsive"/>
+            </div>
+        </section>
+    <?php endforeach;?>
+<?php }else{?>
+<?php }?>
 <link href="<?php echo base_url('assets/datatable/dataTables.bootstrap.css');?>" rel="stylesheet">
 
 <div class="content-wrapper">

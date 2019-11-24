@@ -9,9 +9,6 @@
         <h1><i class="fa fa-calendar"></i>
             Group Details
         </h1>
-
-
-
         <a data-toggle="modal" href="#myModal"  class="btn btn-warning btn-flat btn-xs pull-right">Add Your Comments</a>
 
     </section>
@@ -38,7 +35,7 @@
                             <span style="margin-right: 20px" class="pull-right">
                             <b>Added By: </b>
                             <span style="height: 25px; float: right; border-radius: 5px;" class="bg-blue">
-                                <a style="color: #fff; padding: 20px;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"> <?php echo getNameById($layoutfull['user_id']);?></a>
+                                <a style="color: #000; padding: 20px;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"> <?php echo getNameById($layoutfull['user_id']);?></a>
                             </span>
                             </span>
                         </li>
@@ -100,8 +97,8 @@
 
 
 
-                <div class="info-box">
-                    <span class="info-box-icon bg-green"><i class="ion ion-ios-people-outline"></i></span>
+                <div class="info-box bg-green">
+                    <span class="info-box-icon"><i class="fa fa-user"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Group Type</span>

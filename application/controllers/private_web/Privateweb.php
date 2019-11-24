@@ -12,12 +12,25 @@ class Privateweb extends CI_Controller {
         if (!check_login()) {
             redirect('home/login');
         }
+
+        if (!check_login()) {
+            redirect('home/login');
+        }
+
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        else{
+
+        }
     }
 
     public function index() {
 
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Private Website';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -148,25 +161,31 @@ class Privateweb extends CI_Controller {
 
     }
 
-    public function view() {
+    public function view($id = '') {
 
         $data = array();
-        $data['page_title'] = 'Private Web';
+        $data['page_title'] = 'Private Website View';
         $data['tabActive'] = 'private';
         $data['error'] = '';
 
-        $loginId = $this->session->userdata('login_id');
 
-        $data['photos'] = $this->global_model->get('photos', array('ref_id' => $loginId, 'ref_name' => 'private_web'));
-        $data['files'] = $this->global_model->get('files', array('ref_id' => $loginId, 'ref_name' => 'private_web'));
-        $data['audio'] = $this->global_model->get_data('audio', array('ref_id' => $loginId, 'ref_name' => 'private_web'));
-        $data['video'] = $this->global_model->get_data('video', array('created_by' => $loginId, 'ref_name' => 'private_web'));
 
-        $data['website_info'] = $this->global_model->get_data('private_website', array('user_id' => $loginId));
-        $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
+        if(!empty($id)){
+            $id =  $loginId = $this->session->userdata('login_id');
+        }else{
+
+        }
+
+        $data['photos'] = $this->global_model->get('photos', array('ref_id' => $id, 'ref_name' => 'private_web'));
+        $data['files'] = $this->global_model->get('files', array('ref_id' => $id, 'ref_name' => 'private_web'));
+        $data['audio'] = $this->global_model->get_data('audio', array('ref_id' => $id, 'ref_name' => 'private_web'));
+        $data['video'] = $this->global_model->get_data('video', array('created_by' => $id, 'ref_name' => 'private_web'));
+
+        $data['website_info'] = $this->global_model->get_data('private_website', array('user_id' => $id));
+        $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $id));
         $data['profession_type'] = $this->global_model->get_data('profession', array('id' => $user_info['profession']));
 
-        if ($this->global_model->get_data('private_website', array('user_id' => $loginId, 'profile_status' => 'private')))
+        if ($this->global_model->get_data('private_website', array('user_id' => $id, 'profile_status' => 'private')))
         {
 
             $this->load->view('header', $data);
@@ -196,7 +215,7 @@ class Privateweb extends CI_Controller {
 
     public function viewForEdit() {
         $data = array();
-        $data['page_title'] = 'Private Web';
+        $data['page_title'] = 'Private Website Edit';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -229,7 +248,7 @@ class Privateweb extends CI_Controller {
     public function edit($id = ''){
 
         $data = array();
-        $data['page_title'] = 'Private Web';
+        $data['page_title'] = 'Private Edit Panel';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -243,7 +262,7 @@ class Privateweb extends CI_Controller {
         $data['website_info'] = $private_web = $this->global_model->get_data('private_website', array('user_id' => $loginId));
         $data['files'] = $files = $this->global_model->get('files', array('ref_id' => $loginId, 'ref_name' => 'private_web'));
         $data['photos'] = $photos = $this->global_model->get('photos', array('ref_id' => $loginId, 'ref_name' => 'private_web'));
-        $data['video'] = $video = $this->global_model->get('video', array('ref_id' => $loginId, 'ref_name' => 'private_web'));
+        $data['video'] = $video = $this->global_model->get('video', array('created_by' => $loginId, 'ref_name' => 'private_web'));
         $data['audio'] = $audio = $this->global_model->get('audio', array('ref_id' => $loginId, 'ref_name' => 'private_web'));
         $data['countries'] = $this->global_model->get('countries');
 
@@ -360,7 +379,7 @@ class Privateweb extends CI_Controller {
     public function search(){
         $this->load->helper('global_helper');
         $data = array();
-        $data['page_title'] = 'edit';
+        $data['page_title'] = 'Private Website Search';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
 

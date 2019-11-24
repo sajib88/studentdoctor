@@ -113,7 +113,7 @@
                                                             else {?>
                                                                 </br>
 
-                                                                <img src="<?php echo base_url() . '/assets/file/product/' .$row->photo_primary; ?>" alt="" width="308" height="200" class="img-size-product" />
+                                                                <img src="<?php echo base_url() . '/assets/file/product/' .$row->photo_primary; ?>" alt="" width="210" height="180" class="img-size-product" />
                                                                 </br>
                                                             <?php }
                                                             ?>

@@ -29,6 +29,7 @@ $this->load->helper('global_helper');
             All Personals
 
         </h1>
+        <span class="pull-right btn-primary p-5">I AM A <?php echo $login_allpersonals[0]->iam; ?> LOOKING FOR A <?php echo $login_allpersonals[0]->interestedin; ?>  </span>
     </section>
     <section class="content">
 
@@ -47,7 +48,7 @@ $this->load->helper('global_helper');
                             <div class="widget-user-header ">
                                 <div class="widget-user-image text-center">
                                     </br>
-                                    <img src="<?php echo base_url() . 'assets/file/personals/' .$row['primary_photo']; ?>" alt="" width="310px" height="280px" class="img-size" />
+                                    <img src="<?php echo base_url() . 'assets/file/personals/' .$row['primary_photo']; ?>" alt="" width="260px" height="180px" class="img-size" />
 
                                     </br>
                                 </div>
@@ -62,7 +63,7 @@ $this->load->helper('global_helper');
                                     <li><a href="#">Age <span class="pull-right"><?php echo (!empty($row['age']))?$row['age']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#">Body Type <span class="pull-right"><?php echo (!empty($row['body']))?$row['body']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
                                     <li><a href="#">Language <span class="pull-right"><?php echo (!empty($row['lang']))?$row['lang']:'<span class="badge bg-red">Not Given</span>' ; ?></span></a></li>
-                                    <li><a class="pull-right" style="color: goldenrod;" href="<?php echo base_url('showProfile/'.$row['uid']);?>"> &nbsp Added By <?php echo getNameById($row['uid']); ?></a></li>
+                                    <li><a class="pull-left" style="color: black;" href="<?php echo base_url('showProfile/'.$row['uid']);?>"> <span>&nbsp Added By : </span>  <?php echo substr(getemailById($row['uid']),0,20); ?></a></li>
 
                                 </ul>
                             </div>

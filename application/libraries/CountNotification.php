@@ -16,9 +16,10 @@ class CountNotification
         // $dataX['count'] = $CI->global_model->count_row_where('project', array('statusID' => NULL));
 
         $dataX['notification'] = $this->CI->Global_model->get_message($loginId);
+        $dataX['notification_2'] = $this->CI->Global_model->get_message_flip($loginId);
 
         $dataX['appointment_notify'] = $this->CI->Global_model->get('appointment', array('doctor_id' => $loginId, 'status' => '0'));
-        $dataX['doctor_appointment'] = $this->CI->Global_model->get('appointment', array('doctor_id' => $loginId, 'date' => date("Y-m-d")));
+        $dataX['doctor_appointment'] = $this->CI->Global_model->get('appointment', array('doctor_id' => $loginId, 'status' => '0'));
 
 
         $this->CI->load->vars($dataX);

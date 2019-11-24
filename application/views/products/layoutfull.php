@@ -17,8 +17,6 @@
 
 
 
-
-
             <div class="col-lg-4">
                 <!-- /.info-box -->
                 <div class="info-box bg-green">
@@ -46,7 +44,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Contact</span>
-                        <span class="info-box-number"><?php echo $layoutfull['seller_phone']; ?></span>
+                        <span class="info-box-number"><small><?php echo $layoutfull['seller_phone']; ?></small></span>
 
                         <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
@@ -88,13 +86,15 @@
 
             <!-- /.box -->
 
+            <div class="col-md-12"></div>
+
 
             <div class="col-md-4">
 
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img src="<?php echo base_url() . '/assets/file/product/' .$layoutfull['photo_primary']; ?>" alt="" width="300" height="200" class="center-block img-size" />
+                        <img src="<?php echo base_url() . '/assets/file/product/' .$layoutfull['photo_primary']; ?>" alt="" width="220" height="180" class="center-block img-size" />
                         <h3 class="profile-username text-center"> <?php echo $layoutfull['name']; ?></h3>
                         <p class="text-center"><b>Added By: </b> <span><a href="<?php echo base_url('showProfile/'.$layoutfull['uid']);?>"><?php echo getNameById($layoutfull['uid']);?></a></span></p>
                         <ul class="list-group list-group-unbordered">
@@ -134,60 +134,7 @@
                 </div>
                 <!-- /.box -->
 
-                <!-- About Me Box -->
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Product Details</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <strong><i class="fa fa-book margin-r-5"></i> Description</strong>
 
-                        <p class="text-muted">
-                            <?php echo (!empty($layoutfull['description']))?$layoutfull['description']:""; ?>
-                        </p>
-
-                        <hr>
-
-                        <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-
-                        <p class="text-muted"><?php
-                            $data = get_data('countries', array('id' => $layoutfull['country']));
-                            echo $data['name'];
-                            ?>, <?php echo $layoutfull['state']; ?>, <?php echo $layoutfull['city']; ?></p>
-
-                        <strong> Seller Name</strong>
-                        <p> <?php echo (!empty($layoutfull['seller_name']))?$layoutfull['seller_name']:'<span class="badge bg-red">Not Given</span>'; ?></p>
-
-                        <strong> Seller Email</strong>
-                        <p> <?php echo (!empty($layoutfull['seller_email']))?$layoutfull['seller_email']:'<span class="badge bg-red">Not Given</span>'; ?></p>
-
-                        <strong> Seller Address </strong>
-                        <p> <?php echo (!empty($layoutfull['seller_address1']))?$layoutfull['seller_address1']:'<span class="badge bg-red">Not Given</span>'; ?></p>
-
-                        <strong> Seller Website</strong>
-                        <p> <?php echo (!empty($layoutfull['seller_website']))?$layoutfull['seller_website']:'<span class="badge bg-red">Not Given</span>';  ?></p>
-
-                        <strong> Seller Phone</strong>
-                        <p> <?php echo (!empty($layoutfull['seller_phone']))?$layoutfull['seller_phone']:'<span class="badge bg-red">Not Given</span>'; ?></p>
-
-                        <strong> Seller Fax</strong>
-                        <p> <?php echo (!empty($layoutfull['seller_fax']))?$layoutfull['seller_fax']:'<span class="badge bg-red">Not Given</span>';  ?></p>
-
-
-
-
-                        <hr>
-
-
-
-
-
-
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
             </div>
 
 
@@ -308,7 +255,60 @@
                 ?>
 
 
+                <!-- About Me Box -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Product Details</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <strong><i class="fa fa-book margin-r-5"></i> Description</strong>
 
+                        <p class="text-muted">
+                            <?php echo (!empty($layoutfull['description']))?$layoutfull['description']:""; ?>
+                        </p>
+
+                        <hr>
+
+                        <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+
+                        <p class="text-muted"><?php
+                            $data = get_data('countries', array('id' => $layoutfull['country']));
+                            echo $data['name'];
+                            ?>, <?php echo $layoutfull['state']; ?>, <?php echo $layoutfull['city']; ?></p>
+
+                        <strong> Seller Name</strong>
+                        <p> <?php echo (!empty($layoutfull['seller_name']))?$layoutfull['seller_name']:'<span class="badge bg-red">Not Given</span>'; ?></p>
+
+                        <strong> Seller Email</strong>
+                        <p> <?php echo (!empty($layoutfull['seller_email']))?$layoutfull['seller_email']:'<span class="badge bg-red">Not Given</span>'; ?></p>
+
+                        <strong> Seller Address </strong>
+                        <p> <?php echo (!empty($layoutfull['seller_address1']))?$layoutfull['seller_address1']:'<span class="badge bg-red">Not Given</span>'; ?></p>
+
+                        <strong> Seller Website</strong>
+                        <p> <?php echo (!empty($layoutfull['seller_website']))?$layoutfull['seller_website']:'<span class="badge bg-red">Not Given</span>';  ?></p>
+
+                        <strong> Seller Phone</strong>
+                        <p> <?php echo (!empty($layoutfull['seller_phone']))?$layoutfull['seller_phone']:'<span class="badge bg-red">Not Given</span>'; ?></p>
+
+                        <strong> Seller Fax</strong>
+                        <p> <?php echo (!empty($layoutfull['seller_fax']))?$layoutfull['seller_fax']:'<span class="badge bg-red">Not Given</span>';  ?></p>
+
+
+
+
+                        <hr>
+
+
+
+
+
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
             </div>
 
 

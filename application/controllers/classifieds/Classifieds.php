@@ -14,6 +14,15 @@ class Classifieds extends CI_Controller {
             redirect('home/login');
         }
 
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        else{
+
+        }
+
     }
 
     public function addCat()
@@ -53,7 +62,7 @@ class Classifieds extends CI_Controller {
     public function add()
     {
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Add New classified';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -182,9 +191,23 @@ class Classifieds extends CI_Controller {
             }
             $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
             $data['countries'] = $this->global_model->get('countries');
-            $data['profession'] = $this->global_model->get('profession');
+            $data['profession_by_profession'] = $this->global_model->profession_by_profession();
             $data['main_cat'] = $this->global_model->get('classified_main_cat');
             $data['login_id'] = $loginId;
+
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 7;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
+
+
             $this->load->view('header', $data);
             $this->load->view('classifieds/add', $data);
             $this->load->view('footer');
@@ -194,7 +217,7 @@ class Classifieds extends CI_Controller {
     public function edit()
     {
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Edit classified';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -322,7 +345,7 @@ class Classifieds extends CI_Controller {
         $id = $this->uri->segment('3');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
-        $data['profession'] = $this->global_model->get('profession');
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
         $data['states'] = $this->global_model->get('states');
         $data['main_cat'] = $this->global_model->get('classified_main_cat');
         $data['personaldata'] = $this->global_model->get_data('classified', array('id' => $id));
@@ -377,15 +400,15 @@ class Classifieds extends CI_Controller {
         $loginId = $this->session->userdata('login_id');
         $data['user_info'] = $user_info = $this->global_model->get_data('users', array('id' => $loginId));
 
-        // $page_url = base_url('classifieds/classifieds/viewall');
-        // $total_rows = $this->global_model->get('classified');
-        // $per_page = 6;
-        // $uri_segment = 4;
-        // $num_links = 5;
+         $page_url = base_url('classifieds/classifieds/viewall');
+         $total_rows = $this->global_model->get('classified');
+         $per_page = 3;
+         $uri_segment = 4;
+         $num_links = 5;
 
-        // $data['pagging'] = $this->global_model->get('classified', createPagging($page_url, $total_rows, $per_page, $uri_segment, $num_links)); 
+         $data['pagging'] = $this->global_model->get('classified', createPagging($page_url, $total_rows, $per_page, $uri_segment, $num_links));
 
-        // $data['pagging'] = createPagging($page_url, $total_rows, $per_page, $uri_segment, $num_links);
+         $data['pagging'] = createPagging($page_url, $total_rows, $per_page, $uri_segment, $num_links);
         $profession = $this->session->userdata('user_type');
         $data['viewallclassified'] = $this->global_model->getViewByProfession('classified', $profession);
 

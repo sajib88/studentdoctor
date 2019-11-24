@@ -1,5 +1,9 @@
 
 
+<link href="<?php echo base_url(); ?>script-assets/slick-theme.css" rel="stylesheet" type="text/css"/>
+<link href="<?php echo base_url(); ?>script-assets/slick.css" rel="stylesheet" type="text/css"/>
+
+
 <style type="text/css">
     .page-header{
         font-size: 30px;
@@ -141,16 +145,16 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-lg-12 page-header">
-                <h1><?php echo (!empty($layoutfull['title']))?$layoutfull['title']:''?>
+            <div class="col-lg-12">
+                <h3 class="mt-none"><?php echo (!empty($layoutfull['title']))?$layoutfull['title']:''?></h3>
                    <br>
-                <small>Classified Category:
+                <h5>Classified Category:
                     <?php
                     $data = get_data('classified_main_cat', array('id' => $layoutfull['main_cat']));
                     echo '<span class="text-clr">'.$data['name'].'</span>';
                     ?>
-                </small>
-                </h1>
+                </h5>
+
             </div>
             <div class="col-md-9">
                     <div class="slider">
@@ -349,7 +353,16 @@
                 <hr>
                 <div class="price-tag">
                     <p><i class="glyphicon glyphicon-user text-clr"></i>&nbsp Added By</p><br>
-                    <p class="pdl"><a class="btn btn-warning btn-md" style="color: #fff;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"><?php echo getNameById($layoutfull['user_id']); ?></a></p>
+                    <p class="pdl"><a class="btn btn-primary btn-md" style="color: #fff;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"><?php echo getNameById($layoutfull['user_id']); ?></a></p>
+                </div>
+                <hr>
+                <div class="price-tag">
+                    <p><i class="glyphicon glyphicon-user text-clr"></i>&nbsp Query Send </p><br>
+                    <p class="pdl">
+                        <a data-toggle="modal" data-id="<?= $layoutfull['id']; ?>"
+                           class="btn btn-success searching"
+                           href="#search_doctors">Send Message </a>
+                    </p>
                 </div>
                 <hr>
             </div>
@@ -359,6 +372,10 @@
     </section>
 
 </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+
 <!-- THIS css/JS USE ONLY VIDEO PLAYER -->
 <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
 <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
@@ -406,6 +423,110 @@
         var mySlideNumber = nextSlide;
         $('.slider-nav-thumbnails .slick-slide').removeClass('slick-active');
         $('.slider-nav-thumbnails .slick-slide').eq(mySlideNumber).addClass('slick-active');
+    });
+
+</script>
+
+
+
+
+
+
+
+<!--match Home page modal-->
+<div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="search_doctors" class="modal fade">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-cog"></i> &nbsp;Quick Messge</h4>
+            </div>
+
+            <form role="form" name="search_form" method="post" id="search_form" enctype="multipart/form-data" action="#">
+                <div class="modal-body">
+                    <div class="col-md-12 no-padding" >
+                        <section class="panel">
+                            <div class="panel-body">
+                                <div id="loadhtmldoctors"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button data-dismiss="modal" class="btn btn-danger btn-lg pull-left" type="button">
+                                <i class="fa fa-undo"></i> &nbsp; &nbsp; Cancel</button>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" name="submit" class="btn  btn-success  btn-lg"  id="msgsend" name="loginStatus" > </input>
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--match Home page  modal-->
+
+<script>
+
+    $(function(){
+        $('.searching').click(function(){
+            var base_url = '<?php echo base_url() ?>';
+            var id=$(this).data('id');
+
+            $.ajax({
+                type: 'POST',
+                url: base_url + "Search/msg_modal_classified/"+id,
+                data: $("#search_form").serialize(),
+                datatype: "text",
+                success: function(viewstml){
+                    $('#loadhtmldoctors').html(viewstml);
+                }
+            });
+        });
+
+    });
+
+
+    $(function(){
+        $("#msgsend").click(function(e){
+            var base_url = '<?php  echo base_url() ?>';
+            $.ajax({
+                url:base_url + "Search/classified_msg/",
+                type: 'POST',
+                data: $("#search_form").serialize(),
+                dataType: "json",
+                success: function (data) {
+
+                    if(data.status == "success")
+                    {
+
+                        var homepage = data.datahome.is_homepage;
+                        if(homepage != 0)
+                        {
+                            swal("Your Query Send successfully", "Thanks for message", "success");
+                            setTimeout(function(){
+                                window.location.reload(10000);
+                            }, 10000);
+                        }
+                        else{
+
+                        }
+                    }
+
+                },
+
+            });
+            e.preventDefault();
+
+        });
+
     });
 
 </script>

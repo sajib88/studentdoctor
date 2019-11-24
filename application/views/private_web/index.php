@@ -2,7 +2,7 @@
 <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        Private Website
+          <i class="fa  fa-male"></i> Private Website
         <small>Create</small>
       </h1>
       <ol class="breadcrumb">
@@ -18,6 +18,14 @@
 
        <div class="row">
           <div class="col-lg-6">
+
+              <div class="box-header with-border">
+                  <i class="fa  fa-male"></i>
+                  <h3 class="box-title">Private Website</h3></i>
+              </div>
+
+
+
                 <div class="panel-body box box-primary">
                             <form role="form" id="website" method="post" enctype="multipart/form-data" action="<?php echo base_url('private_web/Privateweb/index'); ?>">
 
@@ -153,12 +161,13 @@
                                     <small class="label bg-green"> MP3, OGG Format allow</small>
                                 </div>
 
-                                <div class="form-group">
+                              <div class="form-group">
                                     <label>Video</label>
                                     <input name="video" type="file">
                                     <small class="label bg-green"> MP4, WMV Format allow</small>
                                 </div>
-                                <input type="submit" name="submit" class="btn btn-block btn-primary" value="Save">
+
+
 
                         </div>
 
@@ -240,7 +249,26 @@
           </div>
 
 
-
+           <div class="col-md-12">
+               <div class="box box-primary">
+                   <!-- /.box-header -->
+                   <div class="box-body">
+                       <div class="panel-body">
+                           <div class="row">
+                               <div class="col-lg-12">
+                                   <div class="col-lg-6">
+                                       <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
+                                   </div>
+                                   <div class="col-lg-6 ">
+                                       <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
+                                           <i class="fa fa-check"></i> &nbsp; &nbsp; Save</button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
 
           <!-- /.panel-body -->
             </div>

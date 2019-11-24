@@ -424,6 +424,36 @@ if (!function_exists('getProfessionById')) {
 
 }
 
+if (!function_exists('getProfession_parent_ById')) {
+
+    function getProfession_parent_ById($Id='') {
+        $CI = &get_instance();
+
+        $result = $CI->global_model->get_data('users', array('parent_profession' => $Id));
+        if ($result['name']) {
+            return $result['name'];
+        } else {
+            return false;
+        }
+    }
+
+}
+
+if (!function_exists('getsubProId')) {
+
+    function getsubProId($Id='') {
+        $CI = &get_instance();
+
+        $result = $CI->global_model->get_data('profession', array('id' => $Id));
+        if ($result['name']) {
+            return $result['name'];
+        } else {
+            return false;
+        }
+    }
+
+}
+
 if (!function_exists('getNameById')) {
 
     function getNameById($Id='') {
@@ -438,6 +468,78 @@ if (!function_exists('getNameById')) {
     }
 
 }
+
+if (!function_exists('getemailById')) {
+
+    function getemailById($Id='') {
+        $CI = &get_instance();
+
+        $result = $CI->global_model->get_data('users', array('id' => $Id));
+        if ($result['email']) {
+            return $result['email'];
+        } else {
+            return false;
+        }
+    }
+
+}
+
+
+if (!function_exists('proffesionById')) {
+
+    function proffesionById($Id='') {
+        $CI = &get_instance();
+
+        $result = $CI->global_model->get_data('users', array('id' => $Id));
+        $result['parent_profession'];
+
+        $result3 = $CI->global_model->get_data('profession', array('id' =>  $result['parent_profession']));
+
+        if ($result3['name']) {
+            return $result3['name'];
+        } else {
+            return false;
+        }
+    }
+
+}
+
+
+if (!function_exists('sub_proffesionById')) {
+
+    function sub_proffesionById($Id='') {
+        $CI = &get_instance();
+
+        $result = $CI->global_model->get_data('users', array('id' => $Id));
+        $result['profession'];
+
+        $result3 = $CI->global_model->get_data('profession', array('id' =>  $result['profession']));
+
+        if ($result3['name']) {
+            return $result3['name'];
+        } else {
+            return false;
+        }
+    }
+
+}
+
+
+if (!function_exists('getNameByflip')) {
+
+    function getNameByflip($Id='') {
+        $CI = &get_instance();
+
+        $result = $CI->global_model->get_data('flip_users', array('uid' => $Id));
+        if ($result['full_name']) {
+            return $result['full_name'];
+        } else {
+            return false;
+        }
+    }
+
+}
+
 
 if (!function_exists('catNameById')) {
 
@@ -653,6 +755,71 @@ if (!function_exists('uploadVarification')) {
     }
 
 }
+
+function getSubPrefessionByPreofession($id){
+    $CI = &get_instance();
+    $CI->db->select('*');
+    $CI->db->from('profession as p');
+    $CI->db->order_by('p.sub_prof_id', 'ASC');
+
+    $CI->db->where('sub_prof_id',$id);
+    $query = $CI->db->get();
+
+    if ($query->num_rows() > 0) {
+        return $query->result_array();
+    } else {
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+ function getViewByadvertise($profession){
+    $CI = &get_instance();
+    $productList = array();
+    $table = 'advertise';
+    $CI->db->order_by("$table" ."."."id", "DESC");
+    $sql = $CI->db->select('*')
+        ->from($table)
+        ->get();
+    $array=$sql->result_array();
+    foreach ($array as $row){
+        if($row['ad_view'] != null){
+            $professions = $row['ad_view'];
+            $testPro = explode(',',$professions);
+            $pro = 0;
+            if (in_array($profession, $testPro) || $row['ad_view'] == 0) {
+                $productList[] = $row;
+            }
+        }
+    }
+
+
+
+
+    return $productList;
+}
+
+function phd_checking(){
+    $CI = &get_instance();
+    $CI->db->select('p.id');
+    $CI->db->from('profession as p');
+    $CI->db->where_in('p.id', array('411','412','413','414','415','416','417','418','419','420','421','422','423','424','425','426','427','428'));
+    $query = $CI->db->get();
+
+    if ($query->num_rows() > 0) {
+        return $query->result_array();
+    } else {
+        return false;
+    }
+}
+
+
 
 
 ?>

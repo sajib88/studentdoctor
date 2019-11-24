@@ -87,7 +87,7 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Topic Category : <?php echo $catName['cat_title'];?> </h3>
-              <a data-toggle="modal" href="#myModal" class="btn btn-info pull-right"><i class="fa fa-plus"></i> Add New Topic</a>
+              <a data-toggle="modal" href="#myModal" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Topic</a>
               <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
@@ -101,7 +101,7 @@
                           <th class="numeric" >#</th>
                           <th class="numeric"> Topic</th>
                           <th class="numeric"> Author</th>
-                          <th class="numeric"> Total Replies</th>
+
                           <th class="numeric"> Total Views </th>
                           <th class="numeric"> Topic Date Time  </th>
                           <th class="numeric"> Reply  </th>
@@ -115,11 +115,11 @@
                     ?>
                     <tr>
                         <td data-title="#" class="numeric"><?php echo $i;?></td>
-                        <td data-title="Topic" class="numeric" > <a class="" href="<?php echo base_url('forum/discuss/' . $row->post_id); ?>">  <?php echo $row->title; ?> </a>    </td>
+                        <td data-title="Topic" class="numeric" > <a class="" href="<?php echo base_url('forum/discuss/' . $row->post_id); ?>">  <?php echo substr($row->title,0,26) ?> </a>    </td>
                         <td data-title="Author" class="numeric">
-                            <?php echo getNameById($row->author_id); ?>
+                            <?php echo getemailById($row->author_id); ?>
                         </td>
-                        <td data-title="Replies" class="numeric" ><?php echo $row->reply; ?></td>
+
                         <td data-title="Views" class="numeric" >
                             <?php echo $row->views; ?>
                         </td>
@@ -130,7 +130,7 @@
 
                         </td>
                         <td data-title="Reply" class="numeric" >
-                            <a class="btn  btn-warning" href="<?php echo base_url('forum/discuss/' . $row->post_id); ?>">  Click To View</a>
+                            <a class="btn  btn-success" href="<?php echo base_url('forum/discuss/' . $row->post_id); ?>">  Click To View</a>
 
                         </td>
                     </tr>

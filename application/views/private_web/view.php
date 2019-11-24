@@ -1,10 +1,10 @@
 <div class="content-wrapper">
 
 <section class="content-header">
-    <h1>
+    <h4>
         View Details
         <small>Private Website</small>
-    </h1>
+    </h4>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Private website</a></li>
@@ -22,7 +22,7 @@
 
 
 
-<div class="col-md-4">
+<div class="col-md-5">
 
     <!-- Profile Image -->
     <div class="box box-success">
@@ -31,7 +31,7 @@
 
             <?php
             if($user_info['profilepicture'] == 0) {?>
-                <img src="http://placehold.it/380x500" alt="" class="profile-user-img img-responsive img-circle" />
+                <img src="<?php echo base_url() . '/assets/user-demo.jpg' ?>" alt="" class="profile-user-img img-responsive img-circle" />
             <?php }
             else {?>
                 <img src="<?php echo base_url() . '/assets/file/' .$user_info['profilepicture']; ?>" alt="" width="150" height="150" class="img-circle center-block" />
@@ -60,7 +60,7 @@
                 </li>
             </ul>
 
-            <a href="#" class="btn btn-primary btn-block"><b>inquiry</b></a>
+           <!-- <a href="#" class="btn btn-primary btn-block"><b>inquiry</b></a>-->
         </div>
         <!-- /.box-body -->
     </div>
@@ -105,7 +105,7 @@
     <!-- /.box -->
 </div>
 
-<div class="col-lg-8">
+<div class="col-lg-7">
 
     <div class="box box-success">
         <div class="box-header with-border">

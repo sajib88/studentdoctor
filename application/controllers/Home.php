@@ -21,7 +21,7 @@ class Home extends CI_Controller {
 
         $data['allblog'] = $this->global_model->get('blog_front', False, array('limit' => '3', 'start' => '0'), array('filed' => 'id', 'order' => 'DESC'));
         //for rss
-        $data['hello'] = $this->rssparser->set_feed_url('http://rss.medicalnewstoday.com/featurednews.xml')->set_cache_life(30)->getFeed(12);
+       // $data['hello'] = $this->rssparser->set_feed_url('http://rss.medicalnewstoday.com/featurednews.xml')->set_cache_life(30)->getFeed(12);
 
 
         $this->load->view('header_guest_home');
@@ -32,66 +32,110 @@ class Home extends CI_Controller {
     }
 
     public function login() {
-
-        if (check_login()) {
-            redirect('profile/dashboard');
-        }
         $data['page_title'] = 'Login';
         $data['tabActive'] = 'login';
 
         $data = array();
+        if($this->input->post('doctor-login') == 1){
 
-        if ($this->input->post('submit')) {
+            if (check_login()) {
+                redirect('profile/dashboard');
+            }
+
+            //// Login
+            if ($this->input->post('submit')) {
 
 
-            $this->form_validation->set_rules('email', 'email', 'required');
-            $this->form_validation->set_rules('password', 'Password', 'required');
+                $this->form_validation->set_rules('email', 'email', 'required');
+                $this->form_validation->set_rules('password', 'Password', 'required');
 
-            if ($this->form_validation->run()) {
-                $email = $this->input->post('email');
-                $username = $this->input->post('email');
-                $password = $this->input->post('password');
+                if ($this->form_validation->run()) {
+                    $email = $this->input->post('email');
+                    $username = $this->input->post('email');
+                    $password = $this->input->post('password');
 
-                if($this->login_model->chechUser($email,$username)){
+                    if($this->login_model->chechUser($email,$username)){
 
-                    if ($this->login_model->login($email, $password)) {
                         if ($this->login_model->login($email, $password)) {
                             $this->session->set_flashdata('success_login', 'You have successfully login.');
-
-                            $redirect_link = base_url() . 'dashboard';
+                            $redirect_link = base_url() . 'profile/dashboard';
                             redirect($redirect_link);
-                        } else {
-                            $data['error'] = 'Warning! You have not activated it yet Or Your account has either been blocked';
                         }
-                    }
-                    elseif ($this->login_model->login1($username, $password))
-                    {
-                        if ($this->login_model->login1($username, $password)) {
+                        elseif ($this->login_model->login1($username, $password)) {
                             $this->session->set_flashdata('success_login', 'You have successfully login.');
-                            $redirect_link = base_url() . 'dashboard';
+                            $redirect_link = base_url() . 'profile/dashboard';
                             redirect($redirect_link);
-                        } else {
-                            $data['error'] = 'Warning! You have not activated it yet Or Your account has either been blocked';
                         }
-                    }
 
+                        else {
+                            $data['error'] = 'Warning! Login Failed!! Invalid username or password';
+                        }
+
+
+
+
+                    }
+                    else {
+                        $data['error'] = "Login Failed!! Invalid username or password. (Type anything)";
+                    }
+                } else {
+                    $data['error'] = validation_errors();
                 }
-                else {
-                    $data['error'] = "Login Failed!! Invalid username or password. (Type anything)";
-                }
-            } else {
-                $data['error'] = validation_errors();
             }
+            //// Login
+        }
+        else{
+            //// Registration
+            if ($this->input->post()) {
+
+                $this->form_validation->set_rules('profession', 'profession', 'trim|required');
+                $this->form_validation->set_rules('user_name', 'user name', 'trim');
+                $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[128]|is_unique[users.email]');
+                $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
+                $this->form_validation->set_rules('conf', 'Confirm Password', 'trim|required|matches[password]');
+                /// $this->form_validation->set_rules('g-recaptcha-response', 'recaptcha validation', 'required|callback_validate_captcha');
+                //$this->form_validation->set_message('validate_captcha', 'Please check the the captcha form');
+
+
+                if ($this->form_validation->run() == true) {
+                    $postData = $this->input->post();
+
+                    $save['profession'] = (!empty($postData['sub_pro']))?$postData['sub_pro']:$this->input->post('profession');
+                    $save['parent_profession'] = $this->input->post('profession');
+                    $save['first_name'] = 'N/A';
+                    $save['last_name'] = 'N/A';
+                    $save['email'] = $this->input->post('email');
+                    $save['user_name'] = (!empty($postData['email']))?$postData['email']:$this->input->post('user_name');
+                    $save['password'] = md5($this->input->post('password'));
+
+                    $save['confirmation_key'] 	= uniqid();
+                    $save['confirmed'] 	= 0;
+                    $save['status']		= 1;
+
+
+
+                    if ($this->global_model->insert('users', $save)) {
+
+                        // $this->send_confirmation_email($save);
+                        $this->session->set_flashdata('msg', '<div class="alert alert-block alert-success fade in">
+                                                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                    <i class="icon-remove"></i>
+                                                                </button>
+                                                                <strong>Email sent successfully. <br>Please check your email to active your acount.</strong> </div>');
+                    } else {
+                        $this->session->set_flashdata('success', 'Something worng please try again.');
+                    }
+                } else {
+                    $data['error'] = validation_errors();
+                }
+            }
+            //// Registration
         }
 
-        //Warning
-        //Login error! You have not activated your account.
-        //Login denied! Your account has either been blocked or you have not activated it yet.
-
-
         $this->load->view('header_guest_home');
-        $this->load->view('login',$data);
+        $this->load->view('doctorpanel',$data);
         $this->load->view('foother_guest.php',$data);
+
     }
 
     #confirmation email link points here
@@ -116,8 +160,8 @@ class Home extends CI_Controller {
     public function get_admin_email_and_name()
     {
 
-        $data['admin_email'] = 'join@allstudentdoctors.com';
-        $data['admin_name']  = 'AllStudentDoctors.com';
+        $data['admin_email'] = 'info@cricpop.com';
+        $data['admin_name']  = 'ForAllDoctors';
 
         return $data;
     }
@@ -132,9 +176,9 @@ class Home extends CI_Controller {
         $link = base_url('home/confirm'.'/'.$data['confirmation_key']);
 
         //$this->load->model('admin/system_model');
-        $tmpl = get_email_tmpl_by_email_name('registration');
+        $tmpl = get_email_tmpl_by_email_name('registration_email');
         $subject = $tmpl->subject;
-        $subject = str_replace("#username",$data['user_name'],$subject);
+        $subject = str_replace("#username",$data['email'],$subject);
         $subject = str_replace("#activationlink",$link,$subject);
         $subject = str_replace("#webadmin",$admin_name,$subject);
         $subject = str_replace("#useremail",$data['email'],$subject);
@@ -148,66 +192,263 @@ class Home extends CI_Controller {
 
 
         $this->load->library('email');
-        $this->email->from($admin_email, $subject);
+        $this->email->from($admin_email);
         $this->email->to($data['email']);
         $this->email->subject($subject);
         $this->email->message($body);
         $this->email->send();
     }
 
-    public function registration() {
+    public function admin_notfication($data=array()) {
+
+        //Send mail
+
+        if($data['parent_profession'] == 100)
+        {
+            $emailsubject="patient";
+            $typeusers =   'patient';
+        }
+        else{
+            $emailsubject="Doctor";
+            $typeusers =   getProfessionById($data['parent_profession']);
+        }
+        $to_email = "info@cricpop.com";
+        $this->email->from($data['email'], 'For All Doctors');
+        $this->email->to($to_email);
+        $this->email->subject('New '.$emailsubject.'  Registration');
+
+
+        $datetime  =  Date('Y-m-d h:i:s');
+
+        $comment = "Hi,<br /> <br />";
+        $comment .= "ForAllDcotors Recently Added a new User.<br />";
+        $comment .= "User Email is : " . $data['email'] . "<br />";
+        $comment .= "User Type  : " . $typeusers . "<br />";
+        $comment .= "Registration Date and Time  : " . $datetime . "<br />";
+        $comment .= "In future More Information Login secure admin panel.<br /> <br /> <br />";
+        $comment .= "Thanks<br />";
+        $this->email->set_mailtype("html");
+        $this->email->message($comment);
+        $this->email->send();
+
+    }
+
+
+
+    public function doctorpanel() {
+        $data['page_title'] = 'Login';
+        $data['tabActive'] = 'login';
 
         $data = array();
-        $data['page_title'] = 'Registration';
-        $data['tabActive'] = 'registration';
-        $data['error'] = '';
+        if($this->input->post('doctor-login') == 1){
 
-        if ($this->input->post()) {
-
-            $this->form_validation->set_rules('profession', 'profession', 'trim|required');
-            $this->form_validation->set_rules('user_name', 'user name', 'trim');
-            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[128]|is_unique[users.email]');
-            $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
-            $this->form_validation->set_rules('conf', 'Confirm Password', 'trim|required|matches[password]');
-            $this->form_validation->set_rules('g-recaptcha-response', 'recaptcha validation', 'required|callback_validate_captcha');
-            $this->form_validation->set_message('validate_captcha', 'Please check the the captcha form');
-
-
-            if ($this->form_validation->run() == true) {
-
-                $save['profession'] = $this->input->post('profession');
-                $save['first_name'] = $this->input->post('first_name');
-                $save['last_name'] = $this->input->post('last_name');
-                $save['user_name'] = $this->input->post('user_name');
-                $save['email'] = $this->input->post('email');
-                $save['password'] = md5($this->input->post('password'));
-
-                $save['confirmation_key'] 	= uniqid();
-                $save['confirmed'] 	= 0;
-                $save['status']		= 1;
-
-
-
-                if ($this->global_model->insert('users', $save)) {
-
-                    $this->send_confirmation_email($save);
-                    $this->session->set_flashdata('msg', '<div class="alert alert-block alert-success fade in">
-                                                            <button data-dismiss="alert" class="close close-sm" type="button">
-                                                                <i class="icon-remove"></i>
-                                                            </button>
-                                                            <strong>Email sent successfully. <br>Please check your email to active your acount.</strong> </div>');
-                } else {
-                    $this->session->set_flashdata('success', 'Something worng please try again.');
-                }
-            } else {
-                $data['error'] = validation_errors();
+            if (check_login()) {
+                redirect('profile/dashboard');
             }
+
+            //// Login
+            if ($this->input->post('submit')) {
+
+
+                $this->form_validation->set_rules('email', 'email', 'required');
+                $this->form_validation->set_rules('password', 'Password', 'required');
+
+                if ($this->form_validation->run()) {
+                    $email = $this->input->post('email');
+                    $username = $this->input->post('email');
+                    $password = $this->input->post('password');
+
+                    if($this->login_model->chechUser($email,$username)){
+
+                        if ($this->login_model->login($email, $password)) {
+                            $this->session->set_flashdata('success_login', 'You have successfully login.');
+                            $redirect_link = base_url() . 'profile/dashboard';
+                            redirect($redirect_link);
+                        }
+                        elseif ($this->login_model->login1($username, $password)) {
+                            $this->session->set_flashdata('success_login', 'You have successfully login.');
+                            $redirect_link = base_url() . 'profile/dashboard';
+                            redirect($redirect_link);
+                        }
+
+                        else {
+                            $data['error'] = 'Warning! Login Failed!! Invalid username or password';
+                        }
+
+
+
+
+                    }
+                    else {
+                        $data['error'] = "Login Failed!! Invalid username or password. (Type anything)";
+                    }
+                } else {
+                    $data['error'] = validation_errors();
+                }
+            }
+            //// Login
+        }
+        else{
+            //// Registration
+            if ($this->input->post()) {
+
+                $this->form_validation->set_rules('profession', 'profession', 'trim|required');
+                //$this->form_validation->set_rules('user_name', 'user name', 'trim');
+                $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[128]|is_unique[users.email]');
+                $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
+                $this->form_validation->set_rules('conf', 'Confirm Password', 'trim|required|matches[password]');
+               /// $this->form_validation->set_rules('g-recaptcha-response', 'recaptcha validation', 'required|callback_validate_captcha');
+                //$this->form_validation->set_message('validate_captcha', 'Please check the the captcha form');
+
+
+                if ($this->form_validation->run() == true) {
+                    $postData = $this->input->post();
+
+                    $phd_pro = $this->input->post('phd_pro');
+                    if(!empty($phd_pro))
+                    {
+                        $save['profession'] = $phd_pro;
+                    }
+                    else{
+                        $save['profession'] = (!empty($postData['sub_pro']))?$postData['sub_pro']:$this->input->post('profession');
+                    }
+                    $save['parent_profession'] = $this->input->post('profession');
+                    $save['first_name'] = 'N/A';
+                    $save['last_name'] = 'N/A';
+                    $save['email'] = $this->input->post('email');
+                    $save['user_name'] = (!empty($postData['email']))?$postData['email']:$this->input->post('user_name');
+                    $save['password'] = md5($this->input->post('password'));
+
+                    $save['confirmation_key'] 	= uniqid();
+                    $save['confirmed'] 	= 0;
+                    $save['status']		= 1;
+
+
+
+                    if ($this->global_model->insert('users', $save)) {
+
+                        $this->send_confirmation_email($save);
+                        $this->admin_notfication($save);
+                        $this->session->set_flashdata('msg', '<div class="alert alert-block alert-success fade in">
+                                                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                    <i class="icon-remove"></i>
+                                                                </button>
+                                                                <strong>Email sent successfully. <br>Please check your email to active your acount.</strong> </div>');
+                    } else {
+                        $this->session->set_flashdata('success', 'Something worng please try again.');
+                    }
+                } else {
+                    $data['error'] = validation_errors();
+                }
+            }
+            //// Registration
         }
 
 
 
         $this->load->view('header_guest_home');
-        $this->load->view('registration',$data);
+        $this->load->view('doctorpanel',$data);
+        $this->load->view('foother_guest.php',$data);
+
+    }
+
+    public function patient() {
+        $data['page_title'] = 'Login';
+        $data['tabActive'] = 'login';
+
+        $data = array();
+        if($this->input->post('doctor-login') == 1){
+
+            if (check_login()) {
+                redirect('profile/dashboard');
+            }
+
+            //// Login
+            if ($this->input->post('submit')) {
+
+
+                $this->form_validation->set_rules('email', 'email', 'required');
+                $this->form_validation->set_rules('password', 'Password', 'required');
+
+                if ($this->form_validation->run()) {
+                    $email = $this->input->post('email');
+                    $username = $this->input->post('email');
+                    $password = $this->input->post('password');
+
+                    if($this->login_model->chechUser($email,$username)){
+
+                        if ($this->login_model->login($email, $password)) {
+                            $this->session->set_flashdata('success_login', 'You have successfully login.');
+                            $redirect_link = base_url() . 'profile/dashboard';
+                            redirect($redirect_link);
+                        }
+                        elseif ($this->login_model->login1($username, $password)) {
+                            $this->session->set_flashdata('success_login', 'You have successfully login.');
+                            $redirect_link = base_url() . 'profile/dashboard';
+                            redirect($redirect_link);
+                        }
+
+                        else {
+                            $data['error'] = 'Warning! Login Failed!! Invalid username or password';
+                        }
+
+
+
+
+                    }
+                    else {
+                        $data['error'] = "Login Failed!! Invalid username or password. (Type anything)";
+                    }
+                } else {
+                    $data['error'] = validation_errors();
+                }
+            }
+            //// Login
+        }
+        else{
+            //// Registration
+            if ($this->input->post()) {
+
+
+                $this->form_validation->set_rules('pat_email', 'Email', 'trim|required|valid_email|max_length[128]|is_unique[users.email]');
+                $this->form_validation->set_rules('pat_password', 'Password', 'trim|required|min_length[6]');
+                $this->form_validation->set_rules('conf', 'Confirm Password', 'trim|required|matches[pat_password]');
+
+                if ($this->form_validation->run() == true) {
+
+                    ////// paitent registration
+                    $ptn['profession'] = 100;
+                    $ptn['parent_profession'] = 100;
+                    $ptn['first_name'] = 'N/A';
+                    $ptn['last_name'] = 'N/A';
+                    $ptn['user_name'] = md5(date("Y-m-d"));
+                    $ptn['email'] =  $this->input->post('pat_email');
+                    $ptn['password'] = md5($this->input->post('pat_password'));
+                    $ptn['confirmation_key'] 	= uniqid();
+                    $ptn['confirmed'] 	= 1;
+                    $ptn['status']		= 1;
+
+                    if ($ref_id = $this->global_model->insert('users', $ptn)) {
+
+                        $this->send_confirmation_email($ptn);
+                        $this->admin_notfication($ptn);
+                        $this->session->set_flashdata('msg', '<div class="alert alert-block alert-success fade in">
+                                                                <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                    <i class="icon-remove"></i>
+                                                                </button>
+                                                                <strong>Email sent successfully. <br>Please check your email to active your acount.</strong> </div>');
+                    } else {
+                        $this->session->set_flashdata('success', 'Something worng please try again.');
+                    }
+                } else {
+                    $data['error'] = validation_errors();
+                }
+            }
+            //// Registration
+        }
+
+        $this->load->view('header_guest_home');
+        $this->load->view('patientpanel',$data);
         $this->load->view('foother_guest.php',$data);
 
     }
@@ -268,7 +509,7 @@ class Home extends CI_Controller {
                 $is_ok = $this->login_model->forgot_password($user_email, $encrpassword);
 
                 if (!empty($is_ok)) {
-                    $this->email->from('join@allstudentdoctors.com', 'All Doctors');
+                    $this->email->from('hello@paindhaka.com', 'For All Doctors');
                     $this->email->to($user_email);
                     $this->email->subject('Password Reset Confirmation');
 
@@ -644,7 +885,7 @@ class Home extends CI_Controller {
             $this->load->library('email');
 
             $this->email->from(set_value('email'), set_value('name'));
-            $this->email->to('join@allstudentdoctors.com');
+            $this->email->to('hello@paindhaka.com');
             $this->email->subject('Contact Email');
             $this->email->message(set_value('message'));
 
@@ -675,7 +916,7 @@ class Home extends CI_Controller {
     function validate_captcha() {
         $recaptcha = trim($this->input->post('g-recaptcha-response'));
         $userIp= $this->input->ip_address();
-        $secret='6LciozgUAAAAANXGPy9NMuEVry_VbuuX7K6RpO2n';
+        $secret='6Ld7p3YUAAAAAMVoCvmYX8DiS9Tu4dlo_CYaKwdt';
         $data = array(
             'secret' => "$secret",
             'response' => "$recaptcha",
@@ -698,7 +939,62 @@ class Home extends CI_Controller {
     }
 
 
+    public function registration() {
 
+        $data = array();
+        $data['page_title'] = 'Registration';
+        $data['tabActive'] = 'registration';
+        $data['error'] = '';
+
+        if ($this->input->post()) {
+
+            $this->form_validation->set_rules('profession', 'profession', 'trim|required');
+            //$this->form_validation->set_rules('user_name', 'user name', 'trim');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[128]|is_unique[users.email]');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
+            $this->form_validation->set_rules('conf', 'Confirm Password', 'trim|required|matches[password]');
+            // $this->form_validation->set_rules('g-recaptcha-response', 'recaptcha validation', 'required|callback_validate_captcha');
+            // $this->form_validation->set_message('validate_captcha', 'Please check the the captcha form');
+
+
+            if ($this->form_validation->run() == true) {
+
+                $save['profession'] = $this->input->post('profession');
+                $save['first_name'] = $this->input->post('first_name');
+                $save['last_name'] = $this->input->post('last_name');
+                $save['user_name'] = $this->input->post('user_name');
+                $save['email'] = $this->input->post('email');
+                $save['password'] = md5($this->input->post('password'));
+
+                $save['confirmation_key'] 	= uniqid();
+                $save['confirmed'] 	= 0;
+                $save['status']		= 1;
+
+
+
+                if ($this->global_model->insert('users', $save)) {
+
+                    $this->send_confirmation_email($save);
+                    $this->session->set_flashdata('msg', '<div class="alert alert-block alert-success fade in">
+                                                            <button data-dismiss="alert" class="close close-sm" type="button">
+                                                                <i class="icon-remove"></i>
+                                                            </button>
+                                                            <strong>Email sent successfully. <br>Please check your email to active your acount.</strong> </div>');
+                } else {
+                    $this->session->set_flashdata('success', 'Something worng please try again.');
+                }
+            } else {
+                $data['error'] = validation_errors();
+            }
+        }
+
+
+
+        $this->load->view('header_guest_home');
+        $this->load->view('registration',$data);
+        $this->load->view('foother_guest.php',$data);
+
+    }
 
 
 

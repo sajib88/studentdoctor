@@ -1,154 +1,243 @@
+<ol class="breadcrumb">
+    <li><a href="<?php echo base_url(); ?>">Home</a></li>
+    <li class="active"><a class="" href="#">Search Professionals</a></li>
+        <span style="padding-left: 90px; padding-top:10px" class="pull-left"><a href="<?php echo base_url(); ?>">X</a></span>
+
+</ol>
+<div class="container">
+    <!-- /.Search Area -->
+    <div class="row">
+         <div class="col-md-12">
+             <form  name="search_form" method="post" id="search_form" enctype="multipart/form-data" action="#">
+
+             <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Search Professionals</div>
+                <div class="panel-body">
 
 
-
-<style>
-    .feature{margin-bottom: 20px;}
-    .glyphicon { margin-right:5px; }
-    .thumbnail
-    {
-        background: #fff none repeat scroll 0 0;
-        border: 1px solid #f0f0f0;
-        border-radius: 0;
-        margin-bottom: 20px;
-        padding: 0px 0 0;
-    }
-
-    .item.list-group-item
-    {
-        float: none;
-        width: 100%;
-        background-color: #fff;
-        margin-bottom: 10px;
-    }
-    .item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-    {
-        background: #428bca;
-    }
-
-    .item.list-group-item .list-group-image
-    {
-        margin-right: 10px;
-    }
-    .thumbnail img
-    {
-        height: 203px;
-    }
-    .item.list-group-item .thumbnail
-    {
-        margin-bottom: 0px;
-    }
-    .item.list-group-item .caption
-    {
-        padding: 9px 9px 0px 9px;
-    }
-    .item.list-group-item:nth-of-type(odd)
-    {
-        background: #eeeeee;
-    }
-
-    .item.list-group-item:before, .item.list-group-item:after
-    {
-        display: table;
-        content: " ";
-    }
-
-    .item.list-group-item img
-    {
-        float: left;
-    }
-    .item.list-group-item:after
-    {
-        clear: both;
-    }
-    .list-group-item-text
-    {
-        margin: 0 0 11px;
-    }
-    .thumbnail a > img, .thumbnail > img{border-top-left-radius:0px;border-top-right-radius:0px;}
-
-</style>
+                        <div class="col-md-12 no-padding" >
 
 
-<main class="main-wrapper">
+                                <input type="hidden" name="get_loginid" value="1"
+                                <div class="col-md-12 mb-10">
+                                    <label>Profession</label><span id='profession_view-error' class='error' for='profession_view'></span>
 
-
-    <section class="content-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 pdl">
-                    <div class="tab-wrapper row">
-                        <!-- Nav tabs -->
-
-
-                        <!-- Tab panes -->
-
-
-
-                        <section class="section-sm border-bottom">
-                            <div class="container">
-                                <div class="row first-col-title">
-
-                                    <div class="col-lg-10 col-lg-push-1">
-
-                                        <div class="row">
-                                            <div class="text-center helpig-hand">
-                                                <h2>Meet our <span>Professionals.</span></h2>
-
-                                            </div>
-                                            <div class="ptop-40"></div>
-
-                                            <?php
-
-                                            if(!empty($searchData)) {
-
-                                                foreach ($searchData as $row) {
-                                                    ?>
-                                                    <div class="col-md-3 col-sm-6 feature  ">
-
-                                                        <div class="text-center mb-50">
-                                                            <a href="<?php echo base_url('doctor/docController/details_profile/' . $row->id); ?>"
-                                                               class="">
-                                                            <div class="thumbnail">
-                                                                <img class="mb-20" src="<?php echo (!empty($row->photo))? base_url().'assets/file/'.$row->photo:'';?><?php echo (empty($row->photo))? base_url().'assets/user-demo.png':'';?>" alt="">
-                                                            </div>
-                                                            </a>
-                                                            <h5 class="mb-0 text-md"><?php echo (!empty($row->first_name) or (!empty($row->last_name)))?$row->first_name.'-'.$row->last_name: '' ?></h5>
-                                                            <span class="text-info"><?php echo getProfessionById($row->profession) ?></span>
-
-                                                            <a href="<?php echo base_url('doctor/docController/details_profile/' . $row->id); ?>"
-                                                               class="btn btn-block btn-filled btn-primary btn-flat">
-
-                                                                View Profile
-                                                            </a>
-
-                                                        </div>
-
-
-                                                    </div>
-                                                <?php }
-                                            }else{?>
-                                                <div class="alert alert-danger">No Search Result Found </div>
-                                            <?php }?>
-                                        </div>
-                                    </div>
+                                    <select onchange="getpro(this)"  name="profession" id="profession" class="selectpicker form-control">
+                                        <option value="">Select</option>
+                                        <?php
+                                        if (is_array($profession)) {
+                                            foreach ($profession as $row) {
+                                                $v = (set_value('profession')!='')?set_value('profession'):'';
+                                                $sel = ($v==$row->id)?'selected="selected"':'';
+                                                ?>
+                                                <option value="<?php echo $row->id; ?>" <?php echo $sel;?>><?php echo $row->name; ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
-                            </div>
-                        </section>
 
-                    </div>
+
+
+
+
+
+                                <div class="col-md-12 mb-10" id="pro">
+
+
+
+                                </div>
+
+
+                                <div class="col-md-12 mb-10">
+                                    <label for="login">What care do you need?</label>
+                                    <textarea id="message" name="message" class="form-control input-2" placeholder="What care do you need?"></textarea>
+                                </div>
+
+
+                                <div class="col-md-12 mb-10">
+                                    <label for="login">Email:</label>
+                                    <input id="email" name="email" placeholder="Email ID" class="form-control input-2" type="text">
+                                    <span id="email_result"></span>
+
+                                </div>
+
+                                <div class="col-md-12 mb-10">
+                                    <label for="pass">Password</label>
+                                    <input  required="" type="password" name="pat_password" class="form-control" placeholder="Password" autofocus="">
+                                </div>
+
+                        </div>
+
                 </div>
 
+                <div class="modal-footer">
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="captcha" style="margin-top:10px;"></div>
+
+                            <input type="submit" name="submit" class="btn  btn-success ajaxcallbutton  btn-lg"  id="updatedoctors" name="loginStatus" > </input>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                </div>
+
+
             </div>
-        </div><!--container-->
-    </section>
 
-</main>
+        </form>
 
-
+        </div>
 
 
 
 
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<script src="<?php echo base_url(); ?>script-assets/js/jquery.ebcaptcha.js"></script>
+
+
+
+<script type="application/javascript">
+
+
+    $(function(){
+        $('#search_form').validate({
+            rules: {
+                email: {
+                    required:true
+                },
+                message:{
+                    required:true
+                },
+
+                pat_password:{
+                    required:true
+                }
+
+
+            },
+            messages:{
+                email: {
+                    required: "Email  is Required",},
+
+                message: {
+                    required: "What care do you need details is Required",},
+
+                pat_password: {
+                    required: "Password is Important",}
+            },
+            submitHandler: function(form) {
+                var base_url = '<?php  echo base_url() ?>';
+                $.ajax({
+                    url:base_url + "doctor/DocController/setrequest/",
+                    type: 'POST',
+                    data: $("#search_form").serialize(),
+                    dataType: "json",
+                    success: function (data) {
+
+                        if(data.status == "success")
+                        {
+
+                            var homepage = data.datahome.is_homepage;
+                            if(homepage != 0)
+                            {
+                                swal("Your Registration Complete successfully", "Thanks for join ForAllDoctors.Com", "success");
+                                setTimeout(function(){
+
+                                }, 100);
+                            }
+                            else{
+
+                            }
+                        }
+
+                    },
+
+                });
+            }
+        });
+    });
+
+
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#email').change(function(){
+            var email = $('#email').val();
+            if(email != '')
+            {
+                $.ajax({
+                    url:"<?php echo base_url(); ?>doctor/DocController/check_email_avalibility",
+                    method:"POST",
+                    data:{email:email},
+                    success:function(data){
+                        $('#email_result').html(data);
+
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+    function getpro(sel) {
+        var value = sel.value;
+        var base_url = '<?php echo base_url() ?>';
+        var da = {pro: value};
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: base_url + "Search/getProByAjax",
+            data: da,
+            dataType: "text",
+            success: function(resultData) {
+                $("#pro").html(resultData);
+            }
+
+        });
+
+    }
+
+
+
+
+
+
+
+
+</script>
 
 
 

@@ -1,348 +1,159 @@
-<header class="top-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12  text-center ptop-300">
+<div class="container margin-bottom-40 ng-scope">
+    <div class="wizard-container">
+        <div class="card wizard-card">
+            <!--- Doctors search part-->
+            <div class="doctor-part">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a href="<?php echo base_url(); ?>/publicsearch">
+                        <div class="search">
+
+                                <div  class="custom-search">Find Your Doctor</div>
 
 
-                <h1>All Student Doctors And Doctors In The World</h1>
-                <p>Can Meet, Advance Personally and Contribute Globally.</p>
-                <a href="<?php echo base_url('home/registration');?>">   <input type="submit" value="Join Now Free" class="btn   btn-yellow"></a>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!--BG with 4 box -->
-<header class="business-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12  text-center">
-                <h2 class="ptop-50">Doctor's And Student Can Join Now </h2>
-                <div class="ptop-50"></div>
-                <!--start box here -->
-                <div class="box-design">
-                    <div  class="row">
-                        <!-- box 1 -->
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h3 class="card-title text-left mobiletext">Free Registration</h3>
-                                    <p class="card-text text-left mobiletext free_registration">
-                                        <a href="<?php echo base_url('home/registration');?>">
-                                        All Doctors and Students Can</br>
-                                        Join For Free. Simply Submit This</br>
-                                        Short Form. (Click Here)
-                                        </a>
-                                    </p>
-
-                                </div>
-                            </div>
                         </div>
-                        <!-- box 1 -->
-                        <!-- box 2 -->
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h3 class="card-title text-right mobiletext">Free Features</h3>
-                                    <p class="card-text text-right mobiletext">
-                                        Enjoy Loads Of Free Features<br>
-                                        Where You Network, Learn and Exhibit<br>
-                                        Your Accomplishments With Other<br>
-                                         Doctors and Student Doctors.</p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- box 2 -->
-                    </div>
-                    <!-- image make center -->
-                    <img src="<?php echo base_url(); ?>comp/img/round-box.png"  class="img-responsive center-block absulateimage" />
-                    <!-- image make center -->
-
-
-                    <div  class="row ptop-60">
-                        <!-- box 3 -->
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-block">
-
-                                    <h3 class="card-title text-left mobiletext">Easy to Use </h3>
-                                    <p class="card-text text-left mobiletext">
-                                        We Have Made It Easy To Use <br>
-                                        Our Site - No Frustrations, <br>
-                                        No Learning Curve. <br>
-                                        It Is Easy & Free For Your Enjoyment.
-                                        </p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- box 3 -->
-                        <!-- box 4 -->
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-block">
-                                    <h3 class="card-title text-right mobiletext">Mobile Friendly</h3>
-                                    <p class="card-text text-right mobiletext">
-                                        We've Done The Hard Work,<br>
-                                        So You Can Easily Use <br>
-                                        Our Awesome Site <br>
-                                        On Just About Any Device.
-                                        </p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- box 4 -->
+                        </a>
                     </div>
 
+                    <div class="col-sm-6">
+                        <a href="<?php echo base_url(); ?>/home/doctorpanel" class="join">
+                            <span class="blue">Doctor join  Free</span>
+                            <span class="dark">exclusive benefits for doctors only</span>
+                        </a>
+                    </div>
                 </div>
-
-            </div>
-        </div>
-    </div>
-</header>
-
-<!--Start Lending style-->
-<div class="col-md-12">
-
-    <div class="ptop-30 "></div>
-    <div class="mobile-200 "></div>
-    <div class="widget">
-
-
-        <div class="entry-head text-center">
-            <h2>Meet Some Of Our Professionals</h2>
-        </div>
-
-        <div class="col-md-7 col-md-offset-3">
-
-
-            <div class="widget-searchprof">
-
-                <form action="<?php echo base_url().'publicsearch'?>" id="" class="" method="POST">
-
-
-
-
-                    <div class="col-md-4">
-                        <select id="" class="search"  name="profession" data-live-search="true">
-
-                            <?php
-                            if (!empty($profession)) {
-                                foreach ($profession as $row) {
-                                    ?>
-                                    <option  value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </select>
-                    </div>
-
-                    <div class="col-md-4">
-                        <select onchange="getComboA(this)" name="country" id="js_country"  data-style="btn-info btn-filled" class="selectpicker" >
-                            <option value="">Select Country</option>
-                            <?php
-                            if (is_array($countries)) {
-                                foreach ($countries as $country) {
-                                    $sel = ($country->id == set_value('country'))?'selected="selected"':'';
-                                    ?>
-                                    <option  value="<?php echo $country->id; ?>" <?php echo $sel;?> ><?php echo $country->name; ?></option>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </select>
-                    </div>
-
-
-                    <div class="col-md-4">
-                        <select  name="state" id="result" data-style="btn-info btn-filled"  class="selectpicker">
-                            <option value="">Select State</option>
-
-                        </select>
-                    </div>
-
-
-                    <div class="col-md-6 ptop-50 col-md-offset-2 mtop-30">
-                        <button class="btn   btn-yellow btn-block mtop-10" name="Search" value="Search" type="submit"><span>Search Professionals</span></button>
-                    </div>
-
-                </form>
             </div>
 
+
+
+            <!---End doctors search part-->
+            <!---Anatomy part-->
+            <div class="tab-content">
+                <div class="tab-pane active">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="title">
+                                Click to search
+                            </div>
+                            <div class="map img-responsive">
+                                <img src="<?php echo base_url(); ?>extra/images/img-anatomy.png" alt="anatomy" />
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 68; ?>" class="link head modalclick"></a>
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 4; ?>"  data-sub="<?php echo 0; ?>"  class="link eyes modalclick" ></a>
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 3; ?>"  data-sub="<?php echo 0; ?>"  class="link teeth modalclick"></a>
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 82; ?>" class="link lungs modalclick"></a>
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 64; ?>" class="link heart modalclick"></a>
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 69; ?>" class="link stomach modalclick"></a>
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 69; ?>" class="link liver modalclick"></a>
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 74; ?>" class="link kidneys modalclick"></a>
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 65; ?>" class="link skin modalclick"></a>
+                                <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 78; ?>" class="link bones modalclick"></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---End Anatomy part-->
+
+            <!--BODY PART-->
+            <div class="specialist-part">
+                <div class="specialist-area">
+                    <div class="title-little">Common searches</div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 4; ?>"  data-sub="<?php echo 0; ?>" class="organ eyes border-blue modalclick">(Eyes) optometrist</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 3; ?>"  data-sub="<?php echo 0; ?>"   class="organ teeth border-orange modalclick">(Teeth) Dentist</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 2; ?>"  data-sub="<?php echo 0; ?>"  class="organ bones border-brown-dark modalclick">chiropractor</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 11; ?>"  data-sub="<?php echo 0; ?>"  class="organ vet border-brown-dark modalclick">veterinarian</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 68; ?>" class="organ doc border-blue modalclick">physician</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 9; ?>"  data-sub="<?php echo 0; ?>"  class="organ foot border-green modalclick">podiatrist</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 7; ?>"  data-sub="<?php echo 0; ?>"  class="organ pharmacy border-red modalclick">Pharmacy</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 79; ?>"  class="organ ears border-brown-dark modalclick">Ears</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 65; ?>"  class="organ skin border-violet  modalclick">(Skin) dermatologist</a>
+                        </div>
+                    </div>
+                    <div class="title-little more ">More searches</div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 64; ?>" class="organ heart border-orange modalclick">(Heart) cardiologist</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 82; ?>" class="organ lungs border-red modalclick">(Lungs) pulmonologist</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 74; ?>" class="organ kidneys border-green modalclick">(Kidneys) nephrologist</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 75; ?>" class="organ nerv border-green modalclick">neurologist</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 80; ?>" class="organ kids border-violet modalclick">pediatrics</a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <a data-toggle="modal" data-target="#myModal"  href="javascript:void(0)"   data-prof="<?php echo 8; ?>"  data-sub="<?php echo 81; ?>" class="organ brain border-blue-light modalclick">psychiatrist</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="<?php echo base_url(); ?>/publicsearch" class="view">View all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="professional">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title no-top-p">
+                            Our professionals screening process
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xs-12">
+
+
+                            <div class="title-text text-center">There are two ways to see the list of professionals in this platform</div>
+                            <div class="text">
+
+
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><i class="fa fa-circle text-info mx-2"></i> By search terms, specific terms and specialty and sub specialty and special interests. </li>
+                                        <li class="list-group-item"><i class="fa fa-circle text-info mx-2"></i> By filtering the credentialed Doctors. Those who have been credentialed by our system will have been verified and have check marks next to their name. Highest level is three checks and the lowest one check mark. Those who have no check mark cannot be verified by our system. </li>
+                                        <li class="list-group-item"><i class="fa fa-circle text-info mx-2"></i> They usually have to be officially licensed and send proof of their credentials. </li>
+                                        <li class="list-group-item"><i class="fa fa-circle text-info mx-2"></i> Please read the legal terms before proceeding. </li>
+                                    </ul>
+
+                            </div>
+
+
+                    </div>
+
+                    <div class="col-sm-12">
+                        <a href="<?php echo base_url(); ?>/home/doctorpanel" class="join center">
+                            <span class="blue">Doctor join free</span>
+                            <span class="dark">exclusive benefits for doctors only</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--End BODY PART-->
+
         </div>
-
-
     </div>
 </div>
 
-<!--end Lending style-->
 
-
-    <div class="advertise_div col-md-12">
-        <div class="inner-item">
-            <a href="#">
-                <img class="center-block img-responsive"  src="<?php echo base_url().'comp/img/adcolor.jpg' ?>" alt="" >
-            </a>
-        </div>
-    </div>
-
-
-
-
-<div class="col-md-12 text-center styletext ptop-20">
-    <h4>Browse Some Of Our Awesome Features.</h4>
-</div>
-
-<!--category with image-->
-<section class="content">
-    <div class="right-bg">
-        <div class="container">
-            <!--category first 5 image start-->
-            <div class="row">
-                <div class="cat-widget col-md-3">
-                    <div class="inner-item">
-                        <a href="<?php echo base_url('home/feature');?>">
-                            <img  src="<?php echo base_url().'comp/img/free-classified.jpg' ?>" alt="" class="img-responsive rounded">
-                        </a>
-                    </div>
-                </div>
-                <div class="cat-widget col-md-3">
-                    <div class="inner-item">
-                        <a href="<?php echo base_url('home/feature/');?>">
-                            <img  src="<?php echo base_url().'comp/img/free-personals.jpg' ?>" alt="" class="img-responsive rounded">
-                        </a>
-                    </div>
-                </div>
-                <div class="cat-widget col-md-3">
-                    <div class="inner-item">
-                        <a href="<?php echo base_url('home/feature/');?>">
-                            <img  src="<?php echo base_url().'comp/img/free-forum.jpg' ?>" alt="" class="img-responsive rounded">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="cat-widget col-md-3">
-                    <div class="inner-item">
-                        <a href="<?php echo base_url('home/feature/');?>">
-                            <img  src="<?php echo base_url().'comp/img/free-blog.jpg' ?>" alt="" class="img-responsive rounded">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!--category first 5 image end-->
-
-        </div>
-        <!--category second 5 image end -------------------------------------------------------->
-
-
-        <!--get free with image-->
-        <div class="row ptop-40 ">
-            <div class="col-md-6 col-md-offset-3 text-center">
-                <img src="<?php echo base_url(); ?>comp/img/dimond.jpg"  class="img-responsive center-block dimond ptop-20" />
-            </div>
-        </div>
-        <!--get free with image-->
-
-        <!--helpig-->
-        <div class="row ptop-20">
-            <div class="text-center helpig-hand">
-                <h2>Gives people access to  <span>shared experiences, skills and expertise.</span></h2>
-
-            </div>
-        </div>
-        <!--helpig-->
-
-
-        <div class="ptop-40"></div>
-
-
-
-
-
-    </div>
-
-</section>
-
-
-<section class="content" style="background: #fff;">
-    <div class="ptop-20"></div>
-    <h2 class="text-center"><span class="text-primary">Our </span> Latest <span class="text-primary"> Blog</span></h2>
-    <div class="ptop-20"></div>
-    <div class="container">
-        <div class="row">
-            <?php if(!empty($allblog)){
-                foreach ($allblog as $row){
-            ?>
-            <div class="col-lg-4 col-sm-6 portfolio-item">
-                <div class="card border-box">
-                    <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>"><img class="card-img-top" src="<?php echo base_url('assets/file/blog/'.$row->primary_image);?>" height="250px" width="100%" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="<?php echo base_url('blog/Postlist/singlepost/' . $row->id); ?>"><?php echo substr($row->title, 0, 30);?></a>
-                        </h4>
-                        <p class="card-text"><?php echo strip_tags(substr($row->description, 0, 100));?></p>
-                    </div>
-                </div>
-            </div>
-            <?php } }?>
-        </div>
-        <div class="col-md-4 ptop-50 col-md-offset-4 mtop-30">
-            <a href="<?php echo base_url('blog')?>" class="btn   btn-yellow btn-block mtop-10"><span>Read More Blogs</span></a>
-        </div>
-    </div>
-    <div class="ptop-40"></div>
-</section>
-
-<section id="news">
-    <div class="jumbotron">
-
-        <div class="slide">
-            <h2 class="text-center"><span class="text-primary">Medical </span> News <span class="text-primary"> Today</span></h2>
-            <?php if(!empty($hello)) {
-
-                foreach ($hello as $row)
-                { ?>
-                    <div class="slider-item">
-
-                        <h3 class="text-center"><a href="<?php echo $row['link'];?>"><?php echo substr($row['title'], 20, 200);?></a></h3>
-
-                        <p class="text-muted text-justify" style="font-size: 20px; color: #000; text-align: center;"><?php echo $row['description'];?></p>
-
-                        <p style="font-size: 11px; color: #000; text-align: center;" class="lead"><?php echo $row['pubDate'];?></p>
-
-                    </div>
-                    <?php
-                }
-            }
-            ?>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section class="bottom-banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12  text-center ptop-40">
-
-
-                <h1>Only One Website</h1>
-                <h3>All Student Doctors in the world</h3>
-                <input type="submit" value="Join Now" class="btn btn-midum  btn-yellow">
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-</main>

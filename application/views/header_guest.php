@@ -2,193 +2,833 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>AllStudentDoctors | All Doctors & All Student Website  In The World</title>
-    <meta name="description" content="All Student Doctors And Doctors In The World. Doctor's And Student Can Join free. Enjoy Loads Of Free Features
-Where You Network, Learn and Exhibit Your Accomplishments With Other Doctors and Student Doctors. Free student Forum, blog, Personals, classified, Profile ">
-    <meta name="author" content="allstudentDoctors">
-    <meta name="Robots" content="index, follow">
-    <meta name="keywords" content="All Student doctors, Specialist doctors, Find a physician, Ask doctor, List of doctors, Student Free forum,doctors website,Online doctor,Doctor sites,Online medical doctor,Doctors web,Ask a doctor,Medical answers,Medical help online,Doctor answers,Medical doctor website,Doctor on line,Medical sites for doctors,Health doctor online,See a doctor online,Health doctor website,Doctor visit online,Talk to a doctor,Doctors information website,Online doctor consultation,Doctor questions,ask Medical doctor,Ask doctors questions,Talk to a doctor online,Health advice online,Medical info online,Online medical care,Medical questions online,Medical questions answered,Doctor diagnosis online,Doctor question hotline,Health advice websites,Online medical treatment,speak with a doctor online,Web medical doctor,Doctors in USA,">
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>/front/img/favicon.png">
+    
+    <title> ForAllDoctors : <?php echo !empty($page_title) ? $page_title : ''; ?> </title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.4 -->
+    <link href="<?php echo base_url(); ?>script-assets/bootstrap/css/bootstrap.min.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- FontAwesome 4.3.0 -->
+    <link href="<?php echo base_url(); ?>script-assets/font-awesome/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- Ionicons 2.0.0 -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Theme style -->
+    <link href="<?php echo base_url(); ?>script-assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css"/>
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="<?php echo base_url(); ?>script-assets/dist/css/skins/_all-skins.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="<?php echo base_url(); ?>script-assets/dist/css/skins/skin-green-light.css" rel="stylesheet"
+          type="text/css"/>
 
 
-    <link rel="apple-touch-icon" href="<?php echo base_url(); ?>/front/img/favicon.png">
+    <link href="<?php echo base_url(); ?>script-assets/plugins/datepicker/datepicker3.css" rel="stylesheet"
+          type="text/css"/>
 
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>front/img/favicon.png">
-    <link rel="apple-touch-icon" href="<?php echo base_url(); ?>front/img/favicon_60x60.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url(); ?>front/img/favicon_76x76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url(); ?>front/img/favicon_120x120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url(); ?>front/img/favicon_152x152.png">
+    <link href="<?php echo base_url(); ?>script-assets/slick.css" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo base_url(); ?>script-assets/slick-theme.css" rel="stylesheet" type="text/css"/>
 
+    <link href="<?php echo base_url(); ?>script-assets/custom.css" rel="stylesheet" type="text/css"/>
 
+    <!-- Time pick Css-->
 
-    <!-- CSS Styles -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>front/css/styles.css" />
-     <link rel="stylesheet" href="<?php echo base_url(); ?>front/css/selected.css" />
-
-    <!-- CSS Base -->
-    <link id="theme" rel="stylesheet" href="<?php echo base_url(); ?>front/css/themes/theme-bottle.css" />
-
-     <!-- Bootstrap core CSS -->
-
-    <!-- Google Web Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Raleway:400,200,300,100,500,600,700' rel='stylesheet' type='text/css'>
+    <!-- jQuery UI 1.11.2 -->
+    <!-- <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script> -->
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <!-- Bootstrap 3.3.2 JS -->
 
 
- <script type="text/javascript">
+    <script src="<?php echo base_url(); ?>script-assets/js/jQuery-2.1.4.min.js"></script>
+    <script src="<?php echo base_url(); ?>script-assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>script-assets/dist/js/app.min.js" type="text/javascript"></script>
+    <!-- jquery validation -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/additional-methods.js"></script>
+    <!-- jquery validation -->
+    <!-- jquery DATE + TIME -->
+    <script src="<?php echo base_url(); ?>script-assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="<?php echo base_url(); ?>script-assets/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url(); ?>script-assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
 
 
+    <!-- jquery DATE + TIME -->
+    <?php
+    $data = array();
+    $data['profession'] = $this->global_model->get('profession');
+    $data1['users'] = $this->global_model->get('profession');
 
-        function getComboA(sel) {
-            var html = '';
-            var value = sel.value;
-            var base_url = '<?php echo base_url() ?>';
-            var da = {state: value};
-
-
-            $.getJSON( "<?php echo base_url().'doctor/docController/getState'?>", { state:  value},'jsonp' )
-                .done(function( json ) {
-                    $('#result').empty();
-
-                    html+='<option value="">Select State</option>';
-                    for(var i=0; i<json.length ; i++)
-                    {
-                        html+='<option value="'+json[i]['name']+'">'+json[i]['name']+'</option>';
-                    }
-                    $('#result').append(html);
-                    $('#result').selectpicker('refresh');
-                })
-                .fail(function( jqxhr, textStatus, error ) {
-                    var err = textStatus + ", " + error;
-                    console.log( "Request Failed: " + err );
-                });
-
-        }
-    </script>
-
-   <style type="text/css">
-     #nav-bar a{
-        height:57px;
-     }
-
-    </style>
+    ?>
 </head>
 
-<body class="one-page header-absolute">
+<body class="skin-black-light sidebar-mini">
+<div class="wrapper">
 
-<!-- Loader -->
-<!-- <div id="page-loader"><svg class="loader-1 loader-primary" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="circle" fill="none" stroke-width="3" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div> -->
-<!-- Loader / End -->
 
-<!-- Header -->
-<header id="header" class="absolute light">
-    <div id="top-bar" class="topbar-bg">
-        <div class="container">
-            <div class="row">
-                <div class="module left">
-
-                    <a href="#" class="icon icon-circle icon-facebook icon-xs cust-icon"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="icon icon-circle icon-twitter icon-xs cust-icon"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="icon icon-circle icon-google-plus icon-xs cust-icon"><i class="fa fa-google-plus"></i></a>
-
-                    <div class="module left visible-xs visible-sm mr-10 ml-10">
-                         <ul class="list-inline">
-                            <li><i class="i-before ti-email text-light "></i><span class="text-muted text-orange">info@forstudentdoctors.com</span></li>
-                     </ul>
-                    </div>
-
-                </div>
-                <div class="module right">
-                    <div class="module left">
-                        <ul class="list-inline">
-                            <li><i class="i-before ti-user text-light"></i><span class="text-muted text-orange mr-100">We Help Student Doctors Network Building</span></li>
-                            <li><i class="i-before ti-email text-light "></i><span class="text-muted text-pal">info@forstudentdoctors.com</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-	<!-- Navigation Bar -->
-	  <div id="nav-bar">
-
-        <div class="container">
-            <!-- Logo -->
-            <a class="logo-wrapper" href="<?php echo base_url(); ?>">
-                <img class="logo logo-dark" src="<?php echo base_url(); ?>front/img/forstudentdoctors.png" alt="forstudentdoctors">
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="<?php echo base_url(); ?>" class="logo navbar-brand">
+            <span class="logo-mini">
+                <img src="<?php echo base_url();?>/comp/img/logomini.png" class="img-responsive" height="44px" alt="logo" >
+            </span>
+            <span class="logo-lg">
+               <img src="<?php echo base_url();?>/comp/img/logo.png" class="img-responsive" height="44px" alt="logo" >
+           </span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
             </a>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown messages-menu">
+                        <!-- Menu toggle button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="label label-success"><?php echo (!empty($notification))?count($notification):""?></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have <?php echo (!empty($notification))?count($notification):"0"?> new message</li>
+                            <li>
+                                <!-- inner menu: contains the messages -->
+                                <ul class="menu">
+                                    <?php if(!empty($notification)){
+                                        foreach ($notification as $row){
+                                            ?>
 
-            <nav class="module-group right">
+                                            <li><!-- start message -->
+                                                <a href="<?php echo base_url('message/read/'.$row->id.'/1');?>">
 
-                <!-- Primary Menu -->
-                <div class="module menu left menu-padding">
-                    <ul id="nav-primary" class="nav nav-primary">
-                        <li>
-                            <li><a href="<?php echo base_url('home'); ?>"><i class="fa fa-home fa-lg"></i>Home</a></i>
+                                                    <div class="pull-left">
+                                                        <!-- User Image -->
+                                                        <img height="30px" width="30px" src="<?php echo base_url('assets/file/'.$row->profilepicture);?>" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <!-- Message title and timestamp -->
+                                                    <h4>
+                                                        <?php echo $row->subject;?>
+                                                        <small><i class="fa fa-clock-o"></i><?php echo date('d-m-y', strtotime($row->timestamp));?></small>
+                                                    </h4>
+                                                    <!-- The message -->
+                                                    <p><?php echo substr($row->message, 0, 20);?></p>
+                                                </a>
+                                            </li>
+
+                                        <?php } }?>
+                                    <!-- end message -->
+                                </ul>
+                                <!-- /.menu -->
+                            </li>
+                            <li class="footer"><a href="<?php echo base_url('message');?>">See All Messages</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown notifications-menu">
+                        <a href="#" id="appointment_notification" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="label label-warning" id="reload_appointment"><?php echo (!empty($appointment_notify))?count($appointment_notify):""?></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have <?php echo (!empty($appointment_notify))?count($appointment_notify):"0"?> new appointment</li>
+                            <li>
+                                <!-- inner menu: contains the actual data -->
+                                <ul class="menu">
+                                    <?php if(!empty($doctor_appointment)){
+                                        foreach ($doctor_appointment as $row){
+                                            ?>
+                                            <li>
+                                                <a href="<?php echo base_url('doctor/docController/allappointment')?>">
+                                                    <i class="fa fa-users text-aqua"></i> <?php echo $row->first_name;?> appointment request to you
+                                                </a>
+                                            </li>
+                                            <?php
+                                        }
+                                    }?>
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="<?php echo base_url('doctor/docController/allappointment')?>">View all</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                            <?php
+                            if ($user_info['profilepicture'] == 0) { ?>
+                                <img src="<?php echo base_url(); ?>assets/user-demo.jpg" alt="" class="user-image"/>
+                            <?php } else { ?>
+                                <img src="<?php echo base_url() . '/assets/file/' . $user_info['profilepicture']; ?>"
+                                     alt="" width="160" class="user-image"/>
+                            <?php }
+                            ?>
+
+                            <span class="hidden-xs"> <?php echo $user_info['user_name']; ?><?php //print_r($user_info);?></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+
+                                <?php
+                                if ($user_info['profilepicture'] == 0) { ?>
+                                    <img src="<?php echo base_url(); ?>assets/user-demo.jpg" alt="" class="img-circle"/>
+                                <?php }
+                                else { ?>
+                                    <img src="<?php echo base_url() . '/assets/file/' .$user_info['profilepicture']; ?>"
+                                         alt="" width="160" class="img-circle"/>
+                                <?php }
+                                ?>
+                                <p>
+                                    User Name :<?php echo $user_info['user_name']; ?>
+
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="<?php echo base_url('profile/update'); ?>"
+                                       class="btn btn-default btn-flat">Update Information</a>
+
+
+                                </div>
+                                <div class="pull-right">
+                                    <a href="<?php echo base_url('home/log_out'); ?>" class="btn btn-default btn-flat">Sign
+                                        out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li class="header">MAIN NAVIGATION</li>
+
+                <?php if (!$user_info['profession'] == 1 or 2) { ?>
+                    <li class="treeview <?php if ($this->uri->segment(1)=="dashboard"){
+                        echo "active";
+                    } ?>">
+                        <a href="<?php echo base_url('dashboard'); ?>">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
+                        </a>
+                    </li>
+                <?php } else{
+                } ?>
+
+                <li class="treeview <?php if ($this->uri->segment(1)=="profile"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-globe"></i>
+                        <span>My Profile</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+
+                        <li class="<?php if ($this->uri->segment(2)=="myprofile"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('profile/myprofile'); ?>"><i class="fa fa-circle-o"></i>View
+                                Profile</a>
                         </li>
-                        <li>
-                            <li><a href="<?php echo base_url('home/about_us'); ?>"><i class="fa fa-book fa-lg text-success"></i>About US</a></li>
-                        </li>
-                        <li>
-                            <li><a href="<?php echo base_url('blog/Postlist'); ?>"> <i class="fa fa-comments-o fa-lg text-warning"></i>Blog</a></li>
-                        </li>
-                        <li>
-                            <li><a href="<?php echo base_url('home/feature'); ?>"><i class="fa fa-briefcase fa-lg text-primary"></i> Features</a></li>
-                        </li>
-                        <li>
-                            <li><a href="<?php echo base_url('home/contact'); ?>"><i class="fa fa-envelope fa-lg text-info"></i> Contact</a></li>
-                        </li>
-                        <li>
-                            <li class="hidden-xs"><a title="Sign in" href="<?php echo base_url('home/login'); ?>"><span class=""><i class="fa fa-lock fa-2x pr-10 pt-20" style="color: #ad57e1;"></i></span></a></li>
+                        <li class="<?php if ($this->uri->segment(2)=="update"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('profile/update'); ?>"><i class="fa fa-circle-o"></i> Update My
+                                Profile</a>
                         </li>
 
-                        <li>
-                            <li class="hidden-xs"><a title="Sign up" href="<?php echo base_url('home/registration'); ?>"><span class=""><i class="fa fa-user-plus fa-2x pt-20" style="color: #8ac04b;"></i></span></a></li>
+                        <li class="<?php if ($this->uri->segment(2)=="search" or $this->uri->segment(3)=="search"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('profile/search'); ?>"><i class="fa fa-circle-o"></i> Search
+                                Profile</a>
                         </li>
 
                     </ul>
-                </div>
 
-                <div class="module visible-xs visible-sm">
-                <a title="Sign in" href="<?php echo base_url('home/login'); ?>"><span class="mr-20"><i class="fa fa-lock fa-2x " style="color: #ad57e1;"></i></span></a>
-                &nbsp;
-                <a title="Sign up" href="<?php echo base_url('home/registration'); ?>"><span class=""><i class="fa fa-user-plus fa-2x pt-20" style="color: #8ac04b;"></i></span></a>
-                </div>
+                </li>
 
-            </nav>
+                <li class="treeview <?php if ($this->uri->segment(1)=="pub"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-fw fa-user-md"></i>
+                        <span>My Website</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('pub/add'); ?>"><i class="fa fa-circle-o"></i> Create My
+                                webiste</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="viewedit"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('pub/viewedit'); ?>"><i class="fa fa-circle-o"></i> Edit My
+                                webiste</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="details"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('pub/details'); ?>"> <i class="fa fa-circle-o"></i>View My
+                                Public Site</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+                <li class="treeview <?php if ($this->uri->segment(1)=="classifieds"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-fw fa-list-alt "></i>
+                        <span>Classified</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('classifieds/add'); ?>"><i
+                                    class="fa fa-circle-o"></i>Add New Listing</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(2)=="viewmyclassfied"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('classifieds/viewmyclassfied'); ?>"><i
+                                    class="fa fa-circle-o"></i>Edit My Listed</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(2)=="all"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('classifieds/all'); ?>"><i
+                                    class="fa fa-circle-o"></i>Show All Posted</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('classifieds/search'); ?>"><i
+                                    class="fa fa-circle-o"></i>Search All Posted</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="treeview <?php if ($this->uri->segment(1)=="personal"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span>Personals</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('personal/add'); ?>"><i class="fa fa-circle-o"></i>
+                                Add New Personals</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="all"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('personal/all'); ?>"><i class="fa fa-circle-o"></i>
+                                Show All Personals</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="list"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('personal/list'); ?>"><i class="fa fa-circle-o"></i>Manage
+                                My Personals</a>
+                        </li>
+
+
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('personal/search'); ?>"><i class="fa fa-circle-o"></i>Search
+                                Personals</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="treeview <?php if ($this->uri->segment(1)=="forum"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-bullhorn"></i>
+                        <span>Forum</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(2)=="board"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('forum/board'); ?>"><i class="fa fa-circle-o"></i> Forum
+                                Dashboard</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(2)=="posts"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('forum/posts'); ?>"><i
+                                    class="fa fa-circle-o"></i>
+                                All My Post</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="comments"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('forum/comments'); ?>"><i
+                                    class="fa fa-circle-o"></i>
+                                All My Comments</a>
+                        </li>
+
+
+                    </ul>
+
+
+                </li>
+
+
+                <li class="treeview <?php if ($this->uri->segment(1)=="event"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-calendar"></i>
+                        <span>Event</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('event/add'); ?>"><i class="fa fa-circle-o"></i> Create
+                                New Event</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(2)=="viewall"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('event/viewall'); ?>"><i class="fa fa-circle-o"></i>
+                                View All  Events</a>
+                        </li>
+
+
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('event/search'); ?>"><i class="fa fa-circle-o"></i>
+                                Search  Events</a>
+                        </li>
 
 
 
-            <!-- Menu Toggle -->
-            <div class="menu-toggle">
-                <a href="#" data-toggle="mobile-menu" class="mobile-trigger"><span><span></span></span></a>
-            </div>
+                        <li class="<?php if ($this->uri->segment(2)=="myevent"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('event/myevent'); ?>"><i class="fa fa-circle-o"></i>Manage
+                                Event List</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="treeview <?php if ($this->uri->segment(1)=="group"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-group"></i>
+                        <span>Group</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('group/add'); ?>"><i class="fa fa-circle-o"></i> Create
+                                New Group</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(2)=="viewall"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('group/viewall'); ?>"><i class="fa fa-circle-o"></i>
+                                View All Group</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="mygroup"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('group/mygroup'); ?>"><i class="fa fa-circle-o"></i>My
+                                Group List</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('group/search'); ?>"><i class="fa fa-circle-o"></i>
+                                Search  Group</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="treeview <?php if ($this->uri->segment(1)=="product"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-tags"></i>
+                        <span>Product</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('product/add'); ?>"><i class="fa fa-circle-o"></i>
+                                Create New Product</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="all"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('product/all'); ?>"><i
+                                    class="fa fa-circle-o"></i>
+                                View All Products</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="list"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('product/list'); ?>"><i
+                                    class="fa fa-circle-o"></i>My Product List</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('product/search'); ?>"><i
+                                    class="fa fa-circle-o"></i>Product Search</a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+
+
+                <li class="treeview <?php if ($this->uri->segment(1)=="insideblog"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-unchecked"></i>
+                        <span>Blog</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(2)=="create"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('insideblog/create'); ?>"><i
+                                    class="fa fa-circle-o"></i> Create New Blog</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(2)=="all"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('insideblog/all'); ?>"><i
+                                    class="fa fa-circle-o"></i>
+                                View All Blog</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="list"){
+                            echo "active";
+                        } ?>">
+                            <a href="<?php echo base_url('insideblog/list'); ?>"><i
+                                    class="fa fa-circle-o"></i>My Blog List</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+                <li class="treeview <?php if ($this->uri->segment(1)=="message"){
+                    echo "active";
+                } ?>">
+                    <a href="<?php echo base_url('message');?>">
+                        <i class="fa fa-envelope"></i>
+                        <span>Message</span>
+                    </a>
+                </li>
+
+                <!--
+                <li class="treeview <?php if ($this->uri->segment(1)=="ces"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-book"></i>
+                        <span>CES</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu">
+
+                        <li class="<?php if ($this->uri->segment(2)=="add"){
+                    echo "active";
+                } ?>">
+                            <a href="<?php echo base_url('ces/add'); ?>"><i class="fa fa-circle-o"></i> Create New
+                                CES</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="ces_controller"){
+                    echo "active";
+                } ?>">
+                            <a href="<?php echo base_url('ces/ces_controller/grid'); ?>"><i class="fa fa-circle-o"></i>
+                                View All CES</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="allces"){
+                    echo "active";
+                } ?>">
+                            <a href="<?php echo base_url('ces/allces'); ?>"><i class="fa fa-circle-o"></i>My CES
+                                List</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(2)=="search"){
+                    echo "active";
+                } ?>">
+                            <a href="<?php echo base_url('ces/search'); ?>"><i class="fa fa-circle-o"></i>Search CES
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+                </li>
 
 
 
-        </div>
 
 
 
-    </div>
+                /*
+                <li class="treeview <?php if ($this->uri->segment(2)=="privateweb"){
+                    echo "active";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-shield"></i>
+                        <span>Private Profile</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(3)=="index"){
+                    echo "active";
+                } ?>">
+                            <a href="<?php echo base_url('private_web/privateweb/index'); ?>"><i
+                                        class="fa fa-circle-o"></i> Create Private webiste</a>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(3)=="search"){
+                    echo "active";
+                } ?>">
+                            <a href="<?php echo base_url('private_web/privateweb/search'); ?>"> <i
+                                        class="fa fa-circle-o"></i>Search Private Profile</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(3)=="viewForEdit"){
+                    echo "active";
+                } ?>">
+                            <a href="<?php echo base_url('private_web/privateweb/viewForEdit'); ?>"><i
+                                        class="fa fa-circle-o"></i> View Private webiste</a>
+                        </li>
+
+                        <li class="<?php if ($this->uri->segment(3)=="view"){
+                    echo "active";
+                } ?>">
+                            <a href="<?php echo base_url('private_web/privateweb/view'); ?>"> <i
+                                        class="fa fa-circle-o"></i>View My Private Site</a>
+                        </li>
+                    </ul>
+                </li>
+                */
 
 
-	<!-- Notification Bar -->
-	<div id="notification-bar"></div>
 
-	<!-- Search Bar -->
-	<div id="search-bar">
-		<div class="container">
-			<form id="search-form">
-				<input class="search-bar-input" type="text" placeholder="Search...">
-				<button class="search-bar-submit"><i class="ti-search"></i></button>
-			</form>
-			<a href="#" class="search-bar-close" data-toggle="search-bar"><i class="ti-close"></i></a>
-		</div>
-	</div>
+                <li class="treeview <?php if ($this->uri->segment(2)=="Photo" && "video"){
+                    echo "active";
+                }else{
+                    echo " ";
+                } ?>">
+                    <a href="#">
+                        <i class="fa fa-file-audio-o"></i>
+                        <span>Media</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
 
-</header>
+                    <ul class="treeview-menu">
+                        <li class="<?php if ($this->uri->segment(2)=="Photo"){
+                    echo "active";
+                } ?>">
+                            <a href="<?php echo base_url('photo/Photo/index'); ?>"><i class="fa fa-circle-o"></i> Photo</a>
+                            <ul class="treeview-menu">
+                                <li class="<?php if ($this->uri->segment(3)=="index"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('photo/Photo/index'); ?>"><i
+                                                class="fa fa-circle-o"></i> Create New Album</a>
+                                </li>
+                                <li class="<?php if ($this->uri->segment(3)=="viewall"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('photo/Photo/viewall'); ?>"><i
+                                                class="fa fa-circle-o"></i>
+                                        View All Photos</a>
+                                </li>
+
+                            </ul>
+                        <li class="<?php if ($this->uri->segment(2)=="video"){
+                    echo "active";
+                } ?>">
+                            <a href="#"><i class="fa fa-circle-o"></i>
+                                Video</a>
+                            <ul class="treeview-menu">
+                                <li class="<?php if ($this->uri->segment(3)=="index"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('video/video/index'); ?>"><i
+                                                class="fa fa-circle-o"></i> Create Video Album</a>
+                                </li>
+                                <li class="<?php if ($this->uri->segment(3)=="viewall"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('video/video/viewall'); ?>"><i
+                                                class="fa fa-circle-o"></i>
+                                        All My Album</a>
+                                </li>
+
+                                <li class="<?php if ($this->uri->segment(3)=="listofalbum"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('video/video/listofalbum'); ?>"><i
+                                                class="fa fa-circle-o"></i>
+                                        All Videos</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="<?php if ($this->uri->segment(2)=="file"){
+                    echo "active";
+                } ?>">
+                            <a href="#"><i class="fa fa-circle-o"></i>
+                                File</a>
+                            <ul class="treeview-menu">
+                                <li class="<?php if ($this->uri->segment(3)=="index"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('file/file/index'); ?>"><i class="fa fa-circle-o"></i>
+                                        Upload File</a>
+                                </li>
+
+                                <li class="<?php if ($this->uri->segment(3)=="listallfiles"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('/file/file/listallfiles'); ?>"><i
+                                                class="fa fa-circle-o"></i> ALL Files</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="<?php if ($this->uri->segment(2)=="audio"){
+                    echo "active";
+                } ?>">
+                            <a href="#"><i class="fa fa-circle-o"></i>
+                                Lecture/Audio</a>
+                            <ul class="treeview-menu">
+                                <li class="<?php if ($this->uri->segment(3)=="index"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('audio/audio/index'); ?>"><i
+                                                class="fa fa-circle-o"></i> Create Audio Album</a>
+                                </li>
+                                <li class="<?php if ($this->uri->segment(3)=="viewall"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('audio/audio/viewall'); ?>"><i
+                                                class="fa fa-circle-o"></i>
+                                        All Audio Album</a>
+                                </li>
+                                <li class="<?php if ($this->uri->segment(3)=="myaudio"){
+                    echo "active";
+                } ?>">
+                                    <a href="<?php echo base_url('audio/audio/myaudio'); ?>"><i
+                                                class="fa fa-circle-o"></i>
+                                        My Audio</a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </li>
+                -->
+
+
+                <li class="treeview">
+                    <a href="<?php echo base_url('/home/log_out'); ?>">
+                        <i class="fa fa-sign-out "></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <script>
+        $('#appointment_notification').click(function() {
+
+            var id = '1';
+            var base_url = '<?php echo base_url() ?>';
+            $.ajax({
+                type: 'POST',
+                url: base_url + "doctor/docController/updateAppointment/"+id,
+                success: function(resultData) {
+                    //$("#result").html(resultData);
+                    console.log(resultData);
+                    $('#reload_appointment').ajax.reload();
+                }
+            });
+
+        });
+    </script>
+
+

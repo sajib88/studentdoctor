@@ -1,156 +1,317 @@
-<div class="advertise_div col-md-12">
-    <div class="inner-item">
-        <a href="#">
-            <img class="center-block img-responsive"  src="<?php echo base_url().'comp/img/leaderboard.gif' ?>" alt="" >
-        </a>
-    </div>
 </div>
-
-
-<div id="footer" class="visible-xs">
-    <div class="col-xs-12 navbar-inverse navbar-fixed-bottom">
-        <div class="row" id="bottomNav">
-            <?php $loginId = $this->session->userdata('login_id');
-                if($loginId != 0){
-            ?>
-                    <div class="col-xs-6 text-center"><a href="<?php echo base_url(); ?>profile/dashboard" ><i class="glyphicon glyphicon-dashboard"></i>  <small>Dashboard</small> </a></div>
-                    <div class="col-xs-6 text-center"><a href="<?php echo base_url(); ?>publicsearch" ><i class="glyphicon glyphicon-zoom-in"></i> <small>Search </small></a></div>
-                <?php }else{ ?>
-                    <div class="col-xs-4 text-center"><a href="<?php echo base_url(); ?>home/registration" ><i class="glyphicon glyphicon-plus-sign"></i>  <small>Sign Up</small> </a></div>
-                    <div class="col-xs-4 text-center"><a href="<?php echo base_url(); ?>home/login" ><i class="glyphicon glyphicon-user"></i> <small>Login</small></a></div>
-                    <div class="col-xs-4 text-center"><a href="<?php echo base_url(); ?>publicsearch" ><i class="glyphicon glyphicon-zoom-in"></i> <small>Search </small></a></div>
-                <?php } ?>
-
-
-
+<footer class="footer-bs">
+    <div class="row">
+        <div class="col-md-4 footer-brand animated fadeInLeft">
+            <a href="<?php echo base_url(); ?>">
+                <img src="<?php echo base_url(); ?>extra/images/logo.png" />
+            </a>
+            <br> <br>
 
         </div>
-    </div>
-</div>
-<!--small footer start -->
-<footer class="footer-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 pdl ptop-20">
-                <div class="row">
-                    <div class="col-sm-4 pdl widget">
-                        <ul class="entry-list">
-                            <li><a href="<?php echo base_url(); ?>home/about_us">About Us</a></li>
-                            <li><a href="<?php echo base_url(); ?>home/about_us">Our Mission</a></li>
-                            <li><a href="<?php echo base_url(); ?>home/feature">Our Features</a></li>
-                            <li><a href="<?php echo base_url(); ?>blog">Blog</a></li>
+        <div class="col-md-4 footer-nav animated fadeInUp">
+            <h4>Menu —</h4>
+            <div class="col-md-12">
+                <ul class="pages">
+                    <li> <a href="<?php echo base_url(); ?>">Home</a></li>
+                    <li><a href="<?php echo base_url('publicsearch'); ?>" >Find Your Doctor</a></li>
+                    <li><a href="<?php echo base_url('home/patient'); ?>">Patient Sign Up/ Login</a></li>
+                    <li><a href="<?php echo base_url('home/doctorpanel'); ?>" >Doctors Sign Up/ Login</a></li>
+                    <li><a href="<?php echo base_url('home/contact'); ?>">Contact Us</a></li>
+                    <li><a href="<?php echo base_url(''); ?>" >Advertiser Join Here</a></li>
 
-                        </ul>
-                    </div>
-                    <div class="col-sm-4 widget ">
-                        <ul class="entry-list">
-                            <li><a href="<?php echo base_url(); ?>home/registration">Registration</a></li>
-                            <li><a href="<?php echo base_url(); ?>home/login">Login</a></li>
-                            <li><a href="<?php echo base_url(); ?>home/forgotpassword">Forgot Password</a></li>
-                            <li><a href="#">Support</a></li>
 
-                        </ul>
-                    </div>
-                    <div class="col-sm-4 widget pdr">
-                        <ul class="entry-list">
-                            <li><a href="<?php echo base_url(); ?>home/terms">Terms Of Use</a></li>
-                            <li><a href="<?php echo base_url(); ?>home/privacy">Privacy Policy</a></li>
-                            <li><a href="<?php echo base_url(); ?>home/contact">Contact Us</a></li>
-                            <li><a href="<?php echo base_url(); ?>home/disclaimer">Disclaimer</a></li>
-                        </ul>
-                    </div>
-                </div>
+                </ul>
             </div>
-            <div class="col-md-5 pdr">
-                <div class="newsletter-widget widget">
-                    <h3 class="entry-title">Subscribe to latest News from allstudentdoctors.com</h4>
-                        <form class="form-inline">
-                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter Email Address">
-                            <button type="submit" class="btn btn-blue">Sign Up Now</button>
-                        </form>
-                </div>
-                <div class="row">
-                    <ul class="social-list">
-                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href=""><i class="fa fa-pinterest-p"></i></a></li>
-                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href=""><i class="fa fa-youtube-play"></i></a></li>
-                        <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-                <p class="copyright">© 2017 allstudentdoctors.com. All Rights Reserved.</p>
-            </div>
+
         </div>
+        <div class="col-md-4 footer-social animated fadeInDown">
+            <h4>Copyright</h4>
+            <p>Copyright © 2010 - 2019 ForAllDoctors.com Patent Pending. All Rights Reserved
+                ForAllDoctors.com Application </p>
+            <!--<ul>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">RSS</a></li>
+            </ul>-->
+        </div>
+
     </div>
-</footer>  <!--footer wrapper-->
-<!-- Main jumbotron for a primary marketing message or call to action -->
-
-<script src="<?php echo base_url(); ?>comp/js/vendor/jquery-1.11.2.min.js"></script>
-<script src="<?php echo base_url(); ?>comp/js/vendor/bootstrap.min.js"></script>
-<script src="<?php echo base_url(); ?>comp/js/slick.min.js"></script>
-<script src="<?php echo base_url(); ?>comp/js/main.js"></script>
-<script src="<?php echo base_url(); ?>backend/plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="<?php echo base_url(); ?>comp/js/text-slider.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.slide').textSlider();
-    });
-</script>
-<script>
-    $(function () {
-        $('.progress-bar').each(function () {
-            var t = $(this);
-            var barPercentage = t.data('percentage');
-
-            // add a div for the label text
-            t.children('.label').append('<div class="label-text"></div>');
-
-            // add some "gimme" percentage when data-percentage is <2
-            if (parseInt((t.data('percentage')), 10) < 2) barPercentage = 2;
-
-            // set up the left/right label flipping
-            if (barPercentage > 50) {
-                t.children('.label').css("right", (100 - barPercentage) + '%');
-                t.children('.label').css("margin-right", "-10px");
-            }
-            if (barPercentage < 51) {
-                t.children('.label').css("left", barPercentage + '%');
-                t.children('.label').css("margin-left", "-20px");
-            }
-
-            // fill in bars and labels
-            t.find('.label-text').text(t.attr('data-percentage') + '%');
-            t.children('.bar').animate({
-                width: barPercentage + '%'
-            }, 500);
-            t.children('.label').animate({
-                opacity: 1
-            }, 1000);
-        });
-    });
-
-</script>
-<script type="text/javascript">
-    jQuery(document).ready(function() {
-        //Date picker
-        $('#datepicker2').datepicker({
-            autoclose: true
-        });
-        $('#datepicker').datepicker({
-            autoclose: true
-        });
-
-    });
-
-
-</script>
-
-
-
+</footer>
 </body>
 </html>
 
 
+<style>
+    .breadcrumb{
+        margin-top: 0px;
+        border-radius:0px;
+    }
+    .captcha{margin:0 auto;
+       }
 
+    .captcha label{
+        margin-bottom: 20px;
+        font-size:22px;
+        font-family: 'primelight';
+        font-size: 20px;
+        line-height: 30px;
+        margin-right: 10px;}
+
+    .captcha input[type="text"]{
+        height:22px;
+        padding:0px 5px;
+        font-size: 16px;
+        font-family: 'primelight';}
+</style>
+
+
+
+<!--match Home page modal-->
+
+<!--match Home page  modal-->
+<script>
+
+    $('.modalclick').click(function(){
+        var base_url = '<?php echo base_url() ?>';
+        var prof=$(this).data('prof');
+        var sub=$(this).data('sub');
+        $.ajax({
+            type: 'POST',
+            url: base_url + "doctor/DocController/ajax_Search/"+prof+'/'+sub,
+            data: $("#search_form").serialize(),
+            datatype: "text",
+            success: function(viewstml){
+                $('#load_search').html(viewstml);
+            }
+        });
+    });
+</script>
+
+
+
+
+<div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-cog"></i>Search Professional Specialist</h4>
+            </div>
+
+            <div id="load_search"></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script type="application/javascript">
+
+
+    $(function(){
+        $('#searching').click(function(){
+            var base_url = '<?php echo base_url() ?>';
+            var id=$(this).data('id');
+
+            $.ajax({
+                type: 'POST',
+                url: base_url + "doctor/DocController/getproffesional/"+id,
+                data: $("#search_form").serialize(),
+                datatype: "text",
+                success: function(viewstml){
+                    $('#loaddoctors').html(viewstml);
+                }
+            });
+        });
+
+    });
+
+
+
+
+    $(function(){
+        $('#home-search').click(function(){
+            var base_url = '<?php echo base_url() ?>';
+            var prof=$(this).data('prof');
+            var sub=$(this).data('sub');
+
+
+            $.ajax({
+                type: 'POST',
+                url: base_url + "doctor/DocController/ajax_Search/"+prof,
+                data: $("#search_form").serialize(),
+                datatype: "text",
+                success: function(viewstml){
+                    $('#load_search').html(viewstml);
+                }
+            });
+        });
+
+    });
+
+
+</script>
+
+
+
+
+<script src="<?php echo base_url(); ?>script-assets/js/jquery.ebcaptcha.js"></script>
+
+<script type="application/javascript">
+
+    $(function(){
+        $('#search_form').ebcaptcha();
+    });
+
+
+</script>
+
+<script type="application/javascript">
+
+
+    $(function(){
+        $('#register_form').validate({
+            rules: {
+                email: {
+                    required:true
+                },
+                message:{
+                    required:true
+                },
+
+                pat_password:{
+                    required:true
+                }
+
+
+            },
+            messages:{
+                email: {
+                    required: "Email  is Required",},
+
+                message: {
+                    required: "What care do you need details is Required",},
+
+                pat_password: {
+                    required: "Password is Important",}
+            },
+            submitHandler: function(form) {
+                var base_url = '<?php  echo base_url() ?>';
+                $.ajax({
+                    url:base_url + "doctor/DocController/setrequest/",
+                    type: 'POST',
+                    data: $("#search_form").serialize(),
+                    dataType: "json",
+                    success: function (data) {
+
+                        if(data.status == "success")
+                        {
+
+                            var homepage = data.datahome.is_homepage;
+                            if(homepage != 0)
+                            {
+                                swal("Your registration Process is Done", "Thanks for register  ForAllDoctors.Com", "success");
+                                setTimeout(function(){
+
+                                }, 100);
+                            }
+                            else{
+
+                            }
+                        }
+
+                    },
+
+                });
+            }
+        });
+    });
+
+
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#email').change(function(){
+            var email = $('#email').val();
+            if(email != '')
+            {
+                $.ajax({
+                    url:"<?php echo base_url(); ?>doctor/DocController/check_email_avalibility",
+                    method:"POST",
+                    data:{email:email},
+                    success:function(data){
+                        $('#email_result').html(data);
+
+                    }
+                });
+            }
+        });
+    });
+
+
+    $(function() {
+        $('#ChangeToggle').click(function() {
+            $('#navbar-hamburger').toggleClass('hidden');
+            $('#navbar-close').toggleClass('hidden');
+        });
+    });
+</script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+
+<style>
+    .footer-bs {
+        background-color: #3c3d41;
+        padding: 60px 40px;
+        color: rgba(255,255,255,1.00);
+
+    }
+    .footer-bs .footer-brand, .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { padding:10px 25px; }
+    .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-color: transparent; }
+    .footer-bs .footer-brand h2 { margin:0px 0px 10px; }
+    .footer-bs .footer-brand p { font-size:12px; color:rgba(255,255,255,0.70); }
+
+    .footer-bs .footer-nav ul.pages { list-style:none; padding:0px; }
+    .footer-bs .footer-nav ul.pages li { padding:5px 0px;}
+    .footer-bs .footer-nav ul.pages a { color:rgba(255,255,255,1.00); font-weight:bold; text-transform:uppercase; }
+    .footer-bs .footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+    .footer-bs .footer-nav h4 {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom:10px;
+    }
+
+    .footer-bs .footer-nav ul.list { list-style:none; padding:0px; }
+    .footer-bs .footer-nav ul.list li { padding:5px 0px;}
+    .footer-bs .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
+    .footer-bs .footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
+
+    .footer-bs .footer-social ul { list-style:none; padding:0px; }
+    .footer-bs .footer-social h4 {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+    .footer-bs .footer-social li { padding:5px 4px;}
+    .footer-bs .footer-social a { color:rgba(255,255,255,1.00);}
+    .footer-bs .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+
+    .footer-bs .footer-ns h4 {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom:10px;
+    }
+    .footer-bs .footer-ns p { font-size:12px; color:rgba(255,255,255,0.70); }
+
+    @media (min-width: 768px) {
+        .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
+    }
+</style>

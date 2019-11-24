@@ -28,7 +28,7 @@
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img src="<?php echo base_url() . 'assets/file/insideblog/' .$single_post['primary_image'] ?>" alt="" width="150" height="150" class="blog-image center-block" />
+                        <img src="<?php echo base_url() . 'assets/file/insideblog/' .$single_post['primary_image'] ?>" alt="" width="220" height="140" class=" center-block" />
                         <h4 class="profile-username text-center"> <?php echo $single_post['title']; ?></h4>
                         <p class="text-center"><b>Added By : </b> <span><a href="<?php echo base_url('showProfile/'.$single_post['user_id']);?>"><?php echo getNameById($single_post['user_id']);?></a></span></p>
                         <br>

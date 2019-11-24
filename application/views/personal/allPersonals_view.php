@@ -1,26 +1,14 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ALAM
- * Date: 10-Dec-16
- * Time: 2:17 AM
- */
-/*print '<pre>';
-print_r($allpersonals);die;*/
-?>
-
-
-
-
 <link href="<?php echo base_url('script-assets/plugins/datatables/dataTables.bootstrap.css');?>" rel="stylesheet">
 <link href="<?php echo base_url('script-assets/no_more_table.css');?>" rel="stylesheet">
+
+
 
 <div class="content-wrapper">
 
     <section class="content-header">
         <h1><i class="fa fa-male"></i>
             All Personals
-
+           
         </h1>
     </section>
     <section class="content">

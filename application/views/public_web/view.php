@@ -1,39 +1,39 @@
 <div class="content-wrapper">
-    
+
     <section class="content-header">
-      <h1><i class="fa fa-user-md"></i>
-       My Website Details
-      </h1>
+      <h4><i class="fa fa-user-md"></i>
+          <?php echo $user_info['email']; ?> - Website Details
+      </h4>
     </section>
-    
-    
-   
- <section class="content">  
+
+
+
+ <section class="content">
     <div class="row">
         <div class="col-lg-12">
-            
-           
-            
-            
-        
-         <div class="col-md-4">
+
+
+
+
+
+         <div class="col-md-5">
 
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-             
-                
+
+
                 <?php
                             if($user_info['profilepicture'] == 0) {?>
-                                <img src="http://placehold.it/380x500" alt="" class="profile-user-img img-responsive img-circle" />
+                                <img src="<?php echo base_url() . '/assets/user-demo.jpg' ?>" alt="" class="profile-user-img img-responsive img-circle"  />
                             <?php }
                             else {?>
                                 <img src="<?php echo base_url() . '/assets/file/' .$user_info['profilepicture']; ?>" alt="" width="150" height="150" class="img-circle center-block" />
                             <?php }
                             ?>
-                
-                
- 
+
+
+
               <h3 class="profile-username text-center"><?php echo $profession_type['name']; ?></h3>
 
               <p class="text-muted text-center"><?php echo $user_info['first_name']; ?> <?php echo $user_info['last_name']; ?></p>
@@ -44,8 +44,8 @@
                 </li>
                 <li class="list-group-item">
                   <b>Gender </b> <a class="pull-right"><?php echo $user_info['gender']; ?></a>
-                </li>  
-                  
+                </li>
+
                 <li class="list-group-item">
                   <b>Professional Licensing Country</b> <a class="pull-right"><?php echo $user_info['plc']; ?></a>
                 </li>
@@ -61,66 +61,66 @@
           <!-- /.box -->
 
           <!-- About Me Box -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title"> Public Website Information </h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i> Description</strong>
 
-              <p class="text-muted">
-                <?php echo $website_info['description']; ?>
-              </p>
-
-              <hr>
-                
-                
-                
-                
-              <strong><i class="fa fa-medkit"></i> Business Infromation</strong>
-
-                <p class="text-muted">
-
-                    <br/>           <b>  Business Country </b>  : <?php
-                    $data = get_data('countries', array('id' => $website_info['country']));
-                    echo $data['name'];
-                    ?><br/>
-                    <b>  Business State </b>  : <?php echo $website_info['state']; ?><br/>
-                    <b>  Business City  </b>  : <?php echo $website_info['city']; ?><br/>
-                    <b>  Business Zip  </b>  : <?php echo $website_info['postal']; ?><br/>
-                    <b>  Business Name  </b>  : <?php echo $website_info['business_name']; ?><br/>
-                    <b>  Business Web site  </b>  : <?php echo $website_info['business_website']; ?><br/>
-                    <b>  Business Email  </b>  : <?php echo $website_info['business_email']; ?><br/>
-                    <b>  Business Telephone  </b>  : <?php echo $website_info['business_telephone']; ?><br/>
-                    <b>  Business Fax  </b>  : <?php echo $website_info['business_fax']; ?><br/>
-                </p>
-              <hr>
-
-              <strong><i class="fa fa-plus-square"></i> Specialty</strong>
-
-              <p>
-                
-                <span class="label label-success"><?php echo $website_info['specialty']; ?></span>
-                
-                
-              </p>
-
-              <hr>
-
-              <strong><i class="glyphicon glyphicon-play"></i> Special Interest</strong>
-                
-              <p>
-                <span class="label label-info"><?php echo $website_info['special_interest']; ?></span>
-             </p>
-            </div>
-            <!-- /.box-body -->
-          </div>
           <!-- /.box -->
         </div>
-           
-            <div class="col-lg-8">
-                
+
+            <div class="col-lg-7">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Public Website Information </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <strong><i class="fa fa-book margin-r-5"></i> Description</strong>
+
+                        <p class="text-muted">
+                            <?php echo $website_info['description']; ?>
+                        </p>
+
+                        <hr>
+
+
+
+
+                        <strong><i class="fa fa-medkit"></i> Business Infromation</strong>
+
+                        <p class="text-muted">
+
+                            <br/>           <b>  Business Country </b>  : <?php
+                            $data = get_data('countries', array('id' => $website_info['country']));
+                            echo $data['name'];
+                            ?><br/>
+                            <b>  Business State </b>  : <?php echo $website_info['state']; ?><br/>
+                            <b>  Business City  </b>  : <?php echo $website_info['city']; ?><br/>
+                            <b>  Business Zip  </b>  : <?php echo $website_info['postal']; ?><br/>
+                            <b>  Business Name  </b>  : <?php echo $website_info['business_name']; ?><br/>
+                            <b>  Business Web site  </b>  : <?php echo $website_info['business_website']; ?><br/>
+                            <b>  Business Email  </b>  : <?php echo $website_info['business_email']; ?><br/>
+                            <b>  Business Telephone  </b>  : <?php echo $website_info['business_telephone']; ?><br/>
+                            <b>  Business Fax  </b>  : <?php echo $website_info['business_fax']; ?><br/>
+                        </p>
+                        <hr>
+
+                        <strong><i class="fa fa-plus-square"></i> Specialty</strong>
+
+                        <p>
+
+                            <span class="label label-success"><?php echo $website_info['specialty']; ?></span>
+
+
+                        </p>
+
+                        <hr>
+
+                        <strong><i class="glyphicon glyphicon-play"></i> Special Interest</strong>
+
+                        <p>
+                            <span class="label label-info"><?php echo $website_info['special_interest']; ?></span>
+                        </p>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
                 <div class="box box-info">
             <div class="box-header with-border">
                 <i class="fa fa-file-picture-o"></i>
@@ -128,9 +128,9 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-           
+
               <div class="box-body">
-                
+
               <?php
                          if (is_array($photos) && !empty($photos))
                                     foreach ($photos as $row) {
@@ -143,13 +143,13 @@
                                         }
                                     }
                                 ?>
-                
+
               </div>
-             
-          
+
+
            </div>
-                
-                
+
+
                  <?php
                 if (is_array($video)) {
                     $explode = explode('.', $video['name']);
@@ -160,20 +160,20 @@
                     <h3 class="box-title">Public Website Video</h3>
                     </div>
                     <div class="box-body">
-                
+
                         <video width="280" height="240" controls>
                                         <source src="<?php echo base_url() . '/assets/file/publicweb/' . $video['name']; ?>" type="video/<?php echo $explode[1]; ?>">
-                                    </video> 
-                
+                                    </video>
+
                     </div>
-             
-          
+
+
                 </div>
                  <?php }
                 ?>
-                
-                
-                
+
+
+
                 <?php
                 if (is_array($audio)) {
                     $explode = explode('.', $audio['name']);
@@ -184,20 +184,20 @@
                     <h3 class="box-title">Public Website Sound/audio</h3>
                     </div>
                     <div class="box-body">
-                
+
                         <audio controls>
                                         <source src="<?php echo base_url() . '/assets/file/publicweb/' . $audio['name']; ?>" type="audio/<?php echo $explode[1]; ?>">
-                                    </audio> 
-                
+                                    </audio>
+
                     </div>
-             
-          
+
+
                 </div>
                  <?php }
                 ?>
-                
-                
-                
+
+
+
                  <?php
                 if (is_array($files)) {
                     $explode = explode('.', $audio['name']);
@@ -208,7 +208,7 @@
                     <h3 class="box-title">Public Website Attachment</h3>
                     </div>
                     <div class="box-body">
-                
+
                         <?php
                                 if (is_array($files) && !empty($files)) {
                                     $i = 1;
@@ -220,21 +220,21 @@
                                     }
                                 }
                                 ?>
-                
+
                     </div>
-             
-          
+
+
                 </div>
                  <?php }
                 ?>
-                
 
-                
+
+
             </div>
         </div>
-        
-        
-        
+
+
+
     </div>
 </section>
 

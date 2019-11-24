@@ -19,11 +19,19 @@
     <section class="content-header">
         <h1><i class="fa fa-search"></i>
             Search Personals
+<?php // print_r($allpersonals);
 
+
+?>
         </h1>
+
+        <span class="pull-right btn-primary p-5">I AM A <?php echo $allpersonals[0]->iam; ?> LOOKING FOR A <?php echo $allpersonals[0]->interestedin; ?>  </span>
     </section>
     <form role="form" method="post" id="personalsearch" name="personalsearch" enctype="multipart/form-data" action="<?php echo base_url('personal/search'); ?>">
-    <section class="content">
+        <input type="hidden" name="iam" value="<?= $allpersonals[0]->iam; ?>" >
+        <input type="hidden" name="interestedin" value="<?= $allpersonals[0]->interestedin; ?>" >
+
+        <section class="content">
         <div class="row">
             <div class="col-lg-6">
                 <div class="box box-primary">
@@ -58,19 +66,7 @@
                                             <input name="city" type="text" placeholder="City" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Language</label>
-                                            <?php $languages = array('English','Afrikaans','Arabic','Bulgarian','Burmese','Cantonese','Croatian','Danish','Dutch','Esperanto','Estonian','Finnish','French','German','Greek','Gujrati','Hebrew','Hindi','Hungarian','Icelandic','Indian','Indonesian','Italian','Japanese','Korean','Latvian','Lithuanian','Malay','Mandarin','Marathi','Moldovian','Nepalese','Norwegian','Persian','Polish','Portuguese','Punjabi','Romanian','Russian','Serbian','Spanish','Swedish','Tagalog','Taiwanese','Tamil','Telugu','Thai','Tongan','Turkish','Ukrainian','Urdu','Vietnamese','Visayan');?>
-                                            <select name="lang" class="form-control chosen-select">
-                                                <?php foreach ($languages as $row) {?>
 
-                                                    <option value="">Select</option>
-                                                    <option value="<?php echo $row;?>"><?php echo $row?></option>
-                                                <?php }?>
-                                            </select>
-                                        </div>
-                                    </div>
                     </div>
                 </div>
             </div>
@@ -79,37 +75,19 @@
                         <div class="panel-body">
 
 
-                                    <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label>I AM A</label>
-                                        <?php $iam= array('MAN','WOMAN');?>
-                                        <select name="iam" class="form-control chosen-select">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Language</label>
+                                    <?php $languages = array('English','Afrikaans','Arabic','Bulgarian','Burmese','Cantonese','Croatian','Danish','Dutch','Esperanto','Estonian','Finnish','French','German','Greek','Gujrati','Hebrew','Hindi','Hungarian','Icelandic','Indian','Indonesian','Italian','Japanese','Korean','Latvian','Lithuanian','Malay','Mandarin','Marathi','Moldovian','Nepalese','Norwegian','Persian','Polish','Portuguese','Punjabi','Romanian','Russian','Serbian','Spanish','Swedish','Tagalog','Taiwanese','Tamil','Telugu','Thai','Tongan','Turkish','Ukrainian','Urdu','Vietnamese','Visayan');?>
+                                    <select name="lang" class="form-control chosen-select">
+                                        <?php foreach ($languages as $row) {?>
+
                                             <option value="">Select</option>
-                                            <?php foreach ($iam as $row) {?>
-                                                <option value="<?php echo $row;?>"><?php echo $row?></option>
-                                            <?php }?>
-                                        </select>
-                                    </div>
+                                            <option value="<?php echo $row;?>"><?php echo $row?></option>
+                                        <?php }?>
+                                    </select>
                                 </div>
-
-
-
-
-
-
-
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Interested in</label>
-                                            <?php $interestedin = array('MAN'=>'MAN','WOMAN'=>'WOMEN');?>
-                                            <select  name="interestedin"  class="form-control chosen-select">
-                                                <option value="">Select</option>
-                                                <?php foreach ($interestedin as $key=>$value) {?>
-                                                    <option value="<?php echo $key;?>"><?php echo $value?></option>
-                                                <?php }?>
-                                            </select>
-                                        </div>
-                                    </div>
+                            </div>
 
 
 

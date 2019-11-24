@@ -25,8 +25,8 @@
                             </div>
                             <div class="box-footer no-padding">
                                 <ul class="nav nav-stacked">
-                                    <li><a href="#"><b>Group Name</b> <span class="pull-right"><?php echo substr( $row['group_name'],0,30).'More..'; ?></a></span></a></li>
-                                    <li><a href="#"><b>Group Category </b><span class="pull-right"><?php
+                                    <li><a href="#"><b> Name</b> <span class="pull-right "><?php echo substr( $row['group_name'],0,25).'..'; ?></a></span></a></li>
+                                    <li><a href="#"><b> Category </b><span class="pull-right "><?php
                                                 $data = get_data('group_main_cat', array('id' => $row['category']));
                                                 echo $data['cat_name'];
                                                 ?></span></a></li>

@@ -5,7 +5,7 @@
 
     <section class="content-header">
         <h1><i class="glyphicon glyphicon-bullhorn"></i>
-           Discuss Topic
+            Discuss Topic
         </h1>
     </section>
     <section class="content">
@@ -81,126 +81,127 @@
 
 
             <div class="col-md-12">
-          <div class="box box-default">
-            <div class="box-header with-border">
-              <h3 class="box-title">Discussion <?php
-                  $data = get_data('forum_category', array('cat_id' => $postdeatils['cat_id'])); echo $data['cat_title'];
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Discussion <?php
+                            $data = get_data('forum_category', array('cat_id' => $postdeatils['cat_id'])); echo $data['cat_title'];
 
-                  ?> Forum</h3>
+                            ?> Forum</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="pull-left">
-                <h4><?php  echo $postdeatils['title']; ?></h4>
-                </div>
-                <div class="pull-right">
-                <a data-toggle="modal" href="#myModal" type="button" class="btn  btn-warning btn-md pull-right"><i class="fa fa-share"></i> Reply To This Topic</a>
-                </div>
-                </div>
-
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-
-           <!-- /.GREEN BOX SAJIB -->
-
-
-
-
-    <div class="col-md-12">
-          <!-- Box Comment -->
-          <div class="box box-widget">
-            <div class="box-header with-border">
-              <div class="user-block">
-
-                  <h3 class="box-title"> Post Detils</h3>
-                 </div>
-              <!-- /.user-block -->
-              <div class="box-tools">
-
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-
-
-
-
-
-
-                <table class="table table-bordered">
-                    <tbody>
-                    <tr>
-
-                        <th style="width: 260px">Author</th>
-                        <th>Post Details</th>
-                        <th style="width: 100px">Date</th>
-                    </tr>
-                    <tr>
-
-                        <td>
-                            <div class="col-lg-12 col-xs-12">
-                                <!-- small box -->
-                                <div class="small-box bg-green">
-                                    <div class="inner">
-                                        <h4><?php
-                                            $data = get_data('profession', array('id' => $user_post_info['profession']));
-                                            echo $data['name'];
-                                            ?></h4>
-
-                                        <p><?php echo $user_post_info['first_name']; ?><?php echo $user_post_info['last_name']; ?></p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="glyphicon glyphicon-bullhorn"></i>
-                                    </div>
-                                    <a href="<?php echo base_url('showProfile/'.$postdeatils['author_id']);?>" class="small-box-footer">
-                                        Author info <i class="fa fa-arrow-circle-right"></i>
-                                    </a>
-
-
-
-                                </div>
-                            </div>
-
-                        </td>
-                        <td>
-                            <?php  echo $postdeatils['deatils']; ?>
-                        </td>
-                        <td><?php echo date('m-d-Y', strtotime($postdeatils['datetime']));?></td>
-                    </tr></br>
-
-
-
-                    </tbody>
-                </table>
-                <?php if(!empty($postdeatils['attachment'])) { ?>
-                <div class="box-footer ">
-                <a class="btn bg-aqua pull-right"  href="<?php echo base_url() . '/assets/file/forum/' .$postdeatils['attachment']; ?>">Attachment</a>
-                </div>
-                <?php }?>
-
-                <div class="box-footer box-comments">
-                    <div class="box-comment">
-                <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default btn-dropbox"><i class="fa fa-share"></i> Reply To This Topic
-                </button>
-
-                <span class="pull-right text-muted">Total - <?php if(!empty($totalComments)){echo $totalComments.' comments';}else{echo '0 comment';} ;?> </span>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
                         </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="pull-left">
+                            <h4><?php  echo $postdeatils['title']; ?></h4>
+                        </div>
+                        <div class="pull-right">
+                            <a data-toggle="modal" href="#myModal" type="button" class="btn  btn-warning btn-md pull-right"><i class="fa fa-share"></i> Reply To This Topic</a>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
                 </div>
-
+                <!-- /.box -->
             </div>
 
+            <!-- /.GREEN BOX SAJIB -->
+
+
+
+
+            <div class="col-md-12">
+                <!-- Box Comment -->
+                <div class="box box-widget">
+                    <div class="box-header with-border">
+                        <div class="user-block">
+
+                            <h3 class="box-title"> Post Detils</h3>
+                        </div>
+                        <!-- /.user-block -->
+                        <div class="box-tools">
+
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+
+
+
+
+
+                        <table class="table table-hover" id="js_personal_table">
+                            <tbody>
+                            <tr>
+
+                                <th style="width: 260px">Author</th>
+                                <th>Post Details</th>
+                                <th style="width: 100px">Date</th>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <div class="col-lg-12 col-xs-12">
+                                        <!-- small box -->
+                                        <div class="small-box bg-green">
+                                            <div class="inner">
+                                                <h4><?php
+                                                    $data = get_data('profession', array('id' => $user_post_info['profession']));
+                                                    echo $data['name'];
+                                                    ?></h4>
+
+                                                <p><?php echo $user_post_info['email']; ?></p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="glyphicon glyphicon-bullhorn"></i>
+                                            </div>
+                                            <br>
+                                            <a href="<?php echo base_url('showProfile/'.$postdeatils['author_id']);?>" class="small-box-footer">
+                                                Author info <i class="fa fa-arrow-circle-right"></i>
+                                            </a>
+
+
+
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <h4><?php  echo $postdeatils['title']; ?></h4>
+                                    <?php  echo $postdeatils['deatils']; ?>
+                                </td>
+                                <td><?php echo date('m-d-Y', strtotime($postdeatils['datetime']));?></td>
+                            </tr></br>
+
+
+
+                            </tbody>
+                        </table>
+                        <?php if(!empty($postdeatils['attachment'])) { ?>
+                            <div class="box-footer ">
+                                <a class="btn bg-aqua pull-right"  href="<?php echo base_url() . '/assets/file/forum/' .$postdeatils['attachment']; ?>">Attachment</a>
+                            </div>
+                        <?php }?>
+
+                        <div class="box-footer box-comments">
+                            <div class="box-comment">
+                                <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default btn-dropbox"><i class="fa fa-share"></i> Reply To This Topic
+                                </button>
+
+                                <span class="pull-right text-muted">Total - <?php if(!empty($totalComments)){echo $totalComments.' comments';}else{echo '0 comment';} ;?> </span>
+                            </div>
+                        </div>
+
+                    </div>
 
 
 
@@ -210,90 +211,91 @@
 
 
 
-              <div class="box-footer box-comments">
-              <div class="box-comment">
-                <!-- User image -->
-                  <table class="table table-bordered">
-                      <tbody>
-                      <?php if (is_array($comments)) {
 
-                          //print_r($comments);
-                          foreach ($comments as $row) {
-                              ?>
-                      <tr>
+                    <div class="box-footer box-comments">
+                        <div class="box-comment">
+                            <!-- User image -->
+                            <table class="table table-bordered">
+                                <tbody>
+                                <?php if (is_array($comments)) {
 
-                          <th style="width: 260px">Comments Profile</th>
-                          <th><?php echo $row->comments_title; ?></th>
-                          <th >Comments Date Time</th>
-                      </tr>
+                                    //print_r($comments);
+                                    foreach ($comments as $row) {
+                                        ?>
+                                        <tr>
 
-                      <tr>
+                                            <th style="width: 260px">Comments Profile</th>
+                                            <th>Comments</th>
+                                            <th >Comments Date Time</th>
+                                        </tr>
 
-                          <td>
-                              <div class="col-lg-12 col-xs-12">
-                                  <!-- small box -->
-                                  <div class="small-box bg-yellow">
-                                      <div class="inner">
-                                          <h4><?php
+                                        <tr>
 
-                                              $data = get_data('users', array('id' => $row->user_id));
-                                              echo $data['first_name'];
+                                            <td>
+                                                <div class="col-lg-12 col-xs-12">
+                                                    <!-- small box -->
+                                                    <div class="small-box bg-yellow">
+                                                        <div class="inner">
+                                                            <h5>Comments By </h5>
+                                                            <br>
+                                                            <h4><?php
 
-                                              ?></h4>
+                                                                $data = get_data('users', array('id' => $row->user_id));
+                                                                echo $data['email'];
 
-                                          <p>
-                                              <?php
-                                              $data = get_data('users', array('id' => $row->user_id));
-                                              echo $data['last_name'];
-                                              ?></p>
-                                      </div>
-                                      <div class="icon">
-                                          <i class="glyphicon glyphicon-comment sm"></i>
-                                      </div>
-                                      <a href="<?php echo base_url('showProfile/'.$row->user_id);?>" class="small-box-footer">
-                                          Profile info <i class="fa fa-arrow-circle-right"></i>
-                                      </a>
-                                  </div>
-                              </div>
+                                                                ?></h4>
 
-                          </td>
-                          <td>
-                              <?php echo $row->comments_details; ?>
-                              <?php if(!empty($row->attachment)) { ?>
 
-                              <div class="box-footer ">
-                                  <a class="btn bg-aqua pull-right"  href="<?php if(!empty($row->attachment)){echo base_url() . '/assets/file/forum/' .$row->attachment;}?>">Attachment</a>
-                              </div>
-                              <?php }?>
-                          </td>
-                          <td><?php echo date('h:i a m-d-Y', strtotime($row->added_date_time));?></td>
+                                                        </div>
+                                                        <br>
+                                                        <div class="icon">
+                                                            <i class="fa fa-comment"></i>
+                                                        </div>
+                                                        <a href="<?php echo base_url('showProfile/'.$row->user_id);?>" class="small-box-footer">
+                                                            Profile info <i class="fa fa-arrow-circle-right"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
 
-                      </tr>
+                                            </td>
+                                            <td>
+                                                <h4><?php echo $row->comments_title; ?></h4>
+                                                <?php echo $row->comments_details; ?>
+                                                <?php if(!empty($row->attachment)) { ?>
 
-                      <?php
-                      } }
-                      ?>
+                                                    <div class="box-footer ">
+                                                        <a class="btn bg-aqua pull-right"  href="<?php if(!empty($row->attachment)){echo base_url() . '/assets/file/forum/' .$row->attachment;}?>">Attachment</a>
+                                                    </div>
+                                                <?php }?>
+                                            </td>
+                                            <td><?php echo date('h:i a m-d-Y', strtotime($row->added_date_time));?></td>
 
-                      </tbody>
-                  </table>
+                                        </tr>
 
-                <!-- /.comment-text -->
-              </div>
-              <!-- /.box-comment -->
+                                        <?php
+                                    } }
+                                ?>
 
-                  <?php if($totalComments > 3){
-                      ?>
+                                </tbody>
+                            </table>
 
-                  <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default btn-dropbox"><i class="fa fa-share"></i> Reply To This Topic
-                  </button>
-                  <?php }?>
+                            <!-- /.comment-text -->
+                        </div>
+                        <!-- /.box-comment -->
 
+                        <?php if($totalComments > 3){
+                            ?>
+
+                            <button data-toggle="modal" href="#myModal" type="button" class="btn btn-default btn-dropbox"><i class="fa fa-share"></i> Reply To This Topic
+                            </button>
+                        <?php }?>
+
+                    </div>
+
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
             </div>
-
-            <!-- /.box-footer -->
-          </div>
-          <!-- /.box -->
-        </div>
 
 
 
@@ -359,4 +361,21 @@
     </div>
 </div>
 
->
+
+
+<link href="<?php echo base_url('script-assets/plugins/datatables/dataTables.bootstrap.css');?>" rel="stylesheet">
+<link href="<?php echo base_url('script-assets/no_more_table.css');?>" rel="stylesheet">
+
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/dataTables.bootstrap.js"></script>
+<script rel="stylesheet" href="<?php echo base_url();?>script-assets/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"></script>
+<script type="text/javascript" src="<?php echo base_url();?>script-assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var personaltable = document.getElementById("js_personal_table");
+        $(personaltable).dataTable();
+    });
+</script>
+
+

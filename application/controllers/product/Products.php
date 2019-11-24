@@ -13,6 +13,14 @@ class Products extends CI_Controller{
         if (!check_login()) {
             redirect('home/login');
         }
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        else{
+
+        }
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger form-error">', '</div>');
     }
 
@@ -50,7 +58,7 @@ class Products extends CI_Controller{
 
     public function add(){
         $data = array();
-        $data['page_title'] = 'Add Product';
+        $data['page_title'] = 'Add New Product';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
 
@@ -186,6 +194,22 @@ class Products extends CI_Controller{
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
+
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
+
+
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 11;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
+
         $data['main_cat'] = $this->global_model->get('product_main_cat');
         $data['login_id'] = $loginId;
         $this->load->view('header', $data);
@@ -198,7 +222,7 @@ class Products extends CI_Controller{
     public function edit()
     {
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Edit Product';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -328,7 +352,7 @@ class Products extends CI_Controller{
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
         $data['profession'] = $this->global_model->get('profession');
-
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
         $data['login_id'] = $loginId;
 
         $tablename = 'product';
@@ -362,7 +386,7 @@ class Products extends CI_Controller{
     {
         $table = 'product';
         $data = array();
-        $data['page_title'] = 'Add Product';
+        $data['page_title'] = 'My Products List';
         $loginId = $this->session->userdata('login_id');
         $data['allproducts']  	 = $this->global_model->get($table, array('uid'=> $loginId));
 
@@ -381,7 +405,7 @@ class Products extends CI_Controller{
     {
         $table = 'product';
         $data = array();
-        $data['page_title'] = 'Add Product';
+        $data['page_title'] = 'List of all Products';
         $loginId = $this->session->userdata('login_id');
         $profession = $this->session->userdata('user_type');
         $data['allproducts']  	 = $this->global_model->getViewByProfession($table,$profession);

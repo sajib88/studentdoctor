@@ -20,6 +20,15 @@ class ces_controller extends CI_Controller
         if (!check_login()) {
             redirect('home/login');
         }
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        else{
+
+        }
+
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger form-error">', '</div>');
 
     }
@@ -32,7 +41,7 @@ class ces_controller extends CI_Controller
 
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
-        $data['profession'] = $this->global_model->get('profession');
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
         //$data['main_cat'] = $this->global_model->get('classified_main_cat');
         $data['login_id'] = $loginId;
         $this->load->view('header', $data);
@@ -176,6 +185,10 @@ class ces_controller extends CI_Controller
 
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['login_id'] = $loginId;
+
+
+
+
         $this->load->view('header', $data);
         $this->load->view('ces/allces_view', $data);
         $this->load->view('footer');
@@ -197,6 +210,19 @@ class ces_controller extends CI_Controller
 
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['login_id'] = $loginId;
+
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 12;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
+
         $this->load->view('header', $data);
         $this->load->view('ces/cesGrid_view', $data);
         $this->load->view('footer');
@@ -206,14 +232,14 @@ class ces_controller extends CI_Controller
     public function edit($cesID=''){
         $this->load->helper('global_helper');
         $data = array();
-        $data['page_title'] = 'edit';
+        $data['page_title'] = 'Edit CES';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
 
         $id = $this->uri->segment('3');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
-        $data['profession'] = $this->global_model->get('profession');
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
 
         $data['login_id'] = $loginId;
 
@@ -237,7 +263,7 @@ class ces_controller extends CI_Controller
     public function updateCES(){
 
         $data = array();
-        $data['page_title'] = 'Edit CES';
+        $data['page_title'] = 'Update CES';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
         $id 	= $this->input->post('id');
@@ -368,7 +394,7 @@ class ces_controller extends CI_Controller
     public function detail(){
         $data = array();
 
-        $data['page_title'] = 'ces detail';
+        $data['page_title'] = 'CES Detail';
         $data['error'] = '';
         $id = $this->uri->segment('3');
 
@@ -390,7 +416,7 @@ class ces_controller extends CI_Controller
     public function search(){
         $this->load->helper('global_helper');
         $data = array();
-        $data['page_title'] = 'edit';
+        $data['page_title'] = 'Search CES';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
 

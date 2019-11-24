@@ -105,7 +105,7 @@ class Login extends CI_Controller {
                 $is_ok = $this->login_model->forgot_password($user_email, $encrpassword);
 
                 if (!empty($is_ok)) {
-                    $this->email->from('shahinalomcse@gmail.com', 'All Doctors');
+                    $this->email->from('dev.bangladesh@gmail.com', 'All Doctors');
                     $this->email->to($user_email);
                     $this->email->subject('Password Reset Confirmation');
 

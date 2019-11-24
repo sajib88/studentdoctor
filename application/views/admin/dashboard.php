@@ -18,7 +18,7 @@
     <div class="row">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
+            <h1 class="page-header">Dashboard</h1> <?php  $type = $this->session->userdata('type');?>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -114,6 +114,7 @@
         </div>
     </div>
     <!-- /.row -->
+        <?php if($type == 1 ) {?>
     <div class="row">
         <div class="col-md-4">
             <div class="box box-widget widget-user-2">
@@ -260,6 +261,7 @@
             </div>
         </div>
     </div>
+        <?php }?>
 
     </div>
     <!-- /.row -->

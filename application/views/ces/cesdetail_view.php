@@ -14,16 +14,16 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1><i class="fa fa-book"></i>
+        <h4><i class="fa fa-book"></i>
             CES - Details
-        </h1>
+        </h4>
     </section>
 
     <!-- Main content -->
     <section class="content">
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
 
                 <!-- Profile Image -->
                 <div class="box box-primary">
@@ -58,6 +58,11 @@
                 <!-- /.box -->
 
                 <!-- About Me Box -->
+
+            </div>
+            <!-- /.col -->
+            <div class="col-lg-7">
+
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">About Me</h3>
@@ -82,28 +87,7 @@
 
                         <hr>
 
-                        <strong><i class="fa fa-pencil margin-r-5"></i> Profession</strong>
-                        <?php
-                        $professionall =  (!empty($layoutfull['profession_view']))? explode(",",$layoutfull['profession_view']):'';
-                        $levelColor = array("label label-danger","label label-success","label label-info","label label-warning","label label-primary");
 
-                        if(count($professionall)>0){
-                            for ($profession=0;$profession < count($professionall);$profession++){?>
-                                <p>
-                                    <span class='<?php echo $levelColor[$profession];?>'><?php echo (!empty($professionall[$profession]))? getProfessionById($professionall[$profession]):'';?></span>
-
-                                </p>
-
-                                <?php
-                            }
-                        }
-
-                        ?>
-
-
-
-
-                        <hr>
                         <strong><i class="fa fa-pencil margin-r-5"></i> Other Information </strong>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
@@ -121,9 +105,7 @@
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-lg-8">
+
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <i class="fa fa-file-picture-o"></i>

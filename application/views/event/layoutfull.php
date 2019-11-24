@@ -47,7 +47,7 @@
                     <div class="box-header with-border">
                         <i class="fa fa-paragraph"></i>
                         <h3 class="box-title">Event Summary</h3>
-                        <span class="added-by pull-right hidden-xs"><b>Added By: </b><span class="added-user bg-blue"><a style="color: #fff;" href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"><?php echo getNameById($layoutfull['user_id']);?></a></span></span>
+                        <span class="added-by pull-right hidden-xs"><b>Added By: </b><span class="added-user bg-blue"><a  href="<?php echo base_url('showProfile/'.$layoutfull['user_id']);?>"><?php echo getNameById($layoutfull['user_id']);?></a></span></span>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
@@ -238,7 +238,7 @@
 
 
                     <div class="info-box bg-yellow">
-                        <span class="info-box-icon"><i class="ion ion-ios-people-outline"></i></span>
+                        <span class="info-box-icon"><i class="fa fa-ios-people-outline"></i></span>
 
                         <div class="info-box-content">
                             <span class="info-box-text"><b>Total Seats</b></span>
@@ -255,6 +255,22 @@
                     </div>
 
 
+                <div class="info-box bg-yellow">
+                    <span class="info-box-icon"><i class=" fa fa-envelope"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text"><b>Send Query</b></span>
+
+                        <span class="progress-description">
+                  <a data-toggle="modal" data-id="<?= $layoutfull['id']; ?>"
+                     class="btn btn-success searching"
+                     href="#search_doctors">Send Message </a>
+                  </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+
+
                     <!-- /.box-body -->
 
                 <!-- /.box -->
@@ -268,5 +284,108 @@
 
 </div>
 
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+
+
+<!--match Home page modal-->
+<div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="search_doctors" class="modal fade">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-cog"></i> &nbsp;Quick Messge</h4>
+            </div>
+
+            <form role="form" name="search_form" method="post" id="search_form" enctype="multipart/form-data" action="#">
+                <div class="modal-body">
+                    <div class="col-md-12 no-padding" >
+                        <section class="panel">
+                            <div class="panel-body">
+                                <div id="loadhtmldoctors"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button data-dismiss="modal" class="btn btn-danger btn-lg pull-left" type="button">
+                                <i class="fa fa-undo"></i> &nbsp; &nbsp; Cancel</button>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" name="submit" class="btn  btn-success  btn-lg"  id="msgsend" name="loginStatus" > </input>
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--match Home page  modal-->
+
+<script>
+
+    $(function(){
+        $('.searching').click(function(){
+            var base_url = '<?php echo base_url() ?>';
+            var id=$(this).data('id');
+
+            $.ajax({
+                type: 'POST',
+                url: base_url + "Search/msg_modal_event/"+id,
+                data: $("#search_form").serialize(),
+                datatype: "text",
+                success: function(viewstml){
+                    $('#loadhtmldoctors').html(viewstml);
+                }
+            });
+        });
+
+    });
+
+
+    $(function(){
+        $("#msgsend").click(function(e){
+            var base_url = '<?php  echo base_url() ?>';
+            $.ajax({
+                url:base_url + "Search/event_msg/",
+                type: 'POST',
+                data: $("#search_form").serialize(),
+                dataType: "json",
+                success: function (data) {
+
+                    if(data.status == "success")
+                    {
+
+                        var homepage = data.datahome.is_homepage;
+                        if(homepage != 0)
+                        {
+                            swal("Your Query Send successfully", "Thanks for message", "success");
+                            setTimeout(function(){
+                                window.location.reload(10000);
+                            }, 10000);
+                        }
+                        else{
+
+                        }
+                    }
+
+                },
+
+            });
+            e.preventDefault();
+
+        });
+
+    });
+
+</script>
 
 

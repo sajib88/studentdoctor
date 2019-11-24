@@ -91,20 +91,25 @@
                                             <input name="business_phone" type="text" placeholder="Business Phone" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <button class="btn btn-success" type="submit">Search</button>
-                                        </div>
-                                    </div>
+
                                 </div>
 
 
 
-                            </form>
+
 
 
 
                          </div>
+                        <br>  <br>
+                        <div class="col-lg-12">
+                            <div class="form-group  pull-right">
+
+                                <button class="btn btn-success" type="submit">Search</button>
+                            </div>
+                        </div>
+                        </form>
+
                         <hr/>
 
                         <div class="box-body table-responsive no-padding">
@@ -151,7 +156,7 @@
                                                                 class="label label-warning"><?php echo (!empty($row->state)?$row->state:''); ?></span>
                                                         </td>
                                                         <td data-title="<?php echo 'age'; ?>"
-                                                            class="numeric"><button type="button" class="btn btn-block btn-success btn-flat">View Now</button>
+                                                            class="numeric"><a href="<?php echo base_url('pri/details/').'/'.$row->id; ?>">Profile Details</a>
                                                         </td>
 
                                                     </tr>

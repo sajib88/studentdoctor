@@ -8,6 +8,18 @@
 
 $this->load->helper('global_helper');
 ?>
+
+<?php if(!empty($advertise)){ ?>
+    <?php foreach($advertise as $row):?>
+        <section class="panel">
+            <div class="panel-body">
+                <img  src="<?php echo base_url() . '/assets/file/advertise/' .$row['ad_image']; ?>" class="img-responsive"/>
+            </div>
+        </section>
+    <?php endforeach;?>
+<?php }else{?>
+<?php }?>
+
 <link href="http://[::1]/doctorsapp/script-assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 <style>
 
@@ -33,7 +45,7 @@ $this->load->helper('global_helper');
         <div class="row">
             <?php if(!empty($allcesGrid)){
                 foreach ($allcesGrid as $row){?>
-            <div class="col-md-4">
+            <div class="col-md-6">
                     <div class="box box-danger">
                         <div class="box-body box-profile">
                             <div style="text-align: center;">
@@ -41,7 +53,7 @@ $this->load->helper('global_helper');
                                 <img src="<?php echo base_url() . 'assets/file/ces/' .$row['primary_image']; ?>" alt="" class="circular" />
                             </div>
 
-                            <h3 class="profile-username text-center"><?php echo (!empty($row['title']))?$row['title']:''?></h3>
+                            <h4 class="profile-username text-center"><?php echo (!empty($row['title']))?$row['title']:''?></h4>
 
                             <p class="text-muted text-center"><?php echo (!empty( $row['ethnicity']))? $row['ce_type']:''?></p>
 
@@ -77,7 +89,7 @@ $this->load->helper('global_helper');
 
             <?php }
             }?>
-           
+
         </div>
 
        </section>

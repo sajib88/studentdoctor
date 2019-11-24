@@ -9,12 +9,26 @@ class Dashboard extends CI_Controller {
         if (!check_login()) {
             redirect('home/login');
         }
+
     }
 
     public function index() {
 
         $data = array();
-        $data['page_title'] = 'Dashboard';
+        $user_type = $this->session->userdata('user_type');
+
+        if($user_type==100)
+        {
+            $das = "Home ";
+        }
+        else{
+            $das = "Home ";
+        }
+
+
+
+
+        $data['page_title'] = $das.'';
         $data['tabActive'] = 'dashboard';
         $data['error'] = '';
         /// TOP 4 box
@@ -45,7 +59,17 @@ class Dashboard extends CI_Controller {
         //// Product Add
         $data['recent_prodcut'] = $this->global_model->get('product');
 
-
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 1;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
 
         $this->load->view('header', $data);
         $this->load->view('profile/dashboard', $data);

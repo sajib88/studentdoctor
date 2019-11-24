@@ -18,6 +18,18 @@ class Personal extends CI_Controller{
             redirect('home/login');
         }
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger form-error">', '</div>');
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        elseif($level ['user_level'] == '2'){
+            redirect('pub/add');
+        }
+        else{
+
+        }
+
     }
 
     public function add(){
@@ -140,11 +152,41 @@ class Personal extends CI_Controller{
 
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
-        $data['profession'] = $this->global_model->get('profession');
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
         $data['login_id'] = $loginId;
-        $this->load->view('header', $data);
-        $this->load->view('personal/add', $data);
-        $this->load->view('footer');
+
+
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 8;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
+        ///
+
+        $count = $this->global_model->count_row_where('personals', array('uid' => $loginId));
+
+
+        if($count == 0){
+            $this->load->view('header', $data);
+            $this->load->view('personal/add', $data);
+            $this->load->view('footer');
+        }
+        else{
+            $data['message'] = "Your Already create one Personals.";
+            $data['message_2'] = "You can create  One Personal's Profile.";
+            $this->load->view('header', $data);
+            $this->load->view('personal/message', $data);
+            $this->load->view('footer');
+        }
+
+
+
     }
 
 
@@ -162,9 +204,22 @@ class Personal extends CI_Controller{
 
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['login_id'] = $loginId;
-        $this->load->view('header', $data);
-        $this->load->view('personal/allPersonals_view', $data);
-        $this->load->view('footer');
+
+
+        if(!empty($data['allpersonals'])){
+            $this->load->view('header', $data);
+            $this->load->view('personal/allPersonals_view', $data);
+            $this->load->view('footer');
+
+        }
+        else{
+            $data['message'] = "Your do not create any Personals.";
+            $data['message_2'] = "Create One Personal's Profile you can search,view,manage your Personals profile";
+            $this->load->view('header', $data);
+            $this->load->view('personal/message', $data);
+            $this->load->view('footer');
+        }
+
 
     }
     public function grid()
@@ -174,12 +229,33 @@ class Personal extends CI_Controller{
         $data['page_title'] = 'All Personals';
         $loginId = $this->session->userdata('login_id');
         $profession = $this->session->userdata('user_type');
-        $data['allpersonals'] = $this->global_model->getViewByProfession($table, $profession);
+
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['login_id'] = $loginId;
-        $this->load->view('header', $data);
-        $this->load->view('personal/personalGrid_view', $data);
-        $this->load->view('footer');
+
+
+
+        $loginpersonals=$data['login_allpersonals'] = $this->global_model->get('personals', array('uid' => $loginId));
+
+       if(!empty($loginpersonals)){
+           $interest =  $loginpersonals[0]->interestedin;
+           $iam =  $loginpersonals[0]->iam;
+
+           $data['allpersonals'] = $this->global_model->getViewByProfessionpersonal($table, $profession,$iam, $interest);
+
+
+           $this->load->view('header', $data);
+           $this->load->view('personal/personalGrid_view', $data);
+           $this->load->view('footer');
+
+       }
+       else{
+           $data['message'] = "Your do not create any Personals.";
+           $data['message_2'] = "Create One Personal's Profile you can search,view,manage your Personals profile";
+           $this->load->view('header', $data);
+           $this->load->view('personal/message', $data);
+           $this->load->view('footer');
+       }
 
     }
 
@@ -193,7 +269,7 @@ class Personal extends CI_Controller{
         $id = $this->uri->segment('3');
         $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
         $data['countries'] = $this->global_model->get('countries');
-        $data['profession'] = $this->global_model->get('profession');
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
         //$data['states'] = $this->global_model->get('states');
         $data['login_id'] = $loginId;
 
@@ -386,9 +462,23 @@ class Personal extends CI_Controller{
         $this->form_validation->set_rules('maritalstatus', 'maritalstatus', 'xss_clean');
         $this->form_validation->set_rules('lang', 'lang', 'xss_clean');
 
-        $this->load->view('header', $data);
-        $this->load->view('personal/search_view', $data);
-        $this->load->view('footer');
+        $data['allpersonals'] = $this->global_model->get('personals', array('uid' => $loginId));
+
+        if(!empty($data['allpersonals'])){
+            $this->load->view('header', $data);
+            $this->load->view('personal/search_view', $data);
+            $this->load->view('footer');
+        }
+        else{
+            $data['message'] = "Your do not create any Personals.";
+            $data['message_2'] = "Create One Personal's Profile you can search,view,manage your Personals profile";
+            $this->load->view('header', $data);
+            $this->load->view('personal/message', $data);
+            $this->load->view('footer');
+        }
+
+
+
 
 
 

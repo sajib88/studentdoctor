@@ -46,7 +46,7 @@
                                         <tr>
 
                                             <th class="numeric">#</th>
-
+                                            <th class="numeric"><?php echo 'Email';?></th>
                                             <th class="numeric"><?php echo 'Full Name';?></th>
 
                                             <th class="numeric"><?php echo 'Profession ';?></th>
@@ -64,6 +64,9 @@
                                             foreach ($eventpending as $row) { ?>
                                                 <tr>
                                                     <td><?php echo $i; ?></td>
+                                                    <td data-title="<?php echo 'Email'; ?>"
+
+                                                                                  class="numeric"><?php echo $row->email; ?></td>
 
                                                     <td data-title="<?php echo 'ID'; ?>"
                                                         class="numeric"><?php echo $row->full_name; ?></td>

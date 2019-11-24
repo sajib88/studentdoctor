@@ -13,6 +13,15 @@ class event extends CI_Controller {
             redirect('home/login');
         }
 
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        else{
+
+        }
+
     }
 
 
@@ -20,7 +29,7 @@ class event extends CI_Controller {
     public function index()
     {
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Add Event';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -128,8 +137,22 @@ class event extends CI_Controller {
             }
             $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
             $data['login_id'] = $loginId;
-            $data['profession'] = $this->global_model->get('profession');
+            $data['profession_by_profession'] = $this->global_model->profession_by_profession();
             $data['main_cat'] = $this->global_model->get('event_main_cat');
+
+            ////////////////// ADVERTISE /////////////////////////
+            $pageid= 10;
+            $pageviewset = getViewByadvertise($pageid);
+            if(!empty($pageviewset)){
+                $profession = $this->session->userdata('user_type');
+                $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+            }
+            else{
+                $data['advertise'] = array();
+            }
+            ////////////////// ADVERTISE /////////////////////////
+
+
             $this->load->view('header', $data);
             $this->load->view('event/add', $data);
             $this->load->view('footer');
@@ -139,7 +162,7 @@ class event extends CI_Controller {
     public function edit()
     {
         $data = array();
-        $data['page_title'] = 'Public Web';
+        $data['page_title'] = 'Edit Event';
         $data['tabActive'] = 'public';
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
@@ -231,7 +254,7 @@ class event extends CI_Controller {
 
         $id = $this->uri->segment('3');
         $data['editevent'] = $this->global_model->get_data('event', array('id' => $id));
-        $data['profession'] = $this->global_model->get('profession');
+        $data['profession_by_profession'] = $this->global_model->profession_by_profession();
         $data['main_cat'] = $this->global_model->get('event_main_cat');
         $this->load->view('header', $data);
         $this->load->view('event/edit', $data);
@@ -246,7 +269,7 @@ class event extends CI_Controller {
     public function myevent(){
 
         $data = array();
-        $data['page_title'] = 'Private Web';
+        $data['page_title'] = 'My Event List';
         $data['tabActive'] = 'private';
         $data['error'] = '';
 
@@ -266,7 +289,7 @@ class event extends CI_Controller {
     public function viewall(){
 
         $data = array();
-        $data['page_title'] = 'Private Web';
+        $data['page_title'] = 'All Events List';
         $data['tabActive'] = 'private';
         $data['error'] = '';
 
@@ -294,7 +317,7 @@ class event extends CI_Controller {
 
         $data = array();
 
-        $data['page_title'] = 'Private Web';
+        $data['page_title'] = 'Event Details';
         $data['tabActive'] = 'private';
         $data['error'] = '';
 

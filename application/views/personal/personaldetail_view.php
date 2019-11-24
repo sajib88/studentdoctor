@@ -34,7 +34,7 @@
 
                         <h3 class="profile-username text-center"><?php echo (!empty($layoutfull['title']))?$layoutfull['title']:'<span class="badge bg-red">Not Given</span>'?></h3>
 
-                        <p class="text-muted text-center"><a  style="color: goldenrod;" href="<?php echo base_url('showProfile/'.$layoutfull['uid']);?>"> &nbsp Added By <?php echo getNameById($layoutfull['uid']); ?></a></p>
+                        <p class="text-muted text-center">&nbsp Added By <a  style="color: goldenrod;" href="<?php echo base_url('showProfile/'.$layoutfull['uid']);?>">  <?php echo getemailById($layoutfull['uid']); ?></a></p>
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
@@ -47,6 +47,9 @@
 
 
                     </div>
+                    <a data-toggle="modal" data-id="<?= $layoutfull['id']; ?>"
+                       class="btn btn-success searching"
+                       href="#search_doctors">Send Message </a>
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
@@ -285,6 +288,13 @@
     </section>
     <!-- /.content -->
 </div>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.js"></script>
+
+
 <!-- THIS css/JS USE ONLY VIDEO PLAYER -->
 <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
 <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
@@ -300,3 +310,104 @@
     });
 </script>
 <!-- THIS css/JS Sound -->
+
+
+
+
+<!--match Home page modal-->
+<div aria-hidden="true" aria-labelledby="myModal" role="dialog" tabindex="-1" id="search_doctors" class="modal fade">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-cog"></i> &nbsp;Quick Messge</h4>
+            </div>
+
+            <form role="form" name="search_form" method="post" id="search_form" enctype="multipart/form-data" action="#">
+                <div class="modal-body">
+                    <div class="col-md-12 no-padding" >
+                        <section class="panel">
+                            <div class="panel-body">
+                                <div id="loadhtmldoctors"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button data-dismiss="modal" class="btn btn-danger btn-lg pull-left" type="button">
+                                <i class="fa fa-undo"></i> &nbsp; &nbsp; Cancel</button>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" name="submit" class="btn  btn-success  btn-lg"  id="msgsend" name="loginStatus" > </input>
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!--match Home page  modal-->
+
+<script>
+
+    $(function(){
+        $('.searching').click(function(){
+            var base_url = '<?php echo base_url() ?>';
+            var id=$(this).data('id');
+
+            $.ajax({
+                type: 'POST',
+                url: base_url + "Search/msg_modal_personal/"+id,
+                data: $("#search_form").serialize(),
+                datatype: "text",
+                success: function(viewstml){
+                    $('#loadhtmldoctors').html(viewstml);
+                }
+            });
+        });
+
+    });
+
+
+    $(function(){
+        $("#msgsend").click(function(e){
+            var base_url = '<?php  echo base_url() ?>';
+            $.ajax({
+                url:base_url + "Search/persoanl_msg/",
+                type: 'POST',
+                data: $("#search_form").serialize(),
+                dataType: "json",
+                success: function (data) {
+
+                    if(data.status == "success")
+                    {
+
+                        var homepage = data.datahome.is_homepage;
+                        if(homepage != 0)
+                        {
+                            swal("Your Query Send successfully", "Thanks for message", "success");
+                            setTimeout(function(){
+                                window.location.reload(10000);
+                            }, 10000);
+                        }
+                        else{
+
+                        }
+                    }
+
+                },
+
+            });
+            e.preventDefault();
+
+        });
+
+    });
+
+</script>

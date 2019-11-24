@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   | a PHP script and you can easily do that on your own.
   |
  */
-$config['base_url'] = 'http://localhost/studentdoctor/';
+$config['base_url'] = 'http://localhost/foralldoctors/';
 $config['appID']	= '149973202268890';
 $config['appSecret']	= '48ecd22bb2c0b9507afb22a6a96462ea';
 /*
@@ -316,7 +316,7 @@ $config['cache_query_string'] = FALSE;
   | https://codeigniter.com/user_guide/libraries/encryption.html
   |
  */
-$config['encryption_key'] = 'secret-key-in-config';
+$config['encryption_key'] = 'FJ848JS*&$N93';
 
 /*
   |--------------------------------------------------------------------------

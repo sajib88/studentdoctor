@@ -10,9 +10,8 @@
 
       </ol>
 </section>
-<?php //print_r($states); ?>
-   <section class="content">
 
+    <section class="content">
     <div class="row">
         <div class="col-lg-8">
           <div class="box box-info">
@@ -144,14 +143,14 @@
 
                   <div class="form-group" id="photo_id">
                       <?php if (is_array($photos) && !empty($photos[0])) { ?>
-                          <img src="<?php echo base_url() . '/assets/file/' . $photos[0]->name ?>" width="100px;">
+                          <img src="<?php echo base_url() . '/assets/file/privateweb/' . $photos[0]->name ?>" width="100px;">
                       <?php }
                       ?>
                       <input name="photo1" type="file">
                   </div>
                   <div class="form-group" id="photo_id">
                       <?php if (is_array($photos) && !empty($photos[1])) { ?>
-                          <img src="<?php echo base_url() . '/assets/file/' . $photos[1]->name ?>" width="100px;">
+                          <img src="<?php echo base_url() . '/assets/file/privateweb/' . $photos[1]->name ?>" width="100px;">
                       <?php }
                       ?>
                       <input name="photo2" type="file">
@@ -207,18 +206,15 @@
                   </div>
 
 
-                                <input type="submit" name="submit" class="btn btn-block btn-success" value="Update">
 
-              <!-- /.form group -->
 
 
             </div>
             <!-- /.box-body -->
           </div>
 
-
-                        </div>
-                        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
                             <div class="box box-primary">
                                 <div class="box-header with-border">
                                     <i class="fa fa-bullhorn"></i>
@@ -245,12 +241,40 @@
                             </div>
                         </div>
 
-        <!-- /.col-lg-12 -->
+
+
+
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-lg-6">
+                                    <?php echo anchor('profile/dashboard',"<i class='fa fa-undo'></i> &nbsp; &nbsp; Cancel",array('class' => 'btn btn-danger btn-small pull-left'));?>
+                                </div>
+                                <div class="col-lg-6 ">
+                                    <button class="btn  btn-success  btn-small pull-right"  name="submit" type="submit">
+                                        <i class="fa fa-check"></i> &nbsp; &nbsp; Update</button>
+                                </div>
+                            </div>
                         </div>
-       </form>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </div>
+
+       </form>
     </div>
+</section>
+
+
+
+
+
+
+
     <!-- /.container-fluid -->
 
 <script>

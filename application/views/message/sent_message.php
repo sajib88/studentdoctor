@@ -14,11 +14,10 @@
     <section class="content">
         <div class="row">
             <div class="col-md-3">
-                <a href="<?php echo base_url('message/compose');?>" class="btn btn-danger btn-block margin-bottom">Compose</a>
 
                 <div class="box box-solid">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Folders</h3>
+                        <h3 class="box-title">Message Panel</h3>
 
                         <div class="box-tools">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -27,13 +26,11 @@
                     </div>
                     <div class="box-body no-padding">
                         <ul class="nav nav-pills nav-stacked">
-                            <li class=""><a href="<?php echo base_url('message');?>"><i class="fa fa-inbox"></i> Inbox
+                            <li class="<?php if($this->uri->segment(2)=='compose'){echo 'active';}?>"><a href="<?php echo base_url('message/compose');?>"><i class="fa fa-paint-"></i> Compose
                                     <span class="label label-primary pull-right"></span></a></li>
-                            <li class="<?php if($this->uri->segment(2)=='sentMessages'){echo 'active';}?>"><a href="<?php echo base_url('message/sentMessages');?>"><i class="fa fa-envelope-o"></i> Sent</a></li>
-                            <!--                            <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>-->
-                            <!--                            <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>-->
-                            <!--                            </li>-->
-                            <!--                            <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>-->
+                            <li class="<?php if($this->uri->segment(2)=='message'){echo 'active';}?>"><a href="<?php echo base_url('message');?>"><i class="fa fa-inbox"></i> Inbox
+                                    <span class="label label-primary pull-right"></span></a></li>
+                            <li class="<?php if($this->uri->segment(1)=='message' && $this->uri->segment(2)=='sentMessages'){echo 'active';}?>"><a href="<?php echo base_url('message/sentMessages');?>"><i class="fa fa-envelope-o"></i> Sent</a></li>
                         </ul>
                     </div>
                     <!-- /.box-body -->
@@ -87,15 +84,19 @@
 
                                                 <td class="mailbox-name"><a href="<?php echo base_url('message/read/'. $row->id);?>">
                                                         <?php $data = get_data('users', array('id' => $row->sender_id)); ?>
-                                                        <?php echo $data['user_name'];?></a>
+                                                        <?php echo $data['email'];?></a>
                                                 </td>
-                                                <td class="mailbox-subject"><b><?php echo $row->subject?></b> - <?php echo strip_tags(substr($row->message, 0, 50))?>...
+                                                <td class="mailbox-subject"><b><?php echo $row->subject?></b> - <?php echo strip_tags(substr($this->encrypt->decode($row->message), 0, 50))?>...
                                                 </td>
-                                                <?php if(!empty($row->attachment)){?>
-                                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                                                <?php }else{
-                                                    echo '<td class="mailbox-attachment"></td>';
-                                                }?>
+                                                <td class="mailbox-attachment small">
+                                                    <?php echo proffesionById($row->sender_id) ?>
+
+                                                </td>
+
+                                                <td class="mailbox-attachment small">
+                                                    <?php echo sub_proffesionById($row->sender_id) ?>
+
+                                                </td>
                                                 <td class="mailbox-date"><?php echo date('m-d-Y', strtotime($row->timestamp));?></td>
 
                                             </tr>

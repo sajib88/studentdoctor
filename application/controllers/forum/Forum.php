@@ -15,9 +15,24 @@ class Forum extends CI_Controller{
         parent::__construct();
         $this->load->helper('global');
         $this->load->library('upload');
+
         if (!check_login()) {
             redirect('home/login');
         }
+
+        $level = check_level_1();
+        if($level ['user_level'] == '1')
+        {
+            redirect('step1');
+        }
+        elseif($level ['user_level'] == '2'){
+            redirect('pub/add');
+        }
+        else{
+
+        }
+
+
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger form-error">', '</div>');
     }
 
@@ -31,9 +46,20 @@ class Forum extends CI_Controller{
         $data['social'] = $this->global_model->get('forum_category', array('sec_id' => '1'));
         $data['allprof'] = $this->global_model->get('forum_category', array('sec_id' => '2'));
         $user_type = $this->session->userdata('user_type');
-        $data['dynamicprofession'] = $this->global_model->get('forum_category', array('sec_id' => '3', 'group_id' => $user_type, 'status' => 1));
+        $get_current_proff= $data['user_info']['parent_profession'];
+        $data['dynamicprofession'] = $this->global_model->get('forum_category', array('sec_id' => '3', 'group_id' => $get_current_proff, 'status' => 1));
 
-
+        ////////////////// ADVERTISE /////////////////////////
+        $pageid= 15;
+        $pageviewset = getViewByadvertise($pageid);
+        if(!empty($pageviewset)){
+            $profession = $this->session->userdata('user_type');
+            $data['advertise'] = $this->global_model->getViewByProfession('advertise', $profession);
+        }
+        else{
+            $data['advertise'] = array();
+        }
+        ////////////////// ADVERTISE /////////////////////////
         $this->load->view('header', $data);
         $this->load->view('forum/board', $data);
         $this->load->view('footer');
@@ -206,9 +232,11 @@ class Forum extends CI_Controller{
         $data['error'] = '';
         $loginId = $this->session->userdata('login_id');
         $user_type = $this->session->userdata('user_type');
-       $new['profession'] = $this->global_model->get_data('profession', array('id' => $user_type));
+        $new['profession'] = $this->global_model->get_data('profession', array('id' => $user_type));
+        $data['user_info'] = $this->global_model->get_data('users', array('id' => $loginId));
+        $get_current_proff= $data['user_info']['parent_profession'];
 
-        $currentproffesion =$new['profession']['name'];
+        $currentproffesion = $new['profession']['name'];
 
 
 
@@ -227,7 +255,7 @@ class Forum extends CI_Controller{
                 $save['sec_id'] = '3';
                 $save['cat_title'] = $savedata;
                 $save['added_by'] = $loginId;
-                $save['group_id'] = $user_type;
+                $save['group_id'] = $get_current_proff;
                 $save['total_post'] = '0';
                 $save['status'] = '0';
 

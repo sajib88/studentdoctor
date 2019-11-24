@@ -6,9 +6,9 @@ print_r($website_info);die;*/?>
 
 
     <section class="content-header">
-      <h1><i class="fa fa-user-md"></i>
+      <h4><i class="fa fa-user-md"></i>
         My Website
-      </h1>
+      </h4>
     </section>
 
 
@@ -48,7 +48,7 @@ print_r($website_info);die;*/?>
 
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3> <?php echo $website_info['title']; ?></h3>
+                <h4> <?php echo $website_info['title']; ?></h4>
                 <b>  Posted By </b>  : <?php echo $user_info['first_name'] . ' ' . $user_info['last_name']; ?><br/>
                 <?php if($website_info['appointment'] == 1){?>
                     <b>  Appointment </b>  : <?php echo 'Yes'; ?><br/>
@@ -68,7 +68,7 @@ print_r($website_info);die;*/?>
                 <b>  Business Name </b>  : <?php echo $website_info['business_name']; ?><br/>
                 <b>  Business Email </b>  : <?php echo $website_info['business_email']; ?><br/>
                 <br/>
-                <a href="<?php echo base_url('pub/details'); ?>"><button class="btn btn-warning">Details</button></a> &nbsp;&nbsp;<a href="<?php echo base_url('pub/edit'); ?>"><button class="btn btn-success">Edit</button></a>&nbsp;&nbsp;<a href="<?php echo base_url('public_web/publicweb/delete'); ?>"><button class="btn btn-danger">Delete</button></a>
+                <a href="<?php echo base_url('pub/details'); ?>"><button class="btn btn-success">Details</button></a> &nbsp;&nbsp;<a href="<?php echo base_url('pub/edit'); ?>"><button class="btn btn-success">Edit</button></a>&nbsp;&nbsp;<a href="<?php echo base_url('public_web/publicweb/delete'); ?>"><button class="btn btn-danger">Delete</button></a>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -99,7 +99,7 @@ print_r($website_info);die;*/?>
             <div class="inner">
 
 
-                 <h3> <?php echo $user_info['user_name']; ?></h3>
+                 <h4> <?php echo $user_info['user_name']; ?></h4>
                 <b>  Full Name </b>  : <?php echo $user_info['first_name'] . ' ' . $user_info['last_name']; ?><br/>
                 <b>  First Name </b>  : <?php echo $user_info['first_name']; ?><br/>
                 <b>  Last Name </b>  : <?php echo $user_info['last_name']; ?><br/>

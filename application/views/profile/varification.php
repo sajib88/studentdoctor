@@ -6,7 +6,7 @@
 
     <section class="content-header">
         <h1><i class="fa fa-user-md"></i>
-            Profile Varification
+           Level 3 Profile Verification File Upload Panel
         </h1>
     </section>
 
@@ -30,75 +30,53 @@
                         <div class="box box-primary">
                             <div class="box-header with-border">
                                 <i class="fa fa-th"></i>
-                                <h3 class="box-title">My Profile Varification Info</h3></i>
+                                <h3 class="box-title">My Profile Verification File Upload Panel</h3></i>
                             </div>
+                            <?php /// print_r($user_profile_verify)?>
+
+                            <input type="hidden" name="full_name" value="<?= $user_profile_verify['full_name']?>"  class="form-control">
+                            <input type="hidden" name="email" value="<?= $user_profile_verify['email']?>"  class="form-control">
+                            <input type="hidden" name="profession" value="<?= $user_profile_verify['profession']?>"  class="form-control">
+                            <input type="hidden" name="npi" value="<?= $user_profile_verify['npi']?>"  class="form-control">
+                            <input type="hidden" name="country" value="<?= $user_profile_verify['country']?>"  class="form-control">
+                            <input type="hidden" name="state" value="<?= $user_profile_verify['state']?>"  class="form-control">
+                            <input type="hidden" name="city" value="<?= $user_profile_verify['city']?>"  class="form-control">
+                            <input type="hidden" name="university" value="<?= $user_profile_verify['university']?>"  class="form-control">
+
+
                             <div class="padd">
-                                <div class="form-group">
-                                    <label>Profession</label>
-                                    <input readonly value="<?php echo!empty($user_info['profession']) ? getProfessionById($user_info['profession']) : ''; ?>" class="form-control">
-                                    <input type="hidden" name="profession" value="<?php echo!empty($user_info['profession']) ? $user_info['profession'] : ''; ?>" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input readonly name="email" value="<?php echo $user_info['email']; ?>" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Full Name<span class="error">*</span></label>
-                                    <input name="full_name"  class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>NPI<span class="error">*</span></label>
-                                    <input name="npi" class="form-control"></input>
-                                </div>
-                                <div class="form-group">
-                                    <label>Country<span class="error">*</span></label>
-                                    <select onchange="getComboA(this)" name="country" id="js_country" class="form-control">
-                                        <option value="">Select</option>
-                                        <?php
-                                        if (is_array($countries)) {
-                                            foreach ($countries as $country) {
-                                                $sel = ($country->id == set_value('country'))?'selected="selected"':'';
-                                                ?>
-                                                <option  value="<?php echo $country->id; ?>" <?php echo $sel;?> ><?php echo $country->name; ?></option>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                    <?php echo form_error('country');?>
-                                </div>
-                                <div id="result">
-                                </div>
-                                <div class="form-group">
-                                    <label>City<span class="error">*</span></label>
-                                    <input name="city" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>College/University<span class="error">*</span></label>
-                                    <input name="university" class="form-control">
-                                </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group" id="photo_id">
-                                            <label>Primary Document<span class="error">*</span></label>
-                                            <input name="doc_1" class="btn btn-default btn-cust" type="file" required>
+                                            <label>Update Document 1<span class="error">*</span></label>
+                                            <input name="update_doc_1" class="btn btn-default btn-cust" type="file" required>
                                             <small class="bg-red"><i class="fa fa-star-o"></i> Must be Upload 1 Document </small>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group" id="photo_id">
-                                            <label>Document 2</label>
-                                            <input name="doc_2" class="btn btn-default btn-cust" type="file">
+                                            <label>Update Document 2</label>
+                                            <input name="update_doc_2" class="btn btn-default btn-cust" type="file">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group" id="file_id">
-                                            <label>Document 3</label>
-                                            <input name="doc_3" class="btn btn-default btn-cust" type="file" >
+                                            <label>Update Document 3</label>
+                                            <input name="update_doc_3" class="btn btn-default btn-cust" type="file" >
                                         </div>
                                     </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="file_id">
+                                            <label>Update Document 4</label>
+                                            <input name="update_doc_4" class="btn btn-default btn-cust" type="file" >
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -112,21 +90,12 @@
                                 <h3 class="box-title">Document</h3></i>
                             </div>
                             <div class="padd">
-                                <div class="callout callout-danger">
-                                    <h4><i class="icon fa fa-check"></i> Full Name</h4>
-                                    <p>Full Name is required to varify Professional Profile.</p>
-                                </div>
-                                <div class="callout callout-info">
-                                    <h4><i class="icon fa fa-check"></i> NPI or NID Number</h4>
-                                    <p>Provide your NPI or NID number, that will be use in Professional Profile varification process.</p>
-                                </div>
-                                <div class="callout callout-warning">
-                                    <h4><i class="icon fa fa-check"></i> College or University Name</h4>
-                                    <p>Enter your College or University name that you were graduate from.</p>
-                                </div>
+
                                 <div class="callout callout-success">
                                     <h4><i class="icon fa fa-check"></i> Document</h4>
-                                    <p>Please upload atleast one Document to varify your profile. Document formats are (jpg,jpeg,png,bmp,gif,pdf,tif,tiff,txt,csv,doc,docx,xls,xlsx,xlt,pps,ppt,pptx,ods)</p>
+                                    <p>Please upload atleast one Document to varify your profile. Document formats are </p>
+                                    <p>   (jpg, jpeg, png, bmp, gif, pdf, tif, tiff, txt, csv, doc, docx, xls, xlsx, xlt, pps, ppt, pptx, ods)</p>
+
                                 </div>
                             </div>
                         </div>
@@ -184,7 +153,7 @@
         var da = {state: value};
         $.ajax({
             type: 'POST',
-            url: base_url + "public_web/publicweb/getStateByAjax",
+            url: base_url + "profile/Profile/getStateByAjax",
             data: da,
             dataType: "text",
             success: function(resultData) {
